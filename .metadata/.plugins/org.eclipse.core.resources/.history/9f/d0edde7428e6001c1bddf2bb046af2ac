@@ -1,0 +1,22 @@
+--<북스-2장.데이터 조회하기>
+--이름이 SCOTT 사원의 정보 출력
+SELECT *
+FROM employee
+WHERE ename='SCOTT';--where 조건문이 참
+
+SELECT *
+FROM employee
+WHERE ename='scott';--결과없음(문자값은 대소문자 구분함)
+
+SELECT *
+FROM employee
+WHERE lower(ename)='scott';
+
+SELECT *
+FROM employee
+WHERE ename=upper('scott');
+
+--'1981년 1월 1일 이전에 입사'한 사원의 정보만 출력
+SELECT *
+FROM employee
+WHERE hiredate <= '1981/01/01';	--(sql 무조건 문자는 '문자1개', '문자여러개' ※자바:'문자1개',"문자여러개")

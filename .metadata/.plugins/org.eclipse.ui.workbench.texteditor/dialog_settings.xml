@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="selection" value="disable"/>
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="true"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<list key="findhistory">
+			<item value="disable"/>
+			<item value="삭제"/>
+			<item value="set default"/>
+			<item value="smith"/>
+			<item value="any"/>
+			<item value="exists"/>
+			<item value="count"/>
+			<item value="modify"/>
+			<item value="order"/>
+			<item value="instr"/>
+			<item value="CONCAT"/>
+			<item value="concat"/>
+			<item value="substr"/>
+			<item value="rpad"/>
+			<item value="trim"/>
+		</list>
+		<list key="replacehistory">
+			<item value="제거"/>
+			<item value="반환"/>
+			<item value=""/>
+			<item value="ed"/>
+			<item value="급여정보테이블"/>
+			<item value="급여정보 테이블"/>
+			<item value="급여정보"/>
+			<item value="테이블"/>
+			<item value="컬럼"/>
+			<item value="총합"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="1239"/>
+		<item key="DIALOG_Y_ORIGIN" value="279"/>
+		<item key="DIALOG_WIDTH" value="324"/>
+		<item key="DIALOG_HEIGHT" value="391"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+	</section>
+</section>

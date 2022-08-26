@@ -1,0 +1,5 @@
+--<북스-2장.데이터 조회하기>
+--이름이 SCOTT 사원의 정보 출력
+SELECT *
+FROM employee
+WHERE ename='SCOTT'--where 조건문이 참
