@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">&#x0A;<refactoring comment="자원 &apos;오라클_북스홀릭/src/main/webapp/9장. 데이터 조작과 트랜잭션.sql&apos;을(를) &apos;9장_데이터 조작과 트랜잭션.sql&apos;(으)로 이름 바꾸기" description="&apos;9장. 데이터 조작과 트랜잭션.sql&apos; 자원 이름 바꾸기" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/webapp/9장. 데이터 조작과 트랜잭션.sql" name="9장_데이터 조작과 트랜잭션.sql" stamp="1658369338519" updateReferences="true"/>&#x0A;<refactoring comment="자원 &apos;오라클_북스홀릭/src/main/webapp/9장_혼자해보기&apos;을(를) &apos;9장_혼자해보기.sql&apos;(으)로 이름 바꾸기" description="&apos;9장_혼자해보기&apos; 자원 이름 바꾸기" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/webapp/9장_혼자해보기" name="9장_혼자해보기.sql" stamp="1658455436611" updateReferences="true"/>
-</session>

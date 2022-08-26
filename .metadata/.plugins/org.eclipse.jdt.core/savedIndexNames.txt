@@ -1,5 +1,0 @@
-INDEX VERSION 1.131+C:\Users\yn-04\Documents\2022-1학기-영남-정보처리산업기사\오라클\oraclework\.metadata\.plugins\org.eclipse.jdt.core
-1865797976.index
-1527739850.index
-4030836303.index
-3893321015.index
