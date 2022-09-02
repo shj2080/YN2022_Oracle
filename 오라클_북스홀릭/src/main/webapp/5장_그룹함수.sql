@@ -1,117 +1,117 @@
 /************************************************************************
- * < ÂüÁ¶ : ¿À¶óÅ¬ ½ÇÇà ¼ø¼­ >
- * from -> where -> group by -> having -> select ÄÃ·³¸íÀÇ º°Äª -> order by
+ * < ì°¸ì¡° : ì˜¤ë¼í´ ì‹¤í–‰ ìˆœì„œ >
+ * from -> where -> group by -> having -> select ì»¬ëŸ¼ëª…ì˜ ë³„ì¹­ -> order by
  * 
- * µû¶ó¼­ 'whereÀı, group byÀı, havingÀı'¿¡¼­ 'ÄÃ·³¸íÀÇ º°Äª' ÀÎ½Ä ¸øÇÔ
- * (¿¹¸¦ µé¾î, where + 'ÄÃ·³¸íÀÇ º°Äª' »ç¿ëºÒ°¡)
- * order byÀı¿¡¼­¸¸ 'ÄÃ·³¸íÀÇ º°Äª' ÀÎ½Ä
+ * ë”°ë¼ì„œ 'whereì ˆ, group byì ˆ, havingì ˆ'ì—ì„œ 'ì»¬ëŸ¼ëª…ì˜ ë³„ì¹­' ì¸ì‹ ëª»í•¨
+ * (ì˜ˆë¥¼ ë“¤ì–´, where + 'ì»¬ëŸ¼ëª…ì˜ ë³„ì¹­' ì‚¬ìš©ë¶ˆê°€)
+ * order byì ˆì—ì„œë§Œ 'ì»¬ëŸ¼ëª…ì˜ ë³„ì¹­' ì¸ì‹
  * 
- * ´Ü, ¾Æ·¡ SQL¹®Àº whereÀı¿¡ º°Äª »ç¿ë°¡´É
+ * ë‹¨, ì•„ë˜ SQLë¬¸ì€ whereì ˆì— ë³„ì¹­ ì‚¬ìš©ê°€ëŠ¥
  * select *
- * from (select salary AS "±Ş¿©" from employee)
- * where "±Ş¿©" > 1000;
+ * from (select salary AS "ê¸‰ì—¬" from employee)
+ * where "ê¸‰ì—¬" > 1000;
  ************************************************************************/
---[¼ø¼­-1]
-select salary AS "±Ş¿©" from employee;
---[¼ø¼­-2]
+--[ìˆœì„œ-1]
+select salary AS "ê¸‰ì—¬" from employee;
+--[ìˆœì„œ-2]
 select *
-from (select salary AS "±Ş¿©" from employee)
-where "±Ş¿©" > 1000;
+from (select salary AS "ê¸‰ì—¬" from employee)
+where "ê¸‰ì—¬" > 1000;
 
-select salary AS "±Ş¿©"
+select salary AS "ê¸‰ì—¬"
 from employee
---where "±Ş¿©" > 1000; --[¿À·ù]ORA-00904: "±Ş¿©": invalid identifier
-where salary > 1000; --°¡´É
+--where "ê¸‰ì—¬" > 1000; --[ì˜¤ë¥˜]ORA-00904: "ê¸‰ì—¬": invalid identifier
+where salary > 1000; --ê°€ëŠ¥
 
 
 
---<ºÏ½º-5Àå> ±×·ì ÇÔ¼ö : 'ÇÏ³ª ÀÌ»óÀÇ ÇàÀ» ±×·ìÀ¸·Î ¹­¾î ¿¬»ê'ÇÏ¿© ÃÑÇÕ, Æò±Õ µî °á°ú¸¦ ±¸ÇÔ
---¡Ú¡Ú ÁÖÀÇ : count(*) ÇÔ¼ö¸¦ Á¦¿ÜÇÑ ¸ğµç ±×·ìÇÔ¼öµéÀº null°ªÀº ¹«½Ã
+--<ë¶ìŠ¤-5ì¥> ê·¸ë£¹ í•¨ìˆ˜ : 'í•˜ë‚˜ ì´ìƒì˜ í–‰ì„ ê·¸ë£¹ìœ¼ë¡œ ë¬¶ì–´ ì—°ì‚°'í•˜ì—¬ ì´í•©, í‰ê·  ë“± ê²°ê³¼ë¥¼ êµ¬í•¨
+--â˜…â˜… ì£¼ì˜ : count(*) í•¨ìˆ˜ë¥¼ ì œì™¸í•œ ëª¨ë“  ê·¸ë£¹í•¨ìˆ˜ë“¤ì€ nullê°’ì€ ë¬´ì‹œ
 
---»ç¿øµéÀÇ ±Ş¿© ÃÑ¾×, ±Ş¿© Æò±Õ¾×, ±Ş¿© ÃÖ°í¾×, ±Ş¿© ÃÖÀú¾× Ãâ·Â
+--ì‚¬ì›ë“¤ì˜ ê¸‰ì—¬ ì´ì•¡, ê¸‰ì—¬ í‰ê· ì•¡, ê¸‰ì—¬ ìµœê³ ì•¡, ê¸‰ì—¬ ìµœì €ì•¡ ì¶œë ¥
 select
 SUM(salary),
-AVG(salary),--½Ç¼ö
---trunc(AVG(salary)) --Á¤¼ö
+AVG(salary),--ì‹¤ìˆ˜
+--trunc(AVG(salary)) --ì •ìˆ˜
 MAX(salary),
 MIN(salary)
 from employee;
---'ÀüÃ¼ »ç¿øÅ×ÀÌºí'ÀÌ ´ë»óÀÌ¸é group by »ç¿ë¾ÈÇÔ(ÀÌÀ¯?ÀüÃ¼°¡ ÇÏ³ªÀÇ ±×·ìÀÌ¹Ç·Î...)
+--'ì „ì²´ ì‚¬ì›í…Œì´ë¸”'ì´ ëŒ€ìƒì´ë©´ group by ì‚¬ìš©ì•ˆí•¨(ì´ìœ ?ì „ì²´ê°€ í•˜ë‚˜ì˜ ê·¸ë£¹ì´ë¯€ë¡œ...)
 
---max(), min() ÇÔ¼ö´Â ¼ıÀÚµ¥ÀÌÅÍ ÀÌ¿Ü¿¡ ´Ù¸¥ '¸ğµç µ¥ÀÌÅÍ À¯Çü'¿¡ »ç¿ë°¡´É
---[¹®Á¦] ÃÖ±Ù¿¡ ÀÔ»çÇÑ »ç¿ø°ú °¡Àå ¿À·¡Àü¿¡ ÀÔ»çÇÑ »ç¿øÀÇ ÀÔ»çÀÏÀ» Ãâ·Â
+--max(), min() í•¨ìˆ˜ëŠ” ìˆ«ìë°ì´í„° ì´ì™¸ì— ë‹¤ë¥¸ 'ëª¨ë“  ë°ì´í„° ìœ í˜•'ì— ì‚¬ìš©ê°€ëŠ¥
+--[ë¬¸ì œ] ìµœê·¼ì— ì…ì‚¬í•œ ì‚¬ì›ê³¼ ê°€ì¥ ì˜¤ë˜ì „ì— ì…ì‚¬í•œ ì‚¬ì›ì˜ ì…ì‚¬ì¼ì„ ì¶œë ¥
 select
-MAX(hiredate) as "ÃÖ±Ù»ç¿ø",
-MIN(hiredate) as "Ã¹ »ç¿ø"--º°ÄªÀÌ ³Ê¹« ±æ¸é ¿À·ù ¹ß»ıÇÔ
+MAX(hiredate) as "ìµœê·¼ì‚¬ì›",
+MIN(hiredate) as "ì²« ì‚¬ì›"--ë³„ì¹­ì´ ë„ˆë¬´ ê¸¸ë©´ ì˜¤ë¥˜ ë°œìƒí•¨
 from employee;
 
---1.1 ±×·ìÇÔ¼ö¿Í NULL°ª(145P~)
---»ç¿øµéÀÇ Ä¿¹Ì¼Ç ÃÑ¾× Ãâ·Â
+--1.1 ê·¸ë£¹í•¨ìˆ˜ì™€ NULLê°’(145P~)
+--ì‚¬ì›ë“¤ì˜ ì»¤ë¯¸ì…˜ ì´ì•¡ ì¶œë ¥
 select
-sum(commission) as "Ä¿¹Ì¼Ç ÃÑ¾×"
+sum(commission) as "ì»¤ë¯¸ì…˜ ì´ì•¡"
 from employee;--2200
---null°ª°ú ¿¬»êÇÑ °á°ú´Â ¹«Á¶°Ç nullÀÌ ³ª¿ÀÁö¸¸
---count(*) ÇÔ¼ö¸¦ Á¦¿ÜÇÑ ¸ğµç ±×·ìÇÔ¼öµéÀº null°ªÀº ¹«½Ã
+--nullê°’ê³¼ ì—°ì‚°í•œ ê²°ê³¼ëŠ” ë¬´ì¡°ê±´ nullì´ ë‚˜ì˜¤ì§€ë§Œ
+--count(*) í•¨ìˆ˜ë¥¼ ì œì™¸í•œ ëª¨ë“  ê·¸ë£¹í•¨ìˆ˜ë“¤ì€ nullê°’ì€ ë¬´ì‹œ
 
---1.2 'Çà °³¼ö'¸¦ ±¸ÇÏ´Â countÇÔ¼ö
-select count(*) as "ÀüÃ¼ »ç¿ø¼ö"
+--1.2 'í–‰ ê°œìˆ˜'ë¥¼ êµ¬í•˜ëŠ” countí•¨ìˆ˜
+select count(*) as "ì „ì²´ ì‚¬ì›ìˆ˜"
 from employee; --14
 
---Ä¿¹Ì¼ÇÀ» ¹Ş´Â »ç¿ø¼ö
---[¹æ¹ı-1] count(*) : nullÁ¦¿Ü¾ÈÇÔ
-select count(*) as "Ä¿¹Ì¼ÇÀ» ¹Ş´Â »ç¿ø¼ö"
+--ì»¤ë¯¸ì…˜ì„ ë°›ëŠ” ì‚¬ì›ìˆ˜
+--[ë°©ë²•-1] count(*) : nullì œì™¸ì•ˆí•¨
+select count(*) as "ì»¤ë¯¸ì…˜ì„ ë°›ëŠ” ì‚¬ì›ìˆ˜"
 from employee
 where commission IS NOT null;
 
---[¹æ¹ı-2] count(ÄÃ·³¸í) : nullÁ¦¿Ü
-select count(commission) as "Ä¿¹Ì¼ÇÀ» ¹Ş´Â »ç¿ø¼ö"
+--[ë°©ë²•-2] count(ì»¬ëŸ¼ëª…) : nullì œì™¸
+select count(commission) as "ì»¤ë¯¸ì…˜ì„ ë°›ëŠ” ì‚¬ì›ìˆ˜"
 from employee;
 
---Á÷¾÷(job)ÀÌ ¾î¶² Á¾·ù?
+--ì§ì—…(job)ì´ ì–´ë–¤ ì¢…ë¥˜?
 select job
 from employee;
 
-select DISTINCT job --distinct : Áßº¹ Á¦¿Ü
+select DISTINCT job --distinct : ì¤‘ë³µ ì œì™¸
 from employee;
 
---Á÷¾÷(job)ÀÇ °³¼ö
-select count(job), count(ALL job) as "ALLÇÑ Á÷¾÷¼ö"
+--ì§ì—…(job)ì˜ ê°œìˆ˜
+select count(job), count(ALL job) as "ALLí•œ ì§ì—…ìˆ˜"
 from employee;--14	14
 
-select count(commission), count(ALL commission) as "ALLÇÑ Ä¿¹Ì¼Ç", count(*)
+select count(commission), count(ALL commission) as "ALLí•œ ì»¤ë¯¸ì…˜", count(*)
 from employee;--4	4	14
 
---¾÷(job)ÀÇ °³¼ö : DISTINCT (Áßº¹ Á¦¿Ü)
-select count(job), count(distinct job) as "Áßº¹Á¦¿ÜÇÑ Á÷¾÷¼ö"
+--ì—…(job)ì˜ ê°œìˆ˜ : DISTINCT (ì¤‘ë³µ ì œì™¸)
+select count(job), count(distinct job) as "ì¤‘ë³µì œì™¸í•œ ì§ì—…ìˆ˜"
 from employee;
 
---¡Ú¡Ú¡Ú¡Ú¡Ú¡Ú¡Ú¡Ú¡Ú 1-3. ±×·ìÇÔ¼ö¿Í ´Ü¼øÄÃ·³ ¡Ú¡Ú¡Ú¡Ú¡Ú¡Ú¡Ú¡Ú¡Ú¡Ú¡Ú¡Ú¡Ú¡Ú¡Ú¡Ú¡Ú¡Ú¡Ú¡Ú¡Ú¡Ú¡Ú¡Ú¡Ú¡Ú
-SELECT ename, max(salary) --´Ù:1
+--â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜… 1-3. ê·¸ë£¹í•¨ìˆ˜ì™€ ë‹¨ìˆœì»¬ëŸ¼ â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…
+SELECT ename, max(salary) --ë‹¤:1
 from EMPLOYEE;--ORA-00937: not a single-group group function
---¿À·ù? ±×·ìÇÔ¼öÀÇ °á°ú°ªÀº 1°³ÀÎµ¥, 
---±×·ìÇÔ¼ö¸¦ Àû¿ëÇÏÁö ¾ÊÀº ÄÃ·³Àº °á°ú°¡ ¿©·¯ °³ ³ª¿Ã ¼ö ÀÖÀ¸¹Ç·Î
---¸ÅÄ¡½ÃÅ³ ¼ö ¾ø±â ¶§¹®¿¡ ¿À·ù¹ß»ı
+--ì˜¤ë¥˜? ê·¸ë£¹í•¨ìˆ˜ì˜ ê²°ê³¼ê°’ì€ 1ê°œì¸ë°, 
+--ê·¸ë£¹í•¨ìˆ˜ë¥¼ ì ìš©í•˜ì§€ ì•Šì€ ì»¬ëŸ¼ì€ ê²°ê³¼ê°€ ì—¬ëŸ¬ ê°œ ë‚˜ì˜¬ ìˆ˜ ìˆìœ¼ë¯€ë¡œ
+--ë§¤ì¹˜ì‹œí‚¬ ìˆ˜ ì—†ê¸° ë•Œë¬¸ì— ì˜¤ë¥˜ë°œìƒ
 
---2. µ¥ÀÌÅÍ ±×·ì : GROUP BY - Æ¯Á¤ ÄÃ·³À» ±âÁØÀ¸·Î ±×·ìº°·Î ³ª´²¾ß ÇÒ °æ¿ì
--- ¡Ú¡Ú group by Àı µÚ¿¡ 'ÄÃ·³ÀÇ º°Äª' »ç¿ëºÒ°¡. ¹İµå½Ã ÄÃ·³¸í¸¸ ±â¼ú
+--2. ë°ì´í„° ê·¸ë£¹ : GROUP BY - íŠ¹ì • ì»¬ëŸ¼ì„ ê¸°ì¤€ìœ¼ë¡œ ê·¸ë£¹ë³„ë¡œ ë‚˜ëˆ ì•¼ í•  ê²½ìš°
+-- â˜…â˜… group by ì ˆ ë’¤ì— 'ì»¬ëŸ¼ì˜ ë³„ì¹­' ì‚¬ìš©ë¶ˆê°€. ë°˜ë“œì‹œ ì»¬ëŸ¼ëª…ë§Œ ê¸°ìˆ 
 
---[¹®Á¦] ¼Ò¼Ó ºÎ¼­º°·Î Æò±Õ±Ş¿©¸¦ ºÎ¼­¹øÈ£¿Í ÇÔ²² Ãâ·Â(ºÎ¼­¹øÈ£¸¦ ±âÁØÀ¸·Î ¿À¸§Â÷¼ø Á¤·Ä)
---[¼ø¼­-1]
+--[ë¬¸ì œ] ì†Œì† ë¶€ì„œë³„ë¡œ í‰ê· ê¸‰ì—¬ë¥¼ ë¶€ì„œë²ˆí˜¸ì™€ í•¨ê»˜ ì¶œë ¥(ë¶€ì„œë²ˆí˜¸ë¥¼ ê¸°ì¤€ìœ¼ë¡œ ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬)
+--[ìˆœì„œ-1]
 select distinct dno
 from employee; --10 20 30
 
---[¼ø¼­-2]
+--[ìˆœì„œ-2]
 select dno, AVG(salary)--1 : 1
 from employee
 GROUP BY dno--10 20 30
 order by dno asc;
 
-select AVG(salary) --dno(ºÎ¼­¹øÈ£)°¡ ¾øÀ¸¸é °á°ú´Â ¹«ÀÇ¹ÌÇØÁü
+select AVG(salary) --dno(ë¶€ì„œë²ˆí˜¸)ê°€ ì—†ìœ¼ë©´ ê²°ê³¼ëŠ” ë¬´ì˜ë¯¸í•´ì§
 from employee
 GROUP BY dno--10 20 30
 order by dno asc;
 
---¿À·ù? ORA-00979: not a GROUP BY expression
+--ì˜¤ë¥˜? ORA-00979: not a GROUP BY expression
 select dno, ename, AVG(salary)--3 : 14 : 3
 from employee
 GROUP BY dno--10 20 30
@@ -119,124 +119,124 @@ order by dno asc;
 
 select dno, ename, AVG(salary)--14 : 14
 from employee
-GROUP BY dno, ename--(10, °°ÀºÀÌ¸§) (20, °°ÀºÀÌ¸§) (30, °°ÀºÀÌ¸§)
+GROUP BY dno, ename--(10, ê°™ì€ì´ë¦„) (20, ê°™ì€ì´ë¦„) (30, ê°™ì€ì´ë¦„)
 order by dno asc;
 
 select dno, job, count(*), SUM(salary), AVG(salary)
 from employee
-GROUP BY dno, job--(10, °°ÀºÁ÷¾÷) (20, °°ÀºÁ÷¾÷) (30, °°ÀºÁ÷¾÷)
+GROUP BY dno, job--(10, ê°™ì€ì§ì—…) (20, ê°™ì€ì§ì—…) (30, ê°™ì€ì§ì—…)
 order by dno asc;
---GROUP BY ÀıÀº ¸ÕÀú dno(ºÎ¼­¹øÈ£)¸¦ ±âÁØÀ¸·Î ±×·ìÈ­ÇÑ ´ÙÀ½
---ÇØ´ç ºÎ¼­ ¹øÈ£ ±×·ì ³»¿¡¼­ job(Á÷¾÷)À» ±âÁØÀ¸·Î ´Ù½Ã ±×·ìÈ­
+--GROUP BY ì ˆì€ ë¨¼ì € dno(ë¶€ì„œë²ˆí˜¸)ë¥¼ ê¸°ì¤€ìœ¼ë¡œ ê·¸ë£¹í™”í•œ ë‹¤ìŒ
+--í•´ë‹¹ ë¶€ì„œ ë²ˆí˜¸ ê·¸ë£¹ ë‚´ì—ì„œ job(ì§ì—…)ì„ ê¸°ì¤€ìœ¼ë¡œ ë‹¤ì‹œ ê·¸ë£¹í™”
 
---3. ±×·ì ÇÔ¼ö Á¦ÇÑ : havikng (152p~)
---±×·ì ÇÔ¼öÀÇ °á°ú Áß havingÀı ´ÙÀ½¿¡ ÁöÁ¤ÇÑ Á¶°Ç¿¡ trueÀÎ ±×·ìÀ¸·Î °á°ú Á¦ÇÑ
+--3. ê·¸ë£¹ í•¨ìˆ˜ ì œí•œ : havikng (152p~)
+--ê·¸ë£¹ í•¨ìˆ˜ì˜ ê²°ê³¼ ì¤‘ havingì ˆ ë‹¤ìŒì— ì§€ì •í•œ ì¡°ê±´ì— trueì¸ ê·¸ë£¹ìœ¼ë¡œ ê²°ê³¼ ì œí•œ
 
---[¹®Á¦] 'ºÎ¼­º° ±Ş¿©ÃÑ¾×ÀÌ 10000ÀÌ»ó'ÀÎ ºÎ¼­ÀÇ ºÎ¼­¹øÈ£¿Í ºÎ¼­º° ±Ş¿©ÃÑ¾× ±¸ÇÏ±â
---(ºÎ¼­¹øÈ£·Î ¿À¸§Â÷¼ø Á¤·Ä)
---[1] ºÎ¼­º° ±Ş¿©ÃÑ¾× ±¸ÇÏ±â
+--[ë¬¸ì œ] 'ë¶€ì„œë³„ ê¸‰ì—¬ì´ì•¡ì´ 10000ì´ìƒ'ì¸ ë¶€ì„œì˜ ë¶€ì„œë²ˆí˜¸ì™€ ë¶€ì„œë³„ ê¸‰ì—¬ì´ì•¡ êµ¬í•˜ê¸°
+--(ë¶€ì„œë²ˆí˜¸ë¡œ ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬)
+--[1] ë¶€ì„œë³„ ê¸‰ì—¬ì´ì•¡ êµ¬í•˜ê¸°
 select dno, sum(salary)
 from EMPLOYEE
 GROUP BY dno;
 
---[2] 'ºÎ¼­º° ±Ş¿©ÃÑ¾×ÀÌ 10000ÀÌ»ó' -> Á¤·Ä
+--[2] 'ë¶€ì„œë³„ ê¸‰ì—¬ì´ì•¡ì´ 10000ì´ìƒ' -> ì •ë ¬
 select dno, sum(salary)
 from EMPLOYEE
---where sum(salary) > 10000 -- where Á¶°Ç => ¿À·ù¹ß»ı? ±×·ìÇÔ¼öÀÇ Á¶°ÇÀº havingÀı¿¡
+--where sum(salary) > 10000 -- where ì¡°ê±´ => ì˜¤ë¥˜ë°œìƒ? ê·¸ë£¹í•¨ìˆ˜ì˜ ì¡°ê±´ì€ havingì ˆì—
 GROUP BY dno
-HAVING SUM(salary) > 10000 -- ±×·ì Á¶°Ç
+HAVING SUM(salary) > 10000 -- ê·¸ë£¹ ì¡°ê±´
 order by dno asc;
 
---[¹®Á¦] 'MANAGER'¸¦ Á¦¿Ü'ÇÏ°í '±Ş¿©ÃÑ¾×ÀÌ 5000ÀÌ»ó'ÀÎ Á÷±Şº° ¼ö¿Í ±Ş¿©ÃÑ¾×
---(±Ş¿©ÃÑ¾×À» ±âÁØÀ¸·Î ³»¸²Â÷¼ø Á¤·Ä)
---[1] Á÷±Şº° ¼ö¿Í ±Ş¿©ÃÑ¾× ±¸ÇÏ±â
-select job, count(*), sum(salary)--jobÀÌ ¾øÀ¸¸é ¹«ÀÇ¹ÌÇÏ´Ù
+--[ë¬¸ì œ] 'MANAGER'ë¥¼ ì œì™¸'í•˜ê³  'ê¸‰ì—¬ì´ì•¡ì´ 5000ì´ìƒ'ì¸ ì§ê¸‰ë³„ ìˆ˜ì™€ ê¸‰ì—¬ì´ì•¡
+--(ê¸‰ì—¬ì´ì•¡ì„ ê¸°ì¤€ìœ¼ë¡œ ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬)
+--[1] ì§ê¸‰ë³„ ìˆ˜ì™€ ê¸‰ì—¬ì´ì•¡ êµ¬í•˜ê¸°
+select job, count(*), sum(salary)--jobì´ ì—†ìœ¼ë©´ ë¬´ì˜ë¯¸í•˜ë‹¤
 from employee
 group by job;
 
---[2] 'MANAGER¸¦ Á¦¿Ü'ÇÏ±â [¹æ¹ı-1]
+--[2] 'MANAGERë¥¼ ì œì™¸'í•˜ê¸° [ë°©ë²•-1]
 select job, count(*), sum(salary)
 from employee
 where job != 'MANAGER' -- != ^= <>
 group by job;
 
---[2] 'MANAGER¸¦ Á¦¿Ü'ÇÏ±â [¹æ¹ı-2]
+--[2] 'MANAGERë¥¼ ì œì™¸'í•˜ê¸° [ë°©ë²•-2]
 select job, count(*), sum(salary)
 from employee
 where job not like 'MANAGER'
 group by job;
 
---[3] ±Ş¿©ÃÑ¾×ÀÌ 5000ÀÌ»ó [¹æ¹ı-1]
-select job, count(*), sum(salary) as "±Ş¿© ÃÑ¾×"
+--[3] ê¸‰ì—¬ì´ì•¡ì´ 5000ì´ìƒ [ë°©ë²•-1]
+select job, count(*), sum(salary) as "ê¸‰ì—¬ ì´ì•¡"
 from employee
 where job != 'MANAGER'	-- != ^= <>
 group by job
 having sum(salary) >= 5000
 --order by sum(salary) desc;
 --order by 3 desc;
-order by "±Ş¿© ÃÑ¾×" desc; --º°ÄªÀ¸·Îµµ Á¤·Ä °¡´É!
+order by "ê¸‰ì—¬ ì´ì•¡" desc; --ë³„ì¹­ìœ¼ë¡œë„ ì •ë ¬ ê°€ëŠ¥!
 
---[3] ±Ş¿©ÃÑ¾×ÀÌ 5000ÀÌ»ó [¹æ¹ı-2]
-select job, count(*), sum(salary) as "±Ş¿© ÃÑ¾×"
+--[3] ê¸‰ì—¬ì´ì•¡ì´ 5000ì´ìƒ [ë°©ë²•-2]
+select job, count(*), sum(salary) as "ê¸‰ì—¬ ì´ì•¡"
 from employee
 where job NOT like 'MANAGER'
 group by job
 having sum(salary) >= 5000
 order by 3 desc;
 
---¾Æ·¡´Â ¿À·ù ¹ß»ıÇÔ
-select job, count(*), sum(salary) as "±Ş¿© ÃÑ¾×"
+--ì•„ë˜ëŠ” ì˜¤ë¥˜ ë°œìƒí•¨
+select job, count(*), sum(salary) as "ê¸‰ì—¬ ì´ì•¡"
 from employee
 where job NOT like 'MANAGER' AND sum(salary) >= 5000
 group by job
 --having sum(salary) >= 5000
 order by 3 desc;
 --ORA-00934: group function is not allowed here
--- ¿À·ù : ±×·ìÇÔ¼ö°¡ Æ÷ÇÔµÈ Á¶°ÇÀº HAVINGÀı¿¡¼­¸¸ »ç¿ë°¡´É
+-- ì˜¤ë¥˜ : ê·¸ë£¹í•¨ìˆ˜ê°€ í¬í•¨ëœ ì¡°ê±´ì€ HAVINGì ˆì—ì„œë§Œ ì‚¬ìš©ê°€ëŠ¥
 
 
---¡Ú¡Ú ±×·ìÇÔ¼ö´Â 2¹ø±îÁö¸¸ ÁßÃ¸ÇØ¼­ »ç¿ë°¡´É
---[¹®Á¦] ºÎ¼­¹øÈ£ º° ±Ş¿©Æò±ÕÀÇ ÃÖ°í°ªÀ» Ãâ·Â
---[1] ºÎ¼­¹øÈ£ º° ±Ş¿©Æò±Õ ±¸ÇÏ±â
-select dno, avg(salary)--dnoÀÌ ¾øÀ¸¸é °á°ú´Â ¹«ÀÇ¹ÌÇÏ´Ù
+--â˜…â˜… ê·¸ë£¹í•¨ìˆ˜ëŠ” 2ë²ˆê¹Œì§€ë§Œ ì¤‘ì²©í•´ì„œ ì‚¬ìš©ê°€ëŠ¥
+--[ë¬¸ì œ] ë¶€ì„œë²ˆí˜¸ ë³„ ê¸‰ì—¬í‰ê· ì˜ ìµœê³ ê°’ì„ ì¶œë ¥
+--[1] ë¶€ì„œë²ˆí˜¸ ë³„ ê¸‰ì—¬í‰ê·  êµ¬í•˜ê¸°
+select dno, avg(salary)--dnoì´ ì—†ìœ¼ë©´ ê²°ê³¼ëŠ” ë¬´ì˜ë¯¸í•˜ë‹¤
 from employee
 group by dno;
 
---[2] ºÎ¼­¹øÈ£ º° ±Ş¿©Æò±ÕÀÇ ÃÖ°í°ªÀ» Ãâ·Â
-select dno, MAX(avg(salary)) --3:1 => ¸ÅÄªºÒ°¡ => ¿À·ù
+--[2] ë¶€ì„œë²ˆí˜¸ ë³„ ê¸‰ì—¬í‰ê· ì˜ ìµœê³ ê°’ì„ ì¶œë ¥
+select dno, MAX(avg(salary)) --3:1 => ë§¤ì¹­ë¶ˆê°€ => ì˜¤ë¥˜
 from employee
-group by dno;--¿À·ù ¹ß»ı? dnoÀº 3°¡ÁöÀÌÁö¸¸ MAX(avg(salary))´Â ¹«Á¶°Ç 1°³ÀÌ¹Ç·Î ¸ÅÄ¡ºÒ°¡
+group by dno;--ì˜¤ë¥˜ ë°œìƒ? dnoì€ 3ê°€ì§€ì´ì§€ë§Œ MAX(avg(salary))ëŠ” ë¬´ì¡°ê±´ 1ê°œì´ë¯€ë¡œ ë§¤ì¹˜ë¶ˆê°€
 
---¿À·ù ÇØ°áÇÏ´Â [¹æ¹ı-1] : °£´ÜÇÏ°Ô ÇØ°á
-select MAX(avg(salary)) as "ºÎ¼­º°±Ş¿©Æò±ÕÃÖ°í"--dnoÀÌ ¾øÀ¸¸é °á°ú´Â ¹«ÀÇ¹ÌÇÏ´Ù
-from employee
-group by dno;
-
-select trunc(MAX(AVG(salary))) as "ºÎ¼­º°±Ş¿©Æò±ÕÃÖ°í"--dnoÀÌ ¾øÀ¸¸é °á°ú´Â ¹«ÀÇ¹ÌÇÏ´Ù
+--ì˜¤ë¥˜ í•´ê²°í•˜ëŠ” [ë°©ë²•-1] : ê°„ë‹¨í•˜ê²Œ í•´ê²°
+select MAX(avg(salary)) as "ë¶€ì„œë³„ê¸‰ì—¬í‰ê· ìµœê³ "--dnoì´ ì—†ìœ¼ë©´ ê²°ê³¼ëŠ” ë¬´ì˜ë¯¸í•˜ë‹¤
 from employee
 group by dno;
 
---¿À·ù ÇØ°áÇÏ´Â [¹æ¹ı-2] : dnoµµ ÇÔ²² Ãâ·ÂÇÏ°í ½Í´Ù¸é => '¼­ºêÄõ¸®' ÀÌ¿ë
---[1] ºÎ¼­¹øÈ£ º° ±Ş¿©Æò±Õ ±¸ÇÏ±â
-select dno, avg(salary)--dnoÀÌ ¾øÀ¸¸é °á°ú´Â ¹«ÀÇ¹ÌÇÏ´Ù
+select trunc(MAX(AVG(salary))) as "ë¶€ì„œë³„ê¸‰ì—¬í‰ê· ìµœê³ "--dnoì´ ì—†ìœ¼ë©´ ê²°ê³¼ëŠ” ë¬´ì˜ë¯¸í•˜ë‹¤
 from employee
 group by dno;
 
---[2] ºÎ¼­ º° Æò±ÕÀÌ ±Ş¿©Æò±ÕÀÇ ÃÖ°í°ª°ú °°Àº °Í ±¸ÇÏ±â
-select dno, AVG(salary)--dnoÀÌ ¾øÀ¸¸é °á°ú´Â ¹«ÀÇ¹ÌÇÏ´Ù
+--ì˜¤ë¥˜ í•´ê²°í•˜ëŠ” [ë°©ë²•-2] : dnoë„ í•¨ê»˜ ì¶œë ¥í•˜ê³  ì‹¶ë‹¤ë©´ => 'ì„œë¸Œì¿¼ë¦¬' ì´ìš©
+--[1] ë¶€ì„œë²ˆí˜¸ ë³„ ê¸‰ì—¬í‰ê·  êµ¬í•˜ê¸°
+select dno, avg(salary)--dnoì´ ì—†ìœ¼ë©´ ê²°ê³¼ëŠ” ë¬´ì˜ë¯¸í•˜ë‹¤
+from employee
+group by dno;
+
+--[2] ë¶€ì„œ ë³„ í‰ê· ì´ ê¸‰ì—¬í‰ê· ì˜ ìµœê³ ê°’ê³¼ ê°™ì€ ê²ƒ êµ¬í•˜ê¸°
+select dno, AVG(salary)--dnoì´ ì—†ìœ¼ë©´ ê²°ê³¼ëŠ” ë¬´ì˜ë¯¸í•˜ë‹¤
 from employee
 group by dno
-HAVING AVG(salary) = (select MAX(AVG(salary))--dnoÀÌ ¾øÀ¸¸é °á°ú´Â ¹«ÀÇ¹ÌÇÏ´Ù
+HAVING AVG(salary) = (select MAX(AVG(salary))--dnoì´ ì—†ìœ¼ë©´ ê²°ê³¼ëŠ” ë¬´ì˜ë¯¸í•˜ë‹¤
 					  from employee
 					  group by dno);
 
-----[±³Àç¾ø´Â ³»¿ë]---------------------------------------------------------------------
---¡Ú¡Ú rank() : ¼øÀ§ ±¸ÇÏ±â
+----[êµì¬ì—†ëŠ” ë‚´ìš©]---------------------------------------------------------------------
+--â˜…â˜… rank() : ìˆœìœ„ êµ¬í•˜ê¸°
 
---[¹®Á¦-1] ±Ş¿© »óÀ§ 3°³ Á¶È¸
---(¸¸¾à ±Ş¿©°¡ °°´Ù¸é Ä¿¹Ì¼ÇÀÌ ³ôÀº ¼øÀ¸·Î Á¶È¸, Ä¿¹Ì¼ÇÀÌ °°´Ù¸é »ç¿ø¸íÀ» ¾ËÆÄºª ¼øÀ¸·Î Á¶È¸)
+--[ë¬¸ì œ-1] ê¸‰ì—¬ ìƒìœ„ 3ê°œ ì¡°íšŒ
+--(ë§Œì•½ ê¸‰ì—¬ê°€ ê°™ë‹¤ë©´ ì»¤ë¯¸ì…˜ì´ ë†’ì€ ìˆœìœ¼ë¡œ ì¡°íšŒ, ì»¤ë¯¸ì…˜ì´ ê°™ë‹¤ë©´ ì‚¬ì›ëª…ì„ ì•ŒíŒŒë²³ ìˆœìœ¼ë¡œ ì¡°íšŒ)
 
---¾Æ·¡ ¹æ¹ıÀ¸·Î ÇØ°áºÒ°¡
+--ì•„ë˜ ë°©ë²•ìœ¼ë¡œ í•´ê²°ë¶ˆê°€
 --[1]
 select ename, salary, commission
 from EMPLOYEE;--
@@ -244,35 +244,35 @@ from EMPLOYEE;--
 --[2]
 select ename, salary, commission
 from EMPLOYEE
-where rownum <= 3--Á¤·ÄµÇ±â Àü ÀüÃ¼ Áß À§¿¡¼­ 3ÁÙ¸¸ °¡Á®¿È
-order by salary desc, commission desc; --select(Á¶È¸) ÈÄ Á¤·Ä
+where rownum <= 3--ì •ë ¬ë˜ê¸° ì „ ì „ì²´ ì¤‘ ìœ„ì—ì„œ 3ì¤„ë§Œ ê°€ì ¸ì˜´
+order by salary desc, commission desc; --select(ì¡°íšŒ) í›„ ì •ë ¬
 
---¹æ¹ı-1 : rank() ÇÔ¼ö »ç¿ë
+--ë°©ë²•-1 : rank() í•¨ìˆ˜ ì‚¬ìš©
 --[1]
 select ename, salary, commission,
-RANK() OVER(order by salary desc) AS "±Ş¿© ¼øÀ§-1",--1 2 2 4
-DENSE_RANK() OVER(order by salary desc) AS "±Ş¿© ¼øÀ§-2", --1 2 2 3
-RANK() OVER(order by salary desc, commission desc, ename asc) AS "±Ş¿© ¼øÀ§-3" --1 2 3 4 ¼øÀ§°¡ Áßº¹µÇÁö ¾Êµµ·Ï ÇÏ±â À§ÇØ
+RANK() OVER(order by salary desc) AS "ê¸‰ì—¬ ìˆœìœ„-1",--1 2 2 4
+DENSE_RANK() OVER(order by salary desc) AS "ê¸‰ì—¬ ìˆœìœ„-2", --1 2 2 3
+RANK() OVER(order by salary desc, commission desc, ename asc) AS "ê¸‰ì—¬ ìˆœìœ„-3" --1 2 3 4 ìˆœìœ„ê°€ ì¤‘ë³µë˜ì§€ ì•Šë„ë¡ í•˜ê¸° ìœ„í•´
 from EMPLOYEE;
 
---[2]ÃÖÁ¾ÇØ°á¹ı¡Ú¡Ú 1 2 3µî¸¸ Ãâ·Â
+--[2]ìµœì¢…í•´ê²°ë²•â˜…â˜… 1 2 3ë“±ë§Œ ì¶œë ¥
 select *
 from (select ename, salary, commission,
-RANK() OVER(order by salary desc, commission desc, ename asc) AS "±Ş¿© ¼øÀ§"	--1 2 3 4 ¼øÀ§°¡ Áßº¹µÇÁö ¾Êµµ·Ï ÇÏ±â À§ÇØ
+RANK() OVER(order by salary desc, commission desc, ename asc) AS "ê¸‰ì—¬ ìˆœìœ„"	--1 2 3 4 ìˆœìœ„ê°€ ì¤‘ë³µë˜ì§€ ì•Šë„ë¡ í•˜ê¸° ìœ„í•´
 from employee)
-where "±Ş¿© ¼øÀ§" <= 3;
---where "±Ş¿© ¼øÀ§" = 1 or "±Ş¿© ¼øÀ§" = 2 or "±Ş¿© ¼øÀ§" = 3;
+where "ê¸‰ì—¬ ìˆœìœ„" <= 3;
+--where "ê¸‰ì—¬ ìˆœìœ„" = 1 or "ê¸‰ì—¬ ìˆœìœ„" = 2 or "ê¸‰ì—¬ ìˆœìœ„" = 3;
 
 
---ºÎ¼­±×·ì º° 'ºÎ¼­ ¾È¿¡¼­ °¢ ¼øÀ§ ±¸ÇÏ±â' : partition by + ±×·ì ÄÃ·³¸í
+--ë¶€ì„œê·¸ë£¹ ë³„ 'ë¶€ì„œ ì•ˆì—ì„œ ê° ìˆœìœ„ êµ¬í•˜ê¸°' : partition by + ê·¸ë£¹ ì»¬ëŸ¼ëª…
 select dno, ename, salary, commission,
-RANK() OVER(partition by dno order by salary desc, commission desc, ename asc) AS "ºÎ¼­º° ±Ş¿© ¼øÀ§" --¼øÀ§°¡ Áßº¹µÇÁö ¾Êµµ·Ï ÇÏ±â À§ÇØ
+RANK() OVER(partition by dno order by salary desc, commission desc, ename asc) AS "ë¶€ì„œë³„ ê¸‰ì—¬ ìˆœìœ„" --ìˆœìœ„ê°€ ì¤‘ë³µë˜ì§€ ì•Šë„ë¡ í•˜ê¸° ìœ„í•´
 from EMPLOYEE;
 
 
---¹æ¹ı-2 : UNION ALL »ç¿ë(-->ÀÌ ¹æ¹ıÀº ³ªÁß¿¡ 'SQL È°¿ë ½ÃÇè Á¤¸®'ÇÒ ¶§ ¼³¸íÇÏ±â)
---UNION ALL : Áßº¹ Á¦°ÅX, 			UNION : Áßº¹ Á¦°Å
---»ç¿øÅ×ÀÌºí¿¡¼­ '¿¬ºÀ »óÀ§ 3¸í'ÀÇ ÀÌ¸§, ±Ş¿© Á¶È¸(´Ü, ±Ş¿©°¡ °°À¸¸é »ç¿øÀÌ¸§À¸·Î ¿À¸§Â÷¼ø Á¤·Ä)
+--ë°©ë²•-2 : UNION ALL ì‚¬ìš©(-->ì´ ë°©ë²•ì€ ë‚˜ì¤‘ì— 'SQL í™œìš© ì‹œí—˜ ì •ë¦¬'í•  ë•Œ ì„¤ëª…í•˜ê¸°)
+--UNION ALL : ì¤‘ë³µ ì œê±°X, 			UNION : ì¤‘ë³µ ì œê±°
+--ì‚¬ì›í…Œì´ë¸”ì—ì„œ 'ì—°ë´‰ ìƒìœ„ 3ëª…'ì˜ ì´ë¦„, ê¸‰ì—¬ ì¡°íšŒ(ë‹¨, ê¸‰ì—¬ê°€ ê°™ìœ¼ë©´ ì‚¬ì›ì´ë¦„ìœ¼ë¡œ ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬)
 --[1]
 select ename, salary from employee where dno = 10;--3
 select ename, salary from employee where dno = 20;--5
@@ -281,7 +281,7 @@ select ename, salary from employee where dno = 40;--0
 
 --[2]
 select ename, salary from employee where dno = 10
-UNION ALL--Áßº¹ Á¦°ÅX
+UNION ALL--ì¤‘ë³µ ì œê±°X
 select ename, salary from employee where dno = 20
 UNION ALL
 select ename, salary from employee where dno = 30
@@ -290,10 +290,10 @@ select ename, salary from employee where dno = 40
 
 ORDER BY salary desc, ename asc;
 
---[3]ÃÖÁ¾ÇØ°á¹æ¹ı¡Ú¡Ú
+--[3]ìµœì¢…í•´ê²°ë°©ë²•â˜…â˜…
 select *
 from (	select ename, salary from employee where dno = 10
-		UNION ALL--Áßº¹ Á¦°ÅX
+		UNION ALL--ì¤‘ë³µ ì œê±°X
 		select ename, salary from employee where dno = 20
 		UNION ALL
 		select ename, salary from employee where dno = 30
@@ -303,64 +303,64 @@ from (	select ename, salary from employee where dno = 10
 		ORDER BY salary desc, ename asc )
 WHERE rownum <= 3; --1 2 3
 
---[¹®Á¦-2] ±×·ì º° ±Ş¿© ÃÖ¼Ò°ª, ÃÖ´ë°ª ±¸ÇÏ±â----------------------------------------------
---ºÎ¼­±×·ì º° ±Ş¿© ÃÖ¼Ò°ª, ÃÖ´ë°ª ±¸ÇÏ±â
---keep()ÇÔ¼ö¿Í FIRST, LASTÅ°¿öµå¸¦ È°¿ëÇÏ¸é ±×·ì ³»¿¡ ÃÖ¼Ò°ª, ÃÖ´ë°ªÀ» ½±°Ô ±¸ÇÒ ¼ö ÀÖ´Ù.
---DENSE_RANKÇÔ¼ö¸¸ »ç¿ë°¡´ÉÇÏ´Ù.
+--[ë¬¸ì œ-2] ê·¸ë£¹ ë³„ ê¸‰ì—¬ ìµœì†Œê°’, ìµœëŒ€ê°’ êµ¬í•˜ê¸°----------------------------------------------
+--ë¶€ì„œê·¸ë£¹ ë³„ ê¸‰ì—¬ ìµœì†Œê°’, ìµœëŒ€ê°’ êµ¬í•˜ê¸°
+--keep()í•¨ìˆ˜ì™€ FIRST, LASTí‚¤ì›Œë“œë¥¼ í™œìš©í•˜ë©´ ê·¸ë£¹ ë‚´ì— ìµœì†Œê°’, ìµœëŒ€ê°’ì„ ì‰½ê²Œ êµ¬í•  ìˆ˜ ìˆë‹¤.
+--DENSE_RANKí•¨ìˆ˜ë§Œ ì‚¬ìš©ê°€ëŠ¥í•˜ë‹¤.
 
 select MIN(salary), MAX(salary)
-from employee; --ÀüÃ¼ »ç¿øÅ×ÀÌºí¿¡¼­ ÃÖ´ë°ª, ÃÖ¼Ò°ªÀº 1°³¾¿¸¸ Á¸ÀçÇÏ¹Ç·Î
+from employee; --ì „ì²´ ì‚¬ì›í…Œì´ë¸”ì—ì„œ ìµœëŒ€ê°’, ìµœì†Œê°’ì€ 1ê°œì”©ë§Œ ì¡´ì¬í•˜ë¯€ë¡œ
 
---dno, ename, salary·Î ±×·ìÀ» ¸¸µé¾î ½ÇÇàÇÏ¸é °¢°¢ 1¸í¾¿¿¡ ´ëÇÑ ±Ş¿©°¡ ¹Ù·Î ÃÖ¼ÒÀÌÀÚ ÃÖ´ë±Ş¿©
+--dno, ename, salaryë¡œ ê·¸ë£¹ì„ ë§Œë“¤ì–´ ì‹¤í–‰í•˜ë©´ ê°ê° 1ëª…ì”©ì— ëŒ€í•œ ê¸‰ì—¬ê°€ ë°”ë¡œ ìµœì†Œì´ì ìµœëŒ€ê¸‰ì—¬
 select dno, ename, salary,
-MIN(salary), MAX(salary)--±×·ìÇÔ¼ö
+MIN(salary), MAX(salary)--ê·¸ë£¹í•¨ìˆ˜
 from employee
 group by dno, ename, salary;
 
---[ÇØ°á¹æ¹ı-1]
-select dno,--ename, salary, Ãß°¡ÇÏ¸é ¿À·ù ¹ß»ı(1:n °ü°èÀÌ¹Ç·Î)
-MIN(salary), MAX(salary)--±×·ìÇÔ¼ö
+--[í•´ê²°ë°©ë²•-1]
+select dno,--ename, salary, ì¶”ê°€í•˜ë©´ ì˜¤ë¥˜ ë°œìƒ(1:n ê´€ê³„ì´ë¯€ë¡œ)
+MIN(salary), MAX(salary)--ê·¸ë£¹í•¨ìˆ˜
 from employee
 group by dno
 order by dno asc;
 
---[ÇØ°á¹æ¹ı-2] ¡Ú¡Ú
+--[í•´ê²°ë°©ë²•-2] â˜…â˜…
 select dno, ename, salary,
-MIN(salary) keep(DENSE_RANK FIRST order by salary asc) OVER(partition by dno) as "ºÎ¼­º° ÃÖ¼Ò ±Ş¿©",
-MAX(salary) keep(DENSE_RANK LAST order by salary asc) OVER(partition by dno) as "ºÎ¼­º° ÃÖ´ë ±Ş¿©"
+MIN(salary) keep(DENSE_RANK FIRST order by salary asc) OVER(partition by dno) as "ë¶€ì„œë³„ ìµœì†Œ ê¸‰ì—¬",
+MAX(salary) keep(DENSE_RANK LAST order by salary asc) OVER(partition by dno) as "ë¶€ì„œë³„ ìµœëŒ€ ê¸‰ì—¬"
 from employee
 order by dno asc;
 
---[¹®Á¦-3] ±×·ì º° ÃÖ¼Ò°ª, ÃÖ´ë°ª ±¸ÇÏ±â + ÀüÃ¼ ±Ş¿© ¼øÀ§ ±¸ÇÏ±â (°°Àº ±Ş¿©´Â °°Àº µî¼ö ¿¹. 1 2 2 4) -----------------------------------------------
+--[ë¬¸ì œ-3] ê·¸ë£¹ ë³„ ìµœì†Œê°’, ìµœëŒ€ê°’ êµ¬í•˜ê¸° + ì „ì²´ ê¸‰ì—¬ ìˆœìœ„ êµ¬í•˜ê¸° (ê°™ì€ ê¸‰ì—¬ëŠ” ê°™ì€ ë“±ìˆ˜ ì˜ˆ. 1 2 2 4) -----------------------------------------------
 select dno, ename, salary,
-MIN(salary) keep(DENSE_RANK FIRST order by salary asc) OVER(partition by dno) as "ºÎ¼­º° ÃÖ¼Ò ±Ş¿©",
-MAX(salary) keep(DENSE_RANK LAST order by salary asc) OVER(partition by dno) as "ºÎ¼­º° ÃÖ´ë ±Ş¿©",
-RANK() OVER(partition by dno order by salary desc) AS "ºÎ¼­º° ±Ş¿© ¼øÀ§-1" -- 1 2 2 4
+MIN(salary) keep(DENSE_RANK FIRST order by salary asc) OVER(partition by dno) as "ë¶€ì„œë³„ ìµœì†Œ ê¸‰ì—¬",
+MAX(salary) keep(DENSE_RANK LAST order by salary asc) OVER(partition by dno) as "ë¶€ì„œë³„ ìµœëŒ€ ê¸‰ì—¬",
+RANK() OVER(partition by dno order by salary desc) AS "ë¶€ì„œë³„ ê¸‰ì—¬ ìˆœìœ„-1" -- 1 2 2 4
 from employee
 order by dno asc;
 
---[¹®Á¦-4] ¹®Á¦3ÀÇ °á°ú¿¡¼­ °¢ ±×·ìÀÇ 1µî¸¸ Ç¥½Ã
+--[ë¬¸ì œ-4] ë¬¸ì œ3ì˜ ê²°ê³¼ì—ì„œ ê° ê·¸ë£¹ì˜ 1ë“±ë§Œ í‘œì‹œ
 select *
 from (
 	select dno, ename, salary,
-	MIN(salary) keep(DENSE_RANK FIRST order by salary asc) OVER(partition by dno) as "ºÎ¼­º° ÃÖ¼Ò ±Ş¿©",
-	MAX(salary) keep(DENSE_RANK LAST order by salary asc) OVER(partition by dno) as "ºÎ¼­º° ÃÖ´ë ±Ş¿©",
-	RANK() OVER(partition by dno order by salary desc) AS "ºÎ¼­º° ±Ş¿© ¼øÀ§-1" -- 1 2 2 4
+	MIN(salary) keep(DENSE_RANK FIRST order by salary asc) OVER(partition by dno) as "ë¶€ì„œë³„ ìµœì†Œ ê¸‰ì—¬",
+	MAX(salary) keep(DENSE_RANK LAST order by salary asc) OVER(partition by dno) as "ë¶€ì„œë³„ ìµœëŒ€ ê¸‰ì—¬",
+	RANK() OVER(partition by dno order by salary desc) AS "ë¶€ì„œë³„ ê¸‰ì—¬ ìˆœìœ„-1" -- 1 2 2 4
 	from EMPLOYEE
 	order by dno asc)
-where "ºÎ¼­º° ±Ş¿© ¼øÀ§-1" = 1;
+where "ë¶€ì„œë³„ ê¸‰ì—¬ ìˆœìœ„-1" = 1;
 
 
---<5Àå ±×·ìÇÔ¼ö-È¥ÀÚÇØº¸±â>----------------------------------------------------------------------------
+--<5ì¥ ê·¸ë£¹í•¨ìˆ˜-í˜¼ìí•´ë³´ê¸°>----------------------------------------------------------------------------
 /*
- * 1.¸ğµç »ç¿øÀÇ ±Ş¿© ÃÖ°í¾×, ÃÖÀú¾×, ÃÑ¾× ¹× Æò±Õ ±Ş¿©¸¦ Ãâ·ÂÇÏ½Ã¿À.
- * ÄÃ·³ÀÇ º°ÄªÀº °á°ú È­¸é°ú µ¿ÀÏÇÏ°Ô ÀúÀåÇÏ°í Æò±Õ¿¡ ´ëÇØ¼­´Â Á¤¼ö·Î ¹İ¿Ã¸²ÇÏ½Ã¿À.
+ * 1.ëª¨ë“  ì‚¬ì›ì˜ ê¸‰ì—¬ ìµœê³ ì•¡, ìµœì €ì•¡, ì´ì•¡ ë° í‰ê·  ê¸‰ì—¬ë¥¼ ì¶œë ¥í•˜ì‹œì˜¤.
+ * ì»¬ëŸ¼ì˜ ë³„ì¹­ì€ ê²°ê³¼ í™”ë©´ê³¼ ë™ì¼í•˜ê²Œ ì €ì¥í•˜ê³  í‰ê· ì— ëŒ€í•´ì„œëŠ” ì •ìˆ˜ë¡œ ë°˜ì˜¬ë¦¼í•˜ì‹œì˜¤.
  */
 select 
-MAX(salary) ÃÖ°í¾×,
-MIN(salary) ÃÖÀú¾×,
-SUM(salary) ÃÑ¾×,
-round(AVG(salary)) as "Æò±Õ ±Ş¿©" -- ¼Ò¼ö Ã¹ Â° ÀÚ¸®¿¡¼­ ¹İ¿Ã¸²ÇÏ¿© Á¤¼ö(=ÀÏÀÇÀÚ¸®±îÁö)·Î Ãâ·Â
+MAX(salary) ìµœê³ ì•¡,
+MIN(salary) ìµœì €ì•¡,
+SUM(salary) ì´ì•¡,
+round(AVG(salary)) as "í‰ê·  ê¸‰ì—¬" -- ì†Œìˆ˜ ì²« ì§¸ ìë¦¬ì—ì„œ ë°˜ì˜¬ë¦¼í•˜ì—¬ ì •ìˆ˜(=ì¼ì˜ìë¦¬ê¹Œì§€)ë¡œ ì¶œë ¥
 from employee;
 
 select MAX(salary) as "Maximum",
@@ -370,84 +370,84 @@ ROUND(AVG(salary), 0) as "Average"
 from employee;
 
 /*
- * 2.°¢ ´ã´ç ¾÷¹« À¯Çüº°·Î ±Ş¿© ÃÖ°í¾×, ÃÖÀú¾×, ÃÑ¾× ¹× Æò±Õ¾×À» Ãâ·ÂÇÏ½Ã¿À.
- * ÄÃ·³ÀÇ º°ÄªÀº °á°ú È­¸é°ú µ¿ÀÏÇÏ°Ô ÀúÀåÇÏ°í Æò±Õ¿¡ ´ëÇØ¼­´Â Á¤¼ö·Î ¹İ¿Ã¸²ÇÏ½Ã¿À.
+ * 2.ê° ë‹´ë‹¹ ì—…ë¬´ ìœ í˜•ë³„ë¡œ ê¸‰ì—¬ ìµœê³ ì•¡, ìµœì €ì•¡, ì´ì•¡ ë° í‰ê· ì•¡ì„ ì¶œë ¥í•˜ì‹œì˜¤.
+ * ì»¬ëŸ¼ì˜ ë³„ì¹­ì€ ê²°ê³¼ í™”ë©´ê³¼ ë™ì¼í•˜ê²Œ ì €ì¥í•˜ê³  í‰ê· ì— ëŒ€í•´ì„œëŠ” ì •ìˆ˜ë¡œ ë°˜ì˜¬ë¦¼í•˜ì‹œì˜¤.
 */
 
-select job,	-- Ãß°¡ÇÏ¿© °á°ú°¡ ¹«ÀÇ¹ÌÇØÁöÁö ¾Êµµ·Ï ÇÔ
-MAX(salary) ÃÖ°í¾×,
-MIN(salary) ÃÖÀú¾×,
-SUM(salary) ÃÑ¾×,
-round(AVG(salary), 0) as "Æò±Õ ±Ş¿©" --¼Ò¼ö Ã¹ Â° ÀÚ¸®¿¡¼­ ¹İ¿Ã¸²ÇÏ¿© Á¤¼ö·Î Ãâ·Â
+select job,	-- ì¶”ê°€í•˜ì—¬ ê²°ê³¼ê°€ ë¬´ì˜ë¯¸í•´ì§€ì§€ ì•Šë„ë¡ í•¨
+MAX(salary) ìµœê³ ì•¡,
+MIN(salary) ìµœì €ì•¡,
+SUM(salary) ì´ì•¡,
+round(AVG(salary), 0) as "í‰ê·  ê¸‰ì—¬" --ì†Œìˆ˜ ì²« ì§¸ ìë¦¬ì—ì„œ ë°˜ì˜¬ë¦¼í•˜ì—¬ ì •ìˆ˜ë¡œ ì¶œë ¥
 from employee
 group by job;
 
 
 /*
- * 3.count(*)ÇÔ¼ö¸¦ ÀÌ¿ëÇÏ¿© ´ã´ç ¾÷¹«°¡ µ¿ÀÏÇÑ »ç¿ø ¼ö¸¦ Ãâ·ÂÇÏ½Ã¿À.
+ * 3.count(*)í•¨ìˆ˜ë¥¼ ì´ìš©í•˜ì—¬ ë‹´ë‹¹ ì—…ë¬´ê°€ ë™ì¼í•œ ì‚¬ì› ìˆ˜ë¥¼ ì¶œë ¥í•˜ì‹œì˜¤.
  */
-select job as "´ã´ç ¾÷¹«", count(*) as "»ç¿ø ¼ö"
+select job as "ë‹´ë‹¹ ì—…ë¬´", count(*) as "ì‚¬ì› ìˆ˜"
 from employee
 group by job;
 
 /*
- * 4.°ü¸®ÀÚ(=manager : ÄÃ·Å¸í)¼ö(count())¸¦ ³ª¿­ÇÏ½Ã¿À. 
- * ÄÃ·³ÀÇ º°ÄªÀº °á°ú È­¸é°ú µ¿ÀÏÇÏ°Ô ÁöÁ¤ÇÏ½Ã¿À.
- * (=> ¹®Á¦ ÇØ¼®ÀÇ Â÷ÀÌ·Î ¿©·¯ ¹æ¹ıÀÌ ÀÖÀ» ¼ö ÀÖÀ½..)
+ * 4.ê´€ë¦¬ì(=manager : ì»¬ë ´ëª…)ìˆ˜(count())ë¥¼ ë‚˜ì—´í•˜ì‹œì˜¤. 
+ * ì»¬ëŸ¼ì˜ ë³„ì¹­ì€ ê²°ê³¼ í™”ë©´ê³¼ ë™ì¼í•˜ê²Œ ì§€ì •í•˜ì‹œì˜¤.
+ * (=> ë¬¸ì œ í•´ì„ì˜ ì°¨ì´ë¡œ ì—¬ëŸ¬ ë°©ë²•ì´ ìˆì„ ìˆ˜ ìˆìŒ..)
  */
 select manager from employee;
 
---[¹æ¹ı-1] : count(ÄÃ·³¸í) : ¼ö ¼¼±â( nullÁ¦¿Ü )
-select count(manager) as "°ü¸®ÀÚ ¼ö"
+--[ë°©ë²•-1] : count(ì»¬ëŸ¼ëª…) : ìˆ˜ ì„¸ê¸°( nullì œì™¸ )
+select count(manager) as "ê´€ë¦¬ì ìˆ˜"
 from employee;--13
 
---[¹æ¹ı-2] : jobÀÌ 'MANAGER'ÀÎ ¼ö?
+--[ë°©ë²•-2] : jobì´ 'MANAGER'ì¸ ìˆ˜?
 --[1]
-select job as "Á÷±Ş", count(*) as "¼ö" --1:1
+select job as "ì§ê¸‰", count(*) as "ìˆ˜" --1:1
 from employee
 GROUP BY job;
 
 --[2]
-select job as "Á÷±Ş", count(*) as "¼ö" --1:1
+select job as "ì§ê¸‰", count(*) as "ìˆ˜" --1:1
 from employee
-where job = 'MANAGER' --´ë¹®ÀÚ·Î ÀÔ·Â
+where job = 'MANAGER' --ëŒ€ë¬¸ìë¡œ ì…ë ¥
 GROUP BY job;--3
 
 /*
- * 5.±Ş¿© ÃÖ°í¾×, ±Ş¿© ÃÖÀú¾×ÀÇ Â÷¾×À» Ãâ·ÂÇÏ½Ã¿À. 
- * ÄÃ·³ÀÇ º°ÄªÀº °á°ú È­¸é°ú µ¿ÀÏÇÏ°Ô ÁöÁ¤ÇÏ½Ã¿À. 
+ * 5.ê¸‰ì—¬ ìµœê³ ì•¡, ê¸‰ì—¬ ìµœì €ì•¡ì˜ ì°¨ì•¡ì„ ì¶œë ¥í•˜ì‹œì˜¤. 
+ * ì»¬ëŸ¼ì˜ ë³„ì¹­ì€ ê²°ê³¼ í™”ë©´ê³¼ ë™ì¼í•˜ê²Œ ì§€ì •í•˜ì‹œì˜¤. 
  */
-select MAX(salary) - MIN(salary) as "Â÷¾×"
+select MAX(salary) - MIN(salary) as "ì°¨ì•¡"
 from employee;
 
 /*
- * 6.Á÷±Şº° »ç¿øÀÇ ÃÖÀú ±Ş¿©¸¦ Ãâ·ÂÇÏ½Ã¿À. 
- * '°ü¸®ÀÚ¸¦ ¾Ë ¼ö ¾ø´Â »ç¿ø' ¹× 'ÃÖÀú ±Ş¿©°¡ 2000 ¹Ì¸¸'ÀÎ ±×·ìÀº 'Á¦¿Ü'½ÃÅ°°í 
- * °á°ú¸¦ ±Ş¿©¿¡ ´ëÇÑ ³»¸²Â÷¼øÀ¸·Î Á¤·ÄÇÏ¿© Ãâ·ÂÇÏ½Ã¿À. 
+ * 6.ì§ê¸‰ë³„ ì‚¬ì›ì˜ ìµœì € ê¸‰ì—¬ë¥¼ ì¶œë ¥í•˜ì‹œì˜¤. 
+ * 'ê´€ë¦¬ìë¥¼ ì•Œ ìˆ˜ ì—†ëŠ” ì‚¬ì›' ë° 'ìµœì € ê¸‰ì—¬ê°€ 2000 ë¯¸ë§Œ'ì¸ ê·¸ë£¹ì€ 'ì œì™¸'ì‹œí‚¤ê³  
+ * ê²°ê³¼ë¥¼ ê¸‰ì—¬ì— ëŒ€í•œ ë‚´ë¦¼ì°¨ìˆœìœ¼ë¡œ ì •ë ¬í•˜ì—¬ ì¶œë ¥í•˜ì‹œì˜¤. 
  */
 --[1]
-select job, MIN(salary) "ÃÖÀú ±Ş¿©"
+select job, MIN(salary) "ìµœì € ê¸‰ì—¬"
 from employee
 group by job;
 
---[2] ¹æ¹ı-1. (ÀÌ»ó>= , ÀÌÇÏ<= , ÃÊ°ú> , ¹Ì¸¸<)
-select job, MIN(salary) "ÃÖÀú ±Ş¿©"
+--[2] ë°©ë²•-1. (ì´ìƒ>= , ì´í•˜<= , ì´ˆê³¼> , ë¯¸ë§Œ<)
+select job, MIN(salary) "ìµœì € ê¸‰ì—¬"
 from employee
 where manager IS NOT NULL
 group by job
-having MIN(salary) >= 2000 --±×·ìÇÔ¼ö Á¶°Ç
+having MIN(salary) >= 2000 --ê·¸ë£¹í•¨ìˆ˜ ì¡°ê±´
 order by 2 desc;
 
---[2] ¹æ¹ı-2.
-select job, MIN(salary) "ÃÖÀú ±Ş¿©"
+--[2] ë°©ë²•-2.
+select job, MIN(salary) "ìµœì € ê¸‰ì—¬"
 from employee
 where manager IS NOT NULL
 group by job
-having NOT MIN(salary) < 2000 --±×·ìÇÔ¼ö Á¶°Ç
-order by "ÃÖÀú ±Ş¿©" desc;
+having NOT MIN(salary) < 2000 --ê·¸ë£¹í•¨ìˆ˜ ì¡°ê±´
+order by "ìµœì € ê¸‰ì—¬" desc;
 
 /*
-select job, MIN(salary) "ÃÖÀú ±Ş¿©"
+select job, MIN(salary) "ìµœì € ê¸‰ì—¬"
 from employee
 where manager IS NOT NULL
 group by job
@@ -456,163 +456,163 @@ order by MIN(salary) desc;
 */
 
 /*
- * 7.°¢ ºÎ¼­¿¡ ´ëÇØ ºÎ¼­¹øÈ£, »ç¿ø¼ö, ºÎ¼­ ³»ÀÇ ¸ğµç »ç¿øÀÇ Æò±Õ ±Ş¿©¸¦ Ãâ·ÂÇÏ½Ã¿À. 
- * ÄÃ·³ÀÇ º°ÄªÀº °á°ú È­¸é°ú µ¿ÀÏÇÏ°Ô ÁöÁ¤ÇÏ°í Æò±Õ ±Ş¿©´Â ¼Ò¼öÁ¡ µÑÂ° ÀÚ¸®·Î ¹İ¿Ã¸²ÇÏ½Ã¿À. 
+ * 7.ê° ë¶€ì„œì— ëŒ€í•´ ë¶€ì„œë²ˆí˜¸, ì‚¬ì›ìˆ˜, ë¶€ì„œ ë‚´ì˜ ëª¨ë“  ì‚¬ì›ì˜ í‰ê·  ê¸‰ì—¬ë¥¼ ì¶œë ¥í•˜ì‹œì˜¤. 
+ * ì»¬ëŸ¼ì˜ ë³„ì¹­ì€ ê²°ê³¼ í™”ë©´ê³¼ ë™ì¼í•˜ê²Œ ì§€ì •í•˜ê³  í‰ê·  ê¸‰ì—¬ëŠ” ì†Œìˆ˜ì  ë‘˜ì§¸ ìë¦¬ë¡œ ë°˜ì˜¬ë¦¼í•˜ì‹œì˜¤. 
  */
-select dno, count(*) as "°¢ ºÎ¼­ÀÇ »ç¿ø ¼ö",
-round(avg(salary), 2) as "Æò±Õ ±Ş¿©"
+select dno, count(*) as "ê° ë¶€ì„œì˜ ì‚¬ì› ìˆ˜",
+round(avg(salary), 2) as "í‰ê·  ê¸‰ì—¬"
 from employee
 group by dno;
 
---¡Ú¡Ú7¹ø ¹®Á¦¿¡ Ãß°¡(¡Ú´Ü, Å×ÀÌºíÀ» Á¶È¸ÇÏ±â Àü¿¡ salaryÀÇ null¿©ºÎ¸¦ ¸ğ¸¥ »óÅÂ¿¡¼­ Á¶È¸ÇÑ´Ù¸é)
---Å×½ºÆ® À§ÇØ Ãß°¡ÇØº½
+--â˜…â˜…7ë²ˆ ë¬¸ì œì— ì¶”ê°€(â˜…ë‹¨, í…Œì´ë¸”ì„ ì¡°íšŒí•˜ê¸° ì „ì— salaryì˜ nullì—¬ë¶€ë¥¼ ëª¨ë¥¸ ìƒíƒœì—ì„œ ì¡°íšŒí•œë‹¤ë©´)
+--í…ŒìŠ¤íŠ¸ ìœ„í•´ ì¶”ê°€í•´ë´„
 INSERT INTO employee VALUES
 (7002, 'JANG', 'CLERK', 7902, '2022/05/30', NULL, null, 20);
 
---»ç½Ç avg(salary)´Â nullÁ¦¿ÜÇÏ°í Æò±ÕÀ» ±¸ÇÔ
---±×·¡¼­ null°ª ±Ş¿©¸¦ ¹Ş´Â »ç¿øÀÌ ÀÖÀ¸¸é ±× »ç¿øÀ» Á¦¿ÜÇÏ°í Æò±ÕÀ» ±¸ÇÔ
---±×·¯³ª null°ª ±Ş¿©¸¦ ¹Ş´Â »ç¿øµµ ÇÔ²² Æ÷ÇÔ½ÃÄÑ Æò±ÕÀ» °è»êÇÏ·Á¸é
---¹İµå½Ã nullÃ³¸®ÇÔ¼ö(nvl, nvl2) »ç¿ëÇÏ¿© ±¸Ã¼ÀûÀÎ °ªÀ¸·Î º¯°æ
-select dno, count(*) as "°¢ ºÎ¼­ÀÇ »ç¿ø ¼ö",
-round(avg(NVL(salary,0)), 2) as "Æò±Õ ±Ş¿©"
+--ì‚¬ì‹¤ avg(salary)ëŠ” nullì œì™¸í•˜ê³  í‰ê· ì„ êµ¬í•¨
+--ê·¸ë˜ì„œ nullê°’ ê¸‰ì—¬ë¥¼ ë°›ëŠ” ì‚¬ì›ì´ ìˆìœ¼ë©´ ê·¸ ì‚¬ì›ì„ ì œì™¸í•˜ê³  í‰ê· ì„ êµ¬í•¨
+--ê·¸ëŸ¬ë‚˜ nullê°’ ê¸‰ì—¬ë¥¼ ë°›ëŠ” ì‚¬ì›ë„ í•¨ê»˜ í¬í•¨ì‹œì¼œ í‰ê· ì„ ê³„ì‚°í•˜ë ¤ë©´
+--ë°˜ë“œì‹œ nullì²˜ë¦¬í•¨ìˆ˜(nvl, nvl2) ì‚¬ìš©í•˜ì—¬ êµ¬ì²´ì ì¸ ê°’ìœ¼ë¡œ ë³€ê²½
+select dno, count(*) as "ê° ë¶€ì„œì˜ ì‚¬ì› ìˆ˜",
+round(avg(NVL(salary,0)), 2) as "í‰ê·  ê¸‰ì—¬"
 from employee
 group by dno;
 
---[Ãß°¡¹®Á¦] 'Ä¿¹Ì¼ÇÀ» ¹Ş´Â »ç¿øµé¸¸ÀÇ Ä¿¹Ì¼Ç Æò±Õ'°ú 'ÀüÃ¼ »ç¿øÀÇ Ä¿¹Ì¼Ç Æò±Õ' ±¸ÇÏ±â
+--[ì¶”ê°€ë¬¸ì œ] 'ì»¤ë¯¸ì…˜ì„ ë°›ëŠ” ì‚¬ì›ë“¤ë§Œì˜ ì»¤ë¯¸ì…˜ í‰ê· 'ê³¼ 'ì „ì²´ ì‚¬ì›ì˜ ì»¤ë¯¸ì…˜ í‰ê· ' êµ¬í•˜ê¸°
 select
-avg(commission) as "Ä¿¹Ì¼ÇO-Æò±Õ",
-avg(NVL(commission, 0)) as "ÀüÃ¼»ç¿ø-Ä¿¹Ì¼ÇÆò±Õ"
+avg(commission) as "ì»¤ë¯¸ì…˜O-í‰ê· ",
+avg(NVL(commission, 0)) as "ì „ì²´ì‚¬ì›-ì»¤ë¯¸ì…˜í‰ê· "
 from employee;
 
 delete from employee where eno=7002;
 
 
 /*
- * 8.°¢ ºÎ¼­¿¡ ´ëÇØ ºÎ¼­¹øÈ£, ÀÌ¸§, Áö¿ª¸í, »ç¿ø¼ö, ºÎ¼­³»ÀÇ ¸ğµç »ç¿øÀÇ Æò±Õ ±Ş¿©¸¦ Ãâ·ÂÇÏ½Ã¿À. 
- * ÄÃ·³ÀÇ º°ÄªÀº °á°ú È­¸é°ú µ¿ÀÏÇÏ°Ô ÁöÁ¤ÇÏ°í Æò±Õ ±Ş¿©´Â Á¤¼ö·Î ¹İ¿Ã¸²ÇÏ½Ã¿À.
+ * 8.ê° ë¶€ì„œì— ëŒ€í•´ ë¶€ì„œë²ˆí˜¸, ì´ë¦„, ì§€ì—­ëª…, ì‚¬ì›ìˆ˜, ë¶€ì„œë‚´ì˜ ëª¨ë“  ì‚¬ì›ì˜ í‰ê·  ê¸‰ì—¬ë¥¼ ì¶œë ¥í•˜ì‹œì˜¤. 
+ * ì»¬ëŸ¼ì˜ ë³„ì¹­ì€ ê²°ê³¼ í™”ë©´ê³¼ ë™ì¼í•˜ê²Œ ì§€ì •í•˜ê³  í‰ê·  ê¸‰ì—¬ëŠ” ì •ìˆ˜ë¡œ ë°˜ì˜¬ë¦¼í•˜ì‹œì˜¤.
  */
 select dno,
 
 decode(dno, 10, 'ACCOUNTING',
 			20, 'RESEARCH',
 			30, 'SALES',
-			40, 'OPERATIONS') as "ºÎ¼­ÀÌ¸§",
+			40, 'OPERATIONS') as "ë¶€ì„œì´ë¦„",
 			       
 decode(dno, 10, 'NEW YORK',
 	   		20, 'DALLAS',
 	   		30, 'CHICAGO',
-	   		40, 'BOSTON') AS "Áö¿ª¸í",
+	   		40, 'BOSTON') AS "ì§€ì—­ëª…",
 	   		
-sum(salary) as "ºÎ¼­º° ±Ş¿©ÃÑ¾×",
-count(*) as "°¢ ºÎ¼­ÀÇ »ç¿ø ¼ö",
+sum(salary) as "ë¶€ì„œë³„ ê¸‰ì—¬ì´ì•¡",
+count(*) as "ê° ë¶€ì„œì˜ ì‚¬ì› ìˆ˜",
 
-round(AVG(salary)) as "ºÎ¼­º° Æò±Õ±Ş¿©-1", --null ±Ş¿©¹Ş´Â »ç¿øÁ¦¿Ü
-round(AVG(NVL(salary, 0))) as "ºÎ¼­º° Æò±Õ±Ş¿©-2" --null ±Ş¿©¹Ş´Â »ç¿øÆ÷ÇÔ
+round(AVG(salary)) as "ë¶€ì„œë³„ í‰ê· ê¸‰ì—¬-1", --null ê¸‰ì—¬ë°›ëŠ” ì‚¬ì›ì œì™¸
+round(AVG(NVL(salary, 0))) as "ë¶€ì„œë³„ í‰ê· ê¸‰ì—¬-2" --null ê¸‰ì—¬ë°›ëŠ” ì‚¬ì›í¬í•¨
 
 from employee
 group by dno
 order by dno asc;
 
---[¹®Á¦-8]À» join ÀÌ¿ëÇÏ¿© ÇØ°á--------------------------------------
+--[ë¬¸ì œ-8]ì„ join ì´ìš©í•˜ì—¬ í•´ê²°--------------------------------------
 select *
 from employee, DEPARTMENT; --14*4=56
 
---1.join ÀÌ¿ëÇÑ '¹æ¹ı-1' : , where	  (Å×ÀÌºí º°Äª »ç¿ë)
+--1.join ì´ìš©í•œ 'ë°©ë²•-1' : , where	  (í…Œì´ë¸” ë³„ì¹­ ì‚¬ìš©)
 select eno, ename, department.dno, dname
 from employee, DEPARTMENT
-where employee.dno = department.dno; --Á¶ÀÎÁ¶°Ç
+where employee.dno = department.dno; --ì¡°ì¸ì¡°ê±´
 
-select eno, ename, d.dno, dname --e.dno¿Í d.dno´Â °°À½
-from employee e, DEPARTMENT d --Å×ÀÌºí º°Äª »ç¿ë(ÀÌÀ¯?Á¶ÀÎ°á°ú Áßº¹µÈ ÄÃ·³À» ±¸ºĞÇÏ±â À§ÇØ)
-where e.dno = d.dno; --Á¶ÀÎ Á¶°Ç
+select eno, ename, d.dno, dname --e.dnoì™€ d.dnoëŠ” ê°™ìŒ
+from employee e, DEPARTMENT d --í…Œì´ë¸” ë³„ì¹­ ì‚¬ìš©(ì´ìœ ?ì¡°ì¸ê²°ê³¼ ì¤‘ë³µëœ ì»¬ëŸ¼ì„ êµ¬ë¶„í•˜ê¸° ìœ„í•´)
+where e.dno = d.dno; --ì¡°ì¸ ì¡°ê±´
 
---À§ ¹æ¹ıÀ» '¹®Á¦ 8'¿¡ Àû¿ë½ÃÅ°¸é
-select e.dno, dname as "ºÎ¼­ ÀÌ¸§", loc as "Áö¿ª¸í",
-sum(salary) as "ºÎ¼­º° ±Ş¿©ÃÑ¾×",
-count(*) as "°¢ ºÎ¼­ÀÇ »ç¿ø ¼ö",
+--ìœ„ ë°©ë²•ì„ 'ë¬¸ì œ 8'ì— ì ìš©ì‹œí‚¤ë©´
+select e.dno, dname as "ë¶€ì„œ ì´ë¦„", loc as "ì§€ì—­ëª…",
+sum(salary) as "ë¶€ì„œë³„ ê¸‰ì—¬ì´ì•¡",
+count(*) as "ê° ë¶€ì„œì˜ ì‚¬ì› ìˆ˜",
 
-round(AVG(salary)) as "ºÎ¼­º° Æò±Õ±Ş¿©-1", --null ±Ş¿©¹Ş´Â »ç¿øÁ¦¿Ü
-round(AVG(NVL(salary, 0))) as "ºÎ¼­º° Æò±Õ±Ş¿©-2" --null ±Ş¿©¹Ş´Â »ç¿øÆ÷ÇÔ
+round(AVG(salary)) as "ë¶€ì„œë³„ í‰ê· ê¸‰ì—¬-1", --null ê¸‰ì—¬ë°›ëŠ” ì‚¬ì›ì œì™¸
+round(AVG(NVL(salary, 0))) as "ë¶€ì„œë³„ í‰ê· ê¸‰ì—¬-2" --null ê¸‰ì—¬ë°›ëŠ” ì‚¬ì›í¬í•¨
 
 from employee e, department d
 
-where e.dno = d.dno --Á¶ÀÎ Á¶°Ç
---AND (e.dno = 10 OR e.dno = 30) --°Ë»öÁ¶°Ç : ÁÖÀÇ ()³Ö±â(ÀÌÀ¯?¿ì¼±¼øÀ§ NOT > AND > OR)
+where e.dno = d.dno --ì¡°ì¸ ì¡°ê±´
+--AND (e.dno = 10 OR e.dno = 30) --ê²€ìƒ‰ì¡°ê±´ : ì£¼ì˜ ()ë„£ê¸°(ì´ìœ ?ìš°ì„ ìˆœìœ„ NOT > AND > OR)
 
-group by e.dno, dname, loc --±×·ìÇÔ¼ö ¾Õ(ÁÖÀÇ : ¡ÚÄÃ·³ÀÇ º°Äª ÀÎ½Ä¸øÇÔ)
+group by e.dno, dname, loc --ê·¸ë£¹í•¨ìˆ˜ ì•(ì£¼ì˜ : â˜…ì»¬ëŸ¼ì˜ ë³„ì¹­ ì¸ì‹ëª»í•¨)
 order by e.dno asc;
 
---2.join ÀÌ¿ëÇÑ '¹æ¹ı-2' : join ~ on 		(Å×ÀÌºí º°Äª »ç¿ë)
+--2.join ì´ìš©í•œ 'ë°©ë²•-2' : join ~ on 		(í…Œì´ë¸” ë³„ì¹­ ì‚¬ìš©)
 select eno, ename, department.dno, dname
 from employee JOIN DEPARTMENT
-ON employee.dno = department.dno; --Á¶ÀÎÁ¶°Ç
+ON employee.dno = department.dno; --ì¡°ì¸ì¡°ê±´
 
-select eno, ename, d.dno, dname --e.dno¿Í d.dno´Â °°À½
-from employee e JOIN DEPARTMENT d --Å×ÀÌºí º°Äª »ç¿ë(ÀÌÀ¯?Á¶ÀÎ°á°ú Áßº¹µÈ ÄÃ·³À» ±¸ºĞÇÏ±â À§ÇØ)
-ON e.dno = d.dno; --Á¶ÀÎ Á¶°Ç
+select eno, ename, d.dno, dname --e.dnoì™€ d.dnoëŠ” ê°™ìŒ
+from employee e JOIN DEPARTMENT d --í…Œì´ë¸” ë³„ì¹­ ì‚¬ìš©(ì´ìœ ?ì¡°ì¸ê²°ê³¼ ì¤‘ë³µëœ ì»¬ëŸ¼ì„ êµ¬ë¶„í•˜ê¸° ìœ„í•´)
+ON e.dno = d.dno; --ì¡°ì¸ ì¡°ê±´
 
---À§ ¹æ¹ıÀ» '¹®Á¦ 8'¿¡ Àû¿ë½ÃÅ°¸é
-select e.dno, dname as "ºÎ¼­ ÀÌ¸§", loc as "Áö¿ª¸í",
-sum(salary) as "ºÎ¼­º° ±Ş¿©ÃÑ¾×",
-count(*) as "°¢ ºÎ¼­ÀÇ »ç¿ø ¼ö",
+--ìœ„ ë°©ë²•ì„ 'ë¬¸ì œ 8'ì— ì ìš©ì‹œí‚¤ë©´
+select e.dno, dname as "ë¶€ì„œ ì´ë¦„", loc as "ì§€ì—­ëª…",
+sum(salary) as "ë¶€ì„œë³„ ê¸‰ì—¬ì´ì•¡",
+count(*) as "ê° ë¶€ì„œì˜ ì‚¬ì› ìˆ˜",
 
-round(AVG(salary)) as "ºÎ¼­º° Æò±Õ±Ş¿©-1", --null ±Ş¿©¹Ş´Â »ç¿øÁ¦¿Ü
-round(AVG(NVL(salary, 0))) as "ºÎ¼­º° Æò±Õ±Ş¿©-2" --null ±Ş¿©¹Ş´Â »ç¿øÆ÷ÇÔ
+round(AVG(salary)) as "ë¶€ì„œë³„ í‰ê· ê¸‰ì—¬-1", --null ê¸‰ì—¬ë°›ëŠ” ì‚¬ì›ì œì™¸
+round(AVG(NVL(salary, 0))) as "ë¶€ì„œë³„ í‰ê· ê¸‰ì—¬-2" --null ê¸‰ì—¬ë°›ëŠ” ì‚¬ì›í¬í•¨
 
 from employee e JOIN department d
-ON e.dno = d.dno --Á¶ÀÎ Á¶°Ç
---WHERE e.dno = 10 OR e.dno = 30--°Ë»öÁ¶°Ç
-group by e.dno, dname, loc --±×·ìÇÔ¼ö ¾Õ(ÁÖÀÇ : ¡ÚÄÃ·³ÀÇ º°Äª ÀÎ½Ä¸øÇÔ)
+ON e.dno = d.dno --ì¡°ì¸ ì¡°ê±´
+--WHERE e.dno = 10 OR e.dno = 30--ê²€ìƒ‰ì¡°ê±´
+group by e.dno, dname, loc --ê·¸ë£¹í•¨ìˆ˜ ì•(ì£¼ì˜ : â˜…ì»¬ëŸ¼ì˜ ë³„ì¹­ ì¸ì‹ëª»í•¨)
 order by e.dno asc;
 
---3.join ÀÌ¿ëÇÑ '¹æ¹ı-3' : natural join 		(Áßº¹µÈ ÄÃ·³À» Á¦°ÅÇÏ¹Ç·Î Å×ÀÌºí º°Äª »ç¿ë ¾ÈÇÔ)
+--3.join ì´ìš©í•œ 'ë°©ë²•-3' : natural join 		(ì¤‘ë³µëœ ì»¬ëŸ¼ì„ ì œê±°í•˜ë¯€ë¡œ í…Œì´ë¸” ë³„ì¹­ ì‚¬ìš© ì•ˆí•¨)
 select eno, ename, dno, dname
-from employee NATURAL JOIN DEPARTMENT; --Á¶ÀÎÁ¶°Ç ¾ø¾îµµ ¾Ë¾Æ¼­ °°Àº ÄÃ·³³¢¸® Á¶ÀÎÇÏ°í Áßº¹µÈ ÄÃ·³Àº Á¦°Å
+from employee NATURAL JOIN DEPARTMENT; --ì¡°ì¸ì¡°ê±´ ì—†ì–´ë„ ì•Œì•„ì„œ ê°™ì€ ì»¬ëŸ¼ë¼ë¦¬ ì¡°ì¸í•˜ê³  ì¤‘ë³µëœ ì»¬ëŸ¼ì€ ì œê±°
 
---À§ ¹æ¹ıÀ» '¹®Á¦ 8'¿¡ Àû¿ë½ÃÅ°¸é
-select dno, dname as "ºÎ¼­ ÀÌ¸§", loc as "Áö¿ª¸í",
+--ìœ„ ë°©ë²•ì„ 'ë¬¸ì œ 8'ì— ì ìš©ì‹œí‚¤ë©´
+select dno, dname as "ë¶€ì„œ ì´ë¦„", loc as "ì§€ì—­ëª…",
 
-sum(salary) as "ºÎ¼­º° ±Ş¿©ÃÑ¾×",
-count(*) as "°¢ ºÎ¼­ÀÇ »ç¿ø ¼ö",
+sum(salary) as "ë¶€ì„œë³„ ê¸‰ì—¬ì´ì•¡",
+count(*) as "ê° ë¶€ì„œì˜ ì‚¬ì› ìˆ˜",
 
-round(AVG(salary)) as "ºÎ¼­º° Æò±Õ±Ş¿©-1", --null ±Ş¿©¹Ş´Â »ç¿øÁ¦¿Ü
-round(AVG(NVL(salary, 0))) as "ºÎ¼­º° Æò±Õ±Ş¿©-2" --null ±Ş¿©¹Ş´Â »ç¿øÆ÷ÇÔ
+round(AVG(salary)) as "ë¶€ì„œë³„ í‰ê· ê¸‰ì—¬-1", --null ê¸‰ì—¬ë°›ëŠ” ì‚¬ì›ì œì™¸
+round(AVG(NVL(salary, 0))) as "ë¶€ì„œë³„ í‰ê· ê¸‰ì—¬-2" --null ê¸‰ì—¬ë°›ëŠ” ì‚¬ì›í¬í•¨
 
 from employee e NATURAL JOIN department d
---WHERE dno = 10 OR dno = 30	--°Ë»öÁ¶°Ç
-group by dno, dname, loc --±×·ìÇÔ¼ö ¾Õ(ÁÖÀÇ : ¡ÚÄÃ·³ÀÇ º°Äª ÀÎ½Ä¸øÇÔ)
+--WHERE dno = 10 OR dno = 30	--ê²€ìƒ‰ì¡°ê±´
+group by dno, dname, loc --ê·¸ë£¹í•¨ìˆ˜ ì•(ì£¼ì˜ : â˜…ì»¬ëŸ¼ì˜ ë³„ì¹­ ì¸ì‹ëª»í•¨)
 order by dno asc;
 
---4.join ÀÌ¿ëÇÑ '¹æ¹ı-4' : join~USING		(Áßº¹µÈ ÄÃ·³À» Á¦°ÅÇÏ¹Ç·Î Å×ÀÌºí º°Äª »ç¿ë ¾ÈÇÔ)
+--4.join ì´ìš©í•œ 'ë°©ë²•-4' : join~USING		(ì¤‘ë³µëœ ì»¬ëŸ¼ì„ ì œê±°í•˜ë¯€ë¡œ í…Œì´ë¸” ë³„ì¹­ ì‚¬ìš© ì•ˆí•¨)
 select eno, ename, dno, dname
-from employee JOIN DEPARTMENT --Áßº¹µÈ ÄÃ·³Àº Á¦°Å
-USING(dno); --Á¶ÀÎÁ¶°Ç
+from employee JOIN DEPARTMENT --ì¤‘ë³µëœ ì»¬ëŸ¼ì€ ì œê±°
+USING(dno); --ì¡°ì¸ì¡°ê±´
 
---À§ ¹æ¹ıÀ» '¹®Á¦ 8'¿¡ Àû¿ë½ÃÅ°¸é
-select dno, dname as "ºÎ¼­ ÀÌ¸§", loc as "Áö¿ª¸í",
+--ìœ„ ë°©ë²•ì„ 'ë¬¸ì œ 8'ì— ì ìš©ì‹œí‚¤ë©´
+select dno, dname as "ë¶€ì„œ ì´ë¦„", loc as "ì§€ì—­ëª…",
 
-sum(salary) as "ºÎ¼­º° ±Ş¿©ÃÑ¾×",
-count(*) as "°¢ ºÎ¼­ÀÇ »ç¿ø ¼ö",
+sum(salary) as "ë¶€ì„œë³„ ê¸‰ì—¬ì´ì•¡",
+count(*) as "ê° ë¶€ì„œì˜ ì‚¬ì› ìˆ˜",
 
-round(AVG(salary)) as "ºÎ¼­º° Æò±Õ±Ş¿©-1", --null ±Ş¿©¹Ş´Â »ç¿øÁ¦¿Ü
-round(AVG(NVL(salary, 0))) as "ºÎ¼­º° Æò±Õ±Ş¿©-2" --null ±Ş¿©¹Ş´Â »ç¿øÆ÷ÇÔ
+round(AVG(salary)) as "ë¶€ì„œë³„ í‰ê· ê¸‰ì—¬-1", --null ê¸‰ì—¬ë°›ëŠ” ì‚¬ì›ì œì™¸
+round(AVG(NVL(salary, 0))) as "ë¶€ì„œë³„ í‰ê· ê¸‰ì—¬-2" --null ê¸‰ì—¬ë°›ëŠ” ì‚¬ì›í¬í•¨
 
 from employee e JOIN department d
-USING(dno) --Á¶ÀÎÁ¶°Ç
---WHERE dno = 10 OR dno = 30	--°Ë»öÁ¶°Ç
-group by dno, dname, loc --±×·ìÇÔ¼ö ¾Õ(ÁÖÀÇ : ¡ÚÄÃ·³ÀÇ º°Äª ÀÎ½Ä¸øÇÔ)
+USING(dno) --ì¡°ì¸ì¡°ê±´
+--WHERE dno = 10 OR dno = 30	--ê²€ìƒ‰ì¡°ê±´
+group by dno, dname, loc --ê·¸ë£¹í•¨ìˆ˜ ì•(ì£¼ì˜ : â˜…ì»¬ëŸ¼ì˜ ë³„ì¹­ ì¸ì‹ëª»í•¨)
 order by dno asc;
 
 /*
- * 9.¾÷¹«¸¦ Ç¥½ÃÇÑ ´ÙÀ½ ÇØ´ç ¾÷¹«¿¡ ´ëÇØ ºÎ¼­¹øÈ£º° ±Ş¿© ¹× ºÎ¼­ 10, 20, 30ÀÇ ±Ş¿© ÃÑ¾×À» °¢°¢ Ãâ·ÂÇÏ½Ã¿À.
- * °¢ ÄÃ·³¿¡ º°ÄªÀº °¢°¢ job, ºÎ¼­ 10, ºÎ¼­ 20ÇÕ, ºÎ¼­ 30, ÃÑ¾×À¸·Î ÁöÁ¤ÇÏ½Ã¿À.
+ * 9.ì—…ë¬´ë¥¼ í‘œì‹œí•œ ë‹¤ìŒ í•´ë‹¹ ì—…ë¬´ì— ëŒ€í•´ ë¶€ì„œë²ˆí˜¸ë³„ ê¸‰ì—¬ ë° ë¶€ì„œ 10, 20, 30ì˜ ê¸‰ì—¬ ì´ì•¡ì„ ê°ê° ì¶œë ¥í•˜ì‹œì˜¤.
+ * ê° ì»¬ëŸ¼ì— ë³„ì¹­ì€ ê°ê° job, ë¶€ì„œ 10, ë¶€ì„œ 20í•©, ë¶€ì„œ 30, ì´ì•¡ìœ¼ë¡œ ì§€ì •í•˜ì‹œì˜¤.
  */
 select job, dno,
-count(*), --¹®Á¦ ÀÌÇØÀ§ÇØ Ãß°¡ÇÔ
-decode(dno, 10, SUM(salary), 0) as "ºÎ¼­ 10",
-decode(dno, 20, SUM(salary)) as "ºÎ¼­ 20",
-decode(dno, 30, SUM(salary)) as "ºÎ¼­ 30",
-SUM(salary) as "ÃÑ¾×"
+count(*), --ë¬¸ì œ ì´í•´ìœ„í•´ ì¶”ê°€í•¨
+decode(dno, 10, SUM(salary), 0) as "ë¶€ì„œ 10",
+decode(dno, 20, SUM(salary)) as "ë¶€ì„œ 20",
+decode(dno, 30, SUM(salary)) as "ë¶€ì„œ 30",
+SUM(salary) as "ì´ì•¡"
 from employee
 group by job, dno
 order by dno;

@@ -1,80 +1,80 @@
---<ºÏ½º-6Àå.Å×ÀÌºí Á¶ÀÎÇÏ±â>
---1. Á¶ÀÎ
---1.1 Ä«µð½Ã¾È °ö(=°öÁýÇÕ) : (±¸¹æ½Ä ,) (Çö¹æ½Ä cross join) - Á¶ÀÎÁ¶°ÇÀÌ ¾ø´Ù.
-select * from EMPLOYEE; 	--ÄÃ·³(¼Ó¼º)¼ö : 8, Çà¼ö:14
-select * from department;   --ÄÃ·³¼ö:3, Çà¼ö:4
+--<ë¶ìŠ¤-6ìž¥.í…Œì´ë¸” ì¡°ì¸í•˜ê¸°>
+--1. ì¡°ì¸
+--1.1 ì¹´ë””ì‹œì•ˆ ê³±(=ê³±ì§‘í•©) : (êµ¬ë°©ì‹ ,) (í˜„ë°©ì‹ cross join) - ì¡°ì¸ì¡°ê±´ì´ ì—†ë‹¤.
+select * from EMPLOYEE; 	--ì»¬ëŸ¼(ì†ì„±)ìˆ˜ : 8, í–‰ìˆ˜:14
+select * from department;   --ì»¬ëŸ¼ìˆ˜:3, í–‰ìˆ˜:4
 
-select *	--ÄÃ·³¼ö:11, Çà¼ö:56
+select *	--ì»¬ëŸ¼ìˆ˜:11, í–‰ìˆ˜:56
 from employee, department;
---Á¶ÀÎ°á°ú : ÄÃ·³¼ö(11) = »ç¿øÅ×ÀÌºíÀÇ ÄÃ·³¼ö(8) + ºÎ¼­Å×ÀÌºíÀÇ ÄÃ·³¼ö(3)
---	  Çà(=ROW)¼ö(56) = »ç¿øÅ×ÀÌºíÀÇ Çà¼ö(14) * ºÎ¼­Å×ÀÌºíÀÇ Çà¼ö(4)
---		   	       = »ç¿øÅ×ÀÌºíÀÇ »ç¿ø 1¸í ´ç * ºÎ¼­Å×ÀÌºíÀÇ Çà¼ö(4)
+--ì¡°ì¸ê²°ê³¼ : ì»¬ëŸ¼ìˆ˜(11) = ì‚¬ì›í…Œì´ë¸”ì˜ ì»¬ëŸ¼ìˆ˜(8) + ë¶€ì„œí…Œì´ë¸”ì˜ ì»¬ëŸ¼ìˆ˜(3)
+--	  í–‰(=ROW)ìˆ˜(56) = ì‚¬ì›í…Œì´ë¸”ì˜ í–‰ìˆ˜(14) * ë¶€ì„œí…Œì´ë¸”ì˜ í–‰ìˆ˜(4)
+--		   	       = ì‚¬ì›í…Œì´ë¸”ì˜ ì‚¬ì› 1ëª… ë‹¹ * ë¶€ì„œí…Œì´ë¸”ì˜ í–‰ìˆ˜(4)
 
-select eno	-- eno ÄÃ·³¸¸, 56°³ ÀüÃ¼ Çà¼ö
+select eno	-- eno ì»¬ëŸ¼ë§Œ, 56ê°œ ì „ì²´ í–‰ìˆ˜
 from employee, department;
 
-select eno	-- eno ÄÃ·³¸¸, 56°³ ÀüÃ¼ Çà¼ö
+select eno	-- eno ì»¬ëŸ¼ë§Œ, 56ê°œ ì „ì²´ í–‰ìˆ˜
 from employee CROSS JOIN department;
 
-select *	--ÄÃ·³¼ö:11, eno°¡ 7369ÀÎ °Í¸¸
+select *	--ì»¬ëŸ¼ìˆ˜:11, enoê°€ 7369ì¸ ê²ƒë§Œ
 from employee, department
-where eno = 7369;--(Á¶ÀÎÁ¶°Ç¾Æ´Ô)°Ë»öÁ¶°Ç
+where eno = 7369;--(ì¡°ì¸ì¡°ê±´ì•„ë‹˜)ê²€ìƒ‰ì¡°ê±´
 
---1.2 Á¶ÀÎÀÇ À¯Çü
---¿À¶óÅ¬ 8iÀÌÀü Á¶ÀÎ : EQUI Á¶ÀÎ(=µî°¡ Á¶ÀÎ), non-EQUI Á¶ÀÎ(=ºñµî°¡ Á¶ÀÎ), outer Á¶ÀÎ(¿ÞÂÊ, ¿À¸¥ÂÊ), self Á¶ÀÎ
---¿À¶óÅ¬ 9iÀÌÈÄ Á¶ÀÎ : cross Á¶ÀÎ, natural Á¶ÀÎ(=ÀÚ¿¬ Á¶ÀÎ), join~using, outer Á¶ÀÎ(¿ÞÂÊ, ¿À¸¥ÂÊ, full±îÁö)
---(¡Ø¿À¶óÅ¬ 9iºÎÅÍ ANSI Ç¥ÁØ SQL Á¶ÀÎ : ÇöÀç ´ëºÎºÐÀÇ »ó¿ë µ¥ÀÌÅÍº£ÀÌ½º ½Ã½ºÅÛ¿¡¼­ »ç¿ë.
---								´Ù¸¥ DBMS¿Í È£È¯ÀÌ °¡´ÉÇÏ±â ¶§¹®¿¡ ANSI Ç¥ÁØ Á¶ÀÎ¿¡ ´ëÇØ¼­ È®½ÇÈ÷ ÇÐ½ÀÇÏÀÚ.)
+--1.2 ì¡°ì¸ì˜ ìœ í˜•
+--ì˜¤ë¼í´ 8iì´ì „ ì¡°ì¸ : EQUI ì¡°ì¸(=ë“±ê°€ ì¡°ì¸), non-EQUI ì¡°ì¸(=ë¹„ë“±ê°€ ì¡°ì¸), outer ì¡°ì¸(ì™¼ìª½, ì˜¤ë¥¸ìª½), self ì¡°ì¸
+--ì˜¤ë¼í´ 9iì´í›„ ì¡°ì¸ : cross ì¡°ì¸, natural ì¡°ì¸(=ìžì—° ì¡°ì¸), join~using, outer ì¡°ì¸(ì™¼ìª½, ì˜¤ë¥¸ìª½, fullê¹Œì§€)
+--(â€»ì˜¤ë¼í´ 9ië¶€í„° ANSI í‘œì¤€ SQL ì¡°ì¸ : í˜„ìž¬ ëŒ€ë¶€ë¶„ì˜ ìƒìš© ë°ì´í„°ë² ì´ìŠ¤ ì‹œìŠ¤í…œì—ì„œ ì‚¬ìš©.
+--								ë‹¤ë¥¸ DBMSì™€ í˜¸í™˜ì´ ê°€ëŠ¥í•˜ê¸° ë•Œë¬¸ì— ANSI í‘œì¤€ ì¡°ì¸ì— ëŒ€í•´ì„œ í™•ì‹¤ížˆ í•™ìŠµí•˜ìž.)
 
---------<¾Æ·¡ 4°¡Áö ºñ±³ : ³»ºÎÁ¶ÀÎ(=inner join)>------------------------------------------------------------------
---[ÇØ°áÇÒ ¹®Á¦] '»ç¿ø¹øÈ£°¡ 7788'ÀÎ »ç¿øÀÌ ¼Ò¼ÓµÈ '»ç¿ø¹øÈ£, »ç¿øÀÌ¸§, ¼Ò¼ÓºÎ¼­¹øÈ£, ¼Ò¼ÓºÎ¼­ÀÌ¸§' ¾ò±â
--- ¸ÕÀú, '»ç¿ø¹øÈ£, »ç¿øÀÌ¸§, ¼Ò¼ÓºÎ¼­¹øÈ£, ¼Ò¼ÓºÎ¼­ÀÌ¸§'ÀÇ ÄÃ·³µéÀÌ ¾î´À Å×ÀÌºí¿¡ ÀÖ´ÂÁö ºÎÅÍ ÆÄ¾ÇÇÏ±â
--- '»ç¿ø¹øÈ£, »ç¿øÀÌ¸§, ¼Ò¼ÓºÎ¼­¹øÈ£(dno)' => »ç¿øÅ×ÀÌºí¿¡ ÀÖÀ½
--- '¼Ò¼ÓºÎ¼­¹øÈ£(dno), ¼Ò¼ÓºÎ¼­ÀÌ¸§' => ºÎ¼­Å×ÀÌºí¿¡ ÀÖÀ½
+--------<ì•„ëž˜ 4ê°€ì§€ ë¹„êµ : ë‚´ë¶€ì¡°ì¸(=inner join)>------------------------------------------------------------------
+--[í•´ê²°í•  ë¬¸ì œ] 'ì‚¬ì›ë²ˆí˜¸ê°€ 7788'ì¸ ì‚¬ì›ì´ ì†Œì†ëœ 'ì‚¬ì›ë²ˆí˜¸, ì‚¬ì›ì´ë¦„, ì†Œì†ë¶€ì„œë²ˆí˜¸, ì†Œì†ë¶€ì„œì´ë¦„' ì–»ê¸°
+-- ë¨¼ì €, 'ì‚¬ì›ë²ˆí˜¸, ì‚¬ì›ì´ë¦„, ì†Œì†ë¶€ì„œë²ˆí˜¸, ì†Œì†ë¶€ì„œì´ë¦„'ì˜ ì»¬ëŸ¼ë“¤ì´ ì–´ëŠ í…Œì´ë¸”ì— ìžˆëŠ”ì§€ ë¶€í„° íŒŒì•…í•˜ê¸°
+-- 'ì‚¬ì›ë²ˆí˜¸, ì‚¬ì›ì´ë¦„, ì†Œì†ë¶€ì„œë²ˆí˜¸(dno)' => ì‚¬ì›í…Œì´ë¸”ì— ìžˆìŒ
+-- 'ì†Œì†ë¶€ì„œë²ˆí˜¸(dno), ì†Œì†ë¶€ì„œì´ë¦„' => ë¶€ì„œí…Œì´ë¸”ì— ìžˆìŒ
 
--- '¼Ò¼ÓºÎ¼­¹øÈ£'°¡ ¾ç Å×ÀÌºí¿¡ Á¸ÀçÇÏ¹Ç·Î µî°¡ Á¶ÀÎÀÌ °¡´ÉÇÔ
---2. equi Á¶ÀÎ(=µî°¡ Á¶ÀÎ=µ¿ÀÏÁ¶ÀÎ) : µ¿ÀÏÇÑ ÀÌ¸§°ú À¯Çü(=µ¥ÀÌÅÍ Å¸ÀÔ)À» °¡Áø ÄÃ·³À¸·Î Á¶ÀÎ
---  ´Ü, [¹æ¹ý-1] , ~ where °ú [¹æ¹ý-2] JOIN ~ ONÀº 'µ¥ÀÌÅÍ Å¸ÀÔ¸¸ °°¾Æµµ Á¶ÀÎ'ÀÌ µÊ
+-- 'ì†Œì†ë¶€ì„œë²ˆí˜¸'ê°€ ì–‘ í…Œì´ë¸”ì— ì¡´ìž¬í•˜ë¯€ë¡œ ë“±ê°€ ì¡°ì¸ì´ ê°€ëŠ¥í•¨
+--2. equi ì¡°ì¸(=ë“±ê°€ ì¡°ì¸=ë™ì¼ì¡°ì¸) : ë™ì¼í•œ ì´ë¦„ê³¼ ìœ í˜•(=ë°ì´í„° íƒ€ìž…)ì„ ê°€ì§„ ì»¬ëŸ¼ìœ¼ë¡œ ì¡°ì¸
+--  ë‹¨, [ë°©ë²•-1] , ~ where ê³¼ [ë°©ë²•-2] JOIN ~ ONì€ 'ë°ì´í„° íƒ€ìž…ë§Œ ê°™ì•„ë„ ì¡°ì¸'ì´ ë¨
 
---[¹æ¹ý-1] , ~ where ------------------------------------------------------------------------------------------------------------------------------------
---µ¿ÀÏÇÑ ÀÌ¸§°ú µ¥ÀÌÅÍ À¯ÇüÀ» °¡Áø ÄÃ·³À¸·Î Á¶ÀÎ + "ÀÓÀÇÀÇ Á¶°ÇÀ» ÁöÁ¤"ÇÏ°Å³ª "Á¶ÀÎÇÑ ÄÃ·³À» ÁöÁ¤"ÇÒ ¶§ whereÀýÀ» »ç¿ë
---Á¶ÀÎ°á°ú´Â Áßº¹µÈ ÄÃ·³ Á¦°ÅX -> µû¶ó¼­, Å×ÀÌºí¿¡ 'º°Äª »ç¿ë'ÇØ¼­ ¾î´À Å×ÀÌºíÀÇ ÄÃ·³ÀÎÁö ±¸ºÐÇØ¾ß ÇÔ
-select ÄÃ·³¸í1, ÄÃ·³¸í2...--Áßº¹µÇ´Â ÄÃ·³Àº ¹Ýµå½Ã 'º°Äª.ÄÃ·³¸í'(¿¹)e.dno	d.dno
-from Å×ÀÌºí1 º°Äª1, Å×ÀÌºí2 º°Äª2, ... --º°Äª»ç¿ë(º°Äª : ÇØ´ç SQL¸í·É¹®³»¿¡¼­¸¸ À¯È¿)
-where ¡ÚÁ¶ÀÎÁ¶°Ç	(¡ØÁÖÀÇ : Å×ÀÌºíÀÇ º°Äª »ç¿ë);
-AND	  ¡Ú(°Ë»öÁ¶°Ç)	(¡ØÁÖÀÇ : ½À°üÀûÀ¸·Î () »ç¿ëÇÏ±â)
---¡Ú¹®Á¦Á¡ : ¿øÇÏÁö ¾Ê´Â °á°ú°¡ ³ª¿Ã ¼ö ÀÖ´Ù.(ÀÌÀ¯? AND -> ORÀÇ ¿ì¼±¼øÀ§ ¶§¹®¿¡)
---¡Ú¹®Á¦Á¡ ÇØ°á¹ý : AND	  ¡Ú°Ë»öÁ¶°Ç¿¡¼­ '°ýÈ£()¸¦ ÀÌ¿ëÇÏ¿© ¿ì¼±¼øÀ§ º¯°æ'
---¿¹)ºÎ¼­¹øÈ£·Î Á¶ÀÎÇÑ ÈÄ ºÎ¼­¹øÈ£°¡ 10ÀÌ°Å³ª 30ÀÎ Á¤º¸ Á¶È¸
---where e.dno = d.dno AND d.dno = 10 OR d.dno = 30; --¹®Á¦ ¹ß»ý(¿øÇÏÁö ¾Ê´Â °á°ú ³ª¿È)
---where e.dno = d.dno AND (d.dno = 10 OR d.dno = 30);--¡ÚÇØ°á¹ý : '°ýÈ£()¸¦ ÀÌ¿ëÇÏ¿© ¿ì¼±¼øÀ§ º¯°æ'
+--[ë°©ë²•-1] , ~ where ------------------------------------------------------------------------------------------------------------------------------------
+--ë™ì¼í•œ ì´ë¦„ê³¼ ë°ì´í„° ìœ í˜•ì„ ê°€ì§„ ì»¬ëŸ¼ìœ¼ë¡œ ì¡°ì¸ + "ìž„ì˜ì˜ ì¡°ê±´ì„ ì§€ì •"í•˜ê±°ë‚˜ "ì¡°ì¸í•œ ì»¬ëŸ¼ì„ ì§€ì •"í•  ë•Œ whereì ˆì„ ì‚¬ìš©
+--ì¡°ì¸ê²°ê³¼ëŠ” ì¤‘ë³µëœ ì»¬ëŸ¼ ì œê±°X -> ë”°ë¼ì„œ, í…Œì´ë¸”ì— 'ë³„ì¹­ ì‚¬ìš©'í•´ì„œ ì–´ëŠ í…Œì´ë¸”ì˜ ì»¬ëŸ¼ì¸ì§€ êµ¬ë¶„í•´ì•¼ í•¨
+select ì»¬ëŸ¼ëª…1, ì»¬ëŸ¼ëª…2...--ì¤‘ë³µë˜ëŠ” ì»¬ëŸ¼ì€ ë°˜ë“œì‹œ 'ë³„ì¹­.ì»¬ëŸ¼ëª…'(ì˜ˆ)e.dno	d.dno
+from í…Œì´ë¸”1 ë³„ì¹­1, í…Œì´ë¸”2 ë³„ì¹­2, ... --ë³„ì¹­ì‚¬ìš©(ë³„ì¹­ : í•´ë‹¹ SQLëª…ë ¹ë¬¸ë‚´ì—ì„œë§Œ ìœ íš¨)
+where â˜…ì¡°ì¸ì¡°ê±´	(â€»ì£¼ì˜ : í…Œì´ë¸”ì˜ ë³„ì¹­ ì‚¬ìš©);
+AND	  â˜…(ê²€ìƒ‰ì¡°ê±´)	(â€»ì£¼ì˜ : ìŠµê´€ì ìœ¼ë¡œ () ì‚¬ìš©í•˜ê¸°)
+--â˜…ë¬¸ì œì  : ì›í•˜ì§€ ì•ŠëŠ” ê²°ê³¼ê°€ ë‚˜ì˜¬ ìˆ˜ ìžˆë‹¤.(ì´ìœ ? AND -> ORì˜ ìš°ì„ ìˆœìœ„ ë•Œë¬¸ì—)
+--â˜…ë¬¸ì œì  í•´ê²°ë²• : AND	  â˜…ê²€ìƒ‰ì¡°ê±´ì—ì„œ 'ê´„í˜¸()ë¥¼ ì´ìš©í•˜ì—¬ ìš°ì„ ìˆœìœ„ ë³€ê²½'
+--ì˜ˆ)ë¶€ì„œë²ˆí˜¸ë¡œ ì¡°ì¸í•œ í›„ ë¶€ì„œë²ˆí˜¸ê°€ 10ì´ê±°ë‚˜ 30ì¸ ì •ë³´ ì¡°íšŒ
+--where e.dno = d.dno AND d.dno = 10 OR d.dno = 30; --ë¬¸ì œ ë°œìƒ(ì›í•˜ì§€ ì•ŠëŠ” ê²°ê³¼ ë‚˜ì˜´)
+--where e.dno = d.dno AND (d.dno = 10 OR d.dno = 30);--â˜…í•´ê²°ë²• : 'ê´„í˜¸()ë¥¼ ì´ìš©í•˜ì—¬ ìš°ì„ ìˆœìœ„ ë³€ê²½'
 
---¡Ú¡Ú¡Ú [ÀåÁ¡] ÀÌ ¹æ¹ýÀº outer join(=¿ÜºÎÁ¶ÀÎ) ÇÏ±â°¡ Æí¸®ÇÏ´Ù.
---(´Ü, ÇÑ ÂÊ¿¡¸¸ (+)»ç¿ë°¡´É  -> Áï, ¿ÞÂÊ°ú ¿À¸¥ÂÊ ¿ÜºÎÁ¶ÀÎ¸¸ °¡´É.
---		¾çÂÊ¿¡ (+)»ç¿ëºÒ°¡  -> Áï, full ¿ÜºÎÁ¶ÀÎÀº ºÒ°¡ )
+--â˜…â˜…â˜… [ìž¥ì ] ì´ ë°©ë²•ì€ outer join(=ì™¸ë¶€ì¡°ì¸) í•˜ê¸°ê°€ íŽ¸ë¦¬í•˜ë‹¤.
+--(ë‹¨, í•œ ìª½ì—ë§Œ (+)ì‚¬ìš©ê°€ëŠ¥  -> ì¦‰, ì™¼ìª½ê³¼ ì˜¤ë¥¸ìª½ ì™¸ë¶€ì¡°ì¸ë§Œ ê°€ëŠ¥.
+--		ì–‘ìª½ì— (+)ì‚¬ìš©ë¶ˆê°€  -> ì¦‰, full ì™¸ë¶€ì¡°ì¸ì€ ë¶ˆê°€ )
 --[1]
 select *
 from employee, department
 order by eno;
---[2]º°Äª »ç¿ë ¾ÈÇÑ °æ¿ì
+--[2]ë³„ì¹­ ì‚¬ìš© ì•ˆí•œ ê²½ìš°
 select *
 from employee, department
 where employee.dno = department.dno;
---[2]º°Äª »ç¿ëÇÑ °æ¿ì
+--[2]ë³„ì¹­ ì‚¬ìš©í•œ ê²½ìš°
 select *
 from employee e, department d
 where e.dno = d.dno;
---µÎ Å×ÀÌºí¿¡¼­ °°Àº dno³¢¸® Á¶ÀÎ(±× °á°ú ºÎ¼­Å×ÀÌºíÀÇ 40Àº Ç¥½Ã¾ÈµÊ.)
+--ë‘ í…Œì´ë¸”ì—ì„œ ê°™ì€ dnoë¼ë¦¬ ì¡°ì¸(ê·¸ ê²°ê³¼ ë¶€ì„œí…Œì´ë¸”ì˜ 40ì€ í‘œì‹œì•ˆë¨.)
 
--- 40ºÎ¼­ÀÇ Á¤º¸¸¦ ÇÔ²² Ç¥½ÃÇÏ±â À§ÇØ¼­´Â (+)ºÙ¿©¼­ outer join(=¿ÜºÎÁ¶ÀÎ)ÇÔ.
+-- 40ë¶€ì„œì˜ ì •ë³´ë¥¼ í•¨ê»˜ í‘œì‹œí•˜ê¸° ìœ„í•´ì„œëŠ” (+)ë¶™ì—¬ì„œ outer join(=ì™¸ë¶€ì¡°ì¸)í•¨.
 --[3]
 select *
 from employee e, department d
 where e.dno(+) = d.dno;
---¿ÜºÎÁ¶ÀÎÇÏ±â Æí¸®ÇÏ³ª full outer join ¾ÈµÊ
---full outer joinÀº join~onÀ¸·Î ÇØ°á°¡´ÉÇÔ
+--ì™¸ë¶€ì¡°ì¸í•˜ê¸° íŽ¸ë¦¬í•˜ë‚˜ full outer join ì•ˆë¨
+--full outer joinì€ join~onìœ¼ë¡œ í•´ê²°ê°€ëŠ¥í•¨
 
---[3] ¾Æ·¡ °á°ú´Â °°´Ù. ±× ÀÌÀ¯? DEPARTMENT Å×ÀÌºí¿¡¸¸ Ç¥½ÃµÉ ³»¿ëÀÌ ´õ ÀÖÀ¸¹Ç·Î...
+--[3] ì•„ëž˜ ê²°ê³¼ëŠ” ê°™ë‹¤. ê·¸ ì´ìœ ? DEPARTMENT í…Œì´ë¸”ì—ë§Œ í‘œì‹œë  ë‚´ìš©ì´ ë” ìžˆìœ¼ë¯€ë¡œ...
 select *
 from employee e RIGHT OUTER JOIN department d
 ON e.dno = d.dno;
@@ -83,103 +83,103 @@ select *
 from employee e FULL OUTER JOIN department d
 ON e.dno = d.dno;
 
---[ÇØ°áÇÒ ¹®Á¦] '»ç¿ø¹øÈ£°¡ 7788'ÀÎ »ç¿øÀÌ ¼Ò¼ÓµÈ '»ç¿ø¹øÈ£, »ç¿øÀÌ¸§, ¼Ò¼ÓºÎ¼­¹øÈ£, ¼Ò¼ÓºÎ¼­ÀÌ¸§' ¾ò±â
---[¹®Á¦ÇØ°á¹ý]
+--[í•´ê²°í•  ë¬¸ì œ] 'ì‚¬ì›ë²ˆí˜¸ê°€ 7788'ì¸ ì‚¬ì›ì´ ì†Œì†ëœ 'ì‚¬ì›ë²ˆí˜¸, ì‚¬ì›ì´ë¦„, ì†Œì†ë¶€ì„œë²ˆí˜¸, ì†Œì†ë¶€ì„œì´ë¦„' ì–»ê¸°
+--[ë¬¸ì œí•´ê²°ë²•]
 --select e.eno, e.ename, e.dno, d.dname	-- ok
-select eno, ename, e.dno, dname--e.dno¿¡´Â ¹Ýµå½Ã º°Äª»ç¿ë : µÎ Å×ÀÌºí¿¡ ¸ðµÎ Á¸ÀçÇÏ¹Ç·Î ±¸ºÐÇÏ±â À§ÇØ
+select eno, ename, e.dno, dname--e.dnoì—ëŠ” ë°˜ë“œì‹œ ë³„ì¹­ì‚¬ìš© : ë‘ í…Œì´ë¸”ì— ëª¨ë‘ ì¡´ìž¬í•˜ë¯€ë¡œ êµ¬ë¶„í•˜ê¸° ìœ„í•´
 from employee e, department d
 where e.dno = d.dno
 AND eno = 7788;
 
---[¹æ¹ý-2] (INNER)JOIN ~ ON ------------------------------------------------------------------------------------------------------------------------------------
---µ¿ÀÏÇÑ ÀÌ¸§°ú µ¥ÀÌÅÍ À¯ÇüÀ» °¡Áø ÄÃ·³À¸·Î Á¶ÀÎ + "ÀÓÀÇÀÇ Á¶°ÇÀ» ÁöÁ¤"ÇÏ°Å³ª "Á¶ÀÎÇÑ ÄÃ·³À» ÁöÁ¤"ÇÒ ¶§ ONÀýÀ» »ç¿ë
---Á¶ÀÎ°á°ú´Â Áßº¹µÈ ÄÃ·³ Á¦°ÅX -> µû¶ó¼­, Å×ÀÌºí¿¡ 'º°Äª »ç¿ë'ÇØ¼­ ¾î´À Å×ÀÌºíÀÇ ÄÃ·³ÀÎÁö ±¸ºÐÇØ¾ß ÇÔ
-select ÄÃ·³¸í1, ÄÃ·³¸í2...--Áßº¹µÇ´Â ÄÃ·³Àº ¹Ýµå½Ã 'º°Äª.ÄÃ·³¸í'(¿¹)e.dno	d.dno
-from Å×ÀÌºí1 º°Äª1 (INNER)JOIN Å×ÀÌºí2 º°Äª2, ... --º°Äª»ç¿ë(º°Äª : ÇØ´ç SQL¸í·É¹®³»¿¡¼­¸¸ À¯È¿)
-ON 		  ¡ÚÁ¶ÀÎÁ¶°Ç	(¡ØÁÖÀÇ : Å×ÀÌºíÀÇ º°Äª »ç¿ë);
-where	  ¡Ú(°Ë»öÁ¶°Ç)
+--[ë°©ë²•-2] (INNER)JOIN ~ ON ------------------------------------------------------------------------------------------------------------------------------------
+--ë™ì¼í•œ ì´ë¦„ê³¼ ë°ì´í„° ìœ í˜•ì„ ê°€ì§„ ì»¬ëŸ¼ìœ¼ë¡œ ì¡°ì¸ + "ìž„ì˜ì˜ ì¡°ê±´ì„ ì§€ì •"í•˜ê±°ë‚˜ "ì¡°ì¸í•œ ì»¬ëŸ¼ì„ ì§€ì •"í•  ë•Œ ONì ˆì„ ì‚¬ìš©
+--ì¡°ì¸ê²°ê³¼ëŠ” ì¤‘ë³µëœ ì»¬ëŸ¼ ì œê±°X -> ë”°ë¼ì„œ, í…Œì´ë¸”ì— 'ë³„ì¹­ ì‚¬ìš©'í•´ì„œ ì–´ëŠ í…Œì´ë¸”ì˜ ì»¬ëŸ¼ì¸ì§€ êµ¬ë¶„í•´ì•¼ í•¨
+select ì»¬ëŸ¼ëª…1, ì»¬ëŸ¼ëª…2...--ì¤‘ë³µë˜ëŠ” ì»¬ëŸ¼ì€ ë°˜ë“œì‹œ 'ë³„ì¹­.ì»¬ëŸ¼ëª…'(ì˜ˆ)e.dno	d.dno
+from í…Œì´ë¸”1 ë³„ì¹­1 (INNER)JOIN í…Œì´ë¸”2 ë³„ì¹­2, ... --ë³„ì¹­ì‚¬ìš©(ë³„ì¹­ : í•´ë‹¹ SQLëª…ë ¹ë¬¸ë‚´ì—ì„œë§Œ ìœ íš¨)
+ON 		  â˜…ì¡°ì¸ì¡°ê±´	(â€»ì£¼ì˜ : í…Œì´ë¸”ì˜ ë³„ì¹­ ì‚¬ìš©);
+where	  â˜…(ê²€ìƒ‰ì¡°ê±´)
 
---[ÇØ°áÇÒ ¹®Á¦] '»ç¿ø¹øÈ£°¡ 7788'ÀÎ »ç¿øÀÌ ¼Ò¼ÓµÈ '»ç¿ø¹øÈ£, »ç¿øÀÌ¸§, ¼Ò¼ÓºÎ¼­¹øÈ£, ¼Ò¼ÓºÎ¼­ÀÌ¸§' ¾ò±â
---[¹®Á¦ÇØ°á¹ý]
+--[í•´ê²°í•  ë¬¸ì œ] 'ì‚¬ì›ë²ˆí˜¸ê°€ 7788'ì¸ ì‚¬ì›ì´ ì†Œì†ëœ 'ì‚¬ì›ë²ˆí˜¸, ì‚¬ì›ì´ë¦„, ì†Œì†ë¶€ì„œë²ˆí˜¸, ì†Œì†ë¶€ì„œì´ë¦„' ì–»ê¸°
+--[ë¬¸ì œí•´ê²°ë²•]
 --select e.eno, e.ename, e.dno, d.dname	-- ok
-select eno, ename, e.dno, dname--e.dno¿¡´Â ¹Ýµå½Ã º°Äª»ç¿ë : µÎ Å×ÀÌºí¿¡ ¸ðµÎ Á¸ÀçÇÏ¹Ç·Î ±¸ºÐÇÏ±â À§ÇØ
+select eno, ename, e.dno, dname--e.dnoì—ëŠ” ë°˜ë“œì‹œ ë³„ì¹­ì‚¬ìš© : ë‘ í…Œì´ë¸”ì— ëª¨ë‘ ì¡´ìž¬í•˜ë¯€ë¡œ êµ¬ë¶„í•˜ê¸° ìœ„í•´
 from employee e JOIN department d
 ON e.dno = d.dno
 where eno = 7788;
 
--------------------------------------[¹æ¹ý-1]°ú [¹æ¹ý-2]´Â ¹®¹ýÀû Æ¯Â¡ÀÌ µ¿ÀÏÇÏ´Ù.
--------------------------------------				ÀÇ Á¶ÀÎ °á°ú : Áßº¹µÈ ÄÃ·³ Á¦°ÅX -> Å×ÀÌºíÀÇ º°Äª ÇÊ¿ä
--------------------------------------			  ¡Ú ÄÃ·³¸íÀÌ ´Ù¸£°í µ¥ÀÌÅÍ Å¸ÀÔ¸¸ °°¾Æµµ JOIN °¡´É (¿¹)a.id = b.id2
+-------------------------------------[ë°©ë²•-1]ê³¼ [ë°©ë²•-2]ëŠ” ë¬¸ë²•ì  íŠ¹ì§•ì´ ë™ì¼í•˜ë‹¤.
+-------------------------------------				ì˜ ì¡°ì¸ ê²°ê³¼ : ì¤‘ë³µëœ ì»¬ëŸ¼ ì œê±°X -> í…Œì´ë¸”ì˜ ë³„ì¹­ í•„ìš”
+-------------------------------------			  â˜… ì»¬ëŸ¼ëª…ì´ ë‹¤ë¥´ê³  ë°ì´í„° íƒ€ìž…ë§Œ ê°™ì•„ë„ JOIN ê°€ëŠ¥ (ì˜ˆ)a.id = b.id2
 
--------------------------------------[¹æ¹ý-3] : ÄÃ·³¸íÀÌ ´Ù¸£¸é cross join °á°ú°¡ ³ª¿È
--------------------------------------[¹æ¹ý-4] : ÄÃ·³¸íÀÌ ´Ù¸£¸é join ¾ÈµÊ (=>¿À·ù ¹ß»ý)
+-------------------------------------[ë°©ë²•-3] : ì»¬ëŸ¼ëª…ì´ ë‹¤ë¥´ë©´ cross join ê²°ê³¼ê°€ ë‚˜ì˜´
+-------------------------------------[ë°©ë²•-4] : ì»¬ëŸ¼ëª…ì´ ë‹¤ë¥´ë©´ join ì•ˆë¨ (=>ì˜¤ë¥˜ ë°œìƒ)
 
 
---[¹æ¹ý-3] NATURAL JOIN (=ÀÚ¿¬Á¶ÀÎ) ------------------------------------------------------------------------------------------------------------------------------------
---¡Ø Oracle SQL¿¡¼­¸¸ Áö¿ø
---Á¶ÀÎ°á°ú, Áßº¹µÈ ÄÃ·³ Á¦°ÅÇÔ
+--[ë°©ë²•-3] NATURAL JOIN (=ìžì—°ì¡°ì¸) ------------------------------------------------------------------------------------------------------------------------------------
+--â€» Oracle SQLì—ì„œë§Œ ì§€ì›
+--ì¡°ì¸ê²°ê³¼, ì¤‘ë³µëœ ì»¬ëŸ¼ ì œê±°í•¨
 
---'ÀÚ¿¬½º·´°Ô' µ¿ÀÏÇÑ ÀÌ¸§°ú µ¥ÀÌÅÍ À¯ÇüÀ» °¡Áø ÄÃ·³À¸·Î Á¶ÀÎ(¡Ú´Ü, 1°³¸¸ ÀÖÀ» ¶§ »ç¿ëÇÏ´Â °ÍÀ» ±ÇÀå)
---µ¿ÀÏÇÑ ÀÌ¸§°ú µ¥ÀÌÅÍ À¯ÇüÀ» °¡Áø ÄÃ·³ÀÌ ¾øÀ¸¸é cross join ÀÌ µÊ
---¡Ú¡Ú µ¿ÀÏÇÑ ÀÌ¸§°ú µ¥ÀÌÅÍ À¯ÇüÀ» °¡Áø ÄÃ·³À¸·Î ÀÚ¿¬½º·´°Ô Á¶ÀÎµÇ³ª ¹®Á¦°¡ ¹ß»ýÇÒ ¼ö ÀÖ´Ù.
------> ¹®Á¦ ¹ß»ýÇÏ´Â ÀÌÀ¯? (¿¹)EMPLOYEEÀÇ dno¿Í DEPARTMENTÀÇ dno : µ¿ÀÏÇÑ ÀÌ¸§(dno)°ú µ¥ÀÌÅÍ À¯Çü(number(2))
---														  ¡Ú µÎ Å×ÀÌºí¿¡¼­ dno´Â 'ºÎ¼­¹øÈ£'·Î ÀÇ¹Ìµµ °°´Ù.
---					 ¸¸¾à, EMPLOYEEÀÇ manager_id(°¢ »ç¿øÀÇ '»ó»ç'¸¦ ÀÇ¹ÌÇÏ´Â ¹øÈ£)°¡ ÀÖ°í
---					    DEPARTMENTÀÇ manager_id(°¢ »ç¿øÀÇ 'ºÎÀå'¸¦ ÀÇ¹ÌÇÏ´Â ¹øÈ£)°¡ ÀÖ´Ù°í °¡Á¤ÇßÀ» ¶§
---						µÑ ´Ù µ¿ÀÏÇÑ ÀÌ¸§°ú µ¥ÀÌÅÍ À¯ÇüÀ» °¡Á³Áö¸¸ manager_idÀÇ ÀÇ¹Ì°¡ ´Ù¸£´Ù¸é 'ÀÚ¿¬Á¶ÀÎÇÑ ÈÄ ¿øÇÏÁö ¾Ê´Â °á°ú'°¡ ³ª¿Ã ¼ö ÀÖ´Ù.
+--'ìžì—°ìŠ¤ëŸ½ê²Œ' ë™ì¼í•œ ì´ë¦„ê³¼ ë°ì´í„° ìœ í˜•ì„ ê°€ì§„ ì»¬ëŸ¼ìœ¼ë¡œ ì¡°ì¸(â˜…ë‹¨, 1ê°œë§Œ ìžˆì„ ë•Œ ì‚¬ìš©í•˜ëŠ” ê²ƒì„ ê¶Œìž¥)
+--ë™ì¼í•œ ì´ë¦„ê³¼ ë°ì´í„° ìœ í˜•ì„ ê°€ì§„ ì»¬ëŸ¼ì´ ì—†ìœ¼ë©´ cross join ì´ ë¨
+--â˜…â˜… ë™ì¼í•œ ì´ë¦„ê³¼ ë°ì´í„° ìœ í˜•ì„ ê°€ì§„ ì»¬ëŸ¼ìœ¼ë¡œ ìžì—°ìŠ¤ëŸ½ê²Œ ì¡°ì¸ë˜ë‚˜ ë¬¸ì œê°€ ë°œìƒí•  ìˆ˜ ìžˆë‹¤.
+-----> ë¬¸ì œ ë°œìƒí•˜ëŠ” ì´ìœ ? (ì˜ˆ)EMPLOYEEì˜ dnoì™€ DEPARTMENTì˜ dno : ë™ì¼í•œ ì´ë¦„(dno)ê³¼ ë°ì´í„° ìœ í˜•(number(2))
+--														  â˜… ë‘ í…Œì´ë¸”ì—ì„œ dnoëŠ” 'ë¶€ì„œë²ˆí˜¸'ë¡œ ì˜ë¯¸ë„ ê°™ë‹¤.
+--					 ë§Œì•½, EMPLOYEEì˜ manager_id(ê° ì‚¬ì›ì˜ 'ìƒì‚¬'ë¥¼ ì˜ë¯¸í•˜ëŠ” ë²ˆí˜¸)ê°€ ìžˆê³ 
+--					    DEPARTMENTì˜ manager_id(ê° ì‚¬ì›ì˜ 'ë¶€ìž¥'ë¥¼ ì˜ë¯¸í•˜ëŠ” ë²ˆí˜¸)ê°€ ìžˆë‹¤ê³  ê°€ì •í–ˆì„ ë•Œ
+--						ë‘˜ ë‹¤ ë™ì¼í•œ ì´ë¦„ê³¼ ë°ì´í„° ìœ í˜•ì„ ê°€ì¡Œì§€ë§Œ manager_idì˜ ì˜ë¯¸ê°€ ë‹¤ë¥´ë‹¤ë©´ 'ìžì—°ì¡°ì¸í•œ í›„ ì›í•˜ì§€ ì•ŠëŠ” ê²°ê³¼'ê°€ ë‚˜ì˜¬ ìˆ˜ ìžˆë‹¤.
 
-select ÄÃ·³¸í1, ÄÃ·³¸í2...
-from Å×ÀÌºí1 º°Äª1 NATURAL JOIN Å×ÀÌºí2 º°Äª2, ... --º°Äª »ç¿ë¾ÈÇÔ(±ÇÀå)
---¡ÚÁ¶ÀÎÁ¶°Ç ÇÊ¿ä¾øÀ½
-where	  ¡Ú(°Ë»öÁ¶°Ç)
+select ì»¬ëŸ¼ëª…1, ì»¬ëŸ¼ëª…2...
+from í…Œì´ë¸”1 ë³„ì¹­1 NATURAL JOIN í…Œì´ë¸”2 ë³„ì¹­2, ... --ë³„ì¹­ ì‚¬ìš©ì•ˆí•¨(ê¶Œìž¥)
+--â˜…ì¡°ì¸ì¡°ê±´ í•„ìš”ì—†ìŒ
+where	  â˜…(ê²€ìƒ‰ì¡°ê±´)
 
---[¹®Á¦ÇØ°á¹ý-1]
+--[ë¬¸ì œí•´ê²°ë²•-1]
 --select eno, ename, dno, dname
-select e.eno, e.ename, dno, d.dname		--dno´Â Áßº¹ Á¦°Å ÇßÀ¸¹Ç·Î e.dno, d.dno º°Äª»ç¿ë ¾ÈÇÔ
+select e.eno, e.ename, dno, d.dname		--dnoëŠ” ì¤‘ë³µ ì œê±° í–ˆìœ¼ë¯€ë¡œ e.dno, d.dno ë³„ì¹­ì‚¬ìš© ì•ˆí•¨
 from employee e natural JOIN department d 
 --ON e.dno = d.dno
 where eno = 7788;
---[¹®Á¦ÇØ°á¹ý-2_°£·«]
+--[ë¬¸ì œí•´ê²°ë²•-2_ê°„ëžµ]
 select eno, ename, dno, dname
 from employee natural JOIN department
 where eno = 7788;
 
---[¹æ¹ý-4] JOIN ~ USING(¡Ú¹Ýµå½Ã 'µ¿ÀÏÇÑ µ¥ÀÌÅÍ À¯ÇüÀ» °¡Áø ÄÃ·³¸í'¸¸ °¡´É) ¡Ú´Ù¸£¸é ¿À·ù¹ß»ý------------------------------------------------------------------------------------------------------------------------------------
---¡Ø Oracle SQL¿¡¼­¸¸ Áö¿ø
---Á¶ÀÎ°á°ú, Áßº¹µÈ ÄÃ·³ Á¦°ÅÇÔ
+--[ë°©ë²•-4] JOIN ~ USING(â˜…ë°˜ë“œì‹œ 'ë™ì¼í•œ ë°ì´í„° ìœ í˜•ì„ ê°€ì§„ ì»¬ëŸ¼ëª…'ë§Œ ê°€ëŠ¥) â˜…ë‹¤ë¥´ë©´ ì˜¤ë¥˜ë°œìƒ------------------------------------------------------------------------------------------------------------------------------------
+--â€» Oracle SQLì—ì„œë§Œ ì§€ì›
+--ì¡°ì¸ê²°ê³¼, ì¤‘ë³µëœ ì»¬ëŸ¼ ì œê±°í•¨
 
---natural JOIN Àº °°Àº µ¥ÀÌÅÍ À¯Çü°ú ÀÌ¸§À» °¡Áø ÄÃ·³À» ¸ðµÎ join ÇÏÁö¸¸
---USING Àº °°Àº µ¥ÀÌÅÍ À¯Çü°ú ÀÌ¸§À» °¡Áø ÄÃ·³µé Áß¿¡¼­µµ Æ¯Á¤ÄÃ·³¸¸ µû·Î ¼±ÅÃÇÒ ¼ö ÀÖ´Ù.
+--natural JOIN ì€ ê°™ì€ ë°ì´í„° ìœ í˜•ê³¼ ì´ë¦„ì„ ê°€ì§„ ì»¬ëŸ¼ì„ ëª¨ë‘ join í•˜ì§€ë§Œ
+--USING ì€ ê°™ì€ ë°ì´í„° ìœ í˜•ê³¼ ì´ë¦„ì„ ê°€ì§„ ì»¬ëŸ¼ë“¤ ì¤‘ì—ì„œë„ íŠ¹ì •ì»¬ëŸ¼ë§Œ ë”°ë¡œ ì„ íƒí•  ìˆ˜ ìžˆë‹¤.
 
---Á¶ÀÎ°á°ú´Â Áßº¹µÈ ÄÃ·³ Á¦°Å -> Á¦°ÅÇÑ °á°ú¿¡ FULL outer join ~ USING(id)ÇÏ¸é ÇÏ³ªÀÇ id·Î Ç×¸ñ°ªµéÀÌ ÇÕÃÄÁ®¼­ Ç¥½ÃµÊ
---µ¿ÀÏÇÑ ÀÌ¸§°ú À¯ÇüÀ» °¡Áø ÄÃ·³À¸·Î Á¶ÀÎ(¡ÚÁ¶ÀÎ ½Ã 1°³ ÀÌ»ó »ç¿ëÇÒ ¶§ Æí¸® : °¡µ¶¼ºÀÌ ÁÁ¾Æ¼­...)
+--ì¡°ì¸ê²°ê³¼ëŠ” ì¤‘ë³µëœ ì»¬ëŸ¼ ì œê±° -> ì œê±°í•œ ê²°ê³¼ì— FULL outer join ~ USING(id)í•˜ë©´ í•˜ë‚˜ì˜ idë¡œ í•­ëª©ê°’ë“¤ì´ í•©ì³ì ¸ì„œ í‘œì‹œë¨
+--ë™ì¼í•œ ì´ë¦„ê³¼ ìœ í˜•ì„ ê°€ì§„ ì»¬ëŸ¼ìœ¼ë¡œ ì¡°ì¸(â˜…ì¡°ì¸ ì‹œ 1ê°œ ì´ìƒ ì‚¬ìš©í•  ë•Œ íŽ¸ë¦¬ : ê°€ë…ì„±ì´ ì¢‹ì•„ì„œ...)
 
-select ÄÃ·³¸í1, ÄÃ·³¸í2...
-from Å×ÀÌºí1 º°Äª1 NATURAL JOIN Å×ÀÌºí2 º°Äª2, ... --º°Äª »ç¿ë¾ÈÇÔ(±ÇÀå)
-USING(¡ÚÁ¶ÀÎÁ¶°Ç) --USING(µ¿ÀÏÇÑ Å¸ÀÔ°ú ÄÃ·³¸í1, µ¿ÀÏÇÑ Å¸ÀÔ°ú ÄÃ·³¸í2) 
-where	  ¡Ú(°Ë»öÁ¶°Ç)
+select ì»¬ëŸ¼ëª…1, ì»¬ëŸ¼ëª…2...
+from í…Œì´ë¸”1 ë³„ì¹­1 NATURAL JOIN í…Œì´ë¸”2 ë³„ì¹­2, ... --ë³„ì¹­ ì‚¬ìš©ì•ˆí•¨(ê¶Œìž¥)
+USING(â˜…ì¡°ì¸ì¡°ê±´) --USING(ë™ì¼í•œ íƒ€ìž…ê³¼ ì»¬ëŸ¼ëª…1, ë™ì¼í•œ íƒ€ìž…ê³¼ ì»¬ëŸ¼ëª…2) 
+where	  â˜…(ê²€ìƒ‰ì¡°ê±´)
 
---[¹®Á¦ÇØ°á¹ý-1]
-select e.eno, e.ename, dno, d.dname	--dno´Â Áßº¹ Á¦°Å ÇßÀ¸¹Ç·Î e.dno, d.dno º°Äª»ç¿ë ¾ÈÇÔ
-from employee e JOIN department d --º°Äª ¸¸µé¾îµµ µÇ³ª
+--[ë¬¸ì œí•´ê²°ë²•-1]
+select e.eno, e.ename, dno, d.dname	--dnoëŠ” ì¤‘ë³µ ì œê±° í–ˆìœ¼ë¯€ë¡œ e.dno, d.dno ë³„ì¹­ì‚¬ìš© ì•ˆí•¨
+from employee e JOIN department d --ë³„ì¹­ ë§Œë“¤ì–´ë„ ë˜ë‚˜
 USING (dno)
 where eno = 7788;
 
---[¹®Á¦ÇØ°á¹ý-2_°£·«]
+--[ë¬¸ì œí•´ê²°ë²•-2_ê°„ëžµ]
 select eno, ename, dno, dname
 from employee JOIN department
 USING (dno)
 where eno = 7788;
 
---¡Ú¡Ú ¸¸¾à, manager°¡ department¿¡ ÀÖ´Ù°í °¡Á¤ ÈÄ ¾Æ·¡ °á°ú À¯Ãß
-select eno, ename, dno, dname, e.manager, d.manager		--¡Ú¹Ýµå½Ã 'Å×ÀÌºí¸íÀÌ³ª º°Äª »ç¿ë'ÇÏ¿© ±¸ºÐÇØ¾ß ÇÔ
+--â˜…â˜… ë§Œì•½, managerê°€ departmentì— ìžˆë‹¤ê³  ê°€ì • í›„ ì•„ëž˜ ê²°ê³¼ ìœ ì¶”
+select eno, ename, dno, dname, e.manager, d.manager		--â˜…ë°˜ë“œì‹œ 'í…Œì´ë¸”ëª…ì´ë‚˜ ë³„ì¹­ ì‚¬ìš©'í•˜ì—¬ êµ¬ë¶„í•´ì•¼ í•¨
 from employee e JOIN department d
-USING (dno)--dno¸¸ Áßº¹Á¦°Å(¡Úmanager´Â Áßº¹Á¦°Å ¾È ÇÔ)
+USING (dno)--dnoë§Œ ì¤‘ë³µì œê±°(â˜…managerëŠ” ì¤‘ë³µì œê±° ì•ˆ í•¨)
 where eno = 7788;
 
---USINGÀ» »ç¿ëÇÏ¸é ¿©·¯°³ÀÇ ÄÃ·³À» ±â¼úÇÒ ¼ö ÀÖ´Ù.
---¡Ø ÀÌ ¶§ ±â¼úµÈ ¿©·¯ ÄÃ·³ÀÇ °ªÀº ÇÏ³ªÀÇ °ªÀ¸·Î ¹­¾î¼­ ÆÇ´ÜÇØ¾ß ÇÑ´Ù.
---[¿¹] ½Ç½ÀÀ» À§ÇØ Å×ÀÌºí »ý¼º ÈÄ µ¥ÀÌÅÍ Ãß°¡
+--USINGì„ ì‚¬ìš©í•˜ë©´ ì—¬ëŸ¬ê°œì˜ ì»¬ëŸ¼ì„ ê¸°ìˆ í•  ìˆ˜ ìžˆë‹¤.
+--â€» ì´ ë•Œ ê¸°ìˆ ëœ ì—¬ëŸ¬ ì»¬ëŸ¼ì˜ ê°’ì€ í•˜ë‚˜ì˜ ê°’ìœ¼ë¡œ ë¬¶ì–´ì„œ íŒë‹¨í•´ì•¼ í•œë‹¤.
+--[ì˜ˆ] ì‹¤ìŠµì„ ìœ„í•´ í…Œì´ë¸” ìƒì„± í›„ ë°ì´í„° ì¶”ê°€
 create table emp_test(
 eno number primary key,
 dno_id number,
@@ -196,198 +196,198 @@ dname varchar2(20),
 loc_id char(2)
 );
 
-insert into dept_test values(10, 'È¸°è', 'A1');
-insert into dept_test values(20, '°æ¿µ', 'A1');
-insert into dept_test values(30, '¿µ¾÷', 'A2');
+insert into dept_test values(10, 'íšŒê³„', 'A1');
+insert into dept_test values(20, 'ê²½ì˜', 'A1');
+insert into dept_test values(30, 'ì˜ì—…', 'A2');
 
---USING Á¶ÀÎ
+--USING ì¡°ì¸
 select *
 from emp_test JOIN dept_test
 USING(dno_id, loc_id);
---'10A1', '20A1'Àº Á¶ÀÎ°á°ú¿¡ Æ÷ÇÔµÇ³ª '10A2'³ª '30A2'´Â Á¶ÀÎ°á°ú¿¡ Æ÷ÇÔµÇÁö ¾ÊÀ½
---ÀÌ¿¡ µû¶ó µÎ Å×ÀÌºí¿¡ °øÅë¿ä¼ÒÀÎ '10A1', '20A1'¸¸ Á¶ÀÎµÈ Ãâ·Â°á°ú¸¦ È®ÀÎÇÒ ¼ö ÀÖ´Ù.
+--'10A1', '20A1'ì€ ì¡°ì¸ê²°ê³¼ì— í¬í•¨ë˜ë‚˜ '10A2'ë‚˜ '30A2'ëŠ” ì¡°ì¸ê²°ê³¼ì— í¬í•¨ë˜ì§€ ì•ŠìŒ
+--ì´ì— ë”°ë¼ ë‘ í…Œì´ë¸”ì— ê³µí†µìš”ì†Œì¸ '10A1', '20A1'ë§Œ ì¡°ì¸ëœ ì¶œë ¥ê²°ê³¼ë¥¼ í™•ì¸í•  ìˆ˜ ìžˆë‹¤.
 
---¡Ø ¿©·¯ Å×ÀÌºí °£ Á¶ÀÎÇÒ °æ¿ì NATURAL JOIN°ú JOIN~USINGÀ» ÀÌ¿ëÇÑ Á¶ÀÎ ¸ðµÎ »ç¿ë °¡´ÉÇÏ³ª
---°¡µ¶¼ºÀÌ ³ôÀº JOIN~USINGÀ» ÀÌ¿ëÇÏ´Â ¹æ¹ýÀ» ±ÇÇÑ´Ù.
--------------------------[¹æ¹ý-3] : ÄÃ·³¸íÀÌ ´Ù¸£¸é cross join °á°ú°¡ ³ª¿È
--------------------------[¹æ¹ý-4] : ÄÃ·³¸íÀÌ ´Ù¸£¸é join ¾ÈµÊ(¿À·ù ¹ß»ý)
+--â€» ì—¬ëŸ¬ í…Œì´ë¸” ê°„ ì¡°ì¸í•  ê²½ìš° NATURAL JOINê³¼ JOIN~USINGì„ ì´ìš©í•œ ì¡°ì¸ ëª¨ë‘ ì‚¬ìš© ê°€ëŠ¥í•˜ë‚˜
+--ê°€ë…ì„±ì´ ë†’ì€ JOIN~USINGì„ ì´ìš©í•˜ëŠ” ë°©ë²•ì„ ê¶Œí•œë‹¤.
+-------------------------[ë°©ë²•-3] : ì»¬ëŸ¼ëª…ì´ ë‹¤ë¥´ë©´ cross join ê²°ê³¼ê°€ ë‚˜ì˜´
+-------------------------[ë°©ë²•-4] : ì»¬ëŸ¼ëª…ì´ ë‹¤ë¥´ë©´ join ì•ˆë¨(ì˜¤ë¥˜ ë°œìƒ)
 
--------------------<4°¡Áö Á¤¸® ³¡>---------------------------------------------------------------------------
+-------------------<4ê°€ì§€ ì •ë¦¬ ë>---------------------------------------------------------------------------
 
 
---3. non-equi Á¶ÀÎ(=ºñµî°¡Á¶ÀÎ) : Á¶ÀÎÁ¶°Ç¿¡¼­ '=(°°´Ù) ¿¬»êÀÚ ÀÌ¿Ü'ÀÇ ¿¬»êÀÚ¸¦ »ç¿ëÇÒ ¶§
---							(¿¹) !=	>	<	>=	<=	between~and
+--3. non-equi ì¡°ì¸(=ë¹„ë“±ê°€ì¡°ì¸) : ì¡°ì¸ì¡°ê±´ì—ì„œ '=(ê°™ë‹¤) ì—°ì‚°ìž ì´ì™¸'ì˜ ì—°ì‚°ìžë¥¼ ì‚¬ìš©í•  ë•Œ
+--							(ì˜ˆ) !=	>	<	>=	<=	between~and
 
---[¹®Á¦] »ç¿ø º°·Î '»ç¿øÀÌ¸§, ±Þ¿©, ±Þ¿©µî±Þ' Ãâ·Â
---[1]. '»ç¿øÀÌ¸§, ±Þ¿© => »ç¿øÅ×ÀÌºí,		±Þ¿©µî±Þ => ±Þ¿©Á¤º¸ Å×ÀÌºí'
---»ç¿ø Å×ÀÌºí Ãâ·Â
+--[ë¬¸ì œ] ì‚¬ì› ë³„ë¡œ 'ì‚¬ì›ì´ë¦„, ê¸‰ì—¬, ê¸‰ì—¬ë“±ê¸‰' ì¶œë ¥
+--[1]. 'ì‚¬ì›ì´ë¦„, ê¸‰ì—¬ => ì‚¬ì›í…Œì´ë¸”,		ê¸‰ì—¬ë“±ê¸‰ => ê¸‰ì—¬ì •ë³´ í…Œì´ë¸”'
+--ì‚¬ì› í…Œì´ë¸” ì¶œë ¥
 select * from EMPLOYEE;
---±Þ¿©Á¤º¸ Å×ÀÌºí Ãâ·Â
+--ê¸‰ì—¬ì •ë³´ í…Œì´ë¸” ì¶œë ¥
 select * from SALGRADE;
 
---[2] µÎ Å×ÀÌºí¿¡´Â µ¿ÀÏÇÑ ÀÌ¸§°ú Å¸ÀÔÀ» °¡Áø ÄÃ·³ÀÌ Á¸ÀçÇÏÁö ¾Ê´Â´Ù.
---µû¶ó¼­, ºñµî°¡ Á¶ÀÎÇÔ
---[join ¹æ¹ý-2 + between~and]
+--[2] ë‘ í…Œì´ë¸”ì—ëŠ” ë™ì¼í•œ ì´ë¦„ê³¼ íƒ€ìž…ì„ ê°€ì§„ ì»¬ëŸ¼ì´ ì¡´ìž¬í•˜ì§€ ì•ŠëŠ”ë‹¤.
+--ë”°ë¼ì„œ, ë¹„ë“±ê°€ ì¡°ì¸í•¨
+--[join ë°©ë²•-2 + between~and]
 select ename, salary, grade
-from EMPLOYEE JOIN SALGRADE -- º°Äª »ç¿ë¾ÈÇÔ(ÀÌÀ¯? Áßº¹µÇ´Â ÄÃ·³ÀÌ ¾øÀ¸¹Ç·Î)
-ON salary between losal and hisal; --Á¶ÀÎÁ¶°Ç(=>ºñµî°¡ Á¶ÀÎÁ¶°Ç)
+from EMPLOYEE JOIN SALGRADE -- ë³„ì¹­ ì‚¬ìš©ì•ˆí•¨(ì´ìœ ? ì¤‘ë³µë˜ëŠ” ì»¬ëŸ¼ì´ ì—†ìœ¼ë¯€ë¡œ)
+ON salary between losal and hisal; --ì¡°ì¸ì¡°ê±´(=>ë¹„ë“±ê°€ ì¡°ì¸ì¡°ê±´)
 
---[join ¹æ¹ý-1 + ºñ±³¿¬»êÀÚ ÀÌ¿ë(=Á¦¿Ü)]
+--[join ë°©ë²•-1 + ë¹„êµì—°ì‚°ìž ì´ìš©(=ì œì™¸)]
 select ename, salary, grade
-from EMPLOYEE , SALGRADE -- º°Äª »ç¿ë¾ÈÇÔ(ÀÌÀ¯? Áßº¹µÇ´Â ÄÃ·³ÀÌ ¾øÀ¸¹Ç·Î)
-where losal <= salary and salary <= hisal; --Á¶ÀÎÁ¶°Ç(=>ºñµî°¡ Á¶ÀÎÁ¶°Ç)
+from EMPLOYEE , SALGRADE -- ë³„ì¹­ ì‚¬ìš©ì•ˆí•¨(ì´ìœ ? ì¤‘ë³µë˜ëŠ” ì»¬ëŸ¼ì´ ì—†ìœ¼ë¯€ë¡œ)
+where losal <= salary and salary <= hisal; --ì¡°ì¸ì¡°ê±´(=>ë¹„ë“±ê°€ ì¡°ì¸ì¡°ê±´)
 
 
---[¹®Á¦] »ç¿ø º°·Î '»ç¿øÀÌ¸§, ±Þ¿©, ±Þ¿©µî±Þ' Ãâ·Â + [Á¶°ÇÃß°¡] : ±Þ¿©°¡ 1000¹Ì¸¸ÀÌ°Å³ª 2000ÃÊ°ú
---join ¹æ¹ý-2 => Á¤È®ÇÑ °á°ú O
+--[ë¬¸ì œ] ì‚¬ì› ë³„ë¡œ 'ì‚¬ì›ì´ë¦„, ê¸‰ì—¬, ê¸‰ì—¬ë“±ê¸‰' ì¶œë ¥ + [ì¡°ê±´ì¶”ê°€] : ê¸‰ì—¬ê°€ 1000ë¯¸ë§Œì´ê±°ë‚˜ 2000ì´ˆê³¼
+--join ë°©ë²•-2 => ì •í™•í•œ ê²°ê³¼ O
 select ename, salary, grade
-from employee JOIN salgrade	-- º°Äª »ç¿ë¾ÈÇÔ(ÀÌÀ¯? Áßº¹µÇ´Â ÄÃ·³ÀÌ ¾øÀ¸¹Ç·Î)
-on salary between losal and hisal --Á¶ÀÎÁ¶°Ç(=>ºñµî°¡ Á¶ÀÎÁ¶°Ç)
-where salary < 1000 or salary > 2000; --[°Ë»öÁ¶°Ç] Ãß°¡
+from employee JOIN salgrade	-- ë³„ì¹­ ì‚¬ìš©ì•ˆí•¨(ì´ìœ ? ì¤‘ë³µë˜ëŠ” ì»¬ëŸ¼ì´ ì—†ìœ¼ë¯€ë¡œ)
+on salary between losal and hisal --ì¡°ì¸ì¡°ê±´(=>ë¹„ë“±ê°€ ì¡°ì¸ì¡°ê±´)
+where salary < 1000 or salary > 2000; --[ê²€ìƒ‰ì¡°ê±´] ì¶”ê°€
 
---join ¹æ¹ý-1 => Á¤È®ÇÑ °á°ú X
--- ÀÌÀ¯ : AND¿Í OR ÇÔ²² ÀÖÀ¸¸é AND ½ÇÇà ÈÄ OR ½ÇÇà
--- => ÇØ°á¹ý : ()°ýÈ£ ÀÌ¿ëÇÏ¿© ¿ì¼±¼øÀ§ º¯°æ
+--join ë°©ë²•-1 => ì •í™•í•œ ê²°ê³¼ X
+-- ì´ìœ  : ANDì™€ OR í•¨ê»˜ ìžˆìœ¼ë©´ AND ì‹¤í–‰ í›„ OR ì‹¤í–‰
+-- => í•´ê²°ë²• : ()ê´„í˜¸ ì´ìš©í•˜ì—¬ ìš°ì„ ìˆœìœ„ ë³€ê²½
 select ename, salary, grade
-from employee, salgrade	-- º°Äª »ç¿ë¾ÈÇÔ(ÀÌÀ¯? Áßº¹µÇ´Â ÄÃ·³ÀÌ ¾øÀ¸¹Ç·Î)
-where salary between losal and hisal --Á¶ÀÎÁ¶°Ç(=>ºñµî°¡ Á¶ÀÎÁ¶°Ç)
-AND salary < 1000 or salary > 2000; --[°Ë»öÁ¶°Ç] Ãß°¡
+from employee, salgrade	-- ë³„ì¹­ ì‚¬ìš©ì•ˆí•¨(ì´ìœ ? ì¤‘ë³µë˜ëŠ” ì»¬ëŸ¼ì´ ì—†ìœ¼ë¯€ë¡œ)
+where salary between losal and hisal --ì¡°ì¸ì¡°ê±´(=>ë¹„ë“±ê°€ ì¡°ì¸ì¡°ê±´)
+AND salary < 1000 or salary > 2000; --[ê²€ìƒ‰ì¡°ê±´] ì¶”ê°€
 
---À§ ¹®Á¦ ÇØ°áµÈ SQL¹® : ()·Î ¿ì¼±¼øÀ§ º¯°æ
+--ìœ„ ë¬¸ì œ í•´ê²°ëœ SQLë¬¸ : ()ë¡œ ìš°ì„ ìˆœìœ„ ë³€ê²½
 select ename, salary, grade
-from employee, salgrade	-- º°Äª »ç¿ë¾ÈÇÔ(ÀÌÀ¯? Áßº¹µÇ´Â ÄÃ·³ÀÌ ¾øÀ¸¹Ç·Î)
-where salary between losal and hisal --Á¶ÀÎÁ¶°Ç(=>ºñµî°¡ Á¶ÀÎÁ¶°Ç)
-AND (salary < 1000 or salary > 2000); --[°Ë»öÁ¶°Ç] Ãß°¡
+from employee, salgrade	-- ë³„ì¹­ ì‚¬ìš©ì•ˆí•¨(ì´ìœ ? ì¤‘ë³µë˜ëŠ” ì»¬ëŸ¼ì´ ì—†ìœ¼ë¯€ë¡œ)
+where salary between losal and hisal --ì¡°ì¸ì¡°ê±´(=>ë¹„ë“±ê°€ ì¡°ì¸ì¡°ê±´)
+AND (salary < 1000 or salary > 2000); --[ê²€ìƒ‰ì¡°ê±´] ì¶”ê°€
 
 --------------------------------------------------------------------------------------
---[¹®Á¦] 3°³ÀÇ Å×ÀÌºí Á¶ÀÎÇÏ±â
---'»ç¿øÀÌ¸§, ¼Ò¼ÓµÈ ºÎ¼­¹øÈ£, ¼Ò¼ÓµÈ ºÎ¼­¸í, ±Þ¿©, ±Þ¿©µî±Þ' Á¶È¸
---[ºÐ·ù] »ç¿øÅ×ÀÌºí : »ç¿øÀÌ¸§, ±Þ¿©, ¼Ò¼ÓµÈ ºÎ¼­¹øÈ£
---	    ºÎ¼­Å×ÀÌºí : ¼Ò¼ÓµÈ ºÎ¼­¹øÈ£, ¼Ò¼ÓµÈ ºÎ¼­¸í
---	    ±Þ¿©Á¤º¸Å×ÀÌºí : ±Þ¿©µî±Þ
---[1] »ç¿øÅ×ÀÌºí°ú ºÎ¼­Å×ÀÌºíÀº µ¿ÀÏÇÑ ÀÌ¸§°ú Å¸ÀÔÀ» °¡Áø ÄÃ·³ÀÌ Á¸Àç(¼Ò¼ÓµÈ ºÎ¼­¹øÈ£ dno)
---		=> µû¶ó¼­, »ç¿øÅ×ÀÌºí°ú ºÎ¼­Å×ÀÌºíÀº "µî°¡Á¶ÀÎ"ÇÔ
---[join ¹æ¹ý-1]
-select ename, e.dno, dname, salary	--e.dno:±¸ºÐÇÏ±â À§ÇØ »ý·«ºÒ°¡
+--[ë¬¸ì œ] 3ê°œì˜ í…Œì´ë¸” ì¡°ì¸í•˜ê¸°
+--'ì‚¬ì›ì´ë¦„, ì†Œì†ëœ ë¶€ì„œë²ˆí˜¸, ì†Œì†ëœ ë¶€ì„œëª…, ê¸‰ì—¬, ê¸‰ì—¬ë“±ê¸‰' ì¡°íšŒ
+--[ë¶„ë¥˜] ì‚¬ì›í…Œì´ë¸” : ì‚¬ì›ì´ë¦„, ê¸‰ì—¬, ì†Œì†ëœ ë¶€ì„œë²ˆí˜¸
+--	    ë¶€ì„œí…Œì´ë¸” : ì†Œì†ëœ ë¶€ì„œë²ˆí˜¸, ì†Œì†ëœ ë¶€ì„œëª…
+--	    ê¸‰ì—¬ì •ë³´í…Œì´ë¸” : ê¸‰ì—¬ë“±ê¸‰
+--[1] ì‚¬ì›í…Œì´ë¸”ê³¼ ë¶€ì„œí…Œì´ë¸”ì€ ë™ì¼í•œ ì´ë¦„ê³¼ íƒ€ìž…ì„ ê°€ì§„ ì»¬ëŸ¼ì´ ì¡´ìž¬(ì†Œì†ëœ ë¶€ì„œë²ˆí˜¸ dno)
+--		=> ë”°ë¼ì„œ, ì‚¬ì›í…Œì´ë¸”ê³¼ ë¶€ì„œí…Œì´ë¸”ì€ "ë“±ê°€ì¡°ì¸"í•¨
+--[join ë°©ë²•-1]
+select ename, e.dno, dname, salary	--e.dno:êµ¬ë¶„í•˜ê¸° ìœ„í•´ ìƒëžµë¶ˆê°€
 from EMPLOYEE e, DEPARTMENT d
 where e.dno = d.dno;
 
---[join ¹æ¹ý-2]
-select ename, e.dno, dname, salary	--e.dno:±¸ºÐÇÏ±â À§ÇØ »ý·«ºÒ°¡
+--[join ë°©ë²•-2]
+select ename, e.dno, dname, salary	--e.dno:êµ¬ë¶„í•˜ê¸° ìœ„í•´ ìƒëžµë¶ˆê°€
 from EMPLOYEE e JOIN DEPARTMENT d
 ON e.dno = d.dno;
 
---[join ¹æ¹ý-3] : natural join (ÀÚ¿¬½º·´°Ô µ¿ÀÏÁ¶ÀÎ, Áßº¹µÈ ÄÃ·³ Á¦°Å -> º°Äª ÇÊ¿ä¾øÀ½)
+--[join ë°©ë²•-3] : natural join (ìžì—°ìŠ¤ëŸ½ê²Œ ë™ì¼ì¡°ì¸, ì¤‘ë³µëœ ì»¬ëŸ¼ ì œê±° -> ë³„ì¹­ í•„ìš”ì—†ìŒ)
 select ename, dno, dname, salary
 from EMPLOYEE natural JOIN DEPARTMENT;
 --ON e.dno = d.dno;
 
---[join ¹æ¹ý-4] : join~using (Áßº¹µÈ ÄÃ·³ Á¦°Å -> º°Äª ÇÊ¿ä¾øÀ½)
+--[join ë°©ë²•-4] : join~using (ì¤‘ë³µëœ ì»¬ëŸ¼ ì œê±° -> ë³„ì¹­ í•„ìš”ì—†ìŒ)
 select ename, dno, dname, salary
 from EMPLOYEE JOIN DEPARTMENT
 USING(dno);
 
---[2] "µî°¡Á¶ÀÎÇÑ °á°ú Å×ÀÌºí"°ú "±Þ¿©Á¤º¸ Å×ÀÌºí"Àº salary·Î ºñµî°¡Á¶ÀÎ °¡´ÉÇÔ
---e.dno º°Äª »ç¿ëÇÏ¸é ¿À·ù(ÀÌÀ¯? "µî°¡Á¶ÀÎÇÑ °á°ú Å×ÀÌºí"¿¡´Â e¶ó´Â º°Äª »ç¿ë ¾ÈÇßÀ¸¹Ç·Î...)
+--[2] "ë“±ê°€ì¡°ì¸í•œ ê²°ê³¼ í…Œì´ë¸”"ê³¼ "ê¸‰ì—¬ì •ë³´ í…Œì´ë¸”"ì€ salaryë¡œ ë¹„ë“±ê°€ì¡°ì¸ ê°€ëŠ¥í•¨
+--e.dno ë³„ì¹­ ì‚¬ìš©í•˜ë©´ ì˜¤ë¥˜(ì´ìœ ? "ë“±ê°€ì¡°ì¸í•œ ê²°ê³¼ í…Œì´ë¸”"ì—ëŠ” eë¼ëŠ” ë³„ì¹­ ì‚¬ìš© ì•ˆí–ˆìœ¼ë¯€ë¡œ...)
 select ename, dno, dname, salary, grade
 from salgrade JOIN (select ename, e.dno, dname, salary
-					from EMPLOYEE e JOIN DEPARTMENT d--e. »ý·«ºÒ°¡
+					from EMPLOYEE e JOIN DEPARTMENT d--e. ìƒëžµë¶ˆê°€
 					ON e.dno = d.dno)
-ON salary BETWEEN losal AND hisal;	--ºñµî°¡Á¶ÀÎ
+ON salary BETWEEN losal AND hisal;	--ë¹„ë“±ê°€ì¡°ì¸
 
---º°Äªµé(ed. s.) »ý·« °¡´ÉÇÔ
+--ë³„ì¹­ë“¤(ed. s.) ìƒëžµ ê°€ëŠ¥í•¨
 select ed.ename, ed.dno, ed.dname, ed.salary, s.grade
 from salgrade s JOIN (select ename, e.dno, dname, salary
-					from EMPLOYEE e JOIN DEPARTMENT d--e.dno »ý·«ºÒ°¡
+					from EMPLOYEE e JOIN DEPARTMENT d--e.dno ìƒëžµë¶ˆê°€
 					ON e.dno = d.dno) ed
-ON losal <= salary AND salary <= hisal;	--ºñµî°¡Á¶ÀÎ
+ON losal <= salary AND salary <= hisal;	--ë¹„ë“±ê°€ì¡°ì¸
 -------------------------------------------------------------------------------------------
 
---4. self join : ÇÏ³ªÀÇ Å×ÀÌºí¿¡ ÀÖ´Â ÄÃ·³³¢¸® ¿¬°áÇØ¾ß ÇÏ´Â Á¶ÀÎÀÌ ÇÊ¿äÇÑ °æ¿ì
+--4. self join : í•˜ë‚˜ì˜ í…Œì´ë¸”ì— ìžˆëŠ” ì»¬ëŸ¼ë¼ë¦¬ ì—°ê²°í•´ì•¼ í•˜ëŠ” ì¡°ì¸ì´ í•„ìš”í•œ ê²½ìš°
 select * from employee;
 
---[¹®Á¦] »ç¿øÀÌ¸§°ú Á÷¼Ó»ó°üÀÌ¸§ Á¶È¸
---[ºÐ·ù] »ç¿øÀÌ¸§, Á÷¼Ó»ó°üÀÌ¸§ => »ç¿øÅ×ÀÌºí
+--[ë¬¸ì œ] ì‚¬ì›ì´ë¦„ê³¼ ì§ì†ìƒê´€ì´ë¦„ ì¡°íšŒ
+--[ë¶„ë¥˜] ì‚¬ì›ì´ë¦„, ì§ì†ìƒê´€ì´ë¦„ => ì‚¬ì›í…Œì´ë¸”
 select *
-from EMPLOYEE e JOIN EMPLOYEE m -- ¡Ú¡Ú¡Ú ¹Ýµå½Ã º°Äª »ç¿ë
-ON e.manager = m.eno--'KING'ÀÇ Á÷¼Ó»ó°üÀº NULLÀÌ¹Ç·Î µî°¡Á¶ÀÎ¿¡¼­ Á¦¿ÜµÊ
+from EMPLOYEE e JOIN EMPLOYEE m -- â˜…â˜…â˜… ë°˜ë“œì‹œ ë³„ì¹­ ì‚¬ìš©
+ON e.manager = m.eno--'KING'ì˜ ì§ì†ìƒê´€ì€ NULLì´ë¯€ë¡œ ë“±ê°€ì¡°ì¸ì—ì„œ ì œì™¸ë¨
 ORDER BY 1;
 
-select e.ename as "»ç¿øÀÌ¸§", m.ename as "Á÷¼Ó»ó°üÀÌ¸§"
-from EMPLOYEE e JOIN EMPLOYEE m -- ¡Ú¡Ú¡Ú ¹Ýµå½Ã º°Äª »ç¿ë
-ON e.manager = m.eno--'KING'ÀÇ Á÷¼Ó»ó°üÀº NULLÀÌ¹Ç·Î µî°¡Á¶ÀÎ¿¡¼­ Á¦¿ÜµÊ
+select e.ename as "ì‚¬ì›ì´ë¦„", m.ename as "ì§ì†ìƒê´€ì´ë¦„"
+from EMPLOYEE e JOIN EMPLOYEE m -- â˜…â˜…â˜… ë°˜ë“œì‹œ ë³„ì¹­ ì‚¬ìš©
+ON e.manager = m.eno--'KING'ì˜ ì§ì†ìƒê´€ì€ NULLì´ë¯€ë¡œ ë“±ê°€ì¡°ì¸ì—ì„œ ì œì™¸ë¨
 ORDER BY 1;
 
-select e.ename || 'ÀÇ Á÷¼Ó»ó°üÀº ' || m.ename
-from EMPLOYEE e JOIN EMPLOYEE m -- ¡Ú¡Ú¡Ú ¹Ýµå½Ã º°Äª »ç¿ë
-ON e.manager = m.eno--'KING'ÀÇ Á÷¼Ó»ó°üÀº NULLÀÌ¹Ç·Î µî°¡Á¶ÀÎ¿¡¼­ Á¦¿ÜµÊ
+select e.ename || 'ì˜ ì§ì†ìƒê´€ì€ ' || m.ename
+from EMPLOYEE e JOIN EMPLOYEE m -- â˜…â˜…â˜… ë°˜ë“œì‹œ ë³„ì¹­ ì‚¬ìš©
+ON e.manager = m.eno--'KING'ì˜ ì§ì†ìƒê´€ì€ NULLì´ë¯€ë¡œ ë“±ê°€ì¡°ì¸ì—ì„œ ì œì™¸ë¨
 ORDER BY 1;
 
---[¹®Á¦+Á¶°ÇÃß°¡] : 'SCOTT'¶õ »ç¿øÀÇ '¸Å´ÏÀúÀÌ¸§(=Á÷¼Ó»ó°üÀÌ¸§)'À» °Ë»ö
--- [ºÐ¼®] 'SCOTT'(»ç¿øÀÌ¸§)	Á÷¼Ó»ó°üÀÌ¸§ => »ç¿øÅ×ÀÌºí·Î self joinÇÔ
-select e.ename as "»ç¿øÀÌ¸§", m.ename as "Á÷¼Ó»ó°üÀÌ¸§"
-from EMPLOYEE e JOIN EMPLOYEE m -- ¡Ú¡Ú¡Ú ¹Ýµå½Ã º°Äª »ç¿ë
-ON e.manager = m.eno--'KING'ÀÇ Á÷¼Ó»ó°üÀº NULLÀÌ¹Ç·Î µî°¡Á¶ÀÎ¿¡¼­ Á¦¿ÜµÊ
+--[ë¬¸ì œ+ì¡°ê±´ì¶”ê°€] : 'SCOTT'ëž€ ì‚¬ì›ì˜ 'ë§¤ë‹ˆì €ì´ë¦„(=ì§ì†ìƒê´€ì´ë¦„)'ì„ ê²€ìƒ‰
+-- [ë¶„ì„] 'SCOTT'(ì‚¬ì›ì´ë¦„)	ì§ì†ìƒê´€ì´ë¦„ => ì‚¬ì›í…Œì´ë¸”ë¡œ self joiní•¨
+select e.ename as "ì‚¬ì›ì´ë¦„", m.ename as "ì§ì†ìƒê´€ì´ë¦„"
+from EMPLOYEE e JOIN EMPLOYEE m -- â˜…â˜…â˜… ë°˜ë“œì‹œ ë³„ì¹­ ì‚¬ìš©
+ON e.manager = m.eno--'KING'ì˜ ì§ì†ìƒê´€ì€ NULLì´ë¯€ë¡œ ë“±ê°€ì¡°ì¸ì—ì„œ ì œì™¸ë¨
 WHERE e.ename = 'SCOTT';
 
-select e.ename || 'ÀÇ Á÷¼Ó»ó°üÀº ' || m.ename
-from EMPLOYEE e JOIN EMPLOYEE m -- ¡Ú¡Ú¡Ú ¹Ýµå½Ã º°Äª »ç¿ë
-ON e.manager = m.eno--'KING'ÀÇ Á÷¼Ó»ó°üÀº NULLÀÌ¹Ç·Î µî°¡Á¶ÀÎ¿¡¼­ Á¦¿ÜµÊ
+select e.ename || 'ì˜ ì§ì†ìƒê´€ì€ ' || m.ename
+from EMPLOYEE e JOIN EMPLOYEE m -- â˜…â˜…â˜… ë°˜ë“œì‹œ ë³„ì¹­ ì‚¬ìš©
+ON e.manager = m.eno--'KING'ì˜ ì§ì†ìƒê´€ì€ NULLì´ë¯€ë¡œ ë“±ê°€ì¡°ì¸ì—ì„œ ì œì™¸ë¨
 WHERE lower(e.ename) = 'scott';
 --WHERE e.ename = upper('scott');
 
 -----------------------------------------------------------------------
 
---5. OUTER join (=¿ÜºÎ Á¶ÀÎ)
---equi join(=µî°¡Á¶ÀÎ=µ¿ÀÏÁ¶ÀÎ)ÀÇ Á¶ÀÎÁ¶°Ç¿¡¼­ ±â¼úÇÑ ÄÃ·³¿¡ ´ëÇØ µÎ Å×ÀÌºí Áß
---¾î´À ÇÑ ÂÊ ÄÃ·³ÀÌ¶óµµ nullÀÌ ÀúÀåµÇ¾î ÀÖÀ¸¸é '='ÀÇ ºñ±³°á°ú°¡ °ÅÁþÀÌ µË´Ï´Ù.
---±×·¡¼­ null°ªÀ» °¡Áø ÇàÀº Á¶ÀÎ °á°ú·Î ¾ò¾îÁöÁö ¾ÊÀ½
---(¿¹) ¹Ù·Î À§ ¹®Á¦ : 'KING'ÀÇ Á÷¼Ó»ó°üÀº NULLÀÌ¹Ç·Î µî°¡Á¶ÀÎ¿¡¼­ Á¦¿ÜµÊ
+--5. OUTER join (=ì™¸ë¶€ ì¡°ì¸)
+--equi join(=ë“±ê°€ì¡°ì¸=ë™ì¼ì¡°ì¸)ì˜ ì¡°ì¸ì¡°ê±´ì—ì„œ ê¸°ìˆ í•œ ì»¬ëŸ¼ì— ëŒ€í•´ ë‘ í…Œì´ë¸” ì¤‘
+--ì–´ëŠ í•œ ìª½ ì»¬ëŸ¼ì´ë¼ë„ nullì´ ì €ìž¥ë˜ì–´ ìžˆìœ¼ë©´ '='ì˜ ë¹„êµê²°ê³¼ê°€ ê±°ì§“ì´ ë©ë‹ˆë‹¤.
+--ê·¸ëž˜ì„œ nullê°’ì„ ê°€ì§„ í–‰ì€ ì¡°ì¸ ê²°ê³¼ë¡œ ì–»ì–´ì§€ì§€ ì•ŠìŒ
+--(ì˜ˆ) ë°”ë¡œ ìœ„ ë¬¸ì œ : 'KING'ì˜ ì§ì†ìƒê´€ì€ NULLì´ë¯€ë¡œ ë“±ê°€ì¡°ì¸ì—ì„œ ì œì™¸ë¨
 --[1]
-select e.ename || 'ÀÇ Á÷¼Ó»ó°üÀº ' || m.ename
-from EMPLOYEE e JOIN EMPLOYEE m -- ¡Ú¡Ú¡Ú ¹Ýµå½Ã º°Äª »ç¿ë
-ON e.manager = m.eno;--µî°¡Á¶ÀÎÁ¶°Ç('KING'ÀÇ Á÷¼Ó»ó°üÀº NULLÀÌ¹Ç·Î µî°¡Á¶ÀÎ¿¡¼­ Á¦¿ÜµÇ¾î Á¶ÀÎÇÑ °á°úÅ×ÀÌºí¿¡´Â ¾ø´Ù.)
+select e.ename || 'ì˜ ì§ì†ìƒê´€ì€ ' || m.ename
+from EMPLOYEE e JOIN EMPLOYEE m -- â˜…â˜…â˜… ë°˜ë“œì‹œ ë³„ì¹­ ì‚¬ìš©
+ON e.manager = m.eno;--ë“±ê°€ì¡°ì¸ì¡°ê±´('KING'ì˜ ì§ì†ìƒê´€ì€ NULLì´ë¯€ë¡œ ë“±ê°€ì¡°ì¸ì—ì„œ ì œì™¸ë˜ì–´ ì¡°ì¸í•œ ê²°ê³¼í…Œì´ë¸”ì—ëŠ” ì—†ë‹¤.)
 --[2-1]
---¿À·ù´Â ¾øÁö¸¸ °á°ú°¡ ¾È³ª¿À´Â ÀÌÀ¯? Ã³À½ºÎÅÍ Á¶ÀÎÇÑ °á°úÅ×ÀÌºí¿¡ ÀÌ¸§ÀÌ 'KING'ÀÌ ¾ø¾úÀ¸¹Ç·Î...
-select e.ename || 'ÀÇ Á÷¼Ó»ó°üÀº ' || m.ename
+--ì˜¤ë¥˜ëŠ” ì—†ì§€ë§Œ ê²°ê³¼ê°€ ì•ˆë‚˜ì˜¤ëŠ” ì´ìœ ? ì²˜ìŒë¶€í„° ì¡°ì¸í•œ ê²°ê³¼í…Œì´ë¸”ì— ì´ë¦„ì´ 'KING'ì´ ì—†ì—ˆìœ¼ë¯€ë¡œ...
+select e.ename || 'ì˜ ì§ì†ìƒê´€ì€ ' || m.ename
 from EMPLOYEE e JOIN EMPLOYEE m
 ON e.manager = m.eno
-where e.ename = 'KING'; --[°Ë»öÁ¶°Ç Ãß°¡]
+where e.ename = 'KING'; --[ê²€ìƒ‰ì¡°ê±´ ì¶”ê°€]
 --[2-2]
-select e.ename || 'ÀÇ Á÷¼Ó»ó°üÀº ' || m.ename
+select e.ename || 'ì˜ ì§ì†ìƒê´€ì€ ' || m.ename
 from EMPLOYEE e JOIN EMPLOYEE m
 ON e.manager = m.eno
-where m.ename = 'KING';--Á÷¼Ó»ó°üÀÌ¸§ÀÌ 'KING'ÀÎ »ç¿øÀº 3¸í °Ë»öµÊ
+where m.ename = 'KING';--ì§ì†ìƒê´€ì´ë¦„ì´ 'KING'ì¸ ì‚¬ì›ì€ 3ëª… ê²€ìƒ‰ë¨
 
---À§ ¹æ¹ýÀ¸·Î´Â NULL°ªÀ» °¡Áø »ç¿ø KINGÀÇ Á¤º¸¸¦ Ç¥ÇöÇÒ ¼ö ¾ø´Ù.
---µû¶ó¼­, ¾Æ·¡ ¹æ¹ýÀ¸·Î ÇØ°á => ¿ÜºÎÁ¶ÀÎ(Outer join)
---[¹æ¹ý-1] NULL°ªµµ Ç¥ÇöÇÏ±â À§ÇÑ ÇØ°á¹æ¹ý : Á¶ÀÎÁ¶°Ç¿¡¼­ NULL°ªÀ» Ãâ·ÂÇÏ´Â °÷¿¡ (+)
---ÁÖÀÇ : ÇÑÂÊ¸¸ (+) ºÙÀÏ ¼ö ÀÖ´Ù.(LEFT/RIGHT), Áï FULL ºÒ°¡´É
-select e.ename || 'ÀÇ Á÷¼Ó»ó°üÀº ' || NVL(m.ename, '¾ø´Ù.')
+--ìœ„ ë°©ë²•ìœ¼ë¡œëŠ” NULLê°’ì„ ê°€ì§„ ì‚¬ì› KINGì˜ ì •ë³´ë¥¼ í‘œí˜„í•  ìˆ˜ ì—†ë‹¤.
+--ë”°ë¼ì„œ, ì•„ëž˜ ë°©ë²•ìœ¼ë¡œ í•´ê²° => ì™¸ë¶€ì¡°ì¸(Outer join)
+--[ë°©ë²•-1] NULLê°’ë„ í‘œí˜„í•˜ê¸° ìœ„í•œ í•´ê²°ë°©ë²• : ì¡°ì¸ì¡°ê±´ì—ì„œ NULLê°’ì„ ì¶œë ¥í•˜ëŠ” ê³³ì— (+)
+--ì£¼ì˜ : í•œìª½ë§Œ (+) ë¶™ì¼ ìˆ˜ ìžˆë‹¤.(LEFT/RIGHT), ì¦‰ FULL ë¶ˆê°€ëŠ¥
+select e.ename || 'ì˜ ì§ì†ìƒê´€ì€ ' || NVL(m.ename, 'ì—†ë‹¤.')
 from EMPLOYEE e, EMPLOYEE m
 where e.manager = m.eno(+);
 
---[¹æ¹ý-2] LEFT/RIGHT/FULL±îÁö °¡´ÉÇÔ
---LEFT OUTER JOIN : ¿ÞÂÊ Å×ÀÌºíÀÇ ³»¿ë Áß ³²Àº ºÎºÐ ´Ù Ãâ·Â
---RIGHT OUTER JOIN : ¿À¸¥ÂÊ Å×ÀÌºíÀÇ ³»¿ë Áß ³²Àº ºÎºÐ ´Ù Ãâ·Â
---FULL OUTER JOIN : ¿ÞÂÊ°ú ¿À¸¥ÂÊ Å×ÀÌºíÀÇ ³»¿ë Áß ³²Àº ºÎºÐ ´Ù Ãâ·Â
-select e.ename || 'ÀÇ Á÷¼Ó»ó°üÀº ' || NVL(m.ename, '¾ø´Ù.')
+--[ë°©ë²•-2] LEFT/RIGHT/FULLê¹Œì§€ ê°€ëŠ¥í•¨
+--LEFT OUTER JOIN : ì™¼ìª½ í…Œì´ë¸”ì˜ ë‚´ìš© ì¤‘ ë‚¨ì€ ë¶€ë¶„ ë‹¤ ì¶œë ¥
+--RIGHT OUTER JOIN : ì˜¤ë¥¸ìª½ í…Œì´ë¸”ì˜ ë‚´ìš© ì¤‘ ë‚¨ì€ ë¶€ë¶„ ë‹¤ ì¶œë ¥
+--FULL OUTER JOIN : ì™¼ìª½ê³¼ ì˜¤ë¥¸ìª½ í…Œì´ë¸”ì˜ ë‚´ìš© ì¤‘ ë‚¨ì€ ë¶€ë¶„ ë‹¤ ì¶œë ¥
+select e.ename || 'ì˜ ì§ì†ìƒê´€ì€ ' || NVL(m.ename, 'ì—†ë‹¤.')
 from EMPLOYEE e LEFT OUTER JOIN EMPLOYEE m
 ON e.manager = m.eno;
 ----------------------------------------------------------------
---<6Àå. Å×ÀÌºí Á¶ÀÎÇÏ±â-È¥ÀÚÇØº¸±â>--------------------------------------
+--<6ìž¥. í…Œì´ë¸” ì¡°ì¸í•˜ê¸°-í˜¼ìží•´ë³´ê¸°>--------------------------------------
 /*
- * 1.EQUI Á¶ÀÎÀ» »ç¿ëÇÏ¿© SCOTT»ç¿øÀÇ ºÎ¼­¹øÈ£¿Í ºÎ¼­ÀÌ¸§À» Ãâ·ÂÇÏ½Ã¿À.
+ * 1.EQUI ì¡°ì¸ì„ ì‚¬ìš©í•˜ì—¬ SCOTTì‚¬ì›ì˜ ë¶€ì„œë²ˆí˜¸ì™€ ë¶€ì„œì´ë¦„ì„ ì¶œë ¥í•˜ì‹œì˜¤.
  */
---ºÐ·ù : SCOTT»ç¿øÀº ÀÌ¸§,ºÎ¼­¹øÈ£=>»ç¿øÅ×ÀÌºí,
---		ºÎ¼­¹øÈ£, ºÎ¼­ÀÌ¸§=>ºÎ¼­Å×ÀÌºí
---¹æ¹ý-1 : dno·Î µî°¡Á¶ÀÎ
+--ë¶„ë¥˜ : SCOTTì‚¬ì›ì€ ì´ë¦„,ë¶€ì„œë²ˆí˜¸=>ì‚¬ì›í…Œì´ë¸”,
+--		ë¶€ì„œë²ˆí˜¸, ë¶€ì„œì´ë¦„=>ë¶€ì„œí…Œì´ë¸”
+--ë°©ë²•-1 : dnoë¡œ ë“±ê°€ì¡°ì¸
 select ename, e.dno, dname
 from employee e, department d
-where e.dno = d.dno	--Á¶ÀÎÁ¶°Ç
-AND ename = 'SCOTT';	--°Ë»öÁ¶°Ç
---AND LOWER(ename) = 'scott'; --°Ë»öÁ¶°Ç
---AND ename = upper('scott'); --°Ë»öÁ¶°Ç
+where e.dno = d.dno	--ì¡°ì¸ì¡°ê±´
+AND ename = 'SCOTT';	--ê²€ìƒ‰ì¡°ê±´
+--AND LOWER(ename) = 'scott'; --ê²€ìƒ‰ì¡°ê±´
+--AND ename = upper('scott'); --ê²€ìƒ‰ì¡°ê±´
 
 
 select ename, e.dno, dname
@@ -396,44 +396,44 @@ ON e.dno = d.dno
 where ename = 'SCOTT';
 
 /*
- * 2.(INNER) JOIN°ú ON ¿¬»êÀÚ¸¦ »ç¿ëÇÏ¿© »ç¿øÀÌ¸§°ú ÇÔ²² ±× »ç¿øÀÌ ¼Ò¼ÓµÈ ºÎ¼­ÀÌ¸§°ú Áö¿ª¸íÀ» 
- * Ãâ·ÂÇÏ½Ã¿À.
+ * 2.(INNER) JOINê³¼ ON ì—°ì‚°ìžë¥¼ ì‚¬ìš©í•˜ì—¬ ì‚¬ì›ì´ë¦„ê³¼ í•¨ê»˜ ê·¸ ì‚¬ì›ì´ ì†Œì†ëœ ë¶€ì„œì´ë¦„ê³¼ ì§€ì—­ëª…ì„ 
+ * ì¶œë ¥í•˜ì‹œì˜¤.
  */
---ºÐ·ù : »ç¿øÀÌ¸§ => »ç¿ø Å×ÀÌºí
---		ºÎ¼­ÀÌ¸§, Áö¿ª¸í => ºÎ¼­Å×ÀÌºí
+--ë¶„ë¥˜ : ì‚¬ì›ì´ë¦„ => ì‚¬ì› í…Œì´ë¸”
+--		ë¶€ì„œì´ë¦„, ì§€ì—­ëª… => ë¶€ì„œí…Œì´ë¸”
 --[1]
 select * from EMPLOYEE;
 select * from department;
 
---[¹æ¹ý-2]
+--[ë°©ë²•-2]
 select ename, dname, loc
 from EMPLOYEE e JOIN DEPARTMENT d
-ON e.dno = d.dno; --Á¶ÀÎÁ¶°Ç
+ON e.dno = d.dno; --ì¡°ì¸ì¡°ê±´
 
 /*
- * 3.(INNER) JOIN°ú USING ¿¬»êÀÚ¸¦ »ç¿ëÇÏ¿© 10¹ø ºÎ¼­¿¡ ¼ÓÇÏ´Â ¸ðµç ´ã´ç ¾÷¹«ÀÇ °íÀ¯ ¸ñ·Ï
- * (ÇÑ ¹ø¾¿¸¸ Ç¥½Ã)À» ºÎ¼­ÀÇ Áö¿ª¸íÀ» Æ÷ÇÔÇÏ¿© Ãâ·ÂÇÏ½Ã¿À.
+ * 3.(INNER) JOINê³¼ USING ì—°ì‚°ìžë¥¼ ì‚¬ìš©í•˜ì—¬ 10ë²ˆ ë¶€ì„œì— ì†í•˜ëŠ” ëª¨ë“  ë‹´ë‹¹ ì—…ë¬´ì˜ ê³ ìœ  ëª©ë¡
+ * (í•œ ë²ˆì”©ë§Œ í‘œì‹œ)ì„ ë¶€ì„œì˜ ì§€ì—­ëª…ì„ í¬í•¨í•˜ì—¬ ì¶œë ¥í•˜ì‹œì˜¤.
  */
---¾÷¹«(=job)=>»ç¿øÅ×ÀÌºí, loc=>ºÎ¼­Å×ÀÌºí
---[¹æ¹ý-3]
+--ì—…ë¬´(=job)=>ì‚¬ì›í…Œì´ë¸”, loc=>ë¶€ì„œí…Œì´ë¸”
+--[ë°©ë²•-3]
 select job, loc
-from employee JOIN department	--Áßº¹Á¦°Å -> º°Äª ÇÊ¿ä¾øÀ½
-USING(dno)--Á¶ÀÎÁ¶°Ç
-where dno = 10;--°Ë»öÁ¶°Ç
+from employee JOIN department	--ì¤‘ë³µì œê±° -> ë³„ì¹­ í•„ìš”ì—†ìŒ
+USING(dno)--ì¡°ì¸ì¡°ê±´
+where dno = 10;--ê²€ìƒ‰ì¡°ê±´
 
 
 /*
- * 4.NATURAL JOINÀ» »ç¿ëÇÏ¿© 'Ä¿¹Ì¼ÇÀ» ¹Þ´Â ¸ðµç »ç¿ø'ÀÇ ÀÌ¸§, ºÎ¼­ÀÌ¸§, Áö¿ª¸íÀ» Ãâ·ÂÇÏ½Ã¿À.
+ * 4.NATURAL JOINì„ ì‚¬ìš©í•˜ì—¬ 'ì»¤ë¯¸ì…˜ì„ ë°›ëŠ” ëª¨ë“  ì‚¬ì›'ì˜ ì´ë¦„, ë¶€ì„œì´ë¦„, ì§€ì—­ëª…ì„ ì¶œë ¥í•˜ì‹œì˜¤.
  */
---»ç¿øÀÌ¸§=>»ç¿ø Å×ÀÌºí, ºÎ¼­ÀÌ¸§/Áö¿ª¸í=>ºÎ¼­Å×ÀÌºí
+--ì‚¬ì›ì´ë¦„=>ì‚¬ì› í…Œì´ë¸”, ë¶€ì„œì´ë¦„/ì§€ì—­ëª…=>ë¶€ì„œí…Œì´ë¸”
 select ename, dname, loc
-from employee NATURAL JOIN department --ÀÚ¿¬ : °°Àº dno·Î Á¶ÀÎ ÈÄ Áßº¹ Á¦°Å -> º°ÄªÇÊ¿ä¾øÀ½
+from employee NATURAL JOIN department --ìžì—° : ê°™ì€ dnoë¡œ ì¡°ì¸ í›„ ì¤‘ë³µ ì œê±° -> ë³„ì¹­í•„ìš”ì—†ìŒ
 where commission IS NOT NULL;
 
 /*
- * 5.EQUI Á¶ÀÎ°ú WildCard¸¦ »ç¿ëÇÏ¿© 'ÀÌ¸§¿¡ A°¡ Æ÷ÇÔ'µÈ ¸ðµç »ç¿øÀÇ ÀÌ¸§°ú ºÎ¼­ÀÌ¸§À» Ãâ·ÂÇÏ½Ã¿À.
+ * 5.EQUI ì¡°ì¸ê³¼ WildCardë¥¼ ì‚¬ìš©í•˜ì—¬ 'ì´ë¦„ì— Aê°€ í¬í•¨'ëœ ëª¨ë“  ì‚¬ì›ì˜ ì´ë¦„ê³¼ ë¶€ì„œì´ë¦„ì„ ì¶œë ¥í•˜ì‹œì˜¤.
  */
---[¹æ¹ý-4]
+--[ë°©ë²•-4]
 select ename, dname
 from EMPLOYEE e, DEPARTMENT d
 where e.dno = d.dno
@@ -444,98 +444,98 @@ from EMPLOYEE e JOIN DEPARTMENT d
 ON e.dno = d.dno
 WHERE ename like '%A%';
 /*
- * 6.NATURAL JOINÀ» »ç¿ëÇÏ¿© NEW YORK¿¡ ±Ù¹«ÇÏ´Â ¸ðµç »ç¿øÀÇ ÀÌ¸§, ¾÷¹«, ºÎ¼­¹øÈ£, ºÎ¼­ÀÌ¸§À» 
- * Ãâ·ÂÇÏ½Ã¿À.
+ * 6.NATURAL JOINì„ ì‚¬ìš©í•˜ì—¬ NEW YORKì— ê·¼ë¬´í•˜ëŠ” ëª¨ë“  ì‚¬ì›ì˜ ì´ë¦„, ì—…ë¬´, ë¶€ì„œë²ˆí˜¸, ë¶€ì„œì´ë¦„ì„ 
+ * ì¶œë ¥í•˜ì‹œì˜¤.
  */
 select ename, job, dno, dname
-from EMPLOYEE natural join DEPARTMENT --ÀÚ¿¬ : °°Àº dno·Î Á¶ÀÎ ÈÄ Áßº¹ Á¦°Å
-where loc = 'NEW YORK'; --°Ë»öÁ¶°Ç
+from EMPLOYEE natural join DEPARTMENT --ìžì—° : ê°™ì€ dnoë¡œ ì¡°ì¸ í›„ ì¤‘ë³µ ì œê±°
+where loc = 'NEW YORK'; --ê²€ìƒ‰ì¡°ê±´
 --where lower(loc) = 'new york';
 
 /*
- * 7.SELF JOINÀ» »ç¿ëÇÏ¿© »ç¿øÀÇ ÀÌ¸§ ¹× »ç¿ø¹øÈ£¸¦ °ü¸®ÀÚ ÀÌ¸§ ¹× °ü¸®ÀÚ ¹øÈ£¿Í ÇÔ²² Ãâ·ÂÇÏ½Ã¿À.
+ * 7.SELF JOINì„ ì‚¬ìš©í•˜ì—¬ ì‚¬ì›ì˜ ì´ë¦„ ë° ì‚¬ì›ë²ˆí˜¸ë¥¼ ê´€ë¦¬ìž ì´ë¦„ ë° ê´€ë¦¬ìž ë²ˆí˜¸ì™€ í•¨ê»˜ ì¶œë ¥í•˜ì‹œì˜¤.
  */
---[¹æ¹ý-1]
-select e.ename as "»ç¿øÀÌ¸§", e.eno as "»ç¿ø¹øÈ£", m.ename as "°ü¸®ÀÚÀÌ¸§", m.eno as "°ü¸®ÀÚ¹øÈ£"
-from employee e, employee m	--¡Ú¡Ú ¹Ýµå½Ã º°Äª!
-where e.manager = m.eno;	--'KING' Á¦¿ÜµÊ
+--[ë°©ë²•-1]
+select e.ename as "ì‚¬ì›ì´ë¦„", e.eno as "ì‚¬ì›ë²ˆí˜¸", m.ename as "ê´€ë¦¬ìžì´ë¦„", m.eno as "ê´€ë¦¬ìžë²ˆí˜¸"
+from employee e, employee m	--â˜…â˜… ë°˜ë“œì‹œ ë³„ì¹­!
+where e.manager = m.eno;	--'KING' ì œì™¸ë¨
 
---[¹æ¹ý-2]
-select e.ename as "»ç¿øÀÌ¸§", e.eno as "»ç¿ø¹øÈ£", m.ename as "°ü¸®ÀÚÀÌ¸§", m.eno as "°ü¸®ÀÚ¹øÈ£"
-from employee e JOIN employee m	--¡Ú¡Ú ¹Ýµå½Ã º°Äª!
-ON e.manager = m.eno;	--'KING' Á¦¿ÜµÊ
+--[ë°©ë²•-2]
+select e.ename as "ì‚¬ì›ì´ë¦„", e.eno as "ì‚¬ì›ë²ˆí˜¸", m.ename as "ê´€ë¦¬ìžì´ë¦„", m.eno as "ê´€ë¦¬ìžë²ˆí˜¸"
+from employee e JOIN employee m	--â˜…â˜… ë°˜ë“œì‹œ ë³„ì¹­!
+ON e.manager = m.eno;	--'KING' ì œì™¸ë¨
 
 /*
- * 8.'7¹ø ¹®Á¦'+ OUTER JOIN, SELF JOINÀ» »ç¿ëÇÏ¿© '°ü¸®ÀÚ°¡ ¾ø´Â »ç¿ø'À» Æ÷ÇÔÇÏ¿© »ç¿ø¹øÈ£¸¦
- * ±âÁØÀ¸·Î ³»¸²Â÷¼ø Á¤·ÄÇÏ¿© Ãâ·ÂÇÏ½Ã¿À.
+ * 8.'7ë²ˆ ë¬¸ì œ'+ OUTER JOIN, SELF JOINì„ ì‚¬ìš©í•˜ì—¬ 'ê´€ë¦¬ìžê°€ ì—†ëŠ” ì‚¬ì›'ì„ í¬í•¨í•˜ì—¬ ì‚¬ì›ë²ˆí˜¸ë¥¼
+ * ê¸°ì¤€ìœ¼ë¡œ ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬í•˜ì—¬ ì¶œë ¥í•˜ì‹œì˜¤.
  */
---°ü¸®ÀÚ°¡ ¾ø´Â »ç¿ø : 'KING'
---[¹æ¹ý-1]
-select e.ename as "»ç¿øÀÌ¸§", e.eno as "»ç¿ø¹øÈ£", m.ename as "°ü¸®ÀÚÀÌ¸§", m.eno as "°ü¸®ÀÚ¹øÈ£"
-from employee e, employee m--¡Ú¡Ú ¹Ýµå½Ã º°Äª!
-where e.manager = m.eno(+) --Á¦¿ÜµÈ 'KING'À» Ç¥½Ã
+--ê´€ë¦¬ìžê°€ ì—†ëŠ” ì‚¬ì› : 'KING'
+--[ë°©ë²•-1]
+select e.ename as "ì‚¬ì›ì´ë¦„", e.eno as "ì‚¬ì›ë²ˆí˜¸", m.ename as "ê´€ë¦¬ìžì´ë¦„", m.eno as "ê´€ë¦¬ìžë²ˆí˜¸"
+from employee e, employee m--â˜…â˜… ë°˜ë“œì‹œ ë³„ì¹­!
+where e.manager = m.eno(+) --ì œì™¸ëœ 'KING'ì„ í‘œì‹œ
 order by e.eno desc;
 --order by 2 desc;
 
---[¹æ¹ý-2]
-select e.ename as "»ç¿øÀÌ¸§", e.eno as "»ç¿ø¹øÈ£", m.ename as "°ü¸®ÀÚÀÌ¸§", m.eno as "°ü¸®ÀÚ¹øÈ£"
-from employee e LEFT OUTER JOIN employee m--¡Ú¡Ú ¹Ýµå½Ã º°Äª!
-ON e.manager = m.eno --Á¦¿ÜµÈ 'KING'À» Ç¥½Ã (¿ÞÂÊ Å×ÀÌºí ´Ù Ç¥½Ã)
+--[ë°©ë²•-2]
+select e.ename as "ì‚¬ì›ì´ë¦„", e.eno as "ì‚¬ì›ë²ˆí˜¸", m.ename as "ê´€ë¦¬ìžì´ë¦„", m.eno as "ê´€ë¦¬ìžë²ˆí˜¸"
+from employee e LEFT OUTER JOIN employee m--â˜…â˜… ë°˜ë“œì‹œ ë³„ì¹­!
+ON e.manager = m.eno --ì œì™¸ëœ 'KING'ì„ í‘œì‹œ (ì™¼ìª½ í…Œì´ë¸” ë‹¤ í‘œì‹œ)
 order by e.eno desc;
 /*
- * 9.SELF JOINÀ» »ç¿ëÇÏ¿© ÁöÁ¤ÇÑ »ç¿øÀÇ ÀÌ¸§('SCOTT'), ºÎ¼­¹øÈ£, ÁöÁ¤ÇÑ »ç¿ø°ú µ¿ÀÏÇÑ ºÎ¼­¿¡¼­ 
- * ±Ù¹«ÇÏ´Â »ç¿øÀÌ¸§À» Ãâ·ÂÇÏ½Ã¿À.
- * ´Ü, °¢ ¿­ÀÇ º°ÄªÀº ÀÌ¸§, ºÎ¼­¹øÈ£, µ¿·á·Î ÇÏ½Ã¿À.
+ * 9.SELF JOINì„ ì‚¬ìš©í•˜ì—¬ ì§€ì •í•œ ì‚¬ì›ì˜ ì´ë¦„('SCOTT'), ë¶€ì„œë²ˆí˜¸, ì§€ì •í•œ ì‚¬ì›ê³¼ ë™ì¼í•œ ë¶€ì„œì—ì„œ 
+ * ê·¼ë¬´í•˜ëŠ” ì‚¬ì›ì´ë¦„ì„ ì¶œë ¥í•˜ì‹œì˜¤.
+ * ë‹¨, ê° ì—´ì˜ ë³„ì¹­ì€ ì´ë¦„, ë¶€ì„œë²ˆí˜¸, ë™ë£Œë¡œ í•˜ì‹œì˜¤.
  */
---[¹æ¹ý-1]
+--[ë°©ë²•-1]
 --[1]
 select *
 from employee e, employee m
-where e.dno = m.dno--Á¶ÀÎÁ¶°Ç : µ¿ÀÏÇÑ ºÎ¼­·Î Á¶ÀÎ
+where e.dno = m.dno--ì¡°ì¸ì¡°ê±´ : ë™ì¼í•œ ë¶€ì„œë¡œ ì¡°ì¸
 order by 1 asc;
 --[2]
-select e.ename as "ÀÌ¸§", e.dno as "ºÎ¼­¹øÈ£", m.ename as "µ¿·á" --¡Ú¡Ú¹Ýµå½Ã º°Äª
-from employee e, employee m--¡Ú¡Ú ¹Ýµå½Ã º°Äª!
-WHERE e.dno = m.dno--Á¶ÀÎÁ¶°Ç
-AND (e.ename = 'SCOTT' AND m.ename != 'SCOTT');--°Ë»öÁ¶°Ç
+select e.ename as "ì´ë¦„", e.dno as "ë¶€ì„œë²ˆí˜¸", m.ename as "ë™ë£Œ" --â˜…â˜…ë°˜ë“œì‹œ ë³„ì¹­
+from employee e, employee m--â˜…â˜… ë°˜ë“œì‹œ ë³„ì¹­!
+WHERE e.dno = m.dno--ì¡°ì¸ì¡°ê±´
+AND (e.ename = 'SCOTT' AND m.ename != 'SCOTT');--ê²€ìƒ‰ì¡°ê±´
 
 
---[°³ÀÎÇ®ÀÌ]
-select e.ename as "ÀÌ¸§", e.dno as "ºÎ¼­¹øÈ£", e2.ename as "µ¿·á"
-from employee e JOIN employee e2--¡Ú¡Ú ¹Ýµå½Ã º°Äª!
-ON e.dno = e2.dno--Á¶ÀÎÁ¶°Ç
-where e.ename = 'SCOTT' AND e2.ename != 'SCOTT';--°Ë»öÁ¶°Ç
+--[ê°œì¸í’€ì´]
+select e.ename as "ì´ë¦„", e.dno as "ë¶€ì„œë²ˆí˜¸", e2.ename as "ë™ë£Œ"
+from employee e JOIN employee e2--â˜…â˜… ë°˜ë“œì‹œ ë³„ì¹­!
+ON e.dno = e2.dno--ì¡°ì¸ì¡°ê±´
+where e.ename = 'SCOTT' AND e2.ename != 'SCOTT';--ê²€ìƒ‰ì¡°ê±´
 
 /*
- * 10.SELF JOINÀ» »ç¿ëÇÏ¿© WARD »ç¿øº¸´Ù ´Ê°Ô ÀÔ»çÇÑ »ç¿øÀÇ ÀÌ¸§°ú ÀÔ»çÀÏÀ» Ãâ·ÂÇÏ½Ã¿À.
- * (ÀÔ»çÀÏÀ» ±âÁØÀ¸·Î ¿À¸§Â÷¼ø Á¤·Ä)
+ * 10.SELF JOINì„ ì‚¬ìš©í•˜ì—¬ WARD ì‚¬ì›ë³´ë‹¤ ëŠ¦ê²Œ ìž…ì‚¬í•œ ì‚¬ì›ì˜ ì´ë¦„ê³¼ ìž…ì‚¬ì¼ì„ ì¶œë ¥í•˜ì‹œì˜¤.
+ * (ìž…ì‚¬ì¼ì„ ê¸°ì¤€ìœ¼ë¡œ ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬)
  */
---[join ¹æ¹ý-1]ÀÌ¿ë--------------------------------------------------
---¹æ¹ý-1
+--[join ë°©ë²•-1]ì´ìš©--------------------------------------------------
+--ë°©ë²•-1
 select e.ename, e.hiredate, m.ename, m.hiredate
 from employee e, employee m--cross join : 14*14=196
-where e.ename='WARD';--cross join °á°ú¿¡¼­ °Ë»ö : 14
+where e.ename='WARD';--cross join ê²°ê³¼ì—ì„œ ê²€ìƒ‰ : 14
 
 select e.ename, e.hiredate, m.ename, m.hiredate
 from employee e, employee m
-where e.ename='WARD' AND e.hiredate < m.hiredate--°Ë»öÁ¶°ÇÃß°¡ : 11
+where e.ename='WARD' AND e.hiredate < m.hiredate--ê²€ìƒ‰ì¡°ê±´ì¶”ê°€ : 11
 order by m.hiredate asc;
 
---¹æ¹ý-2
---[1] ¸ÕÀú 'WARD'ÀÇ ÀÔ»çÀÏ ±¸ÇÏ±â
+--ë°©ë²•-2
+--[1] ë¨¼ì € 'WARD'ì˜ ìž…ì‚¬ì¼ êµ¬í•˜ê¸°
 select hiredate
 from employee
 where ename='WARD';--1981-02-22
 
---[2] ÁÖÄõ¸®, ¼­ºêÄõ¸® ÀÌ¿ë
+--[2] ì£¼ì¿¼ë¦¬, ì„œë¸Œì¿¼ë¦¬ ì´ìš©
 select ename, hiredate
 from employee
 where hiredate > (select hiredate
 				  from employee
 				  where ename='WARD');
 
---¹æ¹ý-3
---[1] ¸ÕÀú 'WARD'ÀÇ ÀÔ»çÀÏ ±¸ÇÏ±â
+--ë°©ë²•-3
+--[1] ë¨¼ì € 'WARD'ì˜ ìž…ì‚¬ì¼ êµ¬í•˜ê¸°
 select hiredate
 from employee
 where ename='WARD';--1981-02-22
@@ -551,48 +551,48 @@ select m.ename, m.hiredate
 from (select hiredate
 	  from employee
 	  where ename='WARD') e, employee m
-where e.hiredate < m.hiredate	--°Ë»öÁ¶°Ç
+where e.hiredate < m.hiredate	--ê²€ìƒ‰ì¡°ê±´
 order by m.hiredate asc;
 --order by 2 asc;
 
---[join ¹æ¹ý-2]ÀÌ¿ë--------------------------------------------------
---¹æ¹ý-1-1
+--[join ë°©ë²•-2]ì´ìš©--------------------------------------------------
+--ë°©ë²•-1-1
 select e.ename, e.hiredate, m.ename, m.hiredate
 from employee e JOIN employee m
-ON e.ename = 'WARD';--join °á°ú : 14
+ON e.ename = 'WARD';--join ê²°ê³¼ : 14
 
 select e.ename, e.hiredate, m.ename, m.hiredate
 from employee e JOIN employee m
 ON e.ename = 'WARD'
-WHERE e.hiredate < m.hiredate--°Ë»öÁ¶°Ç : 11
+WHERE e.hiredate < m.hiredate--ê²€ìƒ‰ì¡°ê±´ : 11
 order by m.hiredate asc;
 
---¹æ¹ý-1-2
+--ë°©ë²•-1-2
 select e.ename, e.hiredate, m.ename, m.hiredate
 from employee e JOIN employee m
-ON e.ename = 'WARD';--join °á°ú : 14
+ON e.ename = 'WARD';--join ê²°ê³¼ : 14
 
 select e.ename, e.hiredate, m.ename, m.hiredate
 from employee e JOIN employee m
-ON e.ename = 'WARD' AND e.hiredate < m.hiredate--Á¶ÀÎÁ¶°Ç : 11
+ON e.ename = 'WARD' AND e.hiredate < m.hiredate--ì¡°ì¸ì¡°ê±´ : 11
 order by m.hiredate asc;
 
---¹æ¹ý-3
---[1] ¸ÕÀú 'WARD'ÀÇ ÀÔ»çÀÏ ±¸ÇÏ±â
+--ë°©ë²•-3
+--[1] ë¨¼ì € 'WARD'ì˜ ìž…ì‚¬ì¼ êµ¬í•˜ê¸°
 select hiredate
 from employee
 where ename='WARD';--1981-02-22
 
 --[2]
 select *
-from employee m JOIN employee e--ÁÖÀÇ : º°Äª¼ø¼­
+from employee m JOIN employee e--ì£¼ì˜ : ë³„ì¹­ìˆœì„œ
 ON m.hiredate > (select hiredate
 				  from employee
 				  where ename='WARD');
 
 --[3]	  
-select DISTINCT m.ename, m.hiredate --DISTINCT:Áßº¹Á¦°Å
-from employee m JOIN employee e--ÁÖÀÇ : º°Äª¼ø¼­
+select DISTINCT m.ename, m.hiredate --DISTINCT:ì¤‘ë³µì œê±°
+from employee m JOIN employee e--ì£¼ì˜ : ë³„ì¹­ìˆœì„œ
 ON m.hiredate > (select hiredate
 				  from employee
 				  where ename='WARD')
@@ -603,27 +603,27 @@ order by m.hiredate asc;
 
 
 /*
- * 11.SELF JOINÀ» »ç¿ëÇÏ¿© °ü¸®ÀÚº¸´Ù ¸ÕÀú ÀÔ»çÇÑ ¸ðµç »ç¿øÀÇ ÀÌ¸§ ¹× ÀÔ»çÀÏÀ» 
- * °ü¸®ÀÚ ÀÌ¸§ ¹× ÀÔ»çÀÏ°ú ÇÔ²² Ãâ·ÂÇÏ½Ã¿À.(»ç¿øÀÇ ÀÔ»çÀÏÀ» ±âÁØÀ¸·Î Á¤·Ä)
+ * 11.SELF JOINì„ ì‚¬ìš©í•˜ì—¬ ê´€ë¦¬ìžë³´ë‹¤ ë¨¼ì € ìž…ì‚¬í•œ ëª¨ë“  ì‚¬ì›ì˜ ì´ë¦„ ë° ìž…ì‚¬ì¼ì„ 
+ * ê´€ë¦¬ìž ì´ë¦„ ë° ìž…ì‚¬ì¼ê³¼ í•¨ê»˜ ì¶œë ¥í•˜ì‹œì˜¤.(ì‚¬ì›ì˜ ìž…ì‚¬ì¼ì„ ê¸°ì¤€ìœ¼ë¡œ ì •ë ¬)
  */
---[join ¹æ¹ý-1]ÀÌ¿ë----------------------------
+--[join ë°©ë²•-1]ì´ìš©----------------------------
 --[1]
 select e.eno, e.ename, e.hiredate, e.manager, m.eno, m.ename, m.hiredate
 from employee e, employee m
-where e.manager = m.eno -- Á¶ÀÎÁ¶°Ç
-AND e.hiredate < m.hiredate--°Ë»öÁ¶°Ç
-order by e.hiredate;--asc »ý·«°¡´É
+where e.manager = m.eno -- ì¡°ì¸ì¡°ê±´
+AND e.hiredate < m.hiredate--ê²€ìƒ‰ì¡°ê±´
+order by e.hiredate;--asc ìƒëžµê°€ëŠ¥
 --[2]
 select e.ename, e.hiredate, m.ename, m.hiredate
 from employee e, employee m
-where e.manager = m.eno -- Á¶ÀÎÁ¶°Ç
-AND e.hiredate < m.hiredate--°Ë»öÁ¶°Ç
-order by e.hiredate;--asc »ý·«°¡´É
+where e.manager = m.eno -- ì¡°ì¸ì¡°ê±´
+AND e.hiredate < m.hiredate--ê²€ìƒ‰ì¡°ê±´
+order by e.hiredate;--asc ìƒëžµê°€ëŠ¥
 
---[join ¹æ¹ý-2]ÀÌ¿ë
-select e.ename as "»ç¿øÀÌ¸§", e.hiredate as "»ç¿øÀÔ»çÀÏ",
-		m.ename as "°ü¸®ÀÚÀÌ¸§", m.hiredate as "°ü¸®ÀÚÀÔ»çÀÏ"
+--[join ë°©ë²•-2]ì´ìš©
+select e.ename as "ì‚¬ì›ì´ë¦„", e.hiredate as "ì‚¬ì›ìž…ì‚¬ì¼",
+		m.ename as "ê´€ë¦¬ìžì´ë¦„", m.hiredate as "ê´€ë¦¬ìžìž…ì‚¬ì¼"
 from employee e JOIN employee m
 ON e.manager = m.eno
 where e.hiredate < m.hiredate
-order by e.hiredate;--asc »ý·«°¡´É
+order by e.hiredate;--asc ìƒëžµê°€ëŠ¥

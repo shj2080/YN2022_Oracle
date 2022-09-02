@@ -1,33 +1,33 @@
---ÀÀ¿ëSW ±âÃÊ ±â¼úÈ°¿ë Å×½ºÆ® Á¤¸®
---Å×ÀÌºí »ı¼º -> µ¥ÀÌÅÍ Ãß°¡ -> Á¶È¸/¼öÁ¤/»èÁ¦
+--ì‘ìš©SW ê¸°ì´ˆ ê¸°ìˆ í™œìš© í…ŒìŠ¤íŠ¸ ì •ë¦¬
+--í…Œì´ë¸” ìƒì„± -> ë°ì´í„° ì¶”ê°€ -> ì¡°íšŒ/ìˆ˜ì •/ì‚­ì œ
 
 --drop table ADDRESS;
 --delete address WHERE anum=5;
 
---1. Å×ÀÌºí »ı¼º
+--1. í…Œì´ë¸” ìƒì„±
 create table ADDRESS(
-	anum number primary key,	--Áßº¹ Çã¿ëX + not null
+	anum number primary key,	--ì¤‘ë³µ í—ˆìš©X + not null
 	name varchar2(20) NOT NULL,
 	gender char(1),
 	tel varchar2(20),
 	address varchar2(100) NOT NULL
 );
 
---2. µ¥ÀÌÅÍ Ãß°¡
-insert into address values(1,'°­¹ÎÀç', 'M', '010-1111-1111', '´ë±¸');
-insert into address values(2,'±ÇÀºÀç', 'F', '010-2222-2222', 'ºÎ»ê');
-insert into address values(3,'±èµµ¿µ', 'M', '010-3333-3333', '¼­¿ï');
+--2. ë°ì´í„° ì¶”ê°€
+insert into address values(1,'ê°•ë¯¼ì¬', 'M', '010-1111-1111', 'ëŒ€êµ¬');
+insert into address values(2,'ê¶Œì€ì¬', 'F', '010-2222-2222', 'ë¶€ì‚°');
+insert into address values(3,'ê¹€ë„ì˜', 'M', '010-3333-3333', 'ì„œìš¸');
 
---3. µ¥ÀÌÅÍ Á¶È¸ : ADDRESS Å×ÀÌºíÀÇ ¸ğµç Á¤º¸ Á¶È¸
+--3. ë°ì´í„° ì¡°íšŒ : ADDRESS í…Œì´ë¸”ì˜ ëª¨ë“  ì •ë³´ ì¡°íšŒ
 select * from address;
 
---4. µ¥ÀÌÅÍ Ãß°¡ (4, '±èÀº°æ', 'F', '010-4444-4444', '´ë±¸')
-insert into ADDRESS values(4, '±èÀº°æ', 'F', '010-4444-4444', '´ë±¸');
+--4. ë°ì´í„° ì¶”ê°€ (4, 'ê¹€ì€ê²½', 'F', '010-4444-4444', 'ëŒ€êµ¬')
+insert into ADDRESS values(4, 'ê¹€ì€ê²½', 'F', '010-4444-4444', 'ëŒ€êµ¬');
 
---5. µ¥ÀÌÅÍ º¯°æ=¼öÁ¤=°»½Å : °­¹ÎÀçÀÇ address°ªÀ» '¼­¿ï'·Î º¯°æ
-UPDATE ADDRESS			--UPDATE [Å×ÀÌºíÀÌ¸§]
-SET address='¼­¿ï'		--SET [¼Ó¼º]=<¹Ù²Ù·Á´Â °ª>
-where name='°­¹ÎÀç';		--WHERE [¼Ó¼º]=<Ã£´Â °ª>   Á¶°Ç¹®
+--5. ë°ì´í„° ë³€ê²½=ìˆ˜ì •=ê°±ì‹  : ê°•ë¯¼ì¬ì˜ addressê°’ì„ 'ì„œìš¸'ë¡œ ë³€ê²½
+UPDATE ADDRESS			--UPDATE [í…Œì´ë¸”ì´ë¦„]
+SET address='ì„œìš¸'		--SET [ì†ì„±]=<ë°”ê¾¸ë ¤ëŠ” ê°’>
+where name='ê°•ë¯¼ì¬';		--WHERE [ì†ì„±]=<ì°¾ëŠ” ê°’>   ì¡°ê±´ë¬¸
 --where anum=1;
 
-select * from address; --¼öÁ¤È®ÀÎ
+select * from address; --ìˆ˜ì •í™•ì¸

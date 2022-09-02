@@ -1,24 +1,24 @@
---<10Àå µ¥ÀÌÅÍ ¹«°á¼º°ú Á¦¾àÁ¶°Ç-È¥ÀÚ ÇØº¸±â>
---1.employeeÅ×ÀÌºíÀÇ ±¸Á¶¸¸ º¹»çÇÏ¿© emp_sample Å×ÀÌºí »ı¼º
---»ç¿ø Å×ÀÌºíÀÇ »ç¿ø¹øÈ£ ÄÃ·³¿¡ Å×ÀÌºí ·¹º§·Î primary key Á¦¾àÁ¶°ÇÀ» ÁöÁ¤ÇÏµÇ
---Á¦¾àÁ¶°Ç¸íÀº my_emp_pk·Î ÁöÁ¤
---[1] Å×ÀÌºí ±¸Á¶¸¸ °¡Á®¿Í¼­ Å×ÀÌºí »ı¼º
+--<10ì¥ ë°ì´í„° ë¬´ê²°ì„±ê³¼ ì œì•½ì¡°ê±´-í˜¼ì í•´ë³´ê¸°>
+--1.employeeí…Œì´ë¸”ì˜ êµ¬ì¡°ë§Œ ë³µì‚¬í•˜ì—¬ emp_sample í…Œì´ë¸” ìƒì„±
+--ì‚¬ì› í…Œì´ë¸”ì˜ ì‚¬ì›ë²ˆí˜¸ ì»¬ëŸ¼ì— í…Œì´ë¸” ë ˆë²¨ë¡œ primary key ì œì•½ì¡°ê±´ì„ ì§€ì •í•˜ë˜
+--ì œì•½ì¡°ê±´ëª…ì€ my_emp_pkë¡œ ì§€ì •
+--[1] í…Œì´ë¸” êµ¬ì¡°ë§Œ ê°€ì ¸ì™€ì„œ í…Œì´ë¸” ìƒì„±
 create table emp_sample
 AS
 select * from employee
 where 1=0;
 
---[2] Á¦¾àÁ¶°Ç Ãß°¡
+--[2] ì œì•½ì¡°ê±´ ì¶”ê°€
 alter table emp_sample
 add constraint my_emp_pk primary key(eno);
 
---[3] Á¦¾àÁ¶°Ç È®ÀÎ
+--[3] ì œì•½ì¡°ê±´ í™•ì¸
 select table_name, constraint_name, constraint_type
 from user_constraints
 where table_name IN ('EMP_SAMPLE');
---2.ºÎ¼­Å×ÀÌºíÀÇ ºÎ¼­¹øÈ£ ÄÃ·³¿¡ Å×ÀÌºí ·¹º§·Î primary key Á¦¾àÁ¶°Ç ÁöÁ¤ÇÏµÇ
---Á¦¾àÁ¶°Ç¸íÀº my_dept_pk·Î ÁöÁ¤
-/* ºÎ¼­Å×ÀÌºíÀÇ º¹»çº» »ı¼º
+--2.ë¶€ì„œí…Œì´ë¸”ì˜ ë¶€ì„œë²ˆí˜¸ ì»¬ëŸ¼ì— í…Œì´ë¸” ë ˆë²¨ë¡œ primary key ì œì•½ì¡°ê±´ ì§€ì •í•˜ë˜
+--ì œì•½ì¡°ê±´ëª…ì€ my_dept_pkë¡œ ì§€ì •
+/* ë¶€ì„œí…Œì´ë¸”ì˜ ë³µì‚¬ë³¸ ìƒì„±
 create table dept_sample
 AS
 select * from DEPARTMENT
@@ -29,28 +29,28 @@ alter table dept_sample
 add constraint my_dept_pk primary key(dno);
 
 
---3.»ç¿øÅ×ÀÌºíÀÇ ºÎ¼­¹øÈ£ ÄÃ·³¿¡ Á¸ÀçÇÏÁö ¾Ê´Â ºÎ¼­ÀÇ »ç¿øÀÌ ¹èÁ¤µÇÁö ¾Êµµ·Ï
---¿Ü·¡Å°(=ÂüÁ¶Å°) Á¦¾àÁ¶°Ç(=ÂüÁ¶ ¹«°á¼º)À» ÁöÁ¤ÇÏµÇ
---Á¦¾à Á¶°Ç ÀÌ¸§Àº my_emp_dept_fk·Î ÁöÁ¤
---[1] Á¦¾àÁ¶°Ç Ãß°¡
+--3.ì‚¬ì›í…Œì´ë¸”ì˜ ë¶€ì„œë²ˆí˜¸ ì»¬ëŸ¼ì— ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ë¶€ì„œì˜ ì‚¬ì›ì´ ë°°ì •ë˜ì§€ ì•Šë„ë¡
+--ì™¸ë˜í‚¤(=ì°¸ì¡°í‚¤) ì œì•½ì¡°ê±´(=ì°¸ì¡° ë¬´ê²°ì„±)ì„ ì§€ì •í•˜ë˜
+--ì œì•½ ì¡°ê±´ ì´ë¦„ì€ my_emp_dept_fkë¡œ ì§€ì •
+--[1] ì œì•½ì¡°ê±´ ì¶”ê°€
 alter table emp_sample
 add constraint my_emp_dept_fk foreign key(dno) references dept_sample(dno);
 
---[2] Á¦¾àÁ¶°Ç È®ÀÎ
+--[2] ì œì•½ì¡°ê±´ í™•ì¸
 select table_name, constraint_name, constraint_type
 from user_constraints
 where table_name IN ('EMP_SAMPLE', 'DEPT_SAMPLE');
 
 
---4.»ç¿ø Å×ÀÌºíÀÇ Ä¿¹Ì¼Ç ÄÃ·³¿¡ 0º¸´Ù Å« °ª¸¸ ÀÔ·ÂÇÒ ¼ö ÀÖµµ·Ï Á¦¾àÁ¶°Ç ÁöÁ¤
---[1] Á¦¾àÁ¶°Ç Ãß°¡
+--4.ì‚¬ì› í…Œì´ë¸”ì˜ ì»¤ë¯¸ì…˜ ì»¬ëŸ¼ì— 0ë³´ë‹¤ í° ê°’ë§Œ ì…ë ¥í•  ìˆ˜ ìˆë„ë¡ ì œì•½ì¡°ê±´ ì§€ì •
+--[1] ì œì•½ì¡°ê±´ ì¶”ê°€
 alter table emp_sample
-add constraint Á¦¾àÁ¶°Ç¸í check(commission > 0);
+add constraint ì œì•½ì¡°ê±´ëª… check(commission > 0);
 
 ALTER TABLE emp_sample
 modify commission CHECK(commission > 0);
 
---[2] Á¦¾àÁ¶°Ç È®ÀÎ
+--[2] ì œì•½ì¡°ê±´ í™•ì¸
 select table_name, constraint_name, constraint_type
 from user_constraints
 where table_name IN ('EMP_SAMPLE', 'DEPT_SAMPLE');

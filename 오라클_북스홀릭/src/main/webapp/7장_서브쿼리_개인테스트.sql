@@ -1,13 +1,13 @@
---7Àå È¥ÀÚÇØº¸±â ´Ù½Ã Ç®¾îº¸±â
+--7ìž¥ í˜¼ìží•´ë³´ê¸° ë‹¤ì‹œ í’€ì–´ë³´ê¸°
 
---<7Àå.¼­ºêÄõ¸®-È¥ÀÚÇØº¸±â>----------------------------------
---1.»ç¿ø¹øÈ£°¡ 7788ÀÎ »ç¿ø°ú '´ã´ç¾÷¹«°¡ °°Àº' »ç¿øÀ» Ç¥½Ã(»ç¿øÀÌ¸§°ú ´ã´ç¾÷¹«)
---[1] »ç¿ø¹øÈ£°¡ 7788ÀÎ »ç¿øÀÇ ´ã´ç¾÷¹«
+--<7ìž¥.ì„œë¸Œì¿¼ë¦¬-í˜¼ìží•´ë³´ê¸°>----------------------------------
+--1.ì‚¬ì›ë²ˆí˜¸ê°€ 7788ì¸ ì‚¬ì›ê³¼ 'ë‹´ë‹¹ì—…ë¬´ê°€ ê°™ì€' ì‚¬ì›ì„ í‘œì‹œ(ì‚¬ì›ì´ë¦„ê³¼ ë‹´ë‹¹ì—…ë¬´)
+--[1] ì‚¬ì›ë²ˆí˜¸ê°€ 7788ì¸ ì‚¬ì›ì˜ ë‹´ë‹¹ì—…ë¬´
 select job
 from EMPLOYEE
 where eno = 7788;
 
---[2] ´ã´ç¾÷¹«°¡ ANALYSTÀÎ »ç¿ø Ç¥½Ã, »ç¿ø¹øÈ£ 7788 »ç¿ø Á¦¿Ü
+--[2] ë‹´ë‹¹ì—…ë¬´ê°€ ANALYSTì¸ ì‚¬ì› í‘œì‹œ, ì‚¬ì›ë²ˆí˜¸ 7788 ì‚¬ì› ì œì™¸
 select ename, job
 from employee
 where job IN (select job
@@ -15,52 +15,52 @@ where job IN (select job
 				where eno = 7788)
 AND eno <> 7788;
 
---2.»ç¿ø¹øÈ£°¡ 7499ÀÎ »ç¿øº¸´Ù ±Þ¿©°¡ ¸¹Àº »ç¿øÀ» Ç¥½Ã(»ç¿øÀÌ¸§°ú ´ã´ç¾÷¹«)
---[1] »ç¿ø¹øÈ£ 7499ÀÇ ±Þ¿©
+--2.ì‚¬ì›ë²ˆí˜¸ê°€ 7499ì¸ ì‚¬ì›ë³´ë‹¤ ê¸‰ì—¬ê°€ ë§Žì€ ì‚¬ì›ì„ í‘œì‹œ(ì‚¬ì›ì´ë¦„ê³¼ ë‹´ë‹¹ì—…ë¬´)
+--[1] ì‚¬ì›ë²ˆí˜¸ 7499ì˜ ê¸‰ì—¬
 select salary
 from employee
 where eno = 7499;
 
---[2] 7499º¸´Ù ±Þ¿© ¸¹Àº »ç¿øµé (»ç¿øÀÌ¸§, ´ã´ç¾÷¹«)
+--[2] 7499ë³´ë‹¤ ê¸‰ì—¬ ë§Žì€ ì‚¬ì›ë“¤ (ì‚¬ì›ì´ë¦„, ë‹´ë‹¹ì—…ë¬´)
 select ename, job
 from employee
 where salary > (select salary
 				from employee
 				where eno = 7499);
 
---3.ÃÖ¼Ò±Þ¿©¸¦ ¹Þ´Â »ç¿øÀÇ ÀÌ¸§, ´ã´ç ¾÷¹« ¹× ±Þ¿© Ç¥½Ã(±×·ìÇÔ¼ö »ç¿ë)
---[1]ÃÖ¼Ò±Þ¿©
+--3.ìµœì†Œê¸‰ì—¬ë¥¼ ë°›ëŠ” ì‚¬ì›ì˜ ì´ë¦„, ë‹´ë‹¹ ì—…ë¬´ ë° ê¸‰ì—¬ í‘œì‹œ(ê·¸ë£¹í•¨ìˆ˜ ì‚¬ìš©)
+--[1]ìµœì†Œê¸‰ì—¬
 select min(salary)
 from employee;
 
---[2]ÃÖ¼Ò±Þ¿© ¹Þ´Â »ç¿ø ±¸ÇÏ±â (»ç¿ø ÀÌ¸§, ´ã´ç¾÷¹«, ±Þ¿© Ç¥½Ã)
+--[2]ìµœì†Œê¸‰ì—¬ ë°›ëŠ” ì‚¬ì› êµ¬í•˜ê¸° (ì‚¬ì› ì´ë¦„, ë‹´ë‹¹ì—…ë¬´, ê¸‰ì—¬ í‘œì‹œ)
 select ename, job, salary
 from employee
 where salary = (select min(salary)
 				from employee);
 				
---4.'Á÷±Þº°' Æò±Õ ±Þ¿©°¡ °¡Àå ÀûÀº ´ã´ç ¾÷¹«¸¦ Ã£¾Æ 'Á÷±Þ(job)'°ú 'Æò±Õ ±Þ¿©' Ç¥½Ã
---´Ü, Æò±ÕÀÇ ÃÖ¼Ò±Þ¿©´Â ¹Ý¿Ã¸²ÇÏ¿© ¼Ò¼ö1Â°ÀÚ¸®±îÁö Ç¥½Ã
---[1] Á÷±Þº° Æò±ÕÀÇ ÃÖ¼Ò±Þ¿©
+--4.'ì§ê¸‰ë³„' í‰ê·  ê¸‰ì—¬ê°€ ê°€ìž¥ ì ì€ ë‹´ë‹¹ ì—…ë¬´ë¥¼ ì°¾ì•„ 'ì§ê¸‰(job)'ê³¼ 'í‰ê·  ê¸‰ì—¬' í‘œì‹œ
+--ë‹¨, í‰ê· ì˜ ìµœì†Œê¸‰ì—¬ëŠ” ë°˜ì˜¬ë¦¼í•˜ì—¬ ì†Œìˆ˜1ì§¸ìžë¦¬ê¹Œì§€ í‘œì‹œ
+--[1] ì§ê¸‰ë³„ í‰ê· ì˜ ìµœì†Œê¸‰ì—¬
 select min(avg(salary))
 from employee
 group by job;
 
---[2] Æò±Õ ±Þ¿©°¡ °¡Àå ÀûÀº ´ã´ç ¾÷¹«¿Í Æò±Õ ±Þ¿©
-select job, ROUND(avg(salary), 1) as "Æò±Õ ±Þ¿©"
+--[2] í‰ê·  ê¸‰ì—¬ê°€ ê°€ìž¥ ì ì€ ë‹´ë‹¹ ì—…ë¬´ì™€ í‰ê·  ê¸‰ì—¬
+select job, ROUND(avg(salary), 1) as "í‰ê·  ê¸‰ì—¬"
 from employee
 group by job
 having avg(salary) IN (select min(avg(salary))
 						from employee
 						group by job);
 				
---5.°¢ ºÎ¼­ÀÇ ÃÖ¼Ò ±Þ¿©¸¦ ¹Þ´Â »ç¿øÀÇ ÀÌ¸§, ±Þ¿©, ºÎ¼­ ¹øÈ£ Ç¥½Ã
---[1] °¢ ºÎ¼­ÀÇ ÃÖ¼Ò ±Þ¿©
+--5.ê° ë¶€ì„œì˜ ìµœì†Œ ê¸‰ì—¬ë¥¼ ë°›ëŠ” ì‚¬ì›ì˜ ì´ë¦„, ê¸‰ì—¬, ë¶€ì„œ ë²ˆí˜¸ í‘œì‹œ
+--[1] ê° ë¶€ì„œì˜ ìµœì†Œ ê¸‰ì—¬
 select dno, min(salary)
 from employee
 group by dno;
 
---[2]ºÎ¼­ ³» ÃÖ¼Ò ±Þ¿© ¹Þ´Â »ç¿ø ±¸ÇÏ±â (»ç¿ø ÀÌ¸§, ±Þ¿© , ºÎ¼­ ¹øÈ£)
+--[2]ë¶€ì„œ ë‚´ ìµœì†Œ ê¸‰ì—¬ ë°›ëŠ” ì‚¬ì› êµ¬í•˜ê¸° (ì‚¬ì› ì´ë¦„, ê¸‰ì—¬ , ë¶€ì„œ ë²ˆí˜¸)
 select ename, salary, dno
 from employee
 where (dno, salary) IN (select dno, min(salary)
@@ -68,38 +68,38 @@ where (dno, salary) IN (select dno, min(salary)
 						group by dno)
 ORDER by dno asc;
 						
---6.'´ã´ç ¾÷¹«°¡ ºÐ¼®°¡(ANALYST)ÀÎ »ç¿øº¸´Ù ±Þ¿©°¡ ÀûÀ¸¸é¼­ ¾÷¹«°¡ ºÐ¼®°¡°¡ ¾Æ´Ñ' 
---»ç¿øµéÀ» Ç¥½Ã(»ç¿ø¹øÈ£, ÀÌ¸§, ´ã´ç ¾÷¹«, ±Þ¿©)
---[1]´ã´ç ¾÷¹«°¡ 'ANALYST' ÀÎ »ç¿øÀÇ ±Þ¿©
+--6.'ë‹´ë‹¹ ì—…ë¬´ê°€ ë¶„ì„ê°€(ANALYST)ì¸ ì‚¬ì›ë³´ë‹¤ ê¸‰ì—¬ê°€ ì ìœ¼ë©´ì„œ ì—…ë¬´ê°€ ë¶„ì„ê°€ê°€ ì•„ë‹Œ' 
+--ì‚¬ì›ë“¤ì„ í‘œì‹œ(ì‚¬ì›ë²ˆí˜¸, ì´ë¦„, ë‹´ë‹¹ ì—…ë¬´, ê¸‰ì—¬)
+--[1]ë‹´ë‹¹ ì—…ë¬´ê°€ 'ANALYST' ì¸ ì‚¬ì›ì˜ ê¸‰ì—¬
 select salary
 from employee
 where job = 'ANALYST';
 
---[2]´ã´ç ¾÷¹«°¡ 'ANALYST'ÀÎ »ç¿øº¸´Ù ±Þ¿©°¡ ÀûÀ¸¸é¼­ ¾÷¹«°¡ 'ANALYST'°¡ ¾Æ´Ñ »ç¿ø ±¸ÇÏ±â(»ç¿ø¹øÈ£, ÀÌ¸§, ´ã´ç ¾÷¹«, ±Þ¿©)
+--[2]ë‹´ë‹¹ ì—…ë¬´ê°€ 'ANALYST'ì¸ ì‚¬ì›ë³´ë‹¤ ê¸‰ì—¬ê°€ ì ìœ¼ë©´ì„œ ì—…ë¬´ê°€ 'ANALYST'ê°€ ì•„ë‹Œ ì‚¬ì› êµ¬í•˜ê¸°(ì‚¬ì›ë²ˆí˜¸, ì´ë¦„, ë‹´ë‹¹ ì—…ë¬´, ê¸‰ì—¬)
 select
 
---¡Ú¡Ú7.ºÎÇÏÁ÷¿øÀÌ ¾ø´Â »ç¿øÀÌ¸§ Ç¥½Ã(¸ÕÀú '¹®Á¦ 8. ºÎÇÏÁ÷¿øÀÌ ÀÖ´Â »ç¿øÀÌ¸§ Ç¥½Ã'ºÎÅÍ Ç®±â)
+--â˜…â˜…7.ë¶€í•˜ì§ì›ì´ ì—†ëŠ” ì‚¬ì›ì´ë¦„ í‘œì‹œ(ë¨¼ì € 'ë¬¸ì œ 8. ë¶€í•˜ì§ì›ì´ ìžˆëŠ” ì‚¬ì›ì´ë¦„ í‘œì‹œ'ë¶€í„° í’€ê¸°)
 
---¡Ú¡Ú8.ºÎÇÏÁ÷¿øÀÌ ÀÖ´Â »ç¿øÀÌ¸§ Ç¥½Ã
+--â˜…â˜…8.ë¶€í•˜ì§ì›ì´ ìžˆëŠ” ì‚¬ì›ì´ë¦„ í‘œì‹œ
 
---9.BLAKE¿Í µ¿ÀÏÇÑ ºÎ¼­¿¡ ¼ÓÇÑ »ç¿øÀÌ¸§°ú ÀÔ»çÀÏÀ» Ç¥½Ã(´Ü,BLAKE´Â Á¦¿Ü)
+--9.BLAKEì™€ ë™ì¼í•œ ë¶€ì„œì— ì†í•œ ì‚¬ì›ì´ë¦„ê³¼ ìž…ì‚¬ì¼ì„ í‘œì‹œ(ë‹¨,BLAKEëŠ” ì œì™¸)
 
---10.±Þ¿©°¡ Æò±Õ ±Þ¿©º¸´Ù ¸¹Àº »ç¿øµéÀÇ »ç¿ø¹øÈ£¿Í ÀÌ¸§ Ç¥½Ã(°á°ú´Â ±Þ¿©¿¡ ´ëÇØ ¿À¸§Â÷¼ø Á¤·Ä)
+--10.ê¸‰ì—¬ê°€ í‰ê·  ê¸‰ì—¬ë³´ë‹¤ ë§Žì€ ì‚¬ì›ë“¤ì˜ ì‚¬ì›ë²ˆí˜¸ì™€ ì´ë¦„ í‘œì‹œ(ê²°ê³¼ëŠ” ê¸‰ì—¬ì— ëŒ€í•´ ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬)
 
---11.ÀÌ¸§¿¡ K°¡ Æ÷ÇÔµÈ »ç¿ø°ú °°Àº ºÎ¼­¿¡¼­ ÀÏÇÏ´Â »ç¿øÀÇ »ç¿ø¹øÈ£¿Í ÀÌ¸§ Ç¥½Ã
+--11.ì´ë¦„ì— Kê°€ í¬í•¨ëœ ì‚¬ì›ê³¼ ê°™ì€ ë¶€ì„œì—ì„œ ì¼í•˜ëŠ” ì‚¬ì›ì˜ ì‚¬ì›ë²ˆí˜¸ì™€ ì´ë¦„ í‘œì‹œ
 
---12.ºÎ¼­À§Ä¡°¡ DALLASÀÎ »ç¿øÀÌ¸§°ú ºÎ¼­¹øÈ£ ¹× ´ã´ç ¾÷¹« Ç¥½Ã
+--12.ë¶€ì„œìœ„ì¹˜ê°€ DALLASì¸ ì‚¬ì›ì´ë¦„ê³¼ ë¶€ì„œë²ˆí˜¸ ë° ë‹´ë‹¹ ì—…ë¬´ í‘œì‹œ
 
---[°úÁ¦-1]
---[12¹ø º¯°æ¹®Á¦]. ºÎ¼­À§Ä¡°¡ DALLASÀÎ »ç¿øÀÌ¸§, ºÎ¼­¹øÈ£, ´ã´ç ¾÷¹«, + 'ºÎ¼­À§Ä¡' Ç¥½Ã 
+--[ê³¼ì œ-1]
+--[12ë²ˆ ë³€ê²½ë¬¸ì œ]. ë¶€ì„œìœ„ì¹˜ê°€ DALLASì¸ ì‚¬ì›ì´ë¦„, ë¶€ì„œë²ˆí˜¸, ë‹´ë‹¹ ì—…ë¬´, + 'ë¶€ì„œìœ„ì¹˜' í‘œì‹œ 
 
---13.KING¿¡°Ô º¸°íÇÏ´Â »ç¿øÀÌ¸§°ú ±Þ¿© Ç¥½Ã
+--13.KINGì—ê²Œ ë³´ê³ í•˜ëŠ” ì‚¬ì›ì´ë¦„ê³¼ ê¸‰ì—¬ í‘œì‹œ
 
---14.RESEARCH ºÎ¼­ÀÇ »ç¿ø¿¡ ´ëÇÑ ºÎ¼­¹øÈ£, »ç¿øÀÌ¸§, ´ã´ç ¾÷¹« Ç¥½Ã
+--14.RESEARCH ë¶€ì„œì˜ ì‚¬ì›ì— ëŒ€í•œ ë¶€ì„œë²ˆí˜¸, ì‚¬ì›ì´ë¦„, ë‹´ë‹¹ ì—…ë¬´ í‘œì‹œ
 
---15.Æò±Õ ±Þ¿©º¸´Ù ¸¹Àº ±Þ¿©¸¦ ¹Þ°í ÀÌ¸§¿¡ MÀÌ Æ÷ÇÔµÈ »ç¿ø°ú °°Àº ºÎ¼­¿¡¼­ ±Ù¹«ÇÏ´Â 
---»ç¿ø¹øÈ£,ÀÌ¸§,±Þ¿© Ç¥½Ã
+--15.í‰ê·  ê¸‰ì—¬ë³´ë‹¤ ë§Žì€ ê¸‰ì—¬ë¥¼ ë°›ê³  ì´ë¦„ì— Mì´ í¬í•¨ëœ ì‚¬ì›ê³¼ ê°™ì€ ë¶€ì„œì—ì„œ ê·¼ë¬´í•˜ëŠ” 
+--ì‚¬ì›ë²ˆí˜¸,ì´ë¦„,ê¸‰ì—¬ í‘œì‹œ
 
---16.Æò±Õ ±Þ¿©°¡ °¡Àå ÀûÀº ¾÷¹«¿Í ±× Æò±Õ±Þ¿© Ç¥½Ã
+--16.í‰ê·  ê¸‰ì—¬ê°€ ê°€ìž¥ ì ì€ ì—…ë¬´ì™€ ê·¸ í‰ê· ê¸‰ì—¬ í‘œì‹œ
 
---17.´ã´ç ¾÷¹«°¡ MANAGERÀÎ »ç¿øÀÌ ¼Ò¼ÓµÈ ºÎ¼­¿Í µ¿ÀÏÇÑ ºÎ¼­ÀÇ »ç¿øÀÌ¸§ Ç¥½Ã
+--17.ë‹´ë‹¹ ì—…ë¬´ê°€ MANAGERì¸ ì‚¬ì›ì´ ì†Œì†ëœ ë¶€ì„œì™€ ë™ì¼í•œ ë¶€ì„œì˜ ì‚¬ì›ì´ë¦„ í‘œì‹œ

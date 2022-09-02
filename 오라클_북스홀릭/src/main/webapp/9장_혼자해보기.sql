@@ -1,35 +1,35 @@
---<9Àå µ¥ÀÌÅÍ Á¶ÀÛ°ú Æ®·£Àè¼Ç-È¥ÀÚ ÇØº¸±â>-----------------------------
+--<9ì¥ ë°ì´í„° ì¡°ì‘ê³¼ íŠ¸ëœì­ì…˜-í˜¼ì í•´ë³´ê¸°>-----------------------------
 /*
- * 1.EMPLOYEE Å×ÀÌºíÀÇ ±¸Á¶¸¸ º¹»çÇÏ¿© EMP_INSERT¶õ ÀÌ¸§ÀÇ ºó Å×ÀÌºíÀ» ¸¸µå½Ã¿À.
+ * 1.EMPLOYEE í…Œì´ë¸”ì˜ êµ¬ì¡°ë§Œ ë³µì‚¬í•˜ì—¬ EMP_INSERTë€ ì´ë¦„ì˜ ë¹ˆ í…Œì´ë¸”ì„ ë§Œë“œì‹œì˜¤.
  */
 create table emp_insert
 AS
 select *
 from employee
-where 0=1; --¹«Á¶°Ç °ÅÁşÀÌ µÇ´Â Á¶°Ç
+where 0=1; --ë¬´ì¡°ê±´ ê±°ì§“ì´ ë˜ëŠ” ì¡°ê±´
 
 select * from emp_insert;
 /*
- * 2.º»ÀÎÀ» EMP_INSERT Å×ÀÌºí¿¡ Ãß°¡ÇÏµÇ SYSDATE¸¦ ÀÌ¿ëÇÏ¿© ÀÔ»çÀÏÀ» ¿À´Ã·Î ÀÔ·ÂÇÏ½Ã¿À.
+ * 2.ë³¸ì¸ì„ EMP_INSERT í…Œì´ë¸”ì— ì¶”ê°€í•˜ë˜ SYSDATEë¥¼ ì´ìš©í•˜ì—¬ ì…ì‚¬ì¼ì„ ì˜¤ëŠ˜ë¡œ ì…ë ¥í•˜ì‹œì˜¤.
  */
-desc emp_insert; --Å×ÀÌºíÀÇ ±¸Á¶¿Í °¢ ÄÃ·³ÀÇ µ¥ÀÌÅÍ Å¸ÀÔ È®ÀÎ ÈÄ
+desc emp_insert; --í…Œì´ë¸”ì˜ êµ¬ì¡°ì™€ ê° ì»¬ëŸ¼ì˜ ë°ì´í„° íƒ€ì… í™•ì¸ í›„
 
---[¹æ¹ı-1]
+--[ë°©ë²•-1]
 insert into emp_insert values(7499,'ALLEN','SALESMAN', 7698,to_date('20-2-1981', 'dd-mm-yyyy'),1600,300,30);
 
---[¹æ¹ı-2]
-insert into emp_insert(eno, ename, hiredate) values(1000, '¼ÛÈ£Áø', sysdate);
+--[ë°©ë²•-2]
+insert into emp_insert(eno, ename, hiredate) values(1000, 'ì†¡í˜¸ì§„', sysdate);
 
 select * from emp_insert;
 /*
- * 3.EMP_INSERT Å×ÀÌºí¿¡ ¿· »ç¶÷À» Ãß°¡ÇÏµÇ TO_DATE ÇÔ¼ö¸¦ ÀÌ¿ëÇÏ¿© ÀÔ»çÀÏÀ» ¾îÁ¦·Î ÀÔ·ÂÇÏ½Ã¿À.
+ * 3.EMP_INSERT í…Œì´ë¸”ì— ì˜† ì‚¬ëŒì„ ì¶”ê°€í•˜ë˜ TO_DATE í•¨ìˆ˜ë¥¼ ì´ìš©í•˜ì—¬ ì…ì‚¬ì¼ì„ ì–´ì œë¡œ ì…ë ¥í•˜ì‹œì˜¤.
  */
 insert into emp_insert values(7499,'ALLEN','SALESMAN', 7698,to_date('20-2-1981', 'dd-mm-yyyy'),1600,300,30);
 
-insert into emp_insert(eno, ename, hiredate) values(1001,'±èµµ¿µ', to_date('2022/07/20', 'yyyy/mm/dd'));
-insert into emp_insert(eno, ename, hiredate) values(1002, 'ÀÌ¸¶Æ®', to_date(to_char(sysdate-1, 'yyyy/mm/dd'), 'yyyy/mm/dd'));
+insert into emp_insert(eno, ename, hiredate) values(1001,'ê¹€ë„ì˜', to_date('2022/07/20', 'yyyy/mm/dd'));
+insert into emp_insert(eno, ename, hiredate) values(1002, 'ì´ë§ˆíŠ¸', to_date(to_char(sysdate-1, 'yyyy/mm/dd'), 'yyyy/mm/dd'));
 /*
- * 4.EMPLOYEE Å×ÀÌºíÀÇ ±¸Á¶¿Í ³»¿ëÀ» º¹»çÇÏ¿© EMP_COPY_2¶õ ÀÌ¸§ÀÇ Å×ÀÌºíÀ» ¸¸µå½Ã¿À.
+ * 4.EMPLOYEE í…Œì´ë¸”ì˜ êµ¬ì¡°ì™€ ë‚´ìš©ì„ ë³µì‚¬í•˜ì—¬ EMP_COPY_2ë€ ì´ë¦„ì˜ í…Œì´ë¸”ì„ ë§Œë“œì‹œì˜¤.
  */
 create table emp_copy_2
 AS
@@ -37,16 +37,16 @@ select * from employee;
 
 select * from emp_copy_2;
 /*
- * 5.»ç¿ø¹øÈ£°¡ 7788ÀÎ »ç¿øÀÇ ºÎ¼­¹øÈ£¸¦ 10¹øÀ¸·Î ¼öÁ¤ÇÏ½Ã¿À.
+ * 5.ì‚¬ì›ë²ˆí˜¸ê°€ 7788ì¸ ì‚¬ì›ì˜ ë¶€ì„œë²ˆí˜¸ë¥¼ 10ë²ˆìœ¼ë¡œ ìˆ˜ì •í•˜ì‹œì˜¤.
  */
 update emp_copy_2
-set dno = 10 --¼öÁ¤ÇÒ °ª
-where eno = 7788; --°Ë»öÇÏ¿©
+set dno = 10 --ìˆ˜ì •í•  ê°’
+where eno = 7788; --ê²€ìƒ‰í•˜ì—¬
 
 select * from emp_copy_2
 where eno = 7788;
 /*
- * 6.»ç¿ø¹øÈ£°¡ 7788ÀÇ ´ã´ç ¾÷¹« ¹× ±Ş¿©¸¦ »ç¿ø¹øÈ£ 7499ÀÇ ´ã´ç ¾÷¹« ¹× ±Ş¿©¿Í ÀÏÄ¡ÇÏµµ·Ï °»½ÅÇÏ½Ã¿À.
+ * 6.ì‚¬ì›ë²ˆí˜¸ê°€ 7788ì˜ ë‹´ë‹¹ ì—…ë¬´ ë° ê¸‰ì—¬ë¥¼ ì‚¬ì›ë²ˆí˜¸ 7499ì˜ ë‹´ë‹¹ ì—…ë¬´ ë° ê¸‰ì—¬ì™€ ì¼ì¹˜í•˜ë„ë¡ ê°±ì‹ í•˜ì‹œì˜¤.
  */
 select job
 from emp_copy_2
@@ -69,7 +69,7 @@ select *
 from emp_copy_2
 where eno = 7788;
 /*
- * 7.»ç¿ø¹øÈ£ 7369¿Í ¾÷¹«°¡ µ¿ÀÏÇÑ ¸ğµç »ç¿øÀÇ ºÎ¼­¹øÈ£¸¦ »ç¿ø 7369ÀÇ ÇöÀç ºÎ¼­¹øÈ£·Î °»½ÅÇÏ½Ã¿À.
+ * 7.ì‚¬ì›ë²ˆí˜¸ 7369ì™€ ì—…ë¬´ê°€ ë™ì¼í•œ ëª¨ë“  ì‚¬ì›ì˜ ë¶€ì„œë²ˆí˜¸ë¥¼ ì‚¬ì› 7369ì˜ í˜„ì¬ ë¶€ì„œë²ˆí˜¸ë¡œ ê°±ì‹ í•˜ì‹œì˜¤.
  */
 select job
 from emp_copy_2
@@ -91,7 +91,7 @@ select *
 from emp_copy_2
 where dno = 20;
 /*
- * 8.DEPARTMENT Å×ÀÌºíÀÇ ±¸Á¶¿Í ³»¿ëÀ» º¹»çÇÏ¿© DEPT_COPY_2¶õ ÀÌ¸§ÀÇ Å×ÀÌºíÀ» ¸¸µå½Ã¿À.
+ * 8.DEPARTMENT í…Œì´ë¸”ì˜ êµ¬ì¡°ì™€ ë‚´ìš©ì„ ë³µì‚¬í•˜ì—¬ DEPT_COPY_2ë€ ì´ë¦„ì˜ í…Œì´ë¸”ì„ ë§Œë“œì‹œì˜¤.
  */
 create table dept_copy_2
 AS
@@ -100,14 +100,14 @@ select * from department;
 select * from dept_copy_2;
 
 /*
- * 9.DEPT_COPY_2 Å×ÀÌºí¿¡¼­ ºÎ¼­¸íÀÌ RESEARCHÀÎ ºÎ¼­¸¦ Á¦°ÅÇÏ½Ã¿À.
+ * 9.DEPT_COPY_2 í…Œì´ë¸”ì—ì„œ ë¶€ì„œëª…ì´ RESEARCHì¸ ë¶€ì„œë¥¼ ì œê±°í•˜ì‹œì˜¤.
  */
 delete from dept_copy_2
 where dname = 'RESEARCH';
 
 select * from dept_copy_2;
 /*
- * 10.DEPT_COPY_2 Å×ÀÌºí¿¡¼­ ºÎ¼­¹øÈ£°¡ 10ÀÌ°Å³ª 40ÀÎ ºÎ¼­¸¦ Á¦°ÅÇÏ½Ã¿À.
+ * 10.DEPT_COPY_2 í…Œì´ë¸”ì—ì„œ ë¶€ì„œë²ˆí˜¸ê°€ 10ì´ê±°ë‚˜ 40ì¸ ë¶€ì„œë¥¼ ì œê±°í•˜ì‹œì˜¤.
  */
 delete from dept_copy_2
 where dno = 10 OR dno = 40;

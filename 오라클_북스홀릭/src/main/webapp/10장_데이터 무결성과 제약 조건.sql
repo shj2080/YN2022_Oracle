@@ -1,39 +1,39 @@
---<ºÏ½º 10Àå. µ¥ÀÌÅÍ ¹«°á¼º°ú Á¦¾à Á¶°Ç>
+--<ë¶ìŠ¤ 10ì¥. ë°ì´í„° ë¬´ê²°ì„±ê³¼ ì œì•½ ì¡°ê±´>
 
---1. Á¦¾àÁ¶°Ç
---'µ¥ÀÌÅÍ ¹«°á¼º' Á¦¾àÁ¶°Ç : Å×ÀÌºí¿¡ À¯È¿ÇÏÁö ¾ÊÀº(ºÎÀûÀıÇÑ) µ¥ÀÌÅÍ°¡ ÀÔ·ÂµÇ´Â °ÍÀ» ¹æÁöÇÏ±â À§ÇØ
---Å×ÀÌºí »ı¼ºÇÒ ¶§ °¢ ÄÃ·³¿¡ ´ëÇØ Á¤ÀÇÇÏ´Â ¿©·¯ ±ÔÄ¢µé
+--1. ì œì•½ì¡°ê±´
+--'ë°ì´í„° ë¬´ê²°ì„±' ì œì•½ì¡°ê±´ : í…Œì´ë¸”ì— ìœ íš¨í•˜ì§€ ì•Šì€(ë¶€ì ì ˆí•œ) ë°ì´í„°ê°€ ì…ë ¥ë˜ëŠ” ê²ƒì„ ë°©ì§€í•˜ê¸° ìœ„í•´
+--í…Œì´ë¸” ìƒì„±í•  ë•Œ ê° ì»¬ëŸ¼ì— ëŒ€í•´ ì •ì˜í•˜ëŠ” ì—¬ëŸ¬ ê·œì¹™ë“¤
 
---<Å×ÀÌºí »ı¼º¿¡ »ç¿ëµÇ´Â Á¦¾à Á¶°Ç(5°¡Áö)>---------------------------------------------------------------------------
---1. PRIMARY KEY(±âº»Å°=PK) : not nullÁ¦¾àÁ¶°Ç - null°ª Çã¿ëX
---							unique Á¦¾àÁ¶°Ç - Áßº¹X -> °íÀ¯Å°(¾Ï½ÃÀû index ÀÚµ¿ »ı¼º)
+--<í…Œì´ë¸” ìƒì„±ì— ì‚¬ìš©ë˜ëŠ” ì œì•½ ì¡°ê±´(5ê°€ì§€)>---------------------------------------------------------------------------
+--1. PRIMARY KEY(ê¸°ë³¸í‚¤=PK) : not nullì œì•½ì¡°ê±´ - nullê°’ í—ˆìš©X
+--							unique ì œì•½ì¡°ê±´ - ì¤‘ë³µX -> ê³ ìœ í‚¤(ì•”ì‹œì  index ìë™ ìƒì„±)
 
---2. FOREIGN KEY(¿Ü·¡Å°=ÂüÁ¶Å°=FK) : ÂüÁ¶µÇ´Â Å×ÀÌºí¿¡ ÄÃ·³ °ªÀÌ ¹İµå½Ã PK or UNIQUEÀ¸·Î Á¸Àç
---								 (¿¹) »ç¿øÅ×ÀÌºí(ÀÚ½Ä) dno(FK) -> ºÎ¼­Å×ÀÌºí(ºÎ¸ğ) dno(PK or unique)
---								 ¡Ø ÂüÁ¶ ¹«°á¼º Á¦¾àÁ¶°Ç : Å×ÀÌºí »çÀÌÀÇ 'ÁÖÁ¾ °ü°è¸¦ ¼³Á¤'ÇÏ±â À§ÇÑ Á¦¾àÁ¶°Ç
---'¾î´À Å×ÀÌºíºÎÅÍ ¸ÕÀú Á¤ÀÇµÇ¾î¾ß ÇÏ´Â°¡? : ¸ÕÀú, ºÎ¸ğ Å×ÀÌºíºÎÅÍ Á¤ÀÇÇÏ°í -> ÀÚ½Ä Å×ÀÌºí Á¤ÀÇ
--- ÂüÁ¶ ¹«°á¼ºÀÌ À§¹èµÇ´Â »óÈ² ¹ß»ı ½Ã, ´ÙÀ½ ¿É¼ÇÀ¸·Î Ã³¸® °¡´É
+--2. FOREIGN KEY(ì™¸ë˜í‚¤=ì°¸ì¡°í‚¤=FK) : ì°¸ì¡°ë˜ëŠ” í…Œì´ë¸”ì— ì»¬ëŸ¼ ê°’ì´ ë°˜ë“œì‹œ PK or UNIQUEìœ¼ë¡œ ì¡´ì¬
+--								 (ì˜ˆ) ì‚¬ì›í…Œì´ë¸”(ìì‹) dno(FK) -> ë¶€ì„œí…Œì´ë¸”(ë¶€ëª¨) dno(PK or unique)
+--								 â€» ì°¸ì¡° ë¬´ê²°ì„± ì œì•½ì¡°ê±´ : í…Œì´ë¸” ì‚¬ì´ì˜ 'ì£¼ì¢… ê´€ê³„ë¥¼ ì„¤ì •'í•˜ê¸° ìœ„í•œ ì œì•½ì¡°ê±´
+--'ì–´ëŠ í…Œì´ë¸”ë¶€í„° ë¨¼ì € ì •ì˜ë˜ì–´ì•¼ í•˜ëŠ”ê°€? : ë¨¼ì €, ë¶€ëª¨ í…Œì´ë¸”ë¶€í„° ì •ì˜í•˜ê³  -> ìì‹ í…Œì´ë¸” ì •ì˜
+-- ì°¸ì¡° ë¬´ê²°ì„±ì´ ìœ„ë°°ë˜ëŠ” ìƒí™© ë°œìƒ ì‹œ, ë‹¤ìŒ ì˜µì…˜ìœ¼ë¡œ ì²˜ë¦¬ ê°€ëŠ¥
 -- (CASCADE, NO ACTION, SET NULL, SET DEFAULT)
 
---3. UNIQUE : Áßº¹X -> À¯ÀÏÇÑ °ª=°íÀ¯ÇÑ °ª -> °íÀ¯Å°(¾Ï½ÃÀû index ÀÚµ¿ »ı¼º)
---			 ¡Ú¡Ú nullÀº uniqueÁ¦¾àÁ¶°Ç¿¡ À§¹İµÇÁö ¾ÊÀ¸¹Ç·Î 'null°ªÀ» Çã¿ë'
+--3. UNIQUE : ì¤‘ë³µX -> ìœ ì¼í•œ ê°’=ê³ ìœ í•œ ê°’ -> ê³ ìœ í‚¤(ì•”ì‹œì  index ìë™ ìƒì„±)
+--			 â˜…â˜… nullì€ uniqueì œì•½ì¡°ê±´ì— ìœ„ë°˜ë˜ì§€ ì•Šìœ¼ë¯€ë¡œ 'nullê°’ì„ í—ˆìš©'
 
---4. NOT NULL : null°ª Çã¿ë ¾È ÇÔ
+--4. NOT NULL : nullê°’ í—ˆìš© ì•ˆ í•¨
 
---5. CHECK : 'ÀúÀå°¡´ÉÇÑ µ¥ÀÌÅÍ ¹üÀ§³ª Á¶°Ç ÁöÁ¤'ÇÏ¿© (¿¹) CHECK(0 < salary  && salary < 1000000)
---			 -> ¼³Á¤µÈ °ª ÀÌ¿ÜÀÇ °ªÀÌ µé¾î¿À¸é ¿À·ù
+--5. CHECK : 'ì €ì¥ê°€ëŠ¥í•œ ë°ì´í„° ë²”ìœ„ë‚˜ ì¡°ê±´ ì§€ì •'í•˜ì—¬ (ì˜ˆ) CHECK(0 < salary  && salary < 1000000)
+--			 -> ì„¤ì •ëœ ê°’ ì´ì™¸ì˜ ê°’ì´ ë“¤ì–´ì˜¤ë©´ ì˜¤ë¥˜
 -------------------------------------------------------------------------------------------------------------
---default Á¤ÀÇ : ¾Æ¹«·± °ªÀ» ÀÔ·ÂÇÏÁö ¾Ê¾ÒÀ» ¶§ default°ªÀÌ ÀÔ·ÂµÊ
+--default ì •ì˜ : ì•„ë¬´ëŸ° ê°’ì„ ì…ë ¥í•˜ì§€ ì•Šì•˜ì„ ë•Œ defaultê°’ì´ ì…ë ¥ë¨
 
---Á¦¾àÁ¶°Ç : ÄÃ·³·¹º§ - ÇÏ³ªÀÇ ÄÃ·³¿¡ ´ëÇØ ¸ğµç Á¦¾à Á¶°ÇÀ» Á¤ÀÇ
---		   Å×ÀÌºí·¹º§ - 'not null Á¦¿Ü'ÇÑ ³ª¸ÓÁö Á¦¾àÁ¶°ÇÀ» Á¤ÀÇ
+--ì œì•½ì¡°ê±´ : ì»¬ëŸ¼ë ˆë²¨ - í•˜ë‚˜ì˜ ì»¬ëŸ¼ì— ëŒ€í•´ ëª¨ë“  ì œì•½ ì¡°ê±´ì„ ì •ì˜
+--		   í…Œì´ë¸”ë ˆë²¨ - 'not null ì œì™¸'í•œ ë‚˜ë¨¸ì§€ ì œì•½ì¡°ê±´ì„ ì •ì˜
 
---<Á¦¾àÁ¶°ÇÀÌ¸§ Á÷Á¢ ÁöÁ¤ÇÒ ¶§ Çü½Ä>
---constraint Á¦¾àÁ¶°ÇÀÌ¸§
---constraint Å×ÀÌºí¸í_ÄÃ·³¸í_Á¦¾àÁ¶°ÇÀ¯Çü
---Á¦¾àÁ¶°ÇÀÌ¸§ ÁöÁ¤ÇÏÁö ¾ÊÀ¸¸é ÀÚµ¿ »ı¼ºµÊ
+--<ì œì•½ì¡°ê±´ì´ë¦„ ì§ì ‘ ì§€ì •í•  ë•Œ í˜•ì‹>
+--constraint ì œì•½ì¡°ê±´ì´ë¦„
+--constraint í…Œì´ë¸”ëª…_ì»¬ëŸ¼ëª…_ì œì•½ì¡°ê±´ìœ í˜•
+--ì œì•½ì¡°ê±´ì´ë¦„ ì§€ì •í•˜ì§€ ì•Šìœ¼ë©´ ìë™ ìƒì„±ë¨
 
---(1) Á¦¾àÁ¶°ÇÀÌ¸§ ÁöÁ¤ÇÏÁö ¾ÊÀ¸¸é ÀÚµ¿ »ı¼ºµÊ
+--(1) ì œì•½ì¡°ê±´ì´ë¦„ ì§€ì •í•˜ì§€ ì•Šìœ¼ë©´ ìë™ ìƒì„±ë¨
 drop table customer2;
 
 create table customer2(
@@ -44,33 +44,33 @@ create table customer2(
 	address varchar2(100)
 );
 
---USER_CONSTRAINTS : ÀÚ±â °èÁ¤ÀÇ 'Á¦¾à Á¶°Ç' È®ÀÎ
--- constraint_type : P(=PK:±âº»Å°), R(=FK=ÂüÁ¶Å°), C(=NOT NUL), U(=Unique)
+--USER_CONSTRAINTS : ìê¸° ê³„ì •ì˜ 'ì œì•½ ì¡°ê±´' í™•ì¸
+-- constraint_type : P(=PK:ê¸°ë³¸í‚¤), R(=FK=ì°¸ì¡°í‚¤), C(=NOT NUL), U(=Unique)
 select table_name, constraint_name, constraint_type
-from USER_constraints--»ç¿ëÀÚ(system)°¡ ¼ÒÀ¯ÇÑ 'Á¦¾à Á¶°Ç' Á¤º¸
-where table_name in ('CUSTOMER2'); --¡ÚÁÖÀÇ : Å×ÀÌºí¸í '´ë¹®ÀÚ·Î °Ë»ö'
+from USER_constraints--ì‚¬ìš©ì(system)ê°€ ì†Œìœ í•œ 'ì œì•½ ì¡°ê±´' ì •ë³´
+where table_name in ('CUSTOMER2'); --â˜…ì£¼ì˜ : í…Œì´ë¸”ëª… 'ëŒ€ë¬¸ìë¡œ ê²€ìƒ‰'
 --where LOWER(table_name) in ('customer2');
 --where table_name in ( UPPER('customer2') );
 
 -------------------------------------------------------------------------------------------------------------
---(2) Á¦¾àÁ¶°ÇÀÌ¸§ ÁöÁ¤ : constraint Å×ÀÌºí¸í_ÄÃ·³¸í_Á¦¾àÁ¶°ÇÀ¯Çü
+--(2) ì œì•½ì¡°ê±´ì´ë¦„ ì§€ì • : constraint í…Œì´ë¸”ëª…_ì»¬ëŸ¼ëª…_ì œì•½ì¡°ê±´ìœ í˜•
 drop table customer2;
 
 create table customer2(
-	id varchar2(20) constraint customer2_id_uq unique, --ÄÃ·³·¹º§
+	id varchar2(20) constraint customer2_id_uq unique, --ì»¬ëŸ¼ë ˆë²¨
 	pwd varchar2(20) constraint customer2_pwd_nn not null,
 	name varchar2(20) constraint customer2_name_nn not null,
 	phone varchar2(30),
 	address varchar2(100)
 );
 
---USER_CONSTRAINTS : ÀÚ±â °èÁ¤ÀÇ 'Á¦¾à Á¶°Ç' È®ÀÎ
--- constraint_type : P(=PK:±âº»Å°), R(=FK=ÂüÁ¶Å°), C(=NOT NUL), U(=Unique)
+--USER_CONSTRAINTS : ìê¸° ê³„ì •ì˜ 'ì œì•½ ì¡°ê±´' í™•ì¸
+-- constraint_type : P(=PK:ê¸°ë³¸í‚¤), R(=FK=ì°¸ì¡°í‚¤), C(=NOT NUL), U(=Unique)
 select table_name, constraint_name, constraint_type
-from USER_constraints--»ç¿ëÀÚ(system)°¡ ¼ÒÀ¯ÇÑ 'Á¦¾à Á¶°Ç' Á¤º¸
-where table_name in ('CUSTOMER2'); --¡ÚÁÖÀÇ : Å×ÀÌºí¸í '´ë¹®ÀÚ·Î °Ë»ö'
+from USER_constraints--ì‚¬ìš©ì(system)ê°€ ì†Œìœ í•œ 'ì œì•½ ì¡°ê±´' ì •ë³´
+where table_name in ('CUSTOMER2'); --â˜…ì£¼ì˜ : í…Œì´ë¸”ëª… 'ëŒ€ë¬¸ìë¡œ ê²€ìƒ‰'
 
---(3) PK¸¦ ÄÃ·³·¹º§
+--(3) PKë¥¼ ì»¬ëŸ¼ë ˆë²¨
 drop table customer2;
 
 create table customer2(
@@ -81,13 +81,13 @@ create table customer2(
 	address varchar2(100)
 );
 
---USER_CONSTRAINTS : ÀÚ±â °èÁ¤ÀÇ 'Á¦¾à Á¶°Ç' È®ÀÎ
--- constraint_type : P(=PK:±âº»Å°), R(=FK=ÂüÁ¶Å°), C(=NOT NUL), U(=Unique)
+--USER_CONSTRAINTS : ìê¸° ê³„ì •ì˜ 'ì œì•½ ì¡°ê±´' í™•ì¸
+-- constraint_type : P(=PK:ê¸°ë³¸í‚¤), R(=FK=ì°¸ì¡°í‚¤), C(=NOT NUL), U(=Unique)
 select table_name, constraint_name, constraint_type
-from USER_constraints--»ç¿ëÀÚ(system)°¡ ¼ÒÀ¯ÇÑ 'Á¦¾à Á¶°Ç' Á¤º¸
-where table_name in ('CUSTOMER2'); --¡ÚÁÖÀÇ : Å×ÀÌºí¸í '´ë¹®ÀÚ·Î °Ë»ö'
+from USER_constraints--ì‚¬ìš©ì(system)ê°€ ì†Œìœ í•œ 'ì œì•½ ì¡°ê±´' ì •ë³´
+where table_name in ('CUSTOMER2'); --â˜…ì£¼ì˜ : í…Œì´ë¸”ëª… 'ëŒ€ë¬¸ìë¡œ ê²€ìƒ‰'
 
---(4) PK¸¦ Å×ÀÌºí ·¹º§
+--(4) PKë¥¼ í…Œì´ë¸” ë ˆë²¨
 drop table customer2;
 
 create table customer2(
@@ -97,97 +97,97 @@ create table customer2(
 	phone varchar2(30),
 	address varchar2(100),
 	
-	--Å×ÀÌºí ·¹º§
+	--í…Œì´ë¸” ë ˆë²¨
 	--constraint customer2_id_pk PRIMARY KEY(id)
-	constraint customer2_id_name_pk PRIMARY KEY(id , name)--"±âº»Å°°¡ 2°³ ÀÌ»ó"ÀÏ ¶§ Å×ÀÌºí ·¹º§ »ç¿ë
+	constraint customer2_id_name_pk PRIMARY KEY(id , name)--"ê¸°ë³¸í‚¤ê°€ 2ê°œ ì´ìƒ"ì¼ ë•Œ í…Œì´ë¸” ë ˆë²¨ ì‚¬ìš©
 );
 
---USER_CONSTRAINTS : ÀÚ±â °èÁ¤ÀÇ 'Á¦¾à Á¶°Ç' È®ÀÎ
---constraint_type : P(=PK:±âº»Å°), R(=FK=ÂüÁ¶Å°), C(=NOT NUL), U(=Unique)
+--USER_CONSTRAINTS : ìê¸° ê³„ì •ì˜ 'ì œì•½ ì¡°ê±´' í™•ì¸
+--constraint_type : P(=PK:ê¸°ë³¸í‚¤), R(=FK=ì°¸ì¡°í‚¤), C(=NOT NUL), U(=Unique)
 select table_name, constraint_name, constraint_type
-from USER_constraints--»ç¿ëÀÚ(system)°¡ ¼ÒÀ¯ÇÑ 'Á¦¾à Á¶°Ç' Á¤º¸
-where table_name in ('CUSTOMER2'); --¡ÚÁÖÀÇ : Å×ÀÌºí¸í '´ë¹®ÀÚ·Î °Ë»ö'
+from USER_constraints--ì‚¬ìš©ì(system)ê°€ ì†Œìœ í•œ 'ì œì•½ ì¡°ê±´' ì •ë³´
+where table_name in ('CUSTOMER2'); --â˜…ì£¼ì˜ : í…Œì´ë¸”ëª… 'ëŒ€ë¬¸ìë¡œ ê²€ìƒ‰'
 
 
---1.1 NOT NULL Á¦¾àÁ¶°Ç : ÄÃ·³ ·¹º§·Î¸¸ Á¤ÀÇ : (1)Àû¿ë½Ã
-insert into customer2 values(null, null, null, '010-1111-1111', '´ë±¸ ´Ş¼­±¸'); --¿À·ù
+--1.1 NOT NULL ì œì•½ì¡°ê±´ : ì»¬ëŸ¼ ë ˆë²¨ë¡œë§Œ ì •ì˜ : (1)ì ìš©ì‹œ
+insert into customer2 values(null, null, null, '010-1111-1111', 'ëŒ€êµ¬ ë‹¬ì„œêµ¬'); --ì˜¤ë¥˜
 
---1.2 unique Á¦¾àÁ¶°Ç : À¯ÀÏÇÑ °ª¸¸ Çã¿ë(´Ü, null Çã¿ë) : (2)Àû¿ë½Ã
-insert into customer2 values('a1234', '1234', 'È«±æµ¿', '010-2222-2222', '´ë±¸ ºÏ±¸');
-insert into customer2 values(null, '5678', 'ÀÌ¼ø¼ø', '010-3333-3333', '´ë±¸ ¼­±¸');
+--1.2 unique ì œì•½ì¡°ê±´ : ìœ ì¼í•œ ê°’ë§Œ í—ˆìš©(ë‹¨, null í—ˆìš©) : (2)ì ìš©ì‹œ
+insert into customer2 values('a1234', '1234', 'í™ê¸¸ë™', '010-2222-2222', 'ëŒ€êµ¬ ë¶êµ¬');
+insert into customer2 values(null, '5678', 'ì´ìˆœìˆœ', '010-3333-3333', 'ëŒ€êµ¬ ì„œêµ¬');
 
---1.3 µ¥ÀÌÅÍ ±¸ºĞÀ» À§ÇÑ Primary Key(=PK=±âº»Å°) Á¦¾àÁ¶°Ç
---Å×ÀÌºíÀÇ ¸ğµç row¸¦ ±¸º°ÇÏ±â À§ÇÑ ½Äº°ÀÚ -> index¹øÈ£ ÀÚµ¿ »ı¼ºµÊ
+--1.3 ë°ì´í„° êµ¬ë¶„ì„ ìœ„í•œ Primary Key(=PK=ê¸°ë³¸í‚¤) ì œì•½ì¡°ê±´
+--í…Œì´ë¸”ì˜ ëª¨ë“  rowë¥¼ êµ¬ë³„í•˜ê¸° ìœ„í•œ ì‹ë³„ì -> indexë²ˆí˜¸ ìë™ ìƒì„±ë¨
 
---1.4 'ÂüÁ¶ ¹«°á¼º'À» À§ÇÑ FOREIGN KEY(FK=ÂüÁ¶Å°=¿Ü·¡Å°) Á¦¾àÁ¶°Ç
---»ç¿ø Å×ÀÌºíÀÇ ºÎ¼­¹øÈ£´Â ¾ğÁ¦³ª ºÎ¼­Å×ÀÌºíÀ» ÂüÁ¶ °¡´É : ÂüÁ¶ ¹«°á¼º
---(¿¹) ÀÚ½Ä:»ç¿øÅ×ÀÌºí dno(FK) -> ºÎ¸ğ:ºÎ¼­Å×ÀÌºí dno(¹İµå½Ã PK or unique)
+--1.4 'ì°¸ì¡° ë¬´ê²°ì„±'ì„ ìœ„í•œ FOREIGN KEY(FK=ì°¸ì¡°í‚¤=ì™¸ë˜í‚¤) ì œì•½ì¡°ê±´
+--ì‚¬ì› í…Œì´ë¸”ì˜ ë¶€ì„œë²ˆí˜¸ëŠ” ì–¸ì œë‚˜ ë¶€ì„œí…Œì´ë¸”ì„ ì°¸ì¡° ê°€ëŠ¥ : ì°¸ì¡° ë¬´ê²°ì„±
+--(ì˜ˆ) ìì‹:ì‚¬ì›í…Œì´ë¸” dno(FK) -> ë¶€ëª¨:ë¶€ì„œí…Œì´ë¸” dno(ë°˜ë“œì‹œ PK or unique)
 
-select * from DEPARTMENT; --ÂüÁ¶µÇ´Â ºÎ¸ğÅ×ÀÌºí
+select * from DEPARTMENT; --ì°¸ì¡°ë˜ëŠ” ë¶€ëª¨í…Œì´ë¸”
 
-desc employee;--Å×ÀÌºí ±¸Á¶ È®ÀÎ
---USER_CONSTRAINTS : ÀÚ±â °èÁ¤ÀÇ 'Á¦¾à Á¶°Ç' È®ÀÎ
---constraint_type : P(=PK:±âº»Å°), R(=FK=ÂüÁ¶Å°), C(=NOT NUL), U(=Unique)
+desc employee;--í…Œì´ë¸” êµ¬ì¡° í™•ì¸
+--USER_CONSTRAINTS : ìê¸° ê³„ì •ì˜ 'ì œì•½ ì¡°ê±´' í™•ì¸
+--constraint_type : P(=PK:ê¸°ë³¸í‚¤), R(=FK=ì°¸ì¡°í‚¤), C(=NOT NUL), U(=Unique)
 select table_name, constraint_name, constraint_type
 from USER_constraints
 where table_name in ('EMPLOYEE', 'DEPARTMENT');
 
---<¡Ú¡Ú »ğÀÔ(ÀÚ½ÄÀÎ »ç¿øÅ×ÀÌºí¿¡¼­)ÇÏ´Â ¹æ¹ı>
-insert into employee(eno, ename, dno) values(8000, 'È«±æµ¿', 50);--ÂüÁ¶ÇÏ´Â ÀÚ½Ä
---ºÎ¼­¹øÈ£ 50 ÀÔ·ÂÇÏ¸é
+--<â˜…â˜… ì‚½ì…(ìì‹ì¸ ì‚¬ì›í…Œì´ë¸”ì—ì„œ)í•˜ëŠ” ë°©ë²•>
+insert into employee(eno, ename, dno) values(8000, 'í™ê¸¸ë™', 50);--ì°¸ì¡°í•˜ëŠ” ìì‹
+--ë¶€ì„œë²ˆí˜¸ 50 ì…ë ¥í•˜ë©´
 --ORA-02291: integrity constraint (SYSTEM.SYS_C007011) violated - parent key not found
---'ÂüÁ¶¹«°á¼º Á¦¾àÁ¶°Ç À§¹è, ºÎ¸ğÅ°¸¦ ¹ß°ßÇÏÁö ¸øÇß´Ù.'´Â ¿À·ù¸Ş½ÃÁö
+--'ì°¸ì¡°ë¬´ê²°ì„± ì œì•½ì¡°ê±´ ìœ„ë°°, ë¶€ëª¨í‚¤ë¥¼ ë°œê²¬í•˜ì§€ ëª»í–ˆë‹¤.'ëŠ” ì˜¤ë¥˜ë©”ì‹œì§€
 
---ÀÌÀ¯ : »ç¿øÅ×ÀÌºí¿¡¼­ »ç¿øÀÇ Á¤º¸¸¦ »õ·Ó°Ô Ãß°¡ÇÒ °æ¿ì
---		»ç¿øÅ×ÀÌºíÀÇ ºÎ¼­¹øÈ£´Â ºÎ¼­Å×ÀÌºíÀÇ ÀúÀåµÈ ºÎ¼­¹øÈ£ Áß ÇÏ³ª¿Í ÀÏÄ¡
---		or NULL ¸¸ ÀÔ·Â °¡´ÉÇÔ(´Ü, null Çã¿ëÇÏ¸é) - ÂüÁ¶ ¹«°á¼º Á¦¾àÁ¶°Ç
+--ì´ìœ  : ì‚¬ì›í…Œì´ë¸”ì—ì„œ ì‚¬ì›ì˜ ì •ë³´ë¥¼ ìƒˆë¡­ê²Œ ì¶”ê°€í•  ê²½ìš°
+--		ì‚¬ì›í…Œì´ë¸”ì˜ ë¶€ì„œë²ˆí˜¸ëŠ” ë¶€ì„œí…Œì´ë¸”ì˜ ì €ì¥ëœ ë¶€ì„œë²ˆí˜¸ ì¤‘ í•˜ë‚˜ì™€ ì¼ì¹˜
+--		or NULL ë§Œ ì…ë ¥ ê°€ëŠ¥í•¨(ë‹¨, null í—ˆìš©í•˜ë©´) - ì°¸ì¡° ë¬´ê²°ì„± ì œì•½ì¡°ê±´
 
---»ğÀÔ ¹æ¹ı-1
-insert into employee(eno, ename, dno) values(8000, 'È«±æµ¿', '');-- ''(null) ´Ü, dno°¡ null Çã¿ëÇÏ¸é
+--ì‚½ì… ë°©ë²•-1
+insert into employee(eno, ename, dno) values(8000, 'í™ê¸¸ë™', '');-- ''(null) ë‹¨, dnoê°€ null í—ˆìš©í•˜ë©´
 
 select * from employee where eno = 8000;
 
---»ğÀÔ ¹æ¹ı-2 : Á¦¾àÁ¶°ÇÀ» »èÁ¦ÇÏÁö ¾Ê°í ÀÏ½ÃÀûÀ¸·Î 'ºñÈ°¼ºÈ­(=disable)' -> µ¥ÀÌÅÍ Ã³¸® -> '´Ù½Ã È°¼ºÈ­(=enable)'
---¸ÕÀú, USER_CONSTRAINTS µ¥ÀÌÅÍ »çÀüÀ» ÀÌ¿ëÇÏ¿© constraint_name°ú constraint_type, status Á¶È¸
+--ì‚½ì… ë°©ë²•-2 : ì œì•½ì¡°ê±´ì„ ì‚­ì œí•˜ì§€ ì•Šê³  ì¼ì‹œì ìœ¼ë¡œ 'ë¹„í™œì„±í™”(=disable)' -> ë°ì´í„° ì²˜ë¦¬ -> 'ë‹¤ì‹œ í™œì„±í™”(=enable)'
+--ë¨¼ì €, USER_CONSTRAINTS ë°ì´í„° ì‚¬ì „ì„ ì´ìš©í•˜ì—¬ constraint_nameê³¼ constraint_type, status ì¡°íšŒ
 select constraint_name, constraint_type, status
 from USER_constraints
 where table_name in ('EMPLOYEE');
 
---[1] ÂüÁ¶Å° Á¦¾àÁ¶°Ç 'ºñÈ°¼ºÈ­'
+--[1] ì°¸ì¡°í‚¤ ì œì•½ì¡°ê±´ 'ë¹„í™œì„±í™”'
 ALTER TABLE employee
-disable constraint SYS_C007011; --constraint_typeÀÌ R(=FK)
+disable constraint SYS_C007011; --constraint_typeì´ R(=FK)
 
 select constraint_name, constraint_type, status
 from USER_constraints
 where table_name in ('EMPLOYEE');
 
---[2] ÀÚ½Ä¿¡¼­ »ğÀÔ
-insert into employee(eno, ename, dno) values(9000, 'È«±æµ¿', 50);
+--[2] ìì‹ì—ì„œ ì‚½ì…
+insert into employee(eno, ename, dno) values(9000, 'í™ê¸¸ë™', 50);
 
---[3] ´Ù½Ã È°¼ºÈ­
+--[3] ë‹¤ì‹œ í™œì„±í™”
 ALTER TABLE employee
-enable constraint SYS_C007011; --constraint_typeÀÌ R(=FK)
---¿À·ù : ORA-02298: cannot validate (SYSTEM.SYS_C007011) - parent keys not found
+enable constraint SYS_C007011; --constraint_typeì´ R(=FK)
+--ì˜¤ë¥˜ : ORA-02298: cannot validate (SYSTEM.SYS_C007011) - parent keys not found
 
---¿À·ù ÇØ°á ¹æ¹ı-1(Áï, ´Ù½Ã È°¼ºÈ­½ÃÅ°±â À§ÇØ dno°¡ 50ÀÎ row »èÁ¦ÇÏ°Å³ª dno¸¦ ''·Î ¼öÁ¤)
+--ì˜¤ë¥˜ í•´ê²° ë°©ë²•-1(ì¦‰, ë‹¤ì‹œ í™œì„±í™”ì‹œí‚¤ê¸° ìœ„í•´ dnoê°€ 50ì¸ row ì‚­ì œí•˜ê±°ë‚˜ dnoë¥¼ ''ë¡œ ìˆ˜ì •)
 delete from employee where dno = 50;
-update employee set dno = '' where dno = 50;--''(null) Çã¿ë ½Ã »ç¿ë°¡´É
---´Ù½Ã È°¼ºÈ­
+update employee set dno = '' where dno = 50;--''(null) í—ˆìš© ì‹œ ì‚¬ìš©ê°€ëŠ¥
+--ë‹¤ì‹œ í™œì„±í™”
 ALTER TABLE employee
 enable constraint SYS_C007011;
---È°¼ºÈ­ »óÅÂ È®ÀÎ
+--í™œì„±í™” ìƒíƒœ í™•ì¸
 select constraint_name, constraint_type, status
 from USER_constraints
 where constraint_name in ('SYS_C007011');
 
---¿À·ù ÇØ°á ¹æ¹ı-2 : ÀÌ ¶§, ÀÌ¹Ì ¿©·¯ row¸¦ Ãß°¡Çß´Ù¸é Ã£¾Æ¼­ »èÁ¦ ¶Ç´Â ¼öÁ¤
+--ì˜¤ë¥˜ í•´ê²° ë°©ë²•-2 : ì´ ë•Œ, ì´ë¯¸ ì—¬ëŸ¬ rowë¥¼ ì¶”ê°€í–ˆë‹¤ë©´ ì°¾ì•„ì„œ ì‚­ì œ ë˜ëŠ” ìˆ˜ì •
 --[1]
 select dno --{10,20,30,50,null}
 from department;
 
 --[2]
 select dno --{10,20,30}
-from employee NATURAL JOIN department;--dno·Î ÀÚ¿¬Á¶ÀÎ
+from employee NATURAL JOIN department;--dnoë¡œ ìì—°ì¡°ì¸
 
 --[3]
 select dno --{10,20,30,50,null} - {10,20,30} = {50, null}
@@ -204,52 +204,52 @@ where NOT EXISTS (select dno
 			 where e.dno = d.dno);			 
 */		 
 
---[4-1]»èÁ¦ : dno°¡ 50ÀÎ »ç¿øÀ» Ã£¾Æ¼­ »èÁ¦
+--[4-1]ì‚­ì œ : dnoê°€ 50ì¸ ì‚¬ì›ì„ ì°¾ì•„ì„œ ì‚­ì œ
 delete from employee
 where dno=50;
---»èÁ¦ Àü, dno°¡ 50ÀÎ »ç¿øÀ» ¹Ì¸® ¹é¾÷½ÃÅ´
+--ì‚­ì œ ì „, dnoê°€ 50ì¸ ì‚¬ì›ì„ ë¯¸ë¦¬ ë°±ì—…ì‹œí‚´
 
---[4-2]¼öÁ¤ : dno°¡ 50ÀÎ »ç¿øÀ» Ã£¾Æ¼­ ''(null)·Î ¼öÁ¤ ÈÄ ÇâÈÄ ºÎ¼­°¡ Á¤ÇØÁö¸é ´Ù½Ã ÇØ´çºÎ¼­¹øÈ£·Î ¼öÁ¤
+--[4-2]ìˆ˜ì • : dnoê°€ 50ì¸ ì‚¬ì›ì„ ì°¾ì•„ì„œ ''(null)ë¡œ ìˆ˜ì • í›„ í–¥í›„ ë¶€ì„œê°€ ì •í•´ì§€ë©´ ë‹¤ì‹œ í•´ë‹¹ë¶€ì„œë²ˆí˜¸ë¡œ ìˆ˜ì •
 UPDATE employee
 set dno = ''
 where dno=50;
 
 UPDATE employee
-set dno = 40 --Á¤ÇØÁø ºÎ¼­¹øÈ£
+set dno = 40 --ì •í•´ì§„ ë¶€ì„œë²ˆí˜¸
 where dno is null;
 
---[»ğÀÔ ¹æ¹ı-2 Á¤¸®] : Á¦¾àÁ¶°Ç Àá½Ã ºñÈ°¼ºÈ­½ÃÄÑ ¿øÇÏ´Â µ¥ÀÌÅÍ¸¦ »ğÀÔÇÏ´õ¶óµµ ´Ù½Ã Á¦¾àÁ¶°Ç È°¼ºÈ­½ÃÅ°¸é ¿À·ù°¡ ¹ß»ıÇÏ¿©
---				   »ğÀÔÇÑ µ¥ÀÌÅÍ¸¦ »èÁ¦ÇÏ°Å³ª ¼öÁ¤ÇØ¾ß ÇÏ´Â ¹ø°Å·Î¿î ÀÏÀÌ ¹ß»ıÇÔ
+--[ì‚½ì… ë°©ë²•-2 ì •ë¦¬] : ì œì•½ì¡°ê±´ ì ì‹œ ë¹„í™œì„±í™”ì‹œì¼œ ì›í•˜ëŠ” ë°ì´í„°ë¥¼ ì‚½ì…í•˜ë”ë¼ë„ ë‹¤ì‹œ ì œì•½ì¡°ê±´ í™œì„±í™”ì‹œí‚¤ë©´ ì˜¤ë¥˜ê°€ ë°œìƒí•˜ì—¬
+--				   ì‚½ì…í•œ ë°ì´í„°ë¥¼ ì‚­ì œí•˜ê±°ë‚˜ ìˆ˜ì •í•´ì•¼ í•˜ëŠ” ë²ˆê±°ë¡œìš´ ì¼ì´ ë°œìƒí•¨
 
---<¡Ú¡Ú »èÁ¦(ºÎ¸ğÀÎ ºÎ¼­ Å×ÀÌºí¿¡¼­)ÇÏ´Â ¹æ¹ı>
+--<â˜…â˜… ì‚­ì œ(ë¶€ëª¨ì¸ ë¶€ì„œ í…Œì´ë¸”ì—ì„œ)í•˜ëŠ” ë°©ë²•>
 drop table department;
---¿À·ù : ORA-02449: unique/primary keys in table referenced by foreign keys
---ÀÚ½ÄÀÎ EMPLOYEEÅ×ÀÌºí¿¡¼­ ÂüÁ¶ÇÏ´Â »óÈ²¿¡¼­´Â »èÁ¦ ¾ÈµÊ
+--ì˜¤ë¥˜ : ORA-02449: unique/primary keys in table referenced by foreign keys
+--ìì‹ì¸ EMPLOYEEí…Œì´ë¸”ì—ì„œ ì°¸ì¡°í•˜ëŠ” ìƒí™©ì—ì„œëŠ” ì‚­ì œ ì•ˆë¨
 
---1. ºÎ¸ğ Å×ÀÌºíºÎÅÍ »ı¼º : ½Ç½ÀÀ§ÇØ department Å×ÀÌºí ±¸Á¶¿Í µ¥ÀÌÅÍ º¹»çÇÏ¿© department2Å×ÀÌºí »ı¼º
---¡Ú ÁÖÀÇ : Á¦¾àÁ¶°ÇÀº º¹»ç¾ÈµÊ
---DROP table department2;--¿À·ù(?ºÎ¸ğ Å×ÀÌºí·Î ÂüÁ¶µÇ°í ÀÖ¾î¼­)
---DROP table department2 CASCADE constraints; --±×·¡¼­ »ç¿øÅ×ÀÌºíÀÇ ÂüÁ¶Å° Á¦¾àÁ¶°ÇÀ» ÇÔ²² Á¦°Å
+--1. ë¶€ëª¨ í…Œì´ë¸”ë¶€í„° ìƒì„± : ì‹¤ìŠµìœ„í•´ department í…Œì´ë¸” êµ¬ì¡°ì™€ ë°ì´í„° ë³µì‚¬í•˜ì—¬ department2í…Œì´ë¸” ìƒì„±
+--â˜… ì£¼ì˜ : ì œì•½ì¡°ê±´ì€ ë³µì‚¬ì•ˆë¨
+--DROP table department2;--ì˜¤ë¥˜(?ë¶€ëª¨ í…Œì´ë¸”ë¡œ ì°¸ì¡°ë˜ê³  ìˆì–´ì„œ)
+--DROP table department2 CASCADE constraints; --ê·¸ë˜ì„œ ì‚¬ì›í…Œì´ë¸”ì˜ ì°¸ì¡°í‚¤ ì œì•½ì¡°ê±´ì„ í•¨ê»˜ ì œê±°
 
-create table department2--¡Ú ÁÖÀÇ : Á¦¾àÁ¶°ÇÀº º¹»ç¾ÈµÊ
+create table department2--â˜… ì£¼ì˜ : ì œì•½ì¡°ê±´ì€ ë³µì‚¬ì•ˆë¨
 AS
 select * from department;
 
-----Á¦¿ªÁ¶°Ç È®ÀÎÇØº¸¸é °á°ú ¾øÀ½
+----ì œì—­ì¡°ê±´ í™•ì¸í•´ë³´ë©´ ê²°ê³¼ ì—†ìŒ
 select constraint_name, constraint_type, status
 from USER_constraints
 where table_name in ('DEPARTMENT2');
 
-------PRIMARY KEY Á¦¾àÁ¶°Ç Ãß°¡ÇÏ±â(´Ü, Á¦¾àÁ¶°Ç¸íÀ» Á÷Á¢ ¸¸µé¾î Ãß°¡) : Á¦¾àÁ¶°ÇÀº º¹»ç¾ÈµÇ¹Ç·Î
+------PRIMARY KEY ì œì•½ì¡°ê±´ ì¶”ê°€í•˜ê¸°(ë‹¨, ì œì•½ì¡°ê±´ëª…ì„ ì§ì ‘ ë§Œë“¤ì–´ ì¶”ê°€) : ì œì•½ì¡°ê±´ì€ ë³µì‚¬ì•ˆë˜ë¯€ë¡œ
 ALTER TABLE department2
 ADD constraint department2_dno_pk primary key(dno);
 
-----Á¦¿ªÁ¶°Ç È®ÀÎÇØº¸¸é
+----ì œì—­ì¡°ê±´ í™•ì¸í•´ë³´ë©´
 select constraint_name, constraint_type, status
 from USER_constraints
 where table_name in ('DEPARTMENT2');
 
---2. ÀÚ½Ä Å×ÀÌºí »ı¼º
+--2. ìì‹ í…Œì´ë¸” ìƒì„±
 drop table emp_second;
 
 create table emp_second(
@@ -257,224 +257,224 @@ create table emp_second(
 	ename varchar2(10),
 	job varchar2(9),
 	salary number(7,2) default 1000 CHECK(salary > 0),
-	dno number(2), --constraint emp_second_dno_fk FOREIGN KEY references department2 ON DELETE CASCADE --ÄÃ·³·¹º§
+	dno number(2), --constraint emp_second_dno_fk FOREIGN KEY references department2 ON DELETE CASCADE --ì»¬ëŸ¼ë ˆë²¨
 	
-	--'Å×ÀÌºí ·¹º§'¿¡¼­¸¸ °¡´É : ON DELETE ¿É¼Ç
+	--'í…Œì´ë¸” ë ˆë²¨'ì—ì„œë§Œ ê°€ëŠ¥ : ON DELETE ì˜µì…˜
 	constraint emp_second_dno_fk FOREIGN KEY(dno) references department2(dno)
 	ON DELETE CASCADE
 );
 
 /*
-== ON DELETE µÚ¿¡ ==
-1. no action(±âº»°ª) : ºÎ¸ğ Å×ÀÌºí ±âº»Å° °ªÀ» ÀÚ½ÄÅ×ÀÌºí¿¡¼­ ÂüÁ¶ÇÏ°í ÀÖÀ¸¸é ºÎ¸ğ Å×ÀÌºíÀÇ Çà¿¡ ´ëÇÑ »èÁ¦ ºÒ°¡
-	¡Ø restrict(MySQL¿¡¼­ ±âº»°ª, MySQL¿¡¼­ restrict´Â no action°ú °°Àº ÀÇ¹Ì·Î »ç¿ëµÊ)
+== ON DELETE ë’¤ì— ==
+1. no action(ê¸°ë³¸ê°’) : ë¶€ëª¨ í…Œì´ë¸” ê¸°ë³¸í‚¤ ê°’ì„ ìì‹í…Œì´ë¸”ì—ì„œ ì°¸ì¡°í•˜ê³  ìˆìœ¼ë©´ ë¶€ëª¨ í…Œì´ë¸”ì˜ í–‰ì— ëŒ€í•œ ì‚­ì œ ë¶ˆê°€
+	â€» restrict(MySQLì—ì„œ ê¸°ë³¸ê°’, MySQLì—ì„œ restrictëŠ” no actionê³¼ ê°™ì€ ì˜ë¯¸ë¡œ ì‚¬ìš©ë¨)
 	
-	¡Ø ¿À¶óÅ¬¿¡¼­´Â restrict¿Í no actionÀº ¾à°£ÀÇ Â÷ÀÌ°¡ ÀÖÀ½
+	â€» ì˜¤ë¼í´ì—ì„œëŠ” restrictì™€ no actionì€ ì•½ê°„ì˜ ì°¨ì´ê°€ ìˆìŒ
 	
-2. cascade : ÂüÁ¶µÇ´Â 'ºÎ¸ğ Å×ÀÌºíÀÇ ±âº»Å° °ªÀÌ »èÁ¦'µÇ¸é ¿¬¼âÀûÀ¸·Î 'ÀÚ½Ä Å×ÀÌºíÀÌ ÂüÁ¶ÇÏ´Â °ª ¿ª½Ã »èÁ¦'
-			 ºÎ¼­ Å×ÀÌºíÀÇ ºÎ¼­¹øÈ£ 40 »èÁ¦ÇÒ ¶§ »ç¿ø Å×ÀÌºíÀÇ ºÎ¼­¹øÈ£ 40µµ »èÁ¦ÇÏ¿© 'ÂüÁ¶ ¹«°á¼º À¯ÁöÇÔ'
+2. cascade : ì°¸ì¡°ë˜ëŠ” 'ë¶€ëª¨ í…Œì´ë¸”ì˜ ê¸°ë³¸í‚¤ ê°’ì´ ì‚­ì œ'ë˜ë©´ ì—°ì‡„ì ìœ¼ë¡œ 'ìì‹ í…Œì´ë¸”ì´ ì°¸ì¡°í•˜ëŠ” ê°’ ì—­ì‹œ ì‚­ì œ'
+			 ë¶€ì„œ í…Œì´ë¸”ì˜ ë¶€ì„œë²ˆí˜¸ 40 ì‚­ì œí•  ë•Œ ì‚¬ì› í…Œì´ë¸”ì˜ ë¶€ì„œë²ˆí˜¸ 40ë„ ì‚­ì œí•˜ì—¬ 'ì°¸ì¡° ë¬´ê²°ì„± ìœ ì§€í•¨'
 			 
-3. set null : ÂüÁ¶µÇ´Â 'ºÎ¸ğ Å×ÀÌºíÀÇ ±âº»Å° °ªÀÌ »èÁ¦'µÇ¸é ÀÌ Å°¸¦ ÂüÁ¶ÇÏ´Â 'ÀÚ½Ä Å×ÀÌºíÀÇ ÂüÁ¶ÇÏ´Â °ªµéÀº NULL°ªÀ¸·Î ¼³Á¤'
-			 (´Ü, null Çã¿ëÇÑ °æ¿ì)
+3. set null : ì°¸ì¡°ë˜ëŠ” 'ë¶€ëª¨ í…Œì´ë¸”ì˜ ê¸°ë³¸í‚¤ ê°’ì´ ì‚­ì œ'ë˜ë©´ ì´ í‚¤ë¥¼ ì°¸ì¡°í•˜ëŠ” 'ìì‹ í…Œì´ë¸”ì˜ ì°¸ì¡°í•˜ëŠ” ê°’ë“¤ì€ NULLê°’ìœ¼ë¡œ ì„¤ì •'
+			 (ë‹¨, null í—ˆìš©í•œ ê²½ìš°)
 			 
-4. set default : ÀÚ½Ä Å×ÀÌºí¿¡¼­ ¹Ì¸® default°ªÀ» ¼³Á¤ 
-				ÂüÁ¶µÇ´Â 'ºÎ¸ğ Å×ÀÌºíÀÇ ±âº»Å° °ªÀÌ »èÁ¦'µÇ¸é ÀÌ Å°¸¦ ÂüÁ¶ÇÏ´Â 'ÀÚ½Ä Å×ÀÌºíÀÇ ÂüÁ¶ÇÏ´Â °ªµéÀº default°ªÀ¸·Î ¼³Á¤'
-				¡Ø ÀÌ Á¦¾àÁ¶°ÇÀÌ ½ÇÇàÇÏ·Á¸é ¸ğµç ÂüÁ¶Å°(=FK) ÄÃ·³(»ç¿øÅ×ÀÌºíÀÇ dno)¿¡ default°ª Á¤ÀÇ°¡ ÀÖ¾î¾ß ÇÔ
-				ÄÃ·³ÀÌ nullÀ» Çã¿ëÇÏ°í ¸í½ÃÀû DEFAULT°ªÀÌ ¼³Á¤µÇ¾î ÀÖÁö ¾ÊÀº °æ¿ì nullÀº ÇØ´ç ÄÃ·³ÀÇ ¾Ï½ÃÀû DEFAULT°ªÀÌ µÊ
+4. set default : ìì‹ í…Œì´ë¸”ì—ì„œ ë¯¸ë¦¬ defaultê°’ì„ ì„¤ì • 
+				ì°¸ì¡°ë˜ëŠ” 'ë¶€ëª¨ í…Œì´ë¸”ì˜ ê¸°ë³¸í‚¤ ê°’ì´ ì‚­ì œ'ë˜ë©´ ì´ í‚¤ë¥¼ ì°¸ì¡°í•˜ëŠ” 'ìì‹ í…Œì´ë¸”ì˜ ì°¸ì¡°í•˜ëŠ” ê°’ë“¤ì€ defaultê°’ìœ¼ë¡œ ì„¤ì •'
+				â€» ì´ ì œì•½ì¡°ê±´ì´ ì‹¤í–‰í•˜ë ¤ë©´ ëª¨ë“  ì°¸ì¡°í‚¤(=FK) ì»¬ëŸ¼(ì‚¬ì›í…Œì´ë¸”ì˜ dno)ì— defaultê°’ ì •ì˜ê°€ ìˆì–´ì•¼ í•¨
+				ì»¬ëŸ¼ì´ nullì„ í—ˆìš©í•˜ê³  ëª…ì‹œì  DEFAULTê°’ì´ ì„¤ì •ë˜ì–´ ìˆì§€ ì•Šì€ ê²½ìš° nullì€ í•´ë‹¹ ì»¬ëŸ¼ì˜ ì•”ì‹œì  DEFAULTê°’ì´ ë¨
 
  */
 
---¡ØÂü°í : ºÎ¼­Å×ÀÌºí »èÁ¦½Ã ºÎ¼­Å×ÀÌºíÀ» ÂüÁ¶ÇÏ´Â "»ç¿øÅ×ÀÌºíÀÇ ÂüÁ¶Å° Á¦¾àÁ¶°Ç"À» ÇÔ²² Á¦°Å
---drop table DEPARTMENT2 cascade constraints;--¸ÕÀú, »ç¿øÅ×ÀÌºíÀÇ ÂüÁ¶Å° Á¦¾àÁ¶°Ç Á¦°Å ÈÄ ºÎ¼­Å×ÀÌºí Á¦°ÅµÊ
+--â€»ì°¸ê³  : ë¶€ì„œí…Œì´ë¸” ì‚­ì œì‹œ ë¶€ì„œí…Œì´ë¸”ì„ ì°¸ì¡°í•˜ëŠ” "ì‚¬ì›í…Œì´ë¸”ì˜ ì°¸ì¡°í‚¤ ì œì•½ì¡°ê±´"ì„ í•¨ê»˜ ì œê±°
+--drop table DEPARTMENT2 cascade constraints;--ë¨¼ì €, ì‚¬ì›í…Œì´ë¸”ì˜ ì°¸ì¡°í‚¤ ì œì•½ì¡°ê±´ ì œê±° í›„ ë¶€ì„œí…Œì´ë¸” ì œê±°ë¨
 
-insert into emp_second values(1, '±è', '¿µ¾÷', null, 30);
-insert into emp_second values(2, 'ÀÌ', 'Á¶»ç', 2000, 20);
-insert into emp_second values(3, '¹Ú', '¿î¿µ', 3000, 40);
-insert into emp_second values(4, 'Á¶', '»ó´ã', 3000, 20);
+insert into emp_second values(1, 'ê¹€', 'ì˜ì—…', null, 30);
+insert into emp_second values(2, 'ì´', 'ì¡°ì‚¬', 2000, 20);
+insert into emp_second values(3, 'ë°•', 'ìš´ì˜', 3000, 40);
+insert into emp_second values(4, 'ì¡°', 'ìƒë‹´', 3000, 20);
 
---1.5 check Á¦¾àÁ¶°Ç : °ªÀÇ ¹üÀ§³ª Á¶°Ç ÁöÁ¤
---currval, nextval, rownum »ç¿ëºÒ°¡
---sysdate ÇÔ¼ö »ç¿ëºÒ°¡
+--1.5 check ì œì•½ì¡°ê±´ : ê°’ì˜ ë²”ìœ„ë‚˜ ì¡°ê±´ ì§€ì •
+--currval, nextval, rownum ì‚¬ìš©ë¶ˆê°€
+--sysdate í•¨ìˆ˜ ì‚¬ìš©ë¶ˆê°€
 
 --CHECK(salary > 0)
-insert into emp_second values(5, '°­', '»ó´ã', -4000, 20);
---¿À·ù? ORA-02290: check constraint (SYSTEM.SYS_C007090) violated
-insert into emp_second values(5, '°­', '»ó´ã', 4000, 20);
+insert into emp_second values(5, 'ê°•', 'ìƒë‹´', -4000, 20);
+--ì˜¤ë¥˜? ORA-02290: check constraint (SYSTEM.SYS_C007090) violated
+insert into emp_second values(5, 'ê°•', 'ìƒë‹´', 4000, 20);
 
---1.6 DEFAULT Á¤ÀÇ
---default °ª ³Ö´Â 2°¡Áö ¹æ¹ı
---salary´Â DEFAULT 1000
-insert into emp_second(eno, ename, job, dno) values(6, '±Ç', 'ÀÎ»ç', 30);--»ı·«µÈ salary´Â 1000 ÀÔ·ÂµÊ
-insert into emp_second values(6, '±Ç', 'ÀÎ»ç', default, 30);--default ´ë½Å 1000 ÀÔ·ÂµÊ
+--1.6 DEFAULT ì •ì˜
+--default ê°’ ë„£ëŠ” 2ê°€ì§€ ë°©ë²•
+--salaryëŠ” DEFAULT 1000
+insert into emp_second(eno, ename, job, dno) values(6, 'ê¶Œ', 'ì¸ì‚¬', 30);--ìƒëµëœ salaryëŠ” 1000 ì…ë ¥ë¨
+insert into emp_second values(6, 'ê¶Œ', 'ì¸ì‚¬', default, 30);--default ëŒ€ì‹  1000 ì…ë ¥ë¨
 
 select * from emp_second;
 select * from department2;
 
---Áö±İºÎÅÍ ºÎ¸ğÀÎ ºÎ¼­Å×ÀÌºí¿¡¼­ dno=20 ÀÎ row »èÁ¦ÇÏ¸é ÀÚ½ÄÅ×ÀÌºíÀÎ »ç¿øÅ×ÀÌºí¿¡¼­ dno=20ÀÎ rowµµ ÇÔ²² »èÁ¦µÊ.
---ÀÌÀ¯? FOREIGN KEY(dno) references department2(dno) ON DELETE CASCADE
+--ì§€ê¸ˆë¶€í„° ë¶€ëª¨ì¸ ë¶€ì„œí…Œì´ë¸”ì—ì„œ dno=20 ì¸ row ì‚­ì œí•˜ë©´ ìì‹í…Œì´ë¸”ì¸ ì‚¬ì›í…Œì´ë¸”ì—ì„œ dno=20ì¸ rowë„ í•¨ê»˜ ì‚­ì œë¨.
+--ì´ìœ ? FOREIGN KEY(dno) references department2(dno) ON DELETE CASCADE
 delete from department2 where dno = 20;
 
-select * from department2; --ºÎ¸ğ¿¡¼­ »èÁ¦ÇÏ¸é
-select * from emp_second;  --ÀÚ½Ä¿¡¼­µµ »èÁ¦µÊ
+select * from department2; --ë¶€ëª¨ì—ì„œ ì‚­ì œí•˜ë©´
+select * from emp_second;  --ìì‹ì—ì„œë„ ì‚­ì œë¨
 
 delete from department where dno = 20;
---¿À·ù : ORA-02292: integrity constraint (SYSTEM.SYS_C007011) violated - child record found
---ÀÌÀ¯?ÀÚ½Ä¿¡¼­ ÂüÁ¶ÇÏ°í ÀÖÀ¸¸é ºÎ¸ğÀÇ ·¹ÄÚµå(=row=Çà)¸¦ »èÁ¦ºÒ°¡(no action (=±âº»°ª))
+--ì˜¤ë¥˜ : ORA-02292: integrity constraint (SYSTEM.SYS_C007011) violated - child record found
+--ì´ìœ ?ìì‹ì—ì„œ ì°¸ì¡°í•˜ê³  ìˆìœ¼ë©´ ë¶€ëª¨ì˜ ë ˆì½”ë“œ(=row=í–‰)ë¥¼ ì‚­ì œë¶ˆê°€(no action (=ê¸°ë³¸ê°’))
 
---Å×ÀÌºí ÀüÃ¼(Å×ÀÌºí ±¸Á¶+µ¥ÀÌÅÍ) Á¦°Å
-drop table department2; --½ÇÆĞ?ÇöÀç »ç¿øÅ×ÀÌºíÀÇ ÂüÁ¶Å°·Î ÂüÁ¶ÇÏ°í ÀÖÀ¸¹Ç·Î Å×ÀÌºí ÀüÃ¼ Á¦°Å¾ÈµÊ
+--í…Œì´ë¸” ì „ì²´(í…Œì´ë¸” êµ¬ì¡°+ë°ì´í„°) ì œê±°
+drop table department2; --ì‹¤íŒ¨?í˜„ì¬ ì‚¬ì›í…Œì´ë¸”ì˜ ì°¸ì¡°í‚¤ë¡œ ì°¸ì¡°í•˜ê³  ìˆìœ¼ë¯€ë¡œ í…Œì´ë¸” ì „ì²´ ì œê±°ì•ˆë¨
 
---Å×ÀÌºí µ¥ÀÌÅÍ¸¸ »èÁ¦(Å×ÀÌºí ±¸Á¶´Â ³²±â°í)
+--í…Œì´ë¸” ë°ì´í„°ë§Œ ì‚­ì œ(í…Œì´ë¸” êµ¬ì¡°ëŠ” ë‚¨ê¸°ê³ )
 truncate table department2;
-delete from department2; --rollback °¡´ÉÇÏ¹Ç·Î(È¤½Ã Àß¸ø »èÁ¦ ÈÄ ´Ù½Ã º¹¿ø°¡´É)
+delete from department2; --rollback ê°€ëŠ¥í•˜ë¯€ë¡œ(í˜¹ì‹œ ì˜ëª» ì‚­ì œ í›„ ë‹¤ì‹œ ë³µì›ê°€ëŠ¥)
 
 select * from department2;
 
 ---------------------------------------------------------------------------------------------------------
---2. Á¦¾à Á¶°Ç º¯°æÇÏ±â
---2.1 Á¦¾à Á¶°Ç Ãß°¡ : ALTER table Å×ÀÌºí¸í + ADD constraint Á¦¾àÁ¶°Ç¸í + Á¦¾àÁ¶°Ç
---´Ü, 'null ¹«°á¼º Á¦¾àÁ¶°Ç'Àº alter table Å×ÀÌºí¸í + ADD~·Î Ãß°¡ÇÏÁö ¸øÇÔ
---						 alter table Å×ÀÌºí¸í + modify~·Î null »óÅÂ·Î º¯°æ °¡´É
---	  'default Á¤ÀÇÇÒ ¶§'µµ alter table Å×ÀÌºí¸í + modify~·Î
+--2. ì œì•½ ì¡°ê±´ ë³€ê²½í•˜ê¸°
+--2.1 ì œì•½ ì¡°ê±´ ì¶”ê°€ : ALTER table í…Œì´ë¸”ëª… + ADD constraint ì œì•½ì¡°ê±´ëª… + ì œì•½ì¡°ê±´
+--ë‹¨, 'null ë¬´ê²°ì„± ì œì•½ì¡°ê±´'ì€ alter table í…Œì´ë¸”ëª… + ADD~ë¡œ ì¶”ê°€í•˜ì§€ ëª»í•¨
+--						 alter table í…Œì´ë¸”ëª… + modify~ë¡œ null ìƒíƒœë¡œ ë³€ê²½ ê°€ëŠ¥
+--	  'default ì •ì˜í•  ë•Œ'ë„ alter table í…Œì´ë¸”ëª… + modify~ë¡œ
 
---[test À§ÇØ]
+--[test ìœ„í•´]
 --drop table dept_copy;
 create table dept_copy
 AS
-select * from department; --Á¦¾àÁ¶°Ç º¹»ç¾ÈµÊ
+select * from department; --ì œì•½ì¡°ê±´ ë³µì‚¬ì•ˆë¨
 
 --drop table emp_copy;
 create table emp_copy
 AS
 select * from employee;
 
---user_Á¦¾àÁ¶°Ç µ¥ÀÌÅÍ »çÀüÀ» Á¶È¸ÇÏ¿© Á¦¾àÁ¶°Ç È®ÀÎÇÏ±â
+--user_ì œì•½ì¡°ê±´ ë°ì´í„° ì‚¬ì „ì„ ì¡°íšŒí•˜ì—¬ ì œì•½ì¡°ê±´ í™•ì¸í•˜ê¸°
 select table_name, constraint_name, constraint_type
 from user_constraints
-where table_name IN ('DEPARTMENT', 'EMPLOYEE', 'DEPT_COPY', 'EMP_COPY'); --¹İµå½Ã '´ë¹®ÀÚ'
+where table_name IN ('DEPARTMENT', 'EMPLOYEE', 'DEPT_COPY', 'EMP_COPY'); --ë°˜ë“œì‹œ 'ëŒ€ë¬¸ì'
 
---(¿¹1)±âº»Å° Á¦¾àÁ¶°Ç Ãß°¡ÇÏ±â
+--(ì˜ˆ1)ê¸°ë³¸í‚¤ ì œì•½ì¡°ê±´ ì¶”ê°€í•˜ê¸°
 alter table emp_copy
 add constraint emp_copy_eno_pk primary key(eno);
 
 alter table dept_copy
 add constraint dept_copy_dno_pk primary key(dno);
 
---±âº»Å° Á¦¾àÁ¶°ÇÀÌ Ãß°¡µÇ¾ú´ÂÁö È®ÀÎÇÏ±â(constraint_typeÀº P)
+--ê¸°ë³¸í‚¤ ì œì•½ì¡°ê±´ì´ ì¶”ê°€ë˜ì—ˆëŠ”ì§€ í™•ì¸í•˜ê¸°(constraint_typeì€ P)
 select table_name, constraint_name, constraint_type
 from user_constraints
-where table_name IN ('DEPT_COPY', 'EMP_COPY'); --¹İµå½Ã '´ë¹®ÀÚ'
+where table_name IN ('DEPT_COPY', 'EMP_COPY'); --ë°˜ë“œì‹œ 'ëŒ€ë¬¸ì'
 
 
---(¿¹2)'¿Ü·¡Å°=ÂüÁ¶Å°' Á¦¾àÁ¶°Ç Ãß°¡ÇÏ±â
+--(ì˜ˆ2)'ì™¸ë˜í‚¤=ì°¸ì¡°í‚¤' ì œì•½ì¡°ê±´ ì¶”ê°€í•˜ê¸°
 alter table emp_copy
 add constraint emp_copy_dno_fk foreign key(dno) references dept_copy(dno);
---[ON DELETE ¿É¼ÇÀº ÇÊ¿ä½Ã Ãß°¡]
---ON DELETE cascade | ON DELETE set null(´Ü, emp_copyÅ×ÀÌºíÀÇ dno°¡ null°ªÀ» Çã¿ëÇÒ ¶§)
---ON DELETE set default(´Ü, emp_copyÅ×ÀÌºíÀÇ dno°¡ default°ªÀ» Á¤ÀÇ. default°ªÀ» Á¤ÀÇ¾ÈÇÏ°í nullÀ» Çã¿ëÇÑ´Ù¸é nullÀÌ default·Î ´ëÃ¼µÊ)
+--[ON DELETE ì˜µì…˜ì€ í•„ìš”ì‹œ ì¶”ê°€]
+--ON DELETE cascade | ON DELETE set null(ë‹¨, emp_copyí…Œì´ë¸”ì˜ dnoê°€ nullê°’ì„ í—ˆìš©í•  ë•Œ)
+--ON DELETE set default(ë‹¨, emp_copyí…Œì´ë¸”ì˜ dnoê°€ defaultê°’ì„ ì •ì˜. defaultê°’ì„ ì •ì˜ì•ˆí•˜ê³  nullì„ í—ˆìš©í•œë‹¤ë©´ nullì´ defaultë¡œ ëŒ€ì²´ë¨)
 
---(¿¹3) NOT NULL Á¦¾àÁ¶°Ç Ãß°¡ÇÏ±â(¡ØÁÖÀÇ : ADD ´ë½Å MODIFYº¯°æÇÏ±â)
+--(ì˜ˆ3) NOT NULL ì œì•½ì¡°ê±´ ì¶”ê°€í•˜ê¸°(â€»ì£¼ì˜ : ADD ëŒ€ì‹  MODIFYë³€ê²½í•˜ê¸°)
 alter table emp_copy
 modify ename constraint emp_copy_ename_nn NOT NULL;
 
---'NOT NULL' Á¦¾àÁ¶°ÇÀÌ Ãß°¡µÇ¾ú´ÂÁö È®ÀÎÇÏ±â(constraint_typeÀº C)
+--'NOT NULL' ì œì•½ì¡°ê±´ì´ ì¶”ê°€ë˜ì—ˆëŠ”ì§€ í™•ì¸í•˜ê¸°(constraint_typeì€ C)
 select table_name, constraint_name, constraint_type
 from user_constraints
-where table_name IN ('DEPT_COPY', 'EMP_COPY'); --¹İµå½Ã '´ë¹®ÀÚ'
+where table_name IN ('DEPT_COPY', 'EMP_COPY'); --ë°˜ë“œì‹œ 'ëŒ€ë¬¸ì'
 
---(¿¹4) DEFAULT Á¤ÀÇ Ãß°¡ÇÏ±â(¡ØÁÖÀÇ : ADD ´ë½Å MODIFYº¯°æÇÏ±â)
---¡Ú¡ÚCONSTRAINT Á¦¾àÁ¶°Ç¸í ÀÔ·ÂÇÏ¸é ¾ÈµÊ. (ÀÌÀ¯? DEFAULT´Â 'Á¦¾àÁ¶°ÇÀÌ ¾Æ´Ï¶ó' Á¤ÀÇÀÌ¹Ç·Î)
+--(ì˜ˆ4) DEFAULT ì •ì˜ ì¶”ê°€í•˜ê¸°(â€»ì£¼ì˜ : ADD ëŒ€ì‹  MODIFYë³€ê²½í•˜ê¸°)
+--â˜…â˜…CONSTRAINT ì œì•½ì¡°ê±´ëª… ì…ë ¥í•˜ë©´ ì•ˆë¨. (ì´ìœ ? DEFAULTëŠ” 'ì œì•½ì¡°ê±´ì´ ì•„ë‹ˆë¼' ì •ì˜ì´ë¯€ë¡œ)
 alter table emp_copy
 modify salary constraint emp_copy_salary_d DEFAULT 500;
---¿À·ù?ORA-02253: constraint specification not allowed here
+--ì˜¤ë¥˜?ORA-02253: constraint specification not allowed here
 
 alter table emp_copy
-modify salary DEFAULT 500;--¼º°ø
+modify salary DEFAULT 500;--ì„±ê³µ
 
---'DEFAULT Á¤ÀÇ' Ãß°¡µÇ¾ú´ÂÁö È®ÀÎÇÏ±â => Á¦¾àÁ¶°ÇÀÌ ¾Æ´Ï¹Ç·Î °á°ú¿¡ ¾øÀ½
+--'DEFAULT ì •ì˜' ì¶”ê°€ë˜ì—ˆëŠ”ì§€ í™•ì¸í•˜ê¸° => ì œì•½ì¡°ê±´ì´ ì•„ë‹ˆë¯€ë¡œ ê²°ê³¼ì— ì—†ìŒ
 select table_name, constraint_name, constraint_type
 from user_constraints
-where table_name IN ('DEPT_COPY', 'EMP_COPY'); --¹İµå½Ã '´ë¹®ÀÚ'
+where table_name IN ('DEPT_COPY', 'EMP_COPY'); --ë°˜ë“œì‹œ 'ëŒ€ë¬¸ì'
 
---(¿¹5) CHECK Á¦¾àÁ¶°Ç Ãß°¡ÇÏ±â
-select salary from emp_copy where salary <= 1000; --800 950 (CHECK Á¶°Ç¿¡ À§¹èµÇ´Â µ¥ÀÌÅÍ°¡ ÀÖ´ÂÁö È®ÀÎ)
+--(ì˜ˆ5) CHECK ì œì•½ì¡°ê±´ ì¶”ê°€í•˜ê¸°
+select salary from emp_copy where salary <= 1000; --800 950 (CHECK ì¡°ê±´ì— ìœ„ë°°ë˜ëŠ” ë°ì´í„°ê°€ ìˆëŠ”ì§€ í™•ì¸)
 
 alter table emp_copy
 ADD constraint emp_copy_salary_check CHECK(salary > 1000);
---½ÇÆĞ? ORA-02293: cannot validate (SYSTEM.EMP_COPY_SALARY_CHECK) - check constraint violated
---½ÇÆĞÀÌÀ¯?ÀÌ¹Ì insertÇÑ µ¥ÀÌÅÍ Áß salary°¡ 1000º¸´Ù ÀÛÀº ±Ş¿©°¡ ÀÖÀ¸¹Ç·Î 'Á¶°Ç¿¡ À§¹èµÇ¾î ¿À·ù ¹ß»ı'
+--ì‹¤íŒ¨? ORA-02293: cannot validate (SYSTEM.EMP_COPY_SALARY_CHECK) - check constraint violated
+--ì‹¤íŒ¨ì´ìœ ?ì´ë¯¸ insertí•œ ë°ì´í„° ì¤‘ salaryê°€ 1000ë³´ë‹¤ ì‘ì€ ê¸‰ì—¬ê°€ ìˆìœ¼ë¯€ë¡œ 'ì¡°ê±´ì— ìœ„ë°°ë˜ì–´ ì˜¤ë¥˜ ë°œìƒ'
 
----select salary from emp_copy where salary <= 1000; --800 950 (CHECK Á¶°Ç¿¡ À§¹èµÇ´Â µ¥ÀÌÅÍ°¡ ÀÖ´ÂÁö È®ÀÎ)
+---select salary from emp_copy where salary <= 1000; --800 950 (CHECK ì¡°ê±´ì— ìœ„ë°°ë˜ëŠ” ë°ì´í„°ê°€ ìˆëŠ”ì§€ í™•ì¸)
 
 alter table emp_copy
 ADD constraint emp_copy_salary_check CHECK(500 <= salary AND salary < 10000);
 
 alter table dept_copy
-ADD constraint dept_copy_dno_check CHECK(dno IN(10,20,30,40,50));--¹İµå½Ã dno´Â ÀÌ 5°¡Áö °ª Áß ÇÏ³ª¸¸ insert°¡´É
+ADD constraint dept_copy_dno_check CHECK(dno IN(10,20,30,40,50));--ë°˜ë“œì‹œ dnoëŠ” ì´ 5ê°€ì§€ ê°’ ì¤‘ í•˜ë‚˜ë§Œ insertê°€ëŠ¥
 
---'CHECK' Á¦¾àÁ¶°ÇÀÌ Ãß°¡µÇ¾ú´ÂÁö È®ÀÎÇÏ±â(constraint_typeÀº C)
+--'CHECK' ì œì•½ì¡°ê±´ì´ ì¶”ê°€ë˜ì—ˆëŠ”ì§€ í™•ì¸í•˜ê¸°(constraint_typeì€ C)
 select table_name, constraint_name, constraint_type
 from user_constraints
-where table_name IN ('DEPT_COPY', 'EMP_COPY'); --¹İµå½Ã '´ë¹®ÀÚ'
+where table_name IN ('DEPT_COPY', 'EMP_COPY'); --ë°˜ë“œì‹œ 'ëŒ€ë¬¸ì'
 
 ---------------------------------------------------------------------------------------------------------
---2.2 Á¦¾àÁ¶°Ç Á¦°Å
---'¿Ü·¡Å°(=ÂüÁ¶Å°) Á¦¾àÁ¶°Ç'¿¡ ÁöÁ¤µÇ¾î ÀÖ´Â ºÎ¸ğ Å×ÀÌºíÀÇ ±âº»Å° Á¦¾àÁ¶°ÇÀ» Á¦°ÅÇÏ·Á¸é
---ÀÚ½ÄÅ×ÀÌºíÀÇ 'ÂüÁ¶ ¹«°á¼º Á¦¾àÁ¶°ÇÀ» ¸ÕÀú Á¦°Å'ÇÑ ÈÄ Á¦°ÅÇÏ°Å³ª
---CASCADE ¿É¼Ç »ç¿ë : Á¦°ÅÇÏ·Á´Â ÄÃ·³À» ÂüÁ¶ÇÏ´Â ÂüÁ¶ ¹«°á¼º Á¦¾àÁ¶°Çµµ ÇÔ²² Á¦°Å
+--2.2 ì œì•½ì¡°ê±´ ì œê±°
+--'ì™¸ë˜í‚¤(=ì°¸ì¡°í‚¤) ì œì•½ì¡°ê±´'ì— ì§€ì •ë˜ì–´ ìˆëŠ” ë¶€ëª¨ í…Œì´ë¸”ì˜ ê¸°ë³¸í‚¤ ì œì•½ì¡°ê±´ì„ ì œê±°í•˜ë ¤ë©´
+--ìì‹í…Œì´ë¸”ì˜ 'ì°¸ì¡° ë¬´ê²°ì„± ì œì•½ì¡°ê±´ì„ ë¨¼ì € ì œê±°'í•œ í›„ ì œê±°í•˜ê±°ë‚˜
+--CASCADE ì˜µì…˜ ì‚¬ìš© : ì œê±°í•˜ë ¤ëŠ” ì»¬ëŸ¼ì„ ì°¸ì¡°í•˜ëŠ” ì°¸ì¡° ë¬´ê²°ì„± ì œì•½ì¡°ê±´ë„ í•¨ê»˜ ì œê±°
 
---(¿¹1) ¸ÕÀú, ºÎ¸ğ Å×ÀÌºíÀÇ ±âº»Å° Á¦¾àÁ¶°Ç Á¦°Å => ½ÇÆĞ
+--(ì˜ˆ1) ë¨¼ì €, ë¶€ëª¨ í…Œì´ë¸”ì˜ ê¸°ë³¸í‚¤ ì œì•½ì¡°ê±´ ì œê±° => ì‹¤íŒ¨
 alter table dept_copy
 drop primary key;
---½ÇÆĞ?ORA-02273: this unique/primary key is referenced by some foreign keys
---½ÇÆĞÀÌÀ¯? ÀÚ½ÄÅ×ÀÌºí¿¡¼­ ÂüÁ¶ÇÏ°í ÀÖÀ¸¹Ç·Î...
+--ì‹¤íŒ¨?ORA-02273: this unique/primary key is referenced by some foreign keys
+--ì‹¤íŒ¨ì´ìœ ? ìì‹í…Œì´ë¸”ì—ì„œ ì°¸ì¡°í•˜ê³  ìˆìœ¼ë¯€ë¡œ...
 
---[ÇØ°á¹ı]
+--[í•´ê²°ë²•]
 alter table dept_copy
 drop primary key CASCADE;
---¼º°ø?Á¦°ÅÇÏ·Á´Â '±âº»Å°Á¦¾àÁ¶°ÇÀ» °¡Áø ÄÃ·³'À» ÂüÁ¶ÇÏ´Â 'ÂüÁ¶ ¹«°á¼º Á¦¾àÁ¶°Ç'µµ ÇÔ²² Á¦°ÅµÇ¹Ç·Î
+--ì„±ê³µ?ì œê±°í•˜ë ¤ëŠ” 'ê¸°ë³¸í‚¤ì œì•½ì¡°ê±´ì„ ê°€ì§„ ì»¬ëŸ¼'ì„ ì°¸ì¡°í•˜ëŠ” 'ì°¸ì¡° ë¬´ê²°ì„± ì œì•½ì¡°ê±´'ë„ í•¨ê»˜ ì œê±°ë˜ë¯€ë¡œ
 
---[Á¦°ÅµÇ¾ú´ÂÁö È®ÀÎ] DEPT_COPYÅ×ÀÌºí¿¡¼­´Â P°¡ ¾ø°í EMP_COPYÅ×ÀÌºí¿¡¼­´Â RÀÌ ¾ø¾îÁü
+--[ì œê±°ë˜ì—ˆëŠ”ì§€ í™•ì¸] DEPT_COPYí…Œì´ë¸”ì—ì„œëŠ” Pê°€ ì—†ê³  EMP_COPYí…Œì´ë¸”ì—ì„œëŠ” Rì´ ì—†ì–´ì§
 select table_name, constraint_name, constraint_type
 from user_constraints
-where table_name IN ('DEPT_COPY', 'EMP_COPY'); --¹İµå½Ã '´ë¹®ÀÚ'
+where table_name IN ('DEPT_COPY', 'EMP_COPY'); --ë°˜ë“œì‹œ 'ëŒ€ë¬¸ì'
 
---(¿¹2) NOT NULL Á¦¾àÁ¶°Ç Á¦°Å
+--(ì˜ˆ2) NOT NULL ì œì•½ì¡°ê±´ ì œê±°
 alter table emp_copy
 DROP CONSTRAINT emp_copy_ename_nn;
 
---[Á¦°ÅµÇ¾ú´ÂÁö È®ÀÎ]
+--[ì œê±°ë˜ì—ˆëŠ”ì§€ í™•ì¸]
 select table_name, constraint_name, constraint_type
 from user_constraints
-where table_name IN ('DEPT_COPY', 'EMP_COPY'); --¹İµå½Ã '´ë¹®ÀÚ'
+where table_name IN ('DEPT_COPY', 'EMP_COPY'); --ë°˜ë“œì‹œ 'ëŒ€ë¬¸ì'
 
 ---------------------------------------------------------------------------------------------------------
 
---3. Á¦¾àÁ¶°Ç È°¼ºÈ­ ¹× ºñÈ°¼ºÈ­
---alter table Å×ÀÌºí¸í + DISABLE constraint Á¦¾àÁ¶°Ç¸í [cascade];
---Á¦¾à Á¶°ÇÀ» »èÁ¦ÇÏÁö ¾Ê°í ÀÏ½ÃÀûÀ¸·Î ºñÈ°¼ºÈ­
---alter table Å×ÀÌºí¸í + ENABLE constraint Á¦¾àÁ¶°Ç¸í [cascade];
---ºñÈ°¼ºÈ­µÈ Á¦¾à Á¶°ÇÀ» È°¼ºÈ­
---¡Ø À§ ³»¿ë ÂüÁ¶ÇÏ±â
+--3. ì œì•½ì¡°ê±´ í™œì„±í™” ë° ë¹„í™œì„±í™”
+--alter table í…Œì´ë¸”ëª… + DISABLE constraint ì œì•½ì¡°ê±´ëª… [cascade];
+--ì œì•½ ì¡°ê±´ì„ ì‚­ì œí•˜ì§€ ì•Šê³  ì¼ì‹œì ìœ¼ë¡œ ë¹„í™œì„±í™”
+--alter table í…Œì´ë¸”ëª… + ENABLE constraint ì œì•½ì¡°ê±´ëª… [cascade];
+--ë¹„í™œì„±í™”ëœ ì œì•½ ì¡°ê±´ì„ í™œì„±í™”
+--â€» ìœ„ ë‚´ìš© ì°¸ì¡°í•˜ê¸°
 
 ---------------------------------------------------------------------------------------------------------
 
---<10Àå µ¥ÀÌÅÍ ¹«°á¼º°ú Á¦¾àÁ¶°Ç-È¥ÀÚ ÇØº¸±â>
---1.employeeÅ×ÀÌºíÀÇ ±¸Á¶¸¸ º¹»çÇÏ¿© emp_sample Å×ÀÌºí »ı¼º
---»ç¿ø Å×ÀÌºíÀÇ »ç¿ø¹øÈ£ ÄÃ·³¿¡ Å×ÀÌºí ·¹º§·Î primary key Á¦¾àÁ¶°ÇÀ» ÁöÁ¤ÇÏµÇ
---Á¦¾àÁ¶°Ç¸íÀº my_emp_pk·Î ÁöÁ¤
---[1] Å×ÀÌºí ±¸Á¶¸¸ °¡Á®¿Í¼­ Å×ÀÌºí »ı¼º
+--<10ì¥ ë°ì´í„° ë¬´ê²°ì„±ê³¼ ì œì•½ì¡°ê±´-í˜¼ì í•´ë³´ê¸°>
+--1.employeeí…Œì´ë¸”ì˜ êµ¬ì¡°ë§Œ ë³µì‚¬í•˜ì—¬ emp_sample í…Œì´ë¸” ìƒì„±
+--ì‚¬ì› í…Œì´ë¸”ì˜ ì‚¬ì›ë²ˆí˜¸ ì»¬ëŸ¼ì— í…Œì´ë¸” ë ˆë²¨ë¡œ primary key ì œì•½ì¡°ê±´ì„ ì§€ì •í•˜ë˜
+--ì œì•½ì¡°ê±´ëª…ì€ my_emp_pkë¡œ ì§€ì •
+--[1] í…Œì´ë¸” êµ¬ì¡°ë§Œ ê°€ì ¸ì™€ì„œ í…Œì´ë¸” ìƒì„±
 create table emp_sample
 AS
 select * from employee
-where 1=0; --Á¶°ÇÀ» ¹«Á¶°Ç °ÅÁş -> µ¥ÀÌÅÍ ±¸Á¶¸¸ º¹»ç
+where 1=0; --ì¡°ê±´ì„ ë¬´ì¡°ê±´ ê±°ì§“ -> ë°ì´í„° êµ¬ì¡°ë§Œ ë³µì‚¬
 
---[2] Á¦¾àÁ¶°Ç Ãß°¡
+--[2] ì œì•½ì¡°ê±´ ì¶”ê°€
 alter table emp_sample
 add constraint my_emp_pk primary key(eno);
 
---2.ºÎ¼­Å×ÀÌºíÀÇ ºÎ¼­¹øÈ£ ÄÃ·³¿¡ Å×ÀÌºí ·¹º§·Î primary key Á¦¾àÁ¶°Ç ÁöÁ¤ÇÏµÇ
---Á¦¾àÁ¶°Ç¸íÀº my_dept_pk·Î ÁöÁ¤
+--2.ë¶€ì„œí…Œì´ë¸”ì˜ ë¶€ì„œë²ˆí˜¸ ì»¬ëŸ¼ì— í…Œì´ë¸” ë ˆë²¨ë¡œ primary key ì œì•½ì¡°ê±´ ì§€ì •í•˜ë˜
+--ì œì•½ì¡°ê±´ëª…ì€ my_dept_pkë¡œ ì§€ì •
 create table dept_sample
 AS
 select * from DEPARTMENT
@@ -483,17 +483,17 @@ where 1=0;
 alter table dept_sample
 add constraint my_dept_pk primary key(dno);
 
---3.»ç¿øÅ×ÀÌºíÀÇ ºÎ¼­¹øÈ£ ÄÃ·³¿¡ Á¸ÀçÇÏÁö ¾Ê´Â ºÎ¼­ÀÇ »ç¿øÀÌ ¹èÁ¤µÇÁö ¾Êµµ·Ï
---¿Ü·¡Å°(=ÂüÁ¶Å°) Á¦¾àÁ¶°Ç(=ÂüÁ¶ ¹«°á¼º)À» ÁöÁ¤ÇÏµÇ
---Á¦¾à Á¶°Ç ÀÌ¸§Àº my_emp_dept_fk·Î ÁöÁ¤
---[1] Á¦¾àÁ¶°Ç Ãß°¡
+--3.ì‚¬ì›í…Œì´ë¸”ì˜ ë¶€ì„œë²ˆí˜¸ ì»¬ëŸ¼ì— ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ë¶€ì„œì˜ ì‚¬ì›ì´ ë°°ì •ë˜ì§€ ì•Šë„ë¡
+--ì™¸ë˜í‚¤(=ì°¸ì¡°í‚¤) ì œì•½ì¡°ê±´(=ì°¸ì¡° ë¬´ê²°ì„±)ì„ ì§€ì •í•˜ë˜
+--ì œì•½ ì¡°ê±´ ì´ë¦„ì€ my_emp_dept_fkë¡œ ì§€ì •
+--[1] ì œì•½ì¡°ê±´ ì¶”ê°€
 alter table emp_sample
 add constraint my_emp_dept_fk foreign key(dno) references dept_sample(dno);
---¿À·ù ¹ß»ı ¾ÈÇÑ ÀÌÀ¯ : ÀÚ½Ä Å×ÀÌºí¿¡ µ¥ÀÌÅÍ ¾øÀ½(Áï, ÀÚ½Ä¿¡¼­ ºÎ¸ğ¸¦ ÂüÁ¶ÇÏ´Â µ¥ÀÌÅÍ°¡ ¾øÀ¸¹Ç·Î..)
---¹İµå½Ã ºÎ¸ğÀÇ µ¥ÀÌÅÍ¸¦ ¸ÕÀú insertÇÑ ÈÄ -> ÀÚ½ÄÀÌ ÂüÁ¶ÇÏ´Â µ¥ÀÌÅÍ insertÇÏ±â
+--ì˜¤ë¥˜ ë°œìƒ ì•ˆí•œ ì´ìœ  : ìì‹ í…Œì´ë¸”ì— ë°ì´í„° ì—†ìŒ(ì¦‰, ìì‹ì—ì„œ ë¶€ëª¨ë¥¼ ì°¸ì¡°í•˜ëŠ” ë°ì´í„°ê°€ ì—†ìœ¼ë¯€ë¡œ..)
+--ë°˜ë“œì‹œ ë¶€ëª¨ì˜ ë°ì´í„°ë¥¼ ë¨¼ì € insertí•œ í›„ -> ìì‹ì´ ì°¸ì¡°í•˜ëŠ” ë°ì´í„° insertí•˜ê¸°
 
---4.»ç¿ø Å×ÀÌºíÀÇ Ä¿¹Ì¼Ç ÄÃ·³¿¡ 0º¸´Ù Å« °ª¸¸ ÀÔ·ÂÇÒ ¼ö ÀÖµµ·Ï Á¦¾àÁ¶°Ç ÁöÁ¤
---[1] Á¦¾àÁ¶°Ç Ãß°¡
+--4.ì‚¬ì› í…Œì´ë¸”ì˜ ì»¤ë¯¸ì…˜ ì»¬ëŸ¼ì— 0ë³´ë‹¤ í° ê°’ë§Œ ì…ë ¥í•  ìˆ˜ ìˆë„ë¡ ì œì•½ì¡°ê±´ ì§€ì •
+--[1] ì œì•½ì¡°ê±´ ì¶”ê°€
 alter table emp_sample
 add constraint emp_sample_commission_min CHECK(commission > 0);
 

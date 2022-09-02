@@ -1,12 +1,12 @@
---<ºÏ½º-2Àå.µ¥ÀÌÅÍ Á¶È¸ÇÏ±â>
---ÀÌ¸§ÀÌ SCOTT »ç¿øÀÇ Á¤º¸ Ãâ·Â
+--<ë¶ìŠ¤-2ìž¥.ë°ì´í„° ì¡°íšŒí•˜ê¸°>
+--ì´ë¦„ì´ SCOTT ì‚¬ì›ì˜ ì •ë³´ ì¶œë ¥
 SELECT *
 FROM employee
-WHERE ename='SCOTT';--where Á¶°Ç¹®ÀÌ Âü
+WHERE ename='SCOTT';--where ì¡°ê±´ë¬¸ì´ ì°¸
 
 SELECT *
 FROM employee
-WHERE ename='scott';--°á°ú¾øÀ½(¹®ÀÚ°ªÀº ´ë¼Ò¹®ÀÚ ±¸ºÐÇÔ)
+WHERE ename='scott';--ê²°ê³¼ì—†ìŒ(ë¬¸ìžê°’ì€ ëŒ€ì†Œë¬¸ìž êµ¬ë¶„í•¨)
 
 SELECT *
 FROM employee
@@ -16,56 +16,56 @@ SELECT *
 FROM employee
 WHERE ename=upper('scott');
 
---'1981³â 1¿ù 1ÀÏ ÀÌÀü¿¡ ÀÔ»ç'ÇÑ »ç¿øÀÇ Á¤º¸¸¸ Ãâ·Â
+--'1981ë…„ 1ì›” 1ì¼ ì´ì „ì— ìž…ì‚¬'í•œ ì‚¬ì›ì˜ ì •ë³´ë§Œ ì¶œë ¥
 SELECT *
 FROM employee
-WHERE hiredate < '1981/01/01';	--(sql ¹«Á¶°Ç ¹®ÀÚ´Â '¹®ÀÚ1°³', '¹®ÀÚ¿©·¯°³' ¡ØÀÚ¹Ù:'¹®ÀÚ1°³',"¹®ÀÚ¿©·¯°³")
+WHERE hiredate < '1981/01/01';	--(sql ë¬´ì¡°ê±´ ë¬¸ìžëŠ” 'ë¬¸ìž1ê°œ', 'ë¬¸ìžì—¬ëŸ¬ê°œ' â€»ìžë°”:'ë¬¸ìž1ê°œ',"ë¬¸ìžì—¬ëŸ¬ê°œ")
 
---<³í¸® ¿¬»êÀÚ NOT -> AND -> OR : °á°ú°¡ Âü ¶Ç´Â °ÅÁþ ¡ØÀÚ¹Ù ! -> && -> ||>--------------------------------------
---10¹ø ºÎ¼­ ¼Ò¼ÓÀÎ »ç¿øµé Áß¿¡¼­ Á÷±ÞÀÌ MANAGERÀÎ »ç¿ø °Ë»ö
+--<ë…¼ë¦¬ ì—°ì‚°ìž NOT -> AND -> OR : ê²°ê³¼ê°€ ì°¸ ë˜ëŠ” ê±°ì§“ â€»ìžë°” ! -> && -> ||>--------------------------------------
+--10ë²ˆ ë¶€ì„œ ì†Œì†ì¸ ì‚¬ì›ë“¤ ì¤‘ì—ì„œ ì§ê¸‰ì´ MANAGERì¸ ì‚¬ì› ê²€ìƒ‰
 SELECT * FROM employee;
 
 SELECT *
 FROM employee
-WHERE dno=10 AND job='MANAGER';	-- µÑ ´Ù ÂüÀÌ¸é Âü
+WHERE dno=10 AND job='MANAGER';	-- ë‘˜ ë‹¤ ì°¸ì´ë©´ ì°¸
 
---10¹ø ºÎ¼­ ¼Ò¼ÓÀÌ°Å³ª Á÷±ÞÀÌ MANAGERÀÎ »ç¿ø °Ë»ö
+--10ë²ˆ ë¶€ì„œ ì†Œì†ì´ê±°ë‚˜ ì§ê¸‰ì´ MANAGERì¸ ì‚¬ì› ê²€ìƒ‰
 SELECT *
 FROM employee
-WHERE dno=10 OR job='MANAGER';-- µÑ Áß ÇÏ³ª¸¸ ÂüÀÌ¸é Âü
+WHERE dno=10 OR job='MANAGER';-- ë‘˜ ì¤‘ í•˜ë‚˜ë§Œ ì°¸ì´ë©´ ì°¸
 
---10¹ø ºÎ¼­¿¡ ¼Ò¼ÓµÈ »ç¿ø¸¸ Á¦¿Ü
+--10ë²ˆ ë¶€ì„œì— ì†Œì†ëœ ì‚¬ì›ë§Œ ì œì™¸
 SELECT *
 FROM employee
-WHERE NOT dno = 10;	/*³í¸®¿¬»êÀÚ NOT Âü => °ÅÁþ, NOT °ÅÁþ => Âü*/
+WHERE NOT dno = 10;	/*ë…¼ë¦¬ì—°ì‚°ìž NOT ì°¸ => ê±°ì§“, NOT ê±°ì§“ => ì°¸*/
 
 SELECT *
 FROM employee
-WHERE dno != 10;/*ºñ±³¿¬»êÀÚ sql   °°Áö¾Ê´Ù. != <> ^=   ÀÚ¹Ù¿¡¼­µµ °°Áö¾Ê´Ù. !=*/
+WHERE dno != 10;/*ë¹„êµì—°ì‚°ìž sql   ê°™ì§€ì•Šë‹¤. != <> ^=   ìžë°”ì—ì„œë„ ê°™ì§€ì•Šë‹¤. !=*/
 
---<ºñ±³ ¿¬»êÀÚ : 45p Ç¥ ÂüÁ¶>---------------------------------------------------
+--<ë¹„êµ ì—°ì‚°ìž : 45p í‘œ ì°¸ì¡°>---------------------------------------------------
 /*
-=	°°´Ù
-!= <> ^= °°Áö¾Ê´Ù.
+=	ê°™ë‹¤
+!= <> ^= ê°™ì§€ì•Šë‹¤.
 
->	º¸´Ù Å©´Ù : ÃÊ°ú
-<	º¸´Ù ÀÛ´Ù : ¹Ì¸¸
+>	ë³´ë‹¤ í¬ë‹¤ : ì´ˆê³¼
+<	ë³´ë‹¤ ìž‘ë‹¤ : ë¯¸ë§Œ
 
->=	º¸´Ù Å©°Å³ª °°´Ù : ÀÌ»ó
-<=	º¸´Ù ÀÛ°Å³ª °°´Ù : ÀÌÇÏ
+>=	ë³´ë‹¤ í¬ê±°ë‚˜ ê°™ë‹¤ : ì´ìƒ
+<=	ë³´ë‹¤ ìž‘ê±°ë‚˜ ê°™ë‹¤ : ì´í•˜
  */
 
---±Þ¿©°¡ 1100ÀÎ »ç¿øÀÇ Á¤º¸ Ãâ·Â
+--ê¸‰ì—¬ê°€ 1100ì¸ ì‚¬ì›ì˜ ì •ë³´ ì¶œë ¥
 SELECT *
 FROM employee
 WHERE salary = 1100;
 
---±Þ¿©°¡ 1300ÀÎ »ç¿øÀÇ Á¤º¸ Ãâ·Â
+--ê¸‰ì—¬ê°€ 1300ì¸ ì‚¬ì›ì˜ ì •ë³´ ì¶œë ¥
 SELECT *
 FROM employee
 WHERE salary = 1300;
 
---±Þ¿©°¡ 1000~1500 »çÀÌÀÎ »ç¿øÀÇ Á¤º¸ Ãâ·Â
+--ê¸‰ì—¬ê°€ 1000~1500 ì‚¬ì´ì¸ ì‚¬ì›ì˜ ì •ë³´ ì¶œë ¥
 SELECT *
 FROM employee
 WHERE 1000 <= salary AND salary <= 1500;
@@ -74,7 +74,7 @@ SELECT *
 FROM employee
 WHERE salary BETWEEN 1000 AND 1500;
 
---±Þ¿©°¡ 1000¹Ì¸¸ÀÌ°Å³ª 1500ÃÊ°úÀÎ »ç¿øÀÇ Á¤º¸ Ãâ·Â
+--ê¸‰ì—¬ê°€ 1000ë¯¸ë§Œì´ê±°ë‚˜ 1500ì´ˆê³¼ì¸ ì‚¬ì›ì˜ ì •ë³´ ì¶œë ¥
 SELECT *
 FROM employee
 WHERE 1000 > salary OR salary > 1500;
@@ -84,33 +84,33 @@ FROM employee
 WHERE salary NOT BETWEEN 1000 AND 1500;
 
 
---'1982³â'¿¡ ÀÔ»çÇÑ »ç¿øÀÇ Á¤º¸ Ãâ·Â
---¹æ¹ý-1 : '1982-01-01' '1982/01/01' µÑ ´Ù ³¯Â¥·Î ÀÎ½Ä
+--'1982ë…„'ì— ìž…ì‚¬í•œ ì‚¬ì›ì˜ ì •ë³´ ì¶œë ¥
+--ë°©ë²•-1 : '1982-01-01' '1982/01/01' ë‘˜ ë‹¤ ë‚ ì§œë¡œ ì¸ì‹
 SELECT *
 FROM employee
 WHERE '1982-01-01' <= hiredate AND hiredate <= '1982-12-31';
 
---¹æ¹ý-2
+--ë°©ë²•-2
 SELECT *
 FROM employee
 WHERE hiredate BETWEEN '1982/01/01' AND '1982/12/31';
 
---¹æ¹ý-3 : '82-01-01' '82/01/01' µÑ ´Ù 1982³âÀ¸·Î ÀÎ½ÄµÊ
+--ë°©ë²•-3 : '82-01-01' '82/01/01' ë‘˜ ë‹¤ 1982ë…„ìœ¼ë¡œ ì¸ì‹ë¨
 SELECT *
 FROM employee
 WHERE hiredate BETWEEN '82/01/01' AND '82/12/31';
 
---Ä¿¹Ì¼ÇÀÌ 300ÀÌ°Å³ª 500ÀÌ°Å³ª 1400ÀÎ »ç¿ø Á¤º¸ °Ë»ö
+--ì»¤ë¯¸ì…˜ì´ 300ì´ê±°ë‚˜ 500ì´ê±°ë‚˜ 1400ì¸ ì‚¬ì› ì •ë³´ ê²€ìƒ‰
 SELECT *
 FROM employee
 WHERE commission=300 or commission=500 or commission=1400;
 
 SELECT *
 FROM employee
-WHERE commission IN(300, 500, 1400);--ÄÃ·³¸í IN(¼ö, ¼ö, ¼ö...)
+WHERE commission IN(300, 500, 1400);--ì»¬ëŸ¼ëª… IN(ìˆ˜, ìˆ˜, ìˆ˜...)
 
---Ä¿¹Ì¼ÇÀÌ 300, 500, 1400ÀÌ ¸ðµÎ ¾Æ´Ñ »ç¿ø Á¤º¸ Å½»ö
---Ä¿¹Ì¼ÇÀÌ NULLÀÎ »ç¿øÀº Á¦¿ÜµÊ(nullÀº ºñ±³¿¬»êÀÚ·Î ºñ±³ ºÒ°¡´ÉÇÔ)
+--ì»¤ë¯¸ì…˜ì´ 300, 500, 1400ì´ ëª¨ë‘ ì•„ë‹Œ ì‚¬ì› ì •ë³´ íƒìƒ‰
+--ì»¤ë¯¸ì…˜ì´ NULLì¸ ì‚¬ì›ì€ ì œì™¸ë¨(nullì€ ë¹„êµì—°ì‚°ìžë¡œ ë¹„êµ ë¶ˆê°€ëŠ¥í•¨)
 select *
 from employee
 where NOT (commission=300 or commission=500 or commission=1400);
@@ -123,39 +123,39 @@ SELECT *
 FROM employee
 WHERE commission NOT IN(300, 500, 1400);
 ------------------------------------------------------------------------
---¿ÍÀÏµå Ä«µå : %
---ÀÌ¸§ÀÌ 'F'·Î ½ÃÀÛ'ÇÏ´Â »ç¿ø Á¤º¸ Ãâ·Â
+--ì™€ì¼ë“œ ì¹´ë“œ : %
+--ì´ë¦„ì´ 'F'ë¡œ ì‹œìž‘'í•˜ëŠ” ì‚¬ì› ì •ë³´ ì¶œë ¥
 SELECT *
 FROM employee
 where ename LIKE 'F%';
---%:¹®ÀÚ°¡ ¾ø°Å³ª ÇÏ³ª ÀÌ»óÀÇ ¹®ÀÚ°¡ ¾î¶² °ªÀÌ ¿Íµµ »ó°ü¾ø´Ù.(¿¹)'F', 'Fs', 'FVB±Û'
+--%:ë¬¸ìžê°€ ì—†ê±°ë‚˜ í•˜ë‚˜ ì´ìƒì˜ ë¬¸ìžê°€ ì–´ë–¤ ê°’ì´ ì™€ë„ ìƒê´€ì—†ë‹¤.(ì˜ˆ)'F', 'Fs', 'FVBê¸€'
 
---ÀÌ¸§¿¡ 'MÀÌ Æ÷ÇÔ'µÈ »ç¿ø Á¤º¸ Ãâ·Â
+--ì´ë¦„ì— 'Mì´ í¬í•¨'ëœ ì‚¬ì› ì •ë³´ ì¶œë ¥
 SELECT *
 FROM employee
-where ename LIKE '%M%';--(¿¹)'M', 'aM', 'MB', 'AMb'
+where ename LIKE '%M%';--(ì˜ˆ)'M', 'aM', 'MB', 'AMb'
 
---ÀÌ¸§¿¡ 'MÀ¸·Î ³¡³ª´Â'µÈ »ç¿ø Á¤º¸ Ãâ·Â
+--ì´ë¦„ì— 'Mìœ¼ë¡œ ëë‚˜ëŠ”'ëœ ì‚¬ì› ì •ë³´ ì¶œë ¥
 SELECT *
 FROM employee
-where ename LIKE '%M';--(¿¹)'M', 'aM', 'aaaM'
+where ename LIKE '%M';--(ì˜ˆ)'M', 'aM', 'aaaM'
 
---ÀÌ¸§ÀÇ 'µÎ¹øÂ° ±ÛÀÚ°¡ A'ÀÎ »ç¿ø °Ë»ö
+--ì´ë¦„ì˜ 'ë‘ë²ˆì§¸ ê¸€ìžê°€ A'ì¸ ì‚¬ì› ê²€ìƒ‰
 SELECT *
 FROM employee
-where ename LIKE '_A%';--_:ÇÏ³ªÀÇ ¹®ÀÚ°¡ ¾î¶² °ªÀÌ ¿Íµµ »ó°ü¾ø´Ù.
+where ename LIKE '_A%';--_:í•˜ë‚˜ì˜ ë¬¸ìžê°€ ì–´ë–¤ ê°’ì´ ì™€ë„ ìƒê´€ì—†ë‹¤.
 
---ÀÌ¸§ÀÇ '¼¼¹øÂ° ±ÛÀÚ°¡ A'ÀÎ »ç¿ø °Ë»ö
+--ì´ë¦„ì˜ 'ì„¸ë²ˆì§¸ ê¸€ìžê°€ A'ì¸ ì‚¬ì› ê²€ìƒ‰
 SELECT *
 FROM employee
-where ename LIKE '__A%';--_:ÇÏ³ªÀÇ ¹®ÀÚ°¡ ¾î¶² °ªÀÌ ¿Íµµ »ó°ü¾ø´Ù.
+where ename LIKE '__A%';--_:í•˜ë‚˜ì˜ ë¬¸ìžê°€ ì–´ë–¤ ê°’ì´ ì™€ë„ ìƒê´€ì—†ë‹¤.
 
---ÀÌ¸§¿¡ 'A°¡ Æ÷ÇÔ'µÈ »ç¿ø Á¤º¸ Ãâ·Â
+--ì´ë¦„ì— 'Aê°€ í¬í•¨'ëœ ì‚¬ì› ì •ë³´ ì¶œë ¥
 SELECT *
 FROM employee
 where ename LIKE '%A%';
 
---ÀÌ¸§¿¡ 'A°¡ Æ÷ÇÔµÇÁö ¾ÊÀº' »ç¿ø Á¤º¸ Ãâ·Â
+--ì´ë¦„ì— 'Aê°€ í¬í•¨ë˜ì§€ ì•Šì€' ì‚¬ì› ì •ë³´ ì¶œë ¥
 SELECT *
 FROM employee
 where ename NOT LIKE '%A%';
@@ -164,81 +164,81 @@ where ename NOT LIKE '%A%';
 
 select * from employee;
 
---commissionÀ» ¹ÞÁö ¸øÇÏ´Â »ç¿ø Á¤º¸ °Ë»ö
+--commissionì„ ë°›ì§€ ëª»í•˜ëŠ” ì‚¬ì› ì •ë³´ ê²€ìƒ‰
 SELECT *
 FROM employee
-WHERE commission = NULL;--nullÀº ºñ±³¿¬»êÀÚ·Î ºñ±³ºÒ°¡ÇÏ¹Ç·Î ÂüÀÌ µÇ´Â °Ü°ú°¡ ¾øÀ½
+WHERE commission = NULL;--nullì€ ë¹„êµì—°ì‚°ìžë¡œ ë¹„êµë¶ˆê°€í•˜ë¯€ë¡œ ì°¸ì´ ë˜ëŠ” ê²¨ê³¼ê°€ ì—†ìŒ
 
 SELECT *
 FROM employee
 WHERE commission IS NULL;
 
---commissionÀ» ¹Þ´Â »ç¿ø Á¤º¸ °Ë»ö
+--commissionì„ ë°›ëŠ” ì‚¬ì› ì •ë³´ ê²€ìƒ‰
 select *
 from employee
 where commission IS NOT NULL;
 
 ----------------------------------------------------------------------
---Á¤·Ä : ASC ¿À¸§Â÷¼ø(ASC »ý·«°¡´É), DESC ³»¸²Â÷¼ø
+--ì •ë ¬ : ASC ì˜¤ë¦„ì°¨ìˆœ(ASC ìƒëžµê°€ëŠ¥), DESC ë‚´ë¦¼ì°¨ìˆœ
 
---±Þ¿©°¡ °¡Àå ÀûÀº ¼øºÎÅÍ Ãâ·Â
+--ê¸‰ì—¬ê°€ ê°€ìž¥ ì ì€ ìˆœë¶€í„° ì¶œë ¥
 select *
 from employee
 ORDER BY salary ASC;
 
---±Þ¿©°¡ °¡Àå ÀûÀº ¼øºÎÅÍ Ãâ·Â(ÀÌ ¶§, ±Þ¿©°¡ °°À¸¸é commissionÀÌ ¸¹Àº ¼øºÎÅÍ Ãâ·Â)
+--ê¸‰ì—¬ê°€ ê°€ìž¥ ì ì€ ìˆœë¶€í„° ì¶œë ¥(ì´ ë•Œ, ê¸‰ì—¬ê°€ ê°™ìœ¼ë©´ commissionì´ ë§Žì€ ìˆœë¶€í„° ì¶œë ¥)
 select *
 from employee
 ORDER BY salary ASC, commission DESC;
 
---±Þ¿©°¡ ÀûÀº ¼øºÎÅÍ Ãâ·Â(ÀÌ ¶§, ±Þ¿©°¡ °°À¸¸é commissionÀÌ ¸¹Àº ¼øºÎÅÍ, commissionÀÌ °°À¸¸é ÀÌ¸§À» ¾ËÆÄºª¼øÀ¸·Î Á¤·ÄÇÏ¿© Ãâ·Â
+--ê¸‰ì—¬ê°€ ì ì€ ìˆœë¶€í„° ì¶œë ¥(ì´ ë•Œ, ê¸‰ì—¬ê°€ ê°™ìœ¼ë©´ commissionì´ ë§Žì€ ìˆœë¶€í„°, commissionì´ ê°™ìœ¼ë©´ ì´ë¦„ì„ ì•ŒíŒŒë²³ìˆœìœ¼ë¡œ ì •ë ¬í•˜ì—¬ ì¶œë ¥
 select *
 from employee
 --ORDER BY salary ASC, commission DESC, ename ASC;
 --ORDER BY salary, commission DESC, ename;
---ORDER BY 6 ASC, 7 DESC, 2 ASC;--index ¹øÈ£:sql 1ºÎÅÍ ½ÃÀÛ, ÀÚ¹Ù´Â 0ºÎÅÍ ½ÃÀÛ
+--ORDER BY 6 ASC, 7 DESC, 2 ASC;--index ë²ˆí˜¸:sql 1ë¶€í„° ì‹œìž‘, ìžë°”ëŠ” 0ë¶€í„° ì‹œìž‘
 ORDER BY 6, 7 DESC, 2;
 
---ÀÔ»çÀÏÀ» Áß½ÉÀ¸·Î ¿À¸§Â÷¼ø Á¤·Ä
+--ìž…ì‚¬ì¼ì„ ì¤‘ì‹¬ìœ¼ë¡œ ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬
 select *
 from employee
 --ORDER BY 5;
 ORDER BY hiredate ASC;
 
---»ç¿ø¹øÈ£, »ç¿ø¸í, ÀÔ»çÀÏ Ãâ·Â(ÀÔ»çÀÏÀ» Áß½ÉÀ¸·Î ¿À¸§Â÷¼ø Á¤·Ä)
+--ì‚¬ì›ë²ˆí˜¸, ì‚¬ì›ëª…, ìž…ì‚¬ì¼ ì¶œë ¥(ìž…ì‚¬ì¼ì„ ì¤‘ì‹¬ìœ¼ë¡œ ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬)
 select eno, ename, hiredate
 from employee
 --ORDER BY 3;
 ORDER BY hiredate ASC;
 -------------------------------------------------------------------------
 /*
- * 2Àå È¥ÀÚ ÇØº¸±â(65~72p)
+ * 2ìž¥ í˜¼ìž í•´ë³´ê¸°(65~72p)
  */
 
---1.µ¡¼À ¿¬»êÀÚ¸¦ ÀÌ¿ëÇÏ¿© ¸ðµç »ç¿ø¿¡ ´ëÇØ¼­ 300ÀÇ ±Þ¿©ÀÎ»óÀ» °è»êÇÑ ÈÄ 
---»ç¿øÀÇ ÀÌ¸§, ±Þ¿©, ÀÎ»óµÈ ±Þ¿© Ãâ·Â
-select ename, salary, salary+300 as "300ÀÌ ÀÎ»óµÈ ±Þ¿©"
+--1.ë§ì…ˆ ì—°ì‚°ìžë¥¼ ì´ìš©í•˜ì—¬ ëª¨ë“  ì‚¬ì›ì— ëŒ€í•´ì„œ 300ì˜ ê¸‰ì—¬ì¸ìƒì„ ê³„ì‚°í•œ í›„ 
+--ì‚¬ì›ì˜ ì´ë¦„, ê¸‰ì—¬, ì¸ìƒëœ ê¸‰ì—¬ ì¶œë ¥
+select ename, salary, salary+300 as "300ì´ ì¸ìƒëœ ê¸‰ì—¬"
 from employee;
 
---2.»ç¿øÀÇ ÀÌ¸§,±Þ¿©,¿¬°£ ÃÑ¼öÀÔÀ» ÃÑ ¼öÀÔÀÌ ¸¹Àº °ÍºÎÅÍ ÀÛÀº ¼øÀ¸·Î Ãâ·Â
---¿¬°£ ÃÑ¼öÀÔ=¿ù±Þ*12+»ó¿©±Ý100
-select ename, salary, salary*12+100 as "¿¬°£ ÃÑ¼öÀÔ"
+--2.ì‚¬ì›ì˜ ì´ë¦„,ê¸‰ì—¬,ì—°ê°„ ì´ìˆ˜ìž…ì„ ì´ ìˆ˜ìž…ì´ ë§Žì€ ê²ƒë¶€í„° ìž‘ì€ ìˆœìœ¼ë¡œ ì¶œë ¥
+--ì—°ê°„ ì´ìˆ˜ìž…=ì›”ê¸‰*12+ìƒì—¬ê¸ˆ100
+select ename, salary, salary*12+100 as "ì—°ê°„ ì´ìˆ˜ìž…"
 from employee
-ORDER BY "¿¬°£ ÃÑ¼öÀÔ" DESC;--³»¸²Â÷¼ø Á¤·Ä
---order by 3 DESC;--³»¸²Â÷¼ø Á¤·Ä
+ORDER BY "ì—°ê°„ ì´ìˆ˜ìž…" DESC;--ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬
+--order by 3 DESC;--ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬
 
---3.'±Þ¿©°¡ 2000À» ³Ñ´Â' »ç¿øÀÇ ÀÌ¸§°ú ±Þ¿©¸¦ '±Þ¿©°¡ ¸¹Àº °ÍºÎÅÍ ÀûÀº ¼ø'À¸·Î Ãâ·Â
+--3.'ê¸‰ì—¬ê°€ 2000ì„ ë„˜ëŠ”' ì‚¬ì›ì˜ ì´ë¦„ê³¼ ê¸‰ì—¬ë¥¼ 'ê¸‰ì—¬ê°€ ë§Žì€ ê²ƒë¶€í„° ì ì€ ìˆœ'ìœ¼ë¡œ ì¶œë ¥
 select ename, salary
 from employee
 WHERE salary > 2000
 ORDER BY salary DESC;
 
---4.»ç¿ø¹øÈ£°¡ 7788ÀÎ »ç¿øÀÇ ÀÌ¸§°ú ºÎ¼­¹øÈ£¸¦ Ãâ·Â
+--4.ì‚¬ì›ë²ˆí˜¸ê°€ 7788ì¸ ì‚¬ì›ì˜ ì´ë¦„ê³¼ ë¶€ì„œë²ˆí˜¸ë¥¼ ì¶œë ¥
 select ename, eno
 from employee
 WHERE eno=7788;
 
---5.±Þ¿©°¡ 2000¿¡¼­ 3000 »çÀÌ¿¡ Æ÷ÇÔµÇÁö ¾Ê´Â »ç¿øÀÇ ÀÌ¸§°ú ±Þ¿© Ãâ·Â
+--5.ê¸‰ì—¬ê°€ 2000ì—ì„œ 3000 ì‚¬ì´ì— í¬í•¨ë˜ì§€ ì•ŠëŠ” ì‚¬ì›ì˜ ì´ë¦„ê³¼ ê¸‰ì—¬ ì¶œë ¥
 select ename, salary
 from employee
 where salary < 2000 or salary > 3000;
@@ -247,17 +247,17 @@ select ename, salary
 from employee
 WHERE salary NOT BETWEEN 2000 AND 3000;
 
---ÁÖÀÇ : ¿ì¼±¼øÀ§ NOT -> AND -> OR (ÀÚ¹Ù ! -> && -> ||)
---¿ì¼±¼øÀ§¸¦ ¹Ù²Ù´Â ¹æ¹ýÀº ()°ýÈ£
+--ì£¼ì˜ : ìš°ì„ ìˆœìœ„ NOT -> AND -> OR (ìžë°” ! -> && -> ||)
+--ìš°ì„ ìˆœìœ„ë¥¼ ë°”ê¾¸ëŠ” ë°©ë²•ì€ ()ê´„í˜¸
 select ename, salary
 from employee
 where NOT (2000 <= salary AND salary <= 3000);--9
 
 select ename, salary
 from employee
-where NOT 2000 <= salary AND salary <= 3000;--8:°á°ú°¡ ´Ù¸§
+where NOT 2000 <= salary AND salary <= 3000;--8:ê²°ê³¼ê°€ ë‹¤ë¦„
 
---5-2. ±Þ¿©°¡ 2000¿¡¼­ 3000 »çÀÌ¿¡ Æ÷ÇÔµÇ´Â »ç¿øÀÇ ÀÌ¸§°ú ±Þ¿© Ãâ·Â
+--5-2. ê¸‰ì—¬ê°€ 2000ì—ì„œ 3000 ì‚¬ì´ì— í¬í•¨ë˜ëŠ” ì‚¬ì›ì˜ ì´ë¦„ê³¼ ê¸‰ì—¬ ì¶œë ¥
 select ename, salary
 from employee
 where salary <= 2000 or salary <= 3000;
@@ -266,14 +266,14 @@ select ename, salary
 from employee
 WHERE salary BETWEEN 2000 AND 3000;
 
---ÁÖÀÇ : ¿ì¼±¼øÀ§ NOT -> AND -> OR (ÀÚ¹Ù ! -> && -> ||)
---¿ì¼±¼øÀ§¸¦ ¹Ù²Ù´Â ¹æ¹ýÀº ()°ýÈ£
+--ì£¼ì˜ : ìš°ì„ ìˆœìœ„ NOT -> AND -> OR (ìžë°” ! -> && -> ||)
+--ìš°ì„ ìˆœìœ„ë¥¼ ë°”ê¾¸ëŠ” ë°©ë²•ì€ ()ê´„í˜¸
 select ename, salary
 from employee
 where NOT (2000 > salary OR salary > 3000);
 
---6.1981³â 2¿ù 20ÀÏºÎÅÍ 1981³â 5¿ù 1ÀÏ »çÀÌ¿¡ ÀÔ»çÇÑ »ç¿øÀÇ ÀÌ¸§, ´ã´ç¾÷¹«, ÀÔ»çÀÏ Ãâ·Â
---¿À¶óÅ¬ÀÇ ±âº»³¯Â¥ Çü½ÄÀº 'YY/MM/DD'
+--6.1981ë…„ 2ì›” 20ì¼ë¶€í„° 1981ë…„ 5ì›” 1ì¼ ì‚¬ì´ì— ìž…ì‚¬í•œ ì‚¬ì›ì˜ ì´ë¦„, ë‹´ë‹¹ì—…ë¬´, ìž…ì‚¬ì¼ ì¶œë ¥
+--ì˜¤ë¼í´ì˜ ê¸°ë³¸ë‚ ì§œ í˜•ì‹ì€ 'YY/MM/DD'
 select ename, job, hiredate
 from employee
 WHERE '81/02/20' <= hiredate AND hiredate <= '81/05/01';
@@ -286,12 +286,12 @@ select ename, job, hiredate
 from employee
 WHERE hiredate BETWEEN '1981/02/20' AND '1981/05/01';
 
---7.ºÎ¼­¹øÈ£°¡ 20 ¹× 30¿¡ ¼ÓÇÑ »ç¿øÀÇ ÀÌ¸§°ú ºÎ¼­¹øÈ£¸¦ Ãâ·ÂÇÏµÇ 
---ÀÌ¸§À» ±âÁØÀ¸·Î ¿µ¹®ÀÚ¼øÀ¸·Î Ãâ·Â
+--7.ë¶€ì„œë²ˆí˜¸ê°€ 20 ë° 30ì— ì†í•œ ì‚¬ì›ì˜ ì´ë¦„ê³¼ ë¶€ì„œë²ˆí˜¸ë¥¼ ì¶œë ¥í•˜ë˜ 
+--ì´ë¦„ì„ ê¸°ì¤€ìœ¼ë¡œ ì˜ë¬¸ìžìˆœìœ¼ë¡œ ì¶œë ¥
 select ename, dno
 from employee
 WHERE dno=20 OR dno=30
-ORDER BY ename;--ASC »ý·«°¡´É
+ORDER BY ename;--ASC ìƒëžµê°€ëŠ¥
 --order by 1;
 
 select ename, dno
@@ -299,22 +299,22 @@ from employee
 WHERE dno IN(20,30)
 ORDER BY ename;
 
---8.'»ç¿øÀÇ ±Þ¿©°¡ 2000¿¡¼­ 3000»çÀÌ¿¡ Æ÷ÇÔ'µÇ°í 'ºÎ¼­¹øÈ£°¡ 20 ¶Ç´Â 30'ÀÎ »ç¿øÀÇ ÀÌ¸§, ±Þ¿©¿Í ºÎ¼­¹øÈ£¸¦ Ãâ·ÂÇÏµÇ 
---ÀÌ¸§¼ø(¿À¸§Â÷¼ø)À¸·Î Ãâ·Â
---[¹æ¹ý-1]
+--8.'ì‚¬ì›ì˜ ê¸‰ì—¬ê°€ 2000ì—ì„œ 3000ì‚¬ì´ì— í¬í•¨'ë˜ê³  'ë¶€ì„œë²ˆí˜¸ê°€ 20 ë˜ëŠ” 30'ì¸ ì‚¬ì›ì˜ ì´ë¦„, ê¸‰ì—¬ì™€ ë¶€ì„œë²ˆí˜¸ë¥¼ ì¶œë ¥í•˜ë˜ 
+--ì´ë¦„ìˆœ(ì˜¤ë¦„ì°¨ìˆœ)ìœ¼ë¡œ ì¶œë ¥
+--[ë°©ë²•-1]
 select ename, salary, dno
 from employee
 WHERE salary BETWEEN 2000 AND 3000
-AND dno=20 or dno=30			--¿ì¼±¼øÀ§ not -> and -> or
-ORDER BY ename;--Àß¸øµÈ °á°ú°¡ ³ª¿È
---¡Ú¡Ú¡ÚÇØ°á¹ý : ()·Î ¿ì¼±¼øÀ§ º¯°æ
+AND dno=20 or dno=30			--ìš°ì„ ìˆœìœ„ not -> and -> or
+ORDER BY ename;--ìž˜ëª»ëœ ê²°ê³¼ê°€ ë‚˜ì˜´
+--â˜…â˜…â˜…í•´ê²°ë²• : ()ë¡œ ìš°ì„ ìˆœìœ„ ë³€ê²½
 select ename, salary, dno
 from employee
 WHERE salary BETWEEN 2000 AND 3000
-AND (dno=20 or dno=30)			--¿ì¼±¼øÀ§ not -> and -> or
+AND (dno=20 or dno=30)			--ìš°ì„ ìˆœìœ„ not -> and -> or
 ORDER BY ename;
 
---[¹æ¹ý-2]
+--[ë°©ë²•-2]
 select ename, salary, dno
 from employee
 WHERE salary BETWEEN 2000 AND 3000
@@ -327,54 +327,54 @@ WHERE 2000 <= salary AND salary <= 3000
 AND dno IN(20,30)
 ORDER BY ename;
 
---9. 1981³âµµ¿¡ ÀÔ»çÇÑ »ç¿øÀÇ ÀÌ¸§°ú ÀÔ»çÀÏ Ãâ·Â(like¿¬»êÀÚ¿Í ¿ÍÀÏµåÄ«µå(% _) »ç¿ë)
---[¹æ¹ý-1]
-select ename, hiredate	--¿À¶óÅ¬ÀÇ ±âº»³¯Â¥ Çü½ÄÀº 'YY/MM/DD'
+--9. 1981ë…„ë„ì— ìž…ì‚¬í•œ ì‚¬ì›ì˜ ì´ë¦„ê³¼ ìž…ì‚¬ì¼ ì¶œë ¥(likeì—°ì‚°ìžì™€ ì™€ì¼ë“œì¹´ë“œ(% _) ì‚¬ìš©)
+--[ë°©ë²•-1]
+select ename, hiredate	--ì˜¤ë¼í´ì˜ ê¸°ë³¸ë‚ ì§œ í˜•ì‹ì€ 'YY/MM/DD'
 from employee
-WHERE hiredate LIKE '81%';--'1981%';--°á°ú¾øÀ½
+WHERE hiredate LIKE '81%';--'1981%';--ê²°ê³¼ì—†ìŒ
 
---[¹æ¹ý-2] : to_char(¼ö³ª ³¯Â¥, 'Çü½Ä')
+--[ë°©ë²•-2] : to_char(ìˆ˜ë‚˜ ë‚ ì§œ, 'í˜•ì‹')
 select ename, hiredate
 from employee
-WHERE TO_CHAR(hiredate, 'yyyy') LIKE '1981%';--'1981' '1981½ÃÀÛ' (Á¤È®ÇÑ °á°ú)
---WHERE TO_CHAR(hiredate, 'yyyy') LIKE '1981';--'1981' (Á¤È®ÇÑ °á°ú)
+WHERE TO_CHAR(hiredate, 'yyyy') LIKE '1981%';--'1981' '1981ì‹œìž‘' (ì •í™•í•œ ê²°ê³¼)
+--WHERE TO_CHAR(hiredate, 'yyyy') LIKE '1981';--'1981' (ì •í™•í•œ ê²°ê³¼)
 
---[¹æ¹ý-3]
+--[ë°©ë²•-3]
 select ename, hiredate
 from employee
-WHERE TO_CHAR(hiredate, 'yyyy-mm-dd') LIKE '1981%';--'1981' '1981½ÃÀÛ' (Á¤È®ÇÑ °á°ú)
---WHERE TO_CHAR(hiredate, 'yyyy-mm-dd') LIKE '1981';--'1981' (°á°ú°¡ ¾øÀ½)
+WHERE TO_CHAR(hiredate, 'yyyy-mm-dd') LIKE '1981%';--'1981' '1981ì‹œìž‘' (ì •í™•í•œ ê²°ê³¼)
+--WHERE TO_CHAR(hiredate, 'yyyy-mm-dd') LIKE '1981';--'1981' (ê²°ê³¼ê°€ ì—†ìŒ)
 
-select hiredate, --		³â-¿ù-ÀÏ ½Ã:ºÐ:ÃÊ
-to_char(hiredate, 'yyyy'),		-- ³â
-to_char(hiredate, 'yyyy/mm/dd') --		³â/¿ù/ÀÏ
+select hiredate, --		ë…„-ì›”-ì¼ ì‹œ:ë¶„:ì´ˆ
+to_char(hiredate, 'yyyy'),		-- ë…„
+to_char(hiredate, 'yyyy/mm/dd') --		ë…„/ì›”/ì¼
 from employee;
 
---10.°ü¸®ÀÚ(=»ó»ç)°¡ ¾ø´Â »ç¿øÀÇ ÀÌ¸§°ú ´ã´ç¾÷¹«
+--10.ê´€ë¦¬ìž(=ìƒì‚¬)ê°€ ì—†ëŠ” ì‚¬ì›ì˜ ì´ë¦„ê³¼ ë‹´ë‹¹ì—…ë¬´
 select ename, job
 from employee
 WHERE manager IS NULL;
 
---11.'Ä¿¹Ì¼ÇÀ» ¹ÞÀ» ¼ö ÀÖ´Â ÀÚ°Ý'ÀÌ µÇ´Â »ç¿øÀÇ ÀÌ¸§, ±Þ¿©, Ä¿¹Ì¼ÇÀ» Ãâ·ÂÇÏµÇ
---±Þ¿© ¹× Ä¿¹Ì¼ÇÀ» ±âÁØÀ¸·Î ³»¸²Â÷¼ø Á¤·Ä
---[¹æ¹ý-1]
+--11.'ì»¤ë¯¸ì…˜ì„ ë°›ì„ ìˆ˜ ìžˆëŠ” ìžê²©'ì´ ë˜ëŠ” ì‚¬ì›ì˜ ì´ë¦„, ê¸‰ì—¬, ì»¤ë¯¸ì…˜ì„ ì¶œë ¥í•˜ë˜
+--ê¸‰ì—¬ ë° ì»¤ë¯¸ì…˜ì„ ê¸°ì¤€ìœ¼ë¡œ ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬
+--[ë°©ë²•-1]
 select ename, salary, commission
 from employee
 WHERE commission IS NOT NULL
 ORDER BY salary desc, commission desc;
 
---[¹æ¹ý-2]
+--[ë°©ë²•-2]
 select ename, salary, commission
 from employee
 where job = 'SALESMAN'
 order by 2 desc, 3 desc;
 
---12.ÀÌ¸§ÀÇ ¼¼¹øÂ° ¹®ÀÚ°¡ RÀÎ »ç¿øÀÇ ÀÌ¸§ Ç¥½Ã
+--12.ì´ë¦„ì˜ ì„¸ë²ˆì§¸ ë¬¸ìžê°€ Rì¸ ì‚¬ì›ì˜ ì´ë¦„ í‘œì‹œ
 select ename
 from employee
 WHERE ename LIKE '__R%';
 
---13.ÀÌ¸§¿¡ A¿Í E¸¦ ¸ðµÎ Æ÷ÇÔÇÏ°í ÀÖ´Â »ç¿øÀÌ¸§ Ç¥½Ã
+--13.ì´ë¦„ì— Aì™€ Eë¥¼ ëª¨ë‘ í¬í•¨í•˜ê³  ìžˆëŠ” ì‚¬ì›ì´ë¦„ í‘œì‹œ
 select ename
 from employee
 WHERE ename LIKE '%A%E%';--
@@ -384,27 +384,27 @@ from employee
 WHERE ename LIKE '%A%'
 AND ename LIKE '%E%';
 
---14.'´ã´ç ¾÷¹«°¡ »ç¹«¿ø(CLERK) ¶Ç´Â ¿µ¾÷»ç¿ø(SALESMAN)'ÀÌ¸é¼­ 
---'±Þ¿©°¡ 1600,950,1300ÀÌ ¸ðµÎ ¾Æ´Ñ' »ç¿øÀÌ¸§, ´ã´ç¾÷¹«, ±Þ¿© Ãâ·Â
---[¹æ¹ý-1]
+--14.'ë‹´ë‹¹ ì—…ë¬´ê°€ ì‚¬ë¬´ì›(CLERK) ë˜ëŠ” ì˜ì—…ì‚¬ì›(SALESMAN)'ì´ë©´ì„œ 
+--'ê¸‰ì—¬ê°€ 1600,950,1300ì´ ëª¨ë‘ ì•„ë‹Œ' ì‚¬ì›ì´ë¦„, ë‹´ë‹¹ì—…ë¬´, ê¸‰ì—¬ ì¶œë ¥
+--[ë°©ë²•-1]
 select ename, job, salary
 from employee
 where (job='CLERK' or job='SALESMAN')
 AND salary!=1600 and salary<>950 and salary^=1300;
 
---[¹æ¹ý-2]
+--[ë°©ë²•-2]
 select ename, job, salary
 from employee
 where (job='CLERK' or job='SALESMAN')
 AND salary NOT IN(1600, 950, 1300);
 
---[¹æ¹ý-3]
+--[ë°©ë²•-3]
 select ename, job, salary
 from employee
 WHERE job IN('CLERK','SALESMAN')
 AND salary NOT IN(1600,950,1300);
 
---15.'Ä¿¹Ì¼ÇÀÌ 500ÀÌ»ó'ÀÎ »ç¿øÀÌ¸§°ú ±Þ¿©, Ä¿¹Ì¼Ç Ãâ·Â
+--15.'ì»¤ë¯¸ì…˜ì´ 500ì´ìƒ'ì¸ ì‚¬ì›ì´ë¦„ê³¼ ê¸‰ì—¬, ì»¤ë¯¸ì…˜ ì¶œë ¥
 select ename, salary, commission
 from employee
 WHERE 500 <= commission;

@@ -1,26 +1,26 @@
---Å×ÀÌºí »èÁ¦
+--í…Œì´ë¸” ì‚­ì œ
 drop table department;
 
---¿Ü·¡Å°(ÂüÁ¶Å°) Á¦¾àÁ¶°Ç Á¦°Å ÈÄ »èÁ¦
+--ì™¸ë˜í‚¤(ì°¸ì¡°í‚¤) ì œì•½ì¡°ê±´ ì œê±° í›„ ì‚­ì œ
 drop table department cascade constraints;
 
 select * from employee;
 select * from department;
 
---¿Ü·¡Å° Á¦¾àÁ¶°Ç ¼³Á¤
+--ì™¸ë˜í‚¤ ì œì•½ì¡°ê±´ ì„¤ì •
 alter table employee
 modify dno number(2) REFERENCES department;
 
---[ÇØ°áÇÒ ¹®Á¦] '»ç¿ø¹øÈ£°¡ 7788'ÀÎ »ç¿øÀÌ ¼Ò¼ÓµÈ '»ç¿ø¹øÈ£, »ç¿øÀÌ¸§, ¼Ò¼ÓºÎ¼­¹øÈ£, ¼Ò¼ÓºÎ¼­ÀÌ¸§' ¾ò±â
+--[í•´ê²°í•  ë¬¸ì œ] 'ì‚¬ì›ë²ˆí˜¸ê°€ 7788'ì¸ ì‚¬ì›ì´ ì†Œì†ëœ 'ì‚¬ì›ë²ˆí˜¸, ì‚¬ì›ì´ë¦„, ì†Œì†ë¶€ì„œë²ˆí˜¸, ì†Œì†ë¶€ì„œì´ë¦„' ì–»ê¸°
 select eno, ename, e.dno, dname
 from employee e, department d
-where e.dno = d.dno --Á¶ÀÎÁ¶°Ç
-AND eno = 7788; --°Ë»öÁ¶°Ç
+where e.dno = d.dno --ì¡°ì¸ì¡°ê±´
+AND eno = 7788; --ê²€ìƒ‰ì¡°ê±´
 
 select eno, ename, e.dno, dname
 from employee e JOIN department d
-ON e.dno = d.dno --Á¶ÀÎÁ¶°Ç
-where eno = 7788; --°Ë»öÁ¶°Ç
+ON e.dno = d.dno --ì¡°ì¸ì¡°ê±´
+where eno = 7788; --ê²€ìƒ‰ì¡°ê±´
 
 select eno, ename, dno, dname
 from employee natural JOIN department

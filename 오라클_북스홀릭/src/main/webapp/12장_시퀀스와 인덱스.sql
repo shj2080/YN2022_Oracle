@@ -1,53 +1,53 @@
---<ºÏ½º 12Àå. ½ÃÄö½º¿Í ÀÎµ¦½º>
---1. ½ÃÄö½º »ý¼º
---¡Ø ½ÃÄö½º : Å×ÀÌºí ³»ÀÇ À¯ÀÏÇÑ ¼ýÀÚ¸¦ ÀÚµ¿ »ý¼º
---¿À¶óÅ¬¿¡¼­´Â µ¥ÀÌÅÍ°¡ Áßº¹µÈ °ªÀ» °¡Áú ¼ö ÀÖÀ¸³ª
---'°³Ã¼ ¹«°á¼º'À» À§ÇØ Ç×»ó À¯ÀÏÇÑ °ªÀ» °®µµ·Ï ÇÏ´Â '±âº»Å°'
---½ÃÄö½º´Â ±âº»Å°°¡ À¯ÀÏÇÑ °ªÀ» ¹Ýµå½Ã °®µµ·Ï ÀÚµ¿»ý¼ºÇÏ¿© »ç¿ëÀÚ°¡ Á÷Á¢ »ý¼ºÇÏ´Â ºÎ´ã°¨À» ÁÙÀÎ´Ù.
+--<ë¶ìŠ¤ 12ìž¥. ì‹œí€€ìŠ¤ì™€ ì¸ë±ìŠ¤>
+--1. ì‹œí€€ìŠ¤ ìƒì„±
+--â€» ì‹œí€€ìŠ¤ : í…Œì´ë¸” ë‚´ì˜ ìœ ì¼í•œ ìˆ«ìžë¥¼ ìžë™ ìƒì„±
+--ì˜¤ë¼í´ì—ì„œëŠ” ë°ì´í„°ê°€ ì¤‘ë³µëœ ê°’ì„ ê°€ì§ˆ ìˆ˜ ìžˆìœ¼ë‚˜
+--'ê°œì²´ ë¬´ê²°ì„±'ì„ ìœ„í•´ í•­ìƒ ìœ ì¼í•œ ê°’ì„ ê°–ë„ë¡ í•˜ëŠ” 'ê¸°ë³¸í‚¤'
+--ì‹œí€€ìŠ¤ëŠ” ê¸°ë³¸í‚¤ê°€ ìœ ì¼í•œ ê°’ì„ ë°˜ë“œì‹œ ê°–ë„ë¡ ìžë™ìƒì„±í•˜ì—¬ ì‚¬ìš©ìžê°€ ì§ì ‘ ìƒì„±í•˜ëŠ” ë¶€ë‹´ê°ì„ ì¤„ì¸ë‹¤.
 
-create sequence ½ÃÄö½º¸í
-[start with ½ÃÄö½º ½ÃÀÛ¼ýÀÚ]--½ÃÀÛ¼ýÀÚÀÇ ±âº»°ªÀº Áõ°¡ÇÒ ¶§ minvalue, °¨¼ÒÇÒ ¶§ maxvalue
-[increment by Áõ°¨¼ýÀÚ] --Áõ°¨¼ýÀÚ°¡ ¾ç¼ö¸é Áõ°¡, À½¼ö¸é °¨¼Ò (±âº»°ª : 1)
+create sequence ì‹œí€€ìŠ¤ëª…
+[start with ì‹œí€€ìŠ¤ ì‹œìž‘ìˆ«ìž]--ì‹œìž‘ìˆ«ìžì˜ ê¸°ë³¸ê°’ì€ ì¦ê°€í•  ë•Œ minvalue, ê°ì†Œí•  ë•Œ maxvalue
+[increment by ì¦ê°ìˆ«ìž] --ì¦ê°ìˆ«ìžê°€ ì–‘ìˆ˜ë©´ ì¦ê°€, ìŒìˆ˜ë©´ ê°ì†Œ (ê¸°ë³¸ê°’ : 1)
 
-[minvalue ÃÖ¼Ò°ª | nominvalue(±âº»°ª)] --nominvalue(±âº»°ª) : Áõ°¡ÀÏ ¶§ 1, °¨¼ÒÀÏ ¶§ -10ÀÇ 26½Â±îÁö
-								   --minvalue ÃÖ¼Ò°ª : ÃÖ¼Ò°ª ¼³Á¤, ½ÃÀÛ¼ýÀÚº¸´Ù °°°Å³ª ÀÛ¾Æ¾ß ÇÏ°í maxvalue(ÃÖ´ë°ª)º¸´Ù ÀÛ¾Æ¾ß ÇÔ
+[minvalue ìµœì†Œê°’ | nominvalue(ê¸°ë³¸ê°’)] --nominvalue(ê¸°ë³¸ê°’) : ì¦ê°€ì¼ ë•Œ 1, ê°ì†Œì¼ ë•Œ -10ì˜ 26ìŠ¹ê¹Œì§€
+								   --minvalue ìµœì†Œê°’ : ìµœì†Œê°’ ì„¤ì •, ì‹œìž‘ìˆ«ìžë³´ë‹¤ ê°™ê±°ë‚˜ ìž‘ì•„ì•¼ í•˜ê³  maxvalue(ìµœëŒ€ê°’)ë³´ë‹¤ ìž‘ì•„ì•¼ í•¨
                                    
-[maxvalue ÃÖ´ë°ª | nomaxvalue(±âº»°ª)] --nomaxvalue(±âº»°ª) : Áõ°¡ÀÏ ¶§ 10ÀÇ 27½Â±îÁö, °¨¼ÒÀÏ ¶§ -1±îÁö
-							       --maxvalue ÃÖ´ë°ª : ÃÖ´ë°ª ¼³Á¤, ½ÃÀÛ¼ýÀÚ¿Í °°°Å³ª Ä¿¾ß ÇÏ°í minvalue(ÃÖ¼Ò°ª)º¸´Ù Ä¿¾ß ÇÔ
+[maxvalue ìµœëŒ€ê°’ | nomaxvalue(ê¸°ë³¸ê°’)] --nomaxvalue(ê¸°ë³¸ê°’) : ì¦ê°€ì¼ ë•Œ 10ì˜ 27ìŠ¹ê¹Œì§€, ê°ì†Œì¼ ë•Œ -1ê¹Œì§€
+							       --maxvalue ìµœëŒ€ê°’ : ìµœëŒ€ê°’ ì„¤ì •, ì‹œìž‘ìˆ«ìžì™€ ê°™ê±°ë‚˜ ì»¤ì•¼ í•˜ê³  minvalue(ìµœì†Œê°’)ë³´ë‹¤ ì»¤ì•¼ í•¨
 
-[cycle | nocycle(±âº»°ª)] -- cycle : ÃÖ´ë°ª±îÁö Áõ°¡ ÈÄ ÃÖ¼Ò°ªÀ¸·Î ´Ù½Ã ½ÃÀÛ
-						-- nocycle : ÃÖ´ë°ª±îÁö Áõ°¡ ÈÄ ±× ´ÙÀ½ ½ÃÄö½º¸¦ ¹ß±Þ¹ÞÀ¸·Á¸é ¿¡·¯ ¹ß»ý
+[cycle | nocycle(ê¸°ë³¸ê°’)] -- cycle : ìµœëŒ€ê°’ê¹Œì§€ ì¦ê°€ í›„ ìµœì†Œê°’ìœ¼ë¡œ ë‹¤ì‹œ ì‹œìž‘
+						-- nocycle : ìµœëŒ€ê°’ê¹Œì§€ ì¦ê°€ í›„ ê·¸ ë‹¤ìŒ ì‹œí€€ìŠ¤ë¥¼ ë°œê¸‰ë°›ìœ¼ë ¤ë©´ ì—ëŸ¬ ë°œìƒ
 
-[cache n | nocache]		-- cache n : ¸Þ¸ð¸®»ó¿¡ ½ÃÄö½º °ªÀ» ¹Ì¸® ÇÒ´ç(±âº»°ªÀº 20)
-						-- nocache : ¸Þ¸ð¸®»ó¿¡ ½ÃÄö½º °ªÀ» ¹Ì¸® ÇÒ´çÇÏÁö ¾ÊÀ½(°ü¸®X)
+[cache n | nocache]		-- cache n : ë©”ëª¨ë¦¬ìƒì— ì‹œí€€ìŠ¤ ê°’ì„ ë¯¸ë¦¬ í• ë‹¹(ê¸°ë³¸ê°’ì€ 20)
+						-- nocache : ë©”ëª¨ë¦¬ìƒì— ì‹œí€€ìŠ¤ ê°’ì„ ë¯¸ë¦¬ í• ë‹¹í•˜ì§€ ì•ŠìŒ(ê´€ë¦¬X)
 
-[order | noorder(±âº»°ª)] -- order : º´·Ä¼­¹ö(¿©·¯ DB¼­¹ö°¡ ¿¬°áµÈ ±¸Á¶)¸¦ »ç¿ëÇÒ °æ¿ì ¿äÃ» ¼ø¼­¿¡ µû¶ó Á¤È®ÇÏ°Ô ½ÃÄö½º¸¦ »ý¼ºÇÏ±â¸¦ ¿øÇÒ ¶§ order·Î ÁöÁ¤
-						-- 		   ´ÜÀÏ¼­¹öÀÏ °æ¿ì ÀÌ ¿É¼Ç°ú °ü°è¾øÀÌ Á¤È®È÷ ¿äÃ» ¼ø¼­¿¡ µû¶ó ½ÃÄö½º°¡ »ý¼ºµÊ.
-						-- noorder(±âº»°ª)
+[order | noorder(ê¸°ë³¸ê°’)] -- order : ë³‘ë ¬ì„œë²„(ì—¬ëŸ¬ DBì„œë²„ê°€ ì—°ê²°ëœ êµ¬ì¡°)ë¥¼ ì‚¬ìš©í•  ê²½ìš° ìš”ì²­ ìˆœì„œì— ë”°ë¼ ì •í™•í•˜ê²Œ ì‹œí€€ìŠ¤ë¥¼ ìƒì„±í•˜ê¸°ë¥¼ ì›í•  ë•Œ orderë¡œ ì§€ì •
+						-- 		   ë‹¨ì¼ì„œë²„ì¼ ê²½ìš° ì´ ì˜µì…˜ê³¼ ê´€ê³„ì—†ì´ ì •í™•ížˆ ìš”ì²­ ìˆœì„œì— ë”°ë¼ ì‹œí€€ìŠ¤ê°€ ìƒì„±ë¨.
+						-- noorder(ê¸°ë³¸ê°’)
 ;
---(1) sequence-1 »ý¼º
---drop sequence sample_test; --ÀÌ¹Ì ½ÃÄö½º°¡ ÀÖ´Â °æ¿ì Á¦°Å
-create sequence sample_test; --¿É¼ÇÀº ±âº»°ªÀ¸·Î
+--(1) sequence-1 ìƒì„±
+--drop sequence sample_test; --ì´ë¯¸ ì‹œí€€ìŠ¤ê°€ ìžˆëŠ” ê²½ìš° ì œê±°
+create sequence sample_test; --ì˜µì…˜ì€ ê¸°ë³¸ê°’ìœ¼ë¡œ
 
 select *
 from USER_sequenceS
-where sequence_name in ('SAMPLE_TEST'); --¹Ýµå½Ã ´ë¹®ÀÚ
---where sequence_name in UPPER('sample_test'); --upper¸¦ ÀÌ¿ëÇØ ´ë¹®ÀÚ·Î º¯È¯ÇØµµ µÊ
+where sequence_name in ('SAMPLE_TEST'); --ë°˜ë“œì‹œ ëŒ€ë¬¸ìž
+--where sequence_name in UPPER('sample_test'); --upperë¥¼ ì´ìš©í•´ ëŒ€ë¬¸ìžë¡œ ë³€í™˜í•´ë„ ë¨
 
 create sequence sample_test2
-start with -999999999999999999999999990 --9°¡ 26¹ø + 0
-increment by -10 --ÃÖ¼Ò°ª : -999999999999999999999999999 (9°¡ 27¹ø)
+start with -999999999999999999999999990 --9ê°€ 26ë²ˆ + 0
+increment by -10 --ìµœì†Œê°’ : -999999999999999999999999999 (9ê°€ 27ë²ˆ)
 ;
 
-select sample_test2.nextval, sample_test2.currval from dual; --¼º°ø(-999999999999999999999999990)
-select sample_test2.nextval, sample_test2.currval from dual; --¿À·ù
+select sample_test2.nextval, sample_test2.currval from dual; --ì„±ê³µ(-999999999999999999999999990)
+select sample_test2.nextval, sample_test2.currval from dual; --ì˜¤ë¥˜
 --ORA-08004: sequence SAMPLE_TEST2.NEXTVAL goes below MINVALUE and cannot be instantiated
 
 select *
 from USER_sequenceS
-where sequence_name in ('SAMPLE_TEST2'); --¹Ýµå½Ã ´ë¹®ÀÚ
+where sequence_name in ('SAMPLE_TEST2'); --ë°˜ë“œì‹œ ëŒ€ë¬¸ìž
 
---(2) sequence-2 »ý¼º
+--(2) sequence-2 ìƒì„±
 create sequence sample_seq
 start with 10
 increment by 3
@@ -57,71 +57,71 @@ nocache;
 
 select *
 from USER_sequenceS
-where sequence_name in ('SAMPLE_SEQ'); --¹Ýµå½Ã ´ë¹®ÀÚ
+where sequence_name in ('SAMPLE_SEQ'); --ë°˜ë“œì‹œ ëŒ€ë¬¸ìž
 
 select sample_seq.nextval, sample_seq.currval from dual;--10 10
 select sample_seq.nextval, sample_seq.currval from dual;--13 13
 select sample_seq.nextval, sample_seq.currval from dual;--16 16
-select sample_seq.nextval, sample_seq.currval from dual;--19 19 (maxvalue 20ÀÌ¹Ç·Î)
-select sample_seq.nextval, sample_seq.currval from dual;--1  1  (cycle:ÃÖ¼Ò°ªÀ¸·Î..)(maxvalue 20À» ÃÊ°úÇÏ´Â ¼ø°£ minvalueÀÎ 1·Î µ¹¾Æ¿È)
+select sample_seq.nextval, sample_seq.currval from dual;--19 19 (maxvalue 20ì´ë¯€ë¡œ)
+select sample_seq.nextval, sample_seq.currval from dual;--1  1  (cycle:ìµœì†Œê°’ìœ¼ë¡œ..)(maxvalue 20ì„ ì´ˆê³¼í•˜ëŠ” ìˆœê°„ minvalueì¸ 1ë¡œ ëŒì•„ì˜´)
 select sample_seq.nextval, sample_seq.currval from dual;--4  4
 
---(3) sequence-3 »ý¼º
+--(3) sequence-3 ìƒì„±
 create sequence sample_seq2
 start with 10
 increment by 3;
 
-select * 	--maxvalue 99.999(9°¡ 27¹ø=ÃÖ´ë°ª 10ÀÇ 27½Â±îÁö=1E+28=10E+27)
+select * 	--maxvalue 99.999(9ê°€ 27ë²ˆ=ìµœëŒ€ê°’ 10ì˜ 27ìŠ¹ê¹Œì§€=1E+28=10E+27)
 from USER_sequenceS
-where sequence_name in ('SAMPLE_SEQ2'); --¹Ýµå½Ã ´ë¹®ÀÚ
+where sequence_name in ('SAMPLE_SEQ2'); --ë°˜ë“œì‹œ ëŒ€ë¬¸ìž
 
 select sample_seq2.nextval, sample_seq2.currval from dual;--10 10
 select sample_seq2.nextval, sample_seq2.currval from dual;--13 13
 select sample_seq2.nextval, sample_seq2.currval from dual;--16 16
 select sample_seq2.nextval, sample_seq2.currval from dual;--19 19
-select sample_seq2.nextval, sample_seq2.currval from dual;--22 22 (ÃÖ´ë°ª±îÁö °è¼Ó Áõ°¡ ÈÄ nocycle)
+select sample_seq2.nextval, sample_seq2.currval from dual;--22 22 (ìµœëŒ€ê°’ê¹Œì§€ ê³„ì† ì¦ê°€ í›„ nocycle)
 
---1.1 NEXTVAL -> CURRVAL(¡Ú¡Ú »ç¿ë¼ø¼­ ÁÖÀÇ)
---NEXTVAL : ´ÙÀ½°ª(¡Ú»õ·Î¿î °ª »ý¼º) ´ÙÀ½¿¡
---CURRVAL : ½ÃÄö½ºÀÇ ÇöÀç°ª ¾Ë¾Æ³¿
+--1.1 NEXTVAL -> CURRVAL(â˜…â˜… ì‚¬ìš©ìˆœì„œ ì£¼ì˜)
+--NEXTVAL : ë‹¤ìŒê°’(â˜…ìƒˆë¡œìš´ ê°’ ìƒì„±) ë‹¤ìŒì—
+--CURRVAL : ì‹œí€€ìŠ¤ì˜ í˜„ìž¬ê°’ ì•Œì•„ëƒ„
 
 select sample_seq2.nextval from dual;--25
 select sample_seq2.currval from dual;
---¿À·ù?ORA-08002: sequence SAMPLE_SEQ2.CURRVAL is not yet defined in this session
+--ì˜¤ë¥˜?ORA-08002: sequence SAMPLE_SEQ2.CURRVAL is not yet defined in this session
 
-select sample_seq2.nextval, sample_seq2.currval from dual;--28 28(¼ø¼­ °ü°è¾øÀÌ ½ÇÇàµÊ)
+select sample_seq2.nextval, sample_seq2.currval from dual;--28 28(ìˆœì„œ ê´€ê³„ì—†ì´ ì‹¤í–‰ë¨)
 select sample_seq2.currval, sample_seq2.nextval from dual;--31 31
---Áï, ¼ø¼­ °ü°è¾øÀÌ ½ÇÇà¼ø¼­:
---¸ÕÀú sample_seq2.nextval ´ÙÀ½°ª »ý¼º -> ±× ´ÙÀ½ sample_seq2.currval·Î ÇöÀç°ª ¾Ë¾Æ³¿
+--ì¦‰, ìˆœì„œ ê´€ê³„ì—†ì´ ì‹¤í–‰ìˆœì„œ:
+--ë¨¼ì € sample_seq2.nextval ë‹¤ìŒê°’ ìƒì„± -> ê·¸ ë‹¤ìŒ sample_seq2.currvalë¡œ í˜„ìž¬ê°’ ì•Œì•„ëƒ„
 
 
---1.2 ½ÃÄö½º¸¦ ±âº»Å°¿¡ Á¢¸ñÇÏ±â(295p)
---ºÎ¼­ Å×ÀÌºíÀÇ ±âº»Å°ÀÎ ºÎ¼­¹øÈ£´Â ¹Ýµå½Ã À¯ÀÏÇÑ °ªÀ» °¡Á®¾ß ÇÔ
---À¯ÀÏÇÑ °ªÀ» ÀÚµ¿ »ý¼ºÇØÁÖ´Â ½ÃÄö½º¸¦ ÅëÇØ ¼øÂ÷ÀûÀ¸·Î Áõ°¡ÇÏ´Â ÄÃ·³°ª ÀÚµ¿»ý¼º
+--1.2 ì‹œí€€ìŠ¤ë¥¼ ê¸°ë³¸í‚¤ì— ì ‘ëª©í•˜ê¸°(295p)
+--ë¶€ì„œ í…Œì´ë¸”ì˜ ê¸°ë³¸í‚¤ì¸ ë¶€ì„œë²ˆí˜¸ëŠ” ë°˜ë“œì‹œ ìœ ì¼í•œ ê°’ì„ ê°€ì ¸ì•¼ í•¨
+--ìœ ì¼í•œ ê°’ì„ ìžë™ ìƒì„±í•´ì£¼ëŠ” ì‹œí€€ìŠ¤ë¥¼ í†µí•´ ìˆœì°¨ì ìœ¼ë¡œ ì¦ê°€í•˜ëŠ” ì»¬ëŸ¼ê°’ ìžë™ìƒì„±
 
---½Ç½ÀÀ§ÇØ dept12 Å×ÀÌºí »ý¼º
---drop table dept12; --»ý¼ºµÈ Å×ÀÌºíÀÌ ÀÖ´Ù¸é ¸ÕÀú drop
+--ì‹¤ìŠµìœ„í•´ dept12 í…Œì´ë¸” ìƒì„±
+--drop table dept12; --ìƒì„±ëœ í…Œì´ë¸”ì´ ìžˆë‹¤ë©´ ë¨¼ì € drop
 create table dept12
 AS
 select * from department
-where 0=1; --Á¶°ÇÀ» °ÅÁþÀ¸·Î
---Å×ÀÌºí ±¸Á¶¸¸ º¹»ç(´Ü, Á¦¾àÁ¶°ÇÀº º¹»ç¾ÈµÊ!-dno´Â ±âº»Å°°¡ ¾Æ´Ô)
+where 0=1; --ì¡°ê±´ì„ ê±°ì§“ìœ¼ë¡œ
+--í…Œì´ë¸” êµ¬ì¡°ë§Œ ë³µì‚¬(ë‹¨, ì œì•½ì¡°ê±´ì€ ë³µì‚¬ì•ˆë¨!-dnoëŠ” ê¸°ë³¸í‚¤ê°€ ì•„ë‹˜)
 
---dno¿¡ ±âº»Å° Á¦¾àÁ¶°Ç Ãß°¡
+--dnoì— ê¸°ë³¸í‚¤ ì œì•½ì¡°ê±´ ì¶”ê°€
 alter table dept12
-add constraint dept12_dno_pk primary key(dno); --Á¦¾àÁ¶°Ç¸íÀ» Á÷Á¢ ÁöÁ¤, index ÀÚµ¿»ý¼º
+add constraint dept12_dno_pk primary key(dno); --ì œì•½ì¡°ê±´ëª…ì„ ì§ì ‘ ì§€ì •, index ìžë™ìƒì„±
 
 alter table dept12
-add primary key(dno); --Á¦¾àÁ¶°Ç¸í ½Ã½ºÅÛÀÌ ÀÚµ¿ ÁöÁ¤, index ÀÚµ¿»ý¼º
+add primary key(dno); --ì œì•½ì¡°ê±´ëª… ì‹œìŠ¤í…œì´ ìžë™ ì§€ì •, index ìžë™ìƒì„±
 
 select * from dept12;
 
---±âº»Å°¿¡ Á¢¸ñ½ÃÅ³ ½ÃÄö½º »ý¼º
+--ê¸°ë³¸í‚¤ì— ì ‘ëª©ì‹œí‚¬ ì‹œí€€ìŠ¤ ìƒì„±
 create sequence dno_seq
-start with 10	--10 ºÎÅÍ ½ÃÀÛ
-increment by 10; --nocycleÀÌ ±âº»°ª (10->20->..->80->90(³¡)  ->10(X)) 
+start with 10	--10 ë¶€í„° ì‹œìž‘
+increment by 10; --nocycleì´ ê¸°ë³¸ê°’ (10->20->..->80->90(ë)  ->10(X)) 
 
---±¸Á¶¸¦ º¹»çÇÑ ºÎ¼­Á¤º¸ Å×ÀÌºí(dept12)¿¡ µ¥ÀÌÅÍ¸¦ Ãß°¡ÇÑ´Ù.
+--êµ¬ì¡°ë¥¼ ë³µì‚¬í•œ ë¶€ì„œì •ë³´ í…Œì´ë¸”(dept12)ì— ë°ì´í„°ë¥¼ ì¶”ê°€í•œë‹¤.
 INSERT INTO dept12 VALUES(dno_seq.nextval,'ACCOUNTING', 'NEW YORK'); --10
 INSERT INTO dept12 VALUES(dno_seq.nextval, 'RESEARCH', 'DALLAS'); --20
 INSERT INTO dept12 VALUES(dno_seq.nextval, 'SALES', 'CHICAGO'); --30
@@ -129,68 +129,68 @@ INSERT INTO dept12 VALUES(dno_seq.nextval, 'OPERATIONS', 'BOSTON'); --40
 
 select * from dept12;
 
---2. ½ÃÄö½º ¼öÁ¤ ¹× Á¦°Å
---<¼öÁ¤ ½Ã ÁÖÀÇÇÒ »çÇ× 2°¡Áö>
---[1] 'start with ½ÃÀÛ¼ýÀÚ'´Â ¼öÁ¤ ºÒ°¡
---ÀÌÀ¯? ÀÌ¹Ì »ç¿ë ÁßÀÎ ½ÃÄö½ºÀÇ ½ÃÀÛ°ªÀ» º¯°æÇÒ ¼ö ¾øÀ¸¹Ç·Î
---½ÃÀÛ¹øÈ£¸¦ ´Ù¸¥¹øÈ£·Î ´Ù½Ã ½ÃÀÛÇÏ·Á¸é ÀÌÀü ½ÃÄö½º¸¦ DROPÀ¸·Î »çÁ¦ ÈÄ ´Ù½Ã »ý¼º
+--2. ì‹œí€€ìŠ¤ ìˆ˜ì • ë° ì œê±°
+--<ìˆ˜ì • ì‹œ ì£¼ì˜í•  ì‚¬í•­ 2ê°€ì§€>
+--[1] 'start with ì‹œìž‘ìˆ«ìž'ëŠ” ìˆ˜ì • ë¶ˆê°€
+--ì´ìœ ? ì´ë¯¸ ì‚¬ìš© ì¤‘ì¸ ì‹œí€€ìŠ¤ì˜ ì‹œìž‘ê°’ì„ ë³€ê²½í•  ìˆ˜ ì—†ìœ¼ë¯€ë¡œ
+--ì‹œìž‘ë²ˆí˜¸ë¥¼ ë‹¤ë¥¸ë²ˆí˜¸ë¡œ ë‹¤ì‹œ ì‹œìž‘í•˜ë ¤ë©´ ì´ì „ ì‹œí€€ìŠ¤ë¥¼ DROPìœ¼ë¡œ ì‚¬ì œ í›„ ë‹¤ì‹œ ìƒì„±
 
---[2] Áõ°¡ : ÇöÀç µé¾îÀÖ´Â °ªº¸´Ù '³ôÀº ÃÖ¼Ò°ª'À¸·Î ¼³Á¤ÇÒ ¼ö ¾ø´Ù.
---	  °¨¼Ò : ÇöÀç µé¾îÀÖ´Â °ªº¸´Ù '³·Àº ÃÖ´ë°ª'À¸·Î ¼³Á¤ÇÒ ¼ö ¾ø´Ù.
---	  (¿¹) ÃÖ´ë°ª 10000 ½ÃÀÛÇÏ¿© 10¾¿ °¨¼Ò (10000->9990->9980)
---		 -> ÃÖ´ë°ª 5000À¸·Î º¯°æÇÏ¸é 5000º¸´Ù Å« ÀÌ¹Ì Ãß°¡µÈ °ªµéÀÌ ¹«È¿È­µÇ¹Ç·Î...
+--[2] ì¦ê°€ : í˜„ìž¬ ë“¤ì–´ìžˆëŠ” ê°’ë³´ë‹¤ 'ë†’ì€ ìµœì†Œê°’'ìœ¼ë¡œ ì„¤ì •í•  ìˆ˜ ì—†ë‹¤.
+--	  ê°ì†Œ : í˜„ìž¬ ë“¤ì–´ìžˆëŠ” ê°’ë³´ë‹¤ 'ë‚®ì€ ìµœëŒ€ê°’'ìœ¼ë¡œ ì„¤ì •í•  ìˆ˜ ì—†ë‹¤.
+--	  (ì˜ˆ) ìµœëŒ€ê°’ 10000 ì‹œìž‘í•˜ì—¬ 10ì”© ê°ì†Œ (10000->9990->9980)
+--		 -> ìµœëŒ€ê°’ 5000ìœ¼ë¡œ ë³€ê²½í•˜ë©´ 5000ë³´ë‹¤ í° ì´ë¯¸ ì¶”ê°€ëœ ê°’ë“¤ì´ ë¬´íš¨í™”ë˜ë¯€ë¡œ...
 
-ALTER sequence ½ÃÄö½º¸í--½ÃÄö½ºµµ DDL(=µ¥ÀÌÅÍ Á¤ÀÇ¾î)¹®ÀÌ¹Ç·Î ALTER¹®À¸·Î ¼öÁ¤ °¡´É!
---[start with ½ÃÄö½º ½ÃÀÛ¼ýÀÚ]--½ÃÄö½º ¼öÁ¤ ½Ã »ç¿ëºÒ°¡ÇÔ. CREATE sequence¿¡¼­¸¸ »ç¿ë
-[increment by Áõ°¨¼ýÀÚ] --Áõ°¨¼ýÀÚ°¡ ¾ç¼ö¸é Áõ°¡, À½¼ö¸é °¨¼Ò (±âº»°ª : 1)
+ALTER sequence ì‹œí€€ìŠ¤ëª…--ì‹œí€€ìŠ¤ë„ DDL(=ë°ì´í„° ì •ì˜ì–´)ë¬¸ì´ë¯€ë¡œ ALTERë¬¸ìœ¼ë¡œ ìˆ˜ì • ê°€ëŠ¥!
+--[start with ì‹œí€€ìŠ¤ ì‹œìž‘ìˆ«ìž]--ì‹œí€€ìŠ¤ ìˆ˜ì • ì‹œ ì‚¬ìš©ë¶ˆê°€í•¨. CREATE sequenceì—ì„œë§Œ ì‚¬ìš©
+[increment by ì¦ê°ìˆ«ìž] --ì¦ê°ìˆ«ìžê°€ ì–‘ìˆ˜ë©´ ì¦ê°€, ìŒìˆ˜ë©´ ê°ì†Œ (ê¸°ë³¸ê°’ : 1)
 
-[minvalue ÃÖ¼Ò°ª | nominvalue(±âº»°ª)] --nominvalue(±âº»°ª) : Áõ°¡ÀÏ ¶§ 1, °¨¼ÒÀÏ ¶§ -10ÀÇ 26½Â±îÁö
-								   --minvalue ÃÖ¼Ò°ª : ÃÖ¼Ò°ª ¼³Á¤, ½ÃÀÛ¼ýÀÚº¸´Ù °°°Å³ª ÀÛ¾Æ¾ß ÇÏ°í maxvalue(ÃÖ´ë°ª)º¸´Ù ÀÛ¾Æ¾ß ÇÔ
+[minvalue ìµœì†Œê°’ | nominvalue(ê¸°ë³¸ê°’)] --nominvalue(ê¸°ë³¸ê°’) : ì¦ê°€ì¼ ë•Œ 1, ê°ì†Œì¼ ë•Œ -10ì˜ 26ìŠ¹ê¹Œì§€
+								   --minvalue ìµœì†Œê°’ : ìµœì†Œê°’ ì„¤ì •, ì‹œìž‘ìˆ«ìžë³´ë‹¤ ê°™ê±°ë‚˜ ìž‘ì•„ì•¼ í•˜ê³  maxvalue(ìµœëŒ€ê°’)ë³´ë‹¤ ìž‘ì•„ì•¼ í•¨
                                    
-[maxvalue ÃÖ´ë°ª | nomaxvalue(±âº»°ª)] --nomaxvalue(±âº»°ª) : Áõ°¡ÀÏ ¶§ 10ÀÇ 27½Â±îÁö, °¨¼ÒÀÏ ¶§ -1±îÁö
-							       --maxvalue ÃÖ´ë°ª : ÃÖ´ë°ª ¼³Á¤, ½ÃÀÛ¼ýÀÚ¿Í °°°Å³ª Ä¿¾ß ÇÏ°í minvalue(ÃÖ¼Ò°ª)º¸´Ù Ä¿¾ß ÇÔ
+[maxvalue ìµœëŒ€ê°’ | nomaxvalue(ê¸°ë³¸ê°’)] --nomaxvalue(ê¸°ë³¸ê°’) : ì¦ê°€ì¼ ë•Œ 10ì˜ 27ìŠ¹ê¹Œì§€, ê°ì†Œì¼ ë•Œ -1ê¹Œì§€
+							       --maxvalue ìµœëŒ€ê°’ : ìµœëŒ€ê°’ ì„¤ì •, ì‹œìž‘ìˆ«ìžì™€ ê°™ê±°ë‚˜ ì»¤ì•¼ í•˜ê³  minvalue(ìµœì†Œê°’)ë³´ë‹¤ ì»¤ì•¼ í•¨
 
-[cycle | nocycle(±âº»°ª)] -- cycle : ÃÖ´ë°ª±îÁö Áõ°¡ ÈÄ ÃÖ¼Ò°ªÀ¸·Î ´Ù½Ã ½ÃÀÛ
-						-- nocycle : ÃÖ´ë°ª±îÁö Áõ°¡ ÈÄ ±× ´ÙÀ½ ½ÃÄö½º¸¦ ¹ß±Þ¹ÞÀ¸·Á¸é ¿¡·¯ ¹ß»ý
+[cycle | nocycle(ê¸°ë³¸ê°’)] -- cycle : ìµœëŒ€ê°’ê¹Œì§€ ì¦ê°€ í›„ ìµœì†Œê°’ìœ¼ë¡œ ë‹¤ì‹œ ì‹œìž‘
+						-- nocycle : ìµœëŒ€ê°’ê¹Œì§€ ì¦ê°€ í›„ ê·¸ ë‹¤ìŒ ì‹œí€€ìŠ¤ë¥¼ ë°œê¸‰ë°›ìœ¼ë ¤ë©´ ì—ëŸ¬ ë°œìƒ
 
-[cache n | nocache]		-- cache n : ¸Þ¸ð¸®»ó¿¡ ½ÃÄö½º °ªÀ» ¹Ì¸® ÇÒ´ç(±âº»°ªÀº 20)
-						-- nocache : ¸Þ¸ð¸®»ó¿¡ ½ÃÄö½º °ªÀ» ¹Ì¸® ÇÒ´çÇÏÁö ¾ÊÀ½(°ü¸®X)
+[cache n | nocache]		-- cache n : ë©”ëª¨ë¦¬ìƒì— ì‹œí€€ìŠ¤ ê°’ì„ ë¯¸ë¦¬ í• ë‹¹(ê¸°ë³¸ê°’ì€ 20)
+						-- nocache : ë©”ëª¨ë¦¬ìƒì— ì‹œí€€ìŠ¤ ê°’ì„ ë¯¸ë¦¬ í• ë‹¹í•˜ì§€ ì•ŠìŒ(ê´€ë¦¬X)
 
-[order | noorder(±âº»°ª)] -- order : º´·Ä¼­¹ö(¿©·¯ DB¼­¹ö°¡ ¿¬°áµÈ ±¸Á¶)¸¦ »ç¿ëÇÒ °æ¿ì ¿äÃ» ¼ø¼­¿¡ µû¶ó Á¤È®ÇÏ°Ô ½ÃÄö½º¸¦ »ý¼ºÇÏ±â¸¦ ¿øÇÒ ¶§ order·Î ÁöÁ¤
-						-- 		   ´ÜÀÏ¼­¹öÀÏ °æ¿ì ÀÌ ¿É¼Ç°ú °ü°è¾øÀÌ Á¤È®È÷ ¿äÃ» ¼ø¼­¿¡ µû¶ó ½ÃÄö½º°¡ »ý¼ºµÊ.
-						-- noorder(±âº»°ª)
+[order | noorder(ê¸°ë³¸ê°’)] -- order : ë³‘ë ¬ì„œë²„(ì—¬ëŸ¬ DBì„œë²„ê°€ ì—°ê²°ëœ êµ¬ì¡°)ë¥¼ ì‚¬ìš©í•  ê²½ìš° ìš”ì²­ ìˆœì„œì— ë”°ë¼ ì •í™•í•˜ê²Œ ì‹œí€€ìŠ¤ë¥¼ ìƒì„±í•˜ê¸°ë¥¼ ì›í•  ë•Œ orderë¡œ ì§€ì •
+						-- 		   ë‹¨ì¼ì„œë²„ì¼ ê²½ìš° ì´ ì˜µì…˜ê³¼ ê´€ê³„ì—†ì´ ì •í™•ížˆ ìš”ì²­ ìˆœì„œì— ë”°ë¼ ì‹œí€€ìŠ¤ê°€ ìƒì„±ë¨.
+						-- noorder(ê¸°ë³¸ê°’)
 ;
 
 
 select sequence_name, min_value, max_value, increment_by, cycle_flag, cache_size
 from user_sequences --	1		1E-28=10E+27	10				N		  20
-where sequence_name IN UPPER('dno_seq'); --´ë¹®ÀÚ
+where sequence_name IN UPPER('dno_seq'); --ëŒ€ë¬¸ìž
 
---ÃÖ´ë°ªÀ» 50À¸·Î ¼öÁ¤
+--ìµœëŒ€ê°’ì„ 50ìœ¼ë¡œ ìˆ˜ì •
 ALTER sequence dno_seq
 maxvalue 50;
---ÃÖ´ë°ª È®ÀÎ
+--ìµœëŒ€ê°’ í™•ì¸
 select sequence_name, min_value, max_value, increment_by, cycle_flag, cache_size
 from user_sequences --	1		   50			10				N		  20
-where sequence_name IN UPPER('dno_seq'); --´ë¹®ÀÚ
+where sequence_name IN UPPER('dno_seq'); --ëŒ€ë¬¸ìž
 
 insert into dept12 values(dno_seq.nextval, 'COMPUTING', 'SEOUL'); --50
-insert into dept12 values(dno_seq.nextval, 'COMPUTING', 'DAEGU'); --60 ½ÇÆÐ : ÃÖ´ë°ªÀÌ 50ÀÌ°í nocycleÀÌ¹Ç·Î
+insert into dept12 values(dno_seq.nextval, 'COMPUTING', 'DAEGU'); --60 ì‹¤íŒ¨ : ìµœëŒ€ê°’ì´ 50ì´ê³  nocycleì´ë¯€ë¡œ
 
 select * from dept12;
 
---60 Ãß°¡ÇÏ°í ½ÍÀ¸¸é : ÃÖ´ë°ªÀ» ¼öÁ¤, ½ÃÄö½º Á¦°Å -> 60Ãß°¡ °¡´É
---[¹æ¹ý-1]
+--60 ì¶”ê°€í•˜ê³  ì‹¶ìœ¼ë©´ : ìµœëŒ€ê°’ì„ ìˆ˜ì •, ì‹œí€€ìŠ¤ ì œê±° -> 60ì¶”ê°€ ê°€ëŠ¥
+--[ë°©ë²•-1]
 ALTER sequence dno_seq
 maxvalue 60;
 
-insert into dept12 values(dno_seq.nextval, 'COMPUTING', 'DAEGU'); --60 Ãß°¡ ¼º°ø
+insert into dept12 values(dno_seq.nextval, 'COMPUTING', 'DAEGU'); --60 ì¶”ê°€ ì„±ê³µ
 
---[¹æ¹ý-2]
-DROP sequence dno_seq; --½ÃÄö½º Á¦°Å
-insert into dept12 values(70, 'COMPUTING', 'BUSAN');--70 Ãß°¡ ¼º°ø
+--[ë°©ë²•-2]
+DROP sequence dno_seq; --ì‹œí€€ìŠ¤ ì œê±°
+insert into dept12 values(70, 'COMPUTING', 'BUSAN');--70 ì¶”ê°€ ì„±ê³µ
 
-CREATE sequence dno_seq; --¿É¼Ç ¾øÀÌ ½ÃÄö½º »ý¼ºÇÏ¸é ¿É¼ÇÀÇ °ªÀº ±âº»°ªÀ¸·Î ¼ÂÆÃ(1·Î ½ÃÀÛÇÏ¿© 1¾¿ Áõ°¡)
+CREATE sequence dno_seq; --ì˜µì…˜ ì—†ì´ ì‹œí€€ìŠ¤ ìƒì„±í•˜ë©´ ì˜µì…˜ì˜ ê°’ì€ ê¸°ë³¸ê°’ìœ¼ë¡œ ì…‹íŒ…(1ë¡œ ì‹œìž‘í•˜ì—¬ 1ì”© ì¦ê°€)
 insert into dept12 values(dno_seq.nextval, 'COMPUTING', 'DAEJEON');
 
 select * from dept12;
@@ -199,234 +199,234 @@ delete from dept12 where loc = 'DAEJEON';
 select * from dept12;
 
 ALTER sequence dno_seq
---start with 80 -- ¿À·ù?ORA-02283: ½ÃÀÛ°ª ¼öÁ¤ ºÒ°¡ (cannot alter starting sequence number)
+--start with 80 -- ì˜¤ë¥˜?ORA-02283: ì‹œìž‘ê°’ ìˆ˜ì • ë¶ˆê°€ (cannot alter starting sequence number)
 increment by 10;
 
---¿À·ù ÇØ°áÀ§ÇØ
-DROP sequence dno_seq; --½ÃÄö½º Á¦°Å
-CREATE sequence dno_seq --´Ù½Ã »ý¼º
-start with 80 --½ÃÀÛ ¼ýÀÚ 80
+--ì˜¤ë¥˜ í•´ê²°ìœ„í•´
+DROP sequence dno_seq; --ì‹œí€€ìŠ¤ ì œê±°
+CREATE sequence dno_seq --ë‹¤ì‹œ ìƒì„±
+start with 80 --ì‹œìž‘ ìˆ«ìž 80
 increment by 10;
 
-insert into dept12 values(dno_seq.nextval, 'COMPUTING', 'DAEJEON'); --80 Ãß°¡
+insert into dept12 values(dno_seq.nextval, 'COMPUTING', 'DAEJEON'); --80 ì¶”ê°€
 select * from dept12;
 
 ------------------------------------------------------------------------------------
---3. ÀÎµ¦½º : DB Å×ÀÌºí¿¡ ´ëÇÑ °Ë»ö ¼Óµµ¸¦ Çâ»ó½ÃÄÑÁÖ´Â ÀÚ·á ±¸Á¶
---			Æ¯Á¤ ÄÃ·³¿¡ ÀÎµ¦½º¸¦ »ý¼ºÇÏ¸é ÇØ´ç ÄÃ·³ÀÌ µ¥ÀÌÅÍµéÀ» "Á¤·Ä"ÇÏ¿© º°µµÀÇ ¸Þ¸ð¸® °ø°£¿¡ µ¥ÀÌÅÍÀÇ ¹°¸®Àû ÁÖ¼Ò¿Í ÇÔ²² ÀúÀåµÊ
+--3. ì¸ë±ìŠ¤ : DB í…Œì´ë¸”ì— ëŒ€í•œ ê²€ìƒ‰ ì†ë„ë¥¼ í–¥ìƒì‹œì¼œì£¼ëŠ” ìžë£Œ êµ¬ì¡°
+--			íŠ¹ì • ì»¬ëŸ¼ì— ì¸ë±ìŠ¤ë¥¼ ìƒì„±í•˜ë©´ í•´ë‹¹ ì»¬ëŸ¼ì´ ë°ì´í„°ë“¤ì„ "ì •ë ¬"í•˜ì—¬ ë³„ë„ì˜ ë©”ëª¨ë¦¬ ê³µê°„ì— ë°ì´í„°ì˜ ë¬¼ë¦¬ì  ì£¼ì†Œì™€ í•¨ê»˜ ì €ìž¥ë¨
 
 			<index>						<table>
 		 Data	 Location			Location	Data
-('±è' Ã£±â) ±è		  1					1			 ±è					
-Äõ¸®½ÇÇà->   ±è		  3					2			 ÀÌ
-		  ±è		  1000				3			 ±è
-		  							4			 ¹Ú
-		  ÀÌ		  2							
+('ê¹€' ì°¾ê¸°) ê¹€		  1					1			 ê¹€					
+ì¿¼ë¦¬ì‹¤í–‰->   ê¹€		  3					2			 ì´
+		  ê¹€		  1000				3			 ê¹€
+		  							4			 ë°•
+		  ì´		  2							
 		  
-		  ¹Ú		  4
+		  ë°•		  4
 									...
-									1000		 ±è
+									1000		 ê¹€
 
---			»ç¿ëÀÚÀÇ ÇÊ¿ä¿¡ ÀÇÇØ¼­ Á÷Á¢ »ý¼ºÇÒ ¼öµµ ÀÖÁö¸¸
---			µ¥ÀÌÅÍ ¹«°á¼ºÀ» È®ÀÎÇÏ±â À§ÇØ¼­ ¼ö½Ã·Î µ¥ÀÌÅÍ¸¦ °Ë»öÇÏ´Â ¿ëµµ·Î »ç¿ëµÇ´Â
---			'±âº»Å°'³ª 'À¯ÀÏÅ°(unique)'´Â index ÀÚµ¿ »ý¼ºµÊ
---USER_indexes ³ª USER_IND_columns(ÄÃ·³ÀÌ¸§±îÁö °Ë»ö°¡´É) µ¥ÀÌÅÍ »çÀü¿¡¼­ index °´Ã¼ È®ÀÎ °¡´É
+--			ì‚¬ìš©ìžì˜ í•„ìš”ì— ì˜í•´ì„œ ì§ì ‘ ìƒì„±í•  ìˆ˜ë„ ìžˆì§€ë§Œ
+--			ë°ì´í„° ë¬´ê²°ì„±ì„ í™•ì¸í•˜ê¸° ìœ„í•´ì„œ ìˆ˜ì‹œë¡œ ë°ì´í„°ë¥¼ ê²€ìƒ‰í•˜ëŠ” ìš©ë„ë¡œ ì‚¬ìš©ë˜ëŠ”
+--			'ê¸°ë³¸í‚¤'ë‚˜ 'ìœ ì¼í‚¤(unique)'ëŠ” index ìžë™ ìƒì„±ë¨
+--USER_indexes ë‚˜ USER_IND_columns(ì»¬ëŸ¼ì´ë¦„ê¹Œì§€ ê²€ìƒ‰ê°€ëŠ¥) ë°ì´í„° ì‚¬ì „ì—ì„œ index ê°ì²´ í™•ì¸ ê°€ëŠ¥
 
---index »ý¼º : CREATE INDEX ÀÎµ¦½º¸í ON Å×ÀÌºí¸í(ÄÃ·³1, ÄÃ·³2, ÄÃ·³3...);
---index »èÁ¦ : DROP INDEX ÀÎµ¦½º¸í;
+--index ìƒì„± : CREATE INDEX ì¸ë±ìŠ¤ëª… ON í…Œì´ë¸”ëª…(ì»¬ëŸ¼1, ì»¬ëŸ¼2, ì»¬ëŸ¼3...);
+--index ì‚­ì œ : DROP INDEX ì¸ë±ìŠ¤ëª…;
 
 /*
-<index »ý¼º Àü·«>
-»ý¼ºµÈ ÀÎµ¦½º¸¦ °¡Àå È¿À²ÀûÀ¸·Î »ç¿ëÇÏ·Á¸é µ¥ÀÌÅÍÀÇ ºÐÆ÷µµ´Â ÃÖ´ëÇÑÀ¸·Î
-±×¸®°í Á¶°ÇÀý¿¡ È£Ãâ ºóµµ´Â ÀÚÁÖ »ç¿ëµÇ´Â ÄÃ·³À» index·Î »ý¼ºÇÏ´Â °ÍÀÌ ÁÁ´Ù. 
-ÀÎµ¦½º´Â Æ¯Á¤ ÄÃ·³À» ±âÁØÀ¸·Î »ý¼ºÇÏ°í ±âÁØÀÌ µÈ ÄÃ·³À¸·Î 'Á¤·ÄµÈ index Å×ÀÌºí'ÀÌ »ý¼ºµÊ
-ÀÌ ±âÁØ ÄÃ·³Àº ÃÖ´ëÇÑ Áßº¹ÀÌ µÇÁö ¾Ê´Â °ÍÀÌ ÁÁ´Ù.
-°¡Àå ÃÖ¼±Àº PK·Î index¸¦ »ý¼ºÇÏ´Â °ÍÀÌ´Ù.
+<index ìƒì„± ì „ëžµ>
+ìƒì„±ëœ ì¸ë±ìŠ¤ë¥¼ ê°€ìž¥ íš¨ìœ¨ì ìœ¼ë¡œ ì‚¬ìš©í•˜ë ¤ë©´ ë°ì´í„°ì˜ ë¶„í¬ë„ëŠ” ìµœëŒ€í•œìœ¼ë¡œ
+ê·¸ë¦¬ê³  ì¡°ê±´ì ˆì— í˜¸ì¶œ ë¹ˆë„ëŠ” ìžì£¼ ì‚¬ìš©ë˜ëŠ” ì»¬ëŸ¼ì„ indexë¡œ ìƒì„±í•˜ëŠ” ê²ƒì´ ì¢‹ë‹¤. 
+ì¸ë±ìŠ¤ëŠ” íŠ¹ì • ì»¬ëŸ¼ì„ ê¸°ì¤€ìœ¼ë¡œ ìƒì„±í•˜ê³  ê¸°ì¤€ì´ ëœ ì»¬ëŸ¼ìœ¼ë¡œ 'ì •ë ¬ëœ index í…Œì´ë¸”'ì´ ìƒì„±ë¨
+ì´ ê¸°ì¤€ ì»¬ëŸ¼ì€ ìµœëŒ€í•œ ì¤‘ë³µì´ ë˜ì§€ ì•ŠëŠ” ê²ƒì´ ì¢‹ë‹¤.
+ê°€ìž¥ ìµœì„ ì€ PKë¡œ indexë¥¼ ìƒì„±í•˜ëŠ” ê²ƒì´ë‹¤.
 
-1. Á¶°ÇÀý¿¡ ÀÚÁÖ µîÀåÇÏ´Â ÄÃ·³
-2. Ç×»ó =À¸·Î ºñ±³µÇ´Â ÄÃ·³
-3. Áßº¹µÇ´Â µ¥ÀÌÅÍ°¡ ÃÖ¼ÒÇÑÀÎ ÄÃ·³
-4. order byÀý¿¡¼­ ÀÚÁÖ »ç¿ëµÇ´Â ÄÃ·³
-5. Á¶ÀÎ Á¶°ÇÀ¸·Î ÀÚÁÖ »ç¿ëµÇ´Â ÄÃ·³
+1. ì¡°ê±´ì ˆì— ìžì£¼ ë“±ìž¥í•˜ëŠ” ì»¬ëŸ¼
+2. í•­ìƒ =ìœ¼ë¡œ ë¹„êµë˜ëŠ” ì»¬ëŸ¼
+3. ì¤‘ë³µë˜ëŠ” ë°ì´í„°ê°€ ìµœì†Œí•œì¸ ì»¬ëŸ¼
+4. order byì ˆì—ì„œ ìžì£¼ ì‚¬ìš©ë˜ëŠ” ì»¬ëŸ¼
+5. ì¡°ì¸ ì¡°ê±´ìœ¼ë¡œ ìžì£¼ ì‚¬ìš©ë˜ëŠ” ì»¬ëŸ¼
  */
 
---µÎ Å×ÀÌºí¿¡ ÀÚµ¿À¸·Î »ý¼ºµÈ index »ìÇÇ±â
+--ë‘ í…Œì´ë¸”ì— ìžë™ìœ¼ë¡œ ìƒì„±ëœ index ì‚´í”¼ê¸°
 select index_name, table_name, column_name
-from user_IND_columns--column_name °Ë»ö°¡´ÉÇÔ
+from user_IND_columns--column_name ê²€ìƒ‰ê°€ëŠ¥í•¨
 where table_name in ('EMPLOYEE','DEPARTMENT');
---column_name : ENO, DNO (µÑ ´Ù PK->ÀÚµ¿ index »ý¼ºµÊ)
+--column_name : ENO, DNO (ë‘˜ ë‹¤ PK->ìžë™ index ìƒì„±ë¨)
 
 select index_name, table_name --, column_name
-from user_indexes --column_name °Ë»öºÒ°¡
+from user_indexes --column_name ê²€ìƒ‰ë¶ˆê°€
 where table_name in ('EMPLOYEE','DEPARTMENT');
 
---»ç¿ëÀÚ°¡ Á÷Á¢ index »ý¼º
+--ì‚¬ìš©ìžê°€ ì§ì ‘ index ìƒì„±
 CREATE INDEX idx_employee_ename
 ON employee(ename);
 
---È®ÀÎ
+--í™•ì¸
 select index_name, table_name, column_name
 from user_IND_columns
 where table_name in ('EMPLOYEE');
 
---¡Ø ÇÏ³ªÀÇ Å×ÀÌºí¿¡ index°¡ ¸¹À¸¸é DB ¼º´É¿¡ ÁÁÁö ¾ÊÀº ¿µÇâÀ» ¹ÌÄ¥ ¼ö ÀÖ´Ù. -> index Á¦°Å
+--â€» í•˜ë‚˜ì˜ í…Œì´ë¸”ì— indexê°€ ë§Žìœ¼ë©´ DB ì„±ëŠ¥ì— ì¢‹ì§€ ì•Šì€ ì˜í–¥ì„ ë¯¸ì¹  ìˆ˜ ìžˆë‹¤. -> index ì œê±°
 DROP INDEX idx_employee_ename;
 
---È®ÀÎ
+--í™•ì¸
 select index_name, table_name, column_name
 from user_IND_columns
 where table_name in ('EMPLOYEE');
 
 --------------------------------------------------------------------------------------------------
 
---±³Àç 299p
---ÀÎµ¦½º ³»ºÎ±¸Á¶´Â B-Tree(Balanced Tree=±ÕÇüÆ®¸®)À¸·Î ±¸¼ºµÇ¾î ÀÖÀ½
---ÄÃ·³¿¡ ÀÎµ¦½º¸¦ ¼³Á¤ÇÏ¸é ÀÌ¸¦ B-Treeµµ »ý¼ºµÇ¾î¾ß ÇÏ±â ¶§¹®¿¡
---ÀÎµ¦½º »ý¼º À§ÇÑ ½Ã°£µµ ÇÊ¿äÇÏ°í ÀÎµ¦½º¸¦ À§ÇÑ Ãß°¡°ø°£µµ ÇÊ¿ä
+--êµìž¬ 299p
+--ì¸ë±ìŠ¤ ë‚´ë¶€êµ¬ì¡°ëŠ” B-Tree(Balanced Tree=ê· í˜•íŠ¸ë¦¬)ìœ¼ë¡œ êµ¬ì„±ë˜ì–´ ìžˆìŒ
+--ì»¬ëŸ¼ì— ì¸ë±ìŠ¤ë¥¼ ì„¤ì •í•˜ë©´ ì´ë¥¼ B-Treeë„ ìƒì„±ë˜ì–´ì•¼ í•˜ê¸° ë•Œë¬¸ì—
+--ì¸ë±ìŠ¤ ìƒì„± ìœ„í•œ ì‹œê°„ë„ í•„ìš”í•˜ê³  ì¸ë±ìŠ¤ë¥¼ ìœ„í•œ ì¶”ê°€ê³µê°„ë„ í•„ìš”
 
---ÀÎµ¦½º »ý¼º ÈÄ¿¡ »õ·Î¿î ÇàÀ» Ãß°¡ÇÏ°Å³ª »èÁ¦ÇÒ °æ¿ì
---ÀÎµ¦½º·Î »ç¿ëµÈ ÄÃ·³°ªµµ ÇÔ²² º¯°æ -> ³»ºÎ±¸Á¶(B-Tree)µµ ÇÔ²² º¯°æ
---¿À¶óÅ¬ ¼­¹ö°¡ ÀÌ ÀÛ¾÷À» ÀÚµ¿À¸·Î ¹ß»ýÇÏ¹Ç·Î ÀÎµ¦½º°¡ ÀÖ´Â °æ¿ìÀÇ DML ÀÛ¾÷ÀÌ ÈÎ¾À ¹«°Å¿öÁü
---°èÈ¹¼º ¾øÀÌ ³Ê¹« ¸¹Àº ÀÎµ¦½º¸¦ ÁöÁ¤ÇÏ¸é ¿ÀÈ÷·Á ¼º´ÉÀ» ÀúÇÏ½ÃÅ³ ¼ö ÀÖ´Ù.
+--ì¸ë±ìŠ¤ ìƒì„± í›„ì— ìƒˆë¡œìš´ í–‰ì„ ì¶”ê°€í•˜ê±°ë‚˜ ì‚­ì œí•  ê²½ìš°
+--ì¸ë±ìŠ¤ë¡œ ì‚¬ìš©ëœ ì»¬ëŸ¼ê°’ë„ í•¨ê»˜ ë³€ê²½ -> ë‚´ë¶€êµ¬ì¡°(B-Tree)ë„ í•¨ê»˜ ë³€ê²½
+--ì˜¤ë¼í´ ì„œë²„ê°€ ì´ ìž‘ì—…ì„ ìžë™ìœ¼ë¡œ ë°œìƒí•˜ë¯€ë¡œ ì¸ë±ìŠ¤ê°€ ìžˆëŠ” ê²½ìš°ì˜ DML ìž‘ì—…ì´ í›¨ì”¬ ë¬´ê±°ì›Œì§
+--ê³„íšì„± ì—†ì´ ë„ˆë¬´ ë§Žì€ ì¸ë±ìŠ¤ë¥¼ ì§€ì •í•˜ë©´ ì˜¤ížˆë ¤ ì„±ëŠ¥ì„ ì €í•˜ì‹œí‚¬ ìˆ˜ ìžˆë‹¤.
 
---ÃÖ´ë 3°³ÀÇ ÀÚ½ÄÀ» °®´Â B-Tree¿¡¼­ 3À» Ã£´Â´Ù¸é (4 2 6 1 3 5 7)
---					4(root = »Ñ¸®)³ëµå
+--ìµœëŒ€ 3ê°œì˜ ìžì‹ì„ ê°–ëŠ” B-Treeì—ì„œ 3ì„ ì°¾ëŠ”ë‹¤ë©´ (4 2 6 1 3 5 7)
+--					4(root = ë¿Œë¦¬)ë…¸ë“œ
 --				2			6
 --			1	  3		5		7
 
---300p Ç¥ Á¤¸®
---<index »ç¿ëÇØ¾ß ÇÏ´Â °æ¿ì>
---Å×ÀÌºíÀÇ Çà ¼ö ¸¹À» ¶§
---where¹®¿¡ ÇØ´ç ÄÃ·³ÀÌ ¸¹ÀÌ »ç¿ëµÉ ¶§
---°Ë»ö°á°ú°¡ ÀüÃ¼ µ¥ÀÌÅÍÀÇ "2%~4% Á¤µµ"ÀÏ ¶§
---join¿¡ ÀÚÁÖ »ç¿ëµÇ´Â ÄÃ·³ÀÌ³ª nullÀ» Æ÷ÇÔÇÏ´Â ÄÃ·³ÀÌ ¸¹À» ¶§
+--300p í‘œ ì •ë¦¬
+--<index ì‚¬ìš©í•´ì•¼ í•˜ëŠ” ê²½ìš°>
+--í…Œì´ë¸”ì˜ í–‰ ìˆ˜ ë§Žì„ ë•Œ
+--whereë¬¸ì— í•´ë‹¹ ì»¬ëŸ¼ì´ ë§Žì´ ì‚¬ìš©ë  ë•Œ
+--ê²€ìƒ‰ê²°ê³¼ê°€ ì „ì²´ ë°ì´í„°ì˜ "2%~4% ì •ë„"ì¼ ë•Œ
+--joinì— ìžì£¼ ì‚¬ìš©ë˜ëŠ” ì»¬ëŸ¼ì´ë‚˜ nullì„ í¬í•¨í•˜ëŠ” ì»¬ëŸ¼ì´ ë§Žì„ ë•Œ
 
---<index »ç¿ëÇÏÁö ¸»¾Æ¾ß ÇÏ´Â °æ¿ì>
---Å×ÀÌºíÀÇ Çà ¼ö ÀûÀ» ¶§
---where¹®¿¡ ÇØ´ç ÄÃ·³ÀÌ ÀÚÁÖ »ç¿ëµÇÁö ¾ÊÀ» ¶§
---°Ë»ö°á°ú°¡ ÀüÃ¼ µ¥ÀÌÅÍÀÇ "10%~15% ÀÌ»ó"ÀÏ ¶§ (¿¹)10%~100%
---Å×ÀÌºí¿¡ DML ÀÛ¾÷ÀÌ ¸¹Àº °æ¿ì, Áï ÀÔ·Â/¼öÁ¤/»èÁ¦ µîÀÌ ÀÚÁÖ ÀÏ¾î³¯ ¶§
+--<index ì‚¬ìš©í•˜ì§€ ë§ì•„ì•¼ í•˜ëŠ” ê²½ìš°>
+--í…Œì´ë¸”ì˜ í–‰ ìˆ˜ ì ì„ ë•Œ
+--whereë¬¸ì— í•´ë‹¹ ì»¬ëŸ¼ì´ ìžì£¼ ì‚¬ìš©ë˜ì§€ ì•Šì„ ë•Œ
+--ê²€ìƒ‰ê²°ê³¼ê°€ ì „ì²´ ë°ì´í„°ì˜ "10%~15% ì´ìƒ"ì¼ ë•Œ (ì˜ˆ)10%~100%
+--í…Œì´ë¸”ì— DML ìž‘ì—…ì´ ë§Žì€ ê²½ìš°, ì¦‰ ìž…ë ¥/ìˆ˜ì •/ì‚­ì œ ë“±ì´ ìžì£¼ ì¼ì–´ë‚  ë•Œ
 ----------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------
---¡Ú ±³Àç ÀÌ¿Ü ³»¿ë
---½Ç½ÀÀ» À§ÇØ
+--â˜… êµìž¬ ì´ì™¸ ë‚´ìš©
+--ì‹¤ìŠµì„ ìœ„í•´
 create table emp12
 AS
 select *
-from employee; --Á¦¾àÁ¶°ÇÀº º¹»ç¾ÈµÊ
+from employee; --ì œì•½ì¡°ê±´ì€ ë³µì‚¬ì•ˆë¨
 
---<index »ç¿ëÇØ¾ß ÇÏ´Â °æ¿ì 1 2 3>¿¡ ´ëÇÑ ¿¹
+--<index ì‚¬ìš©í•´ì•¼ í•˜ëŠ” ê²½ìš° 1 2 3>ì— ëŒ€í•œ ì˜ˆ
 select ename
 from emp12
 where dno=10;
 
---Äõ¸®¹®ÀÇ Á¶°ÇÀÌ
---1. Å×ÀÌºí ÀüÃ¼ ÇàÀÇ ¼ö : 100000°Ç
---2. À§ Äõ¸®¹®ÀÌ ÀüÃ¼ Äõ¸®¹® Áß¿¡¼­ 95% »ç¿ëµÊ
---3. Äõ¸®¹®ÀÇ °á°ú·Î ±¸ÇØÁö´Â Çà : 2000°Ç Á¤µµ¶ó¸é dno ÄÃ·³Àº ÀÎµ¦½º¸¦ »ç¿ëÇÏ´Â °ÍÀÌ È¿À²ÀûÀÌ´Ù.
---						  °Ë»ö°á°ú°¡ ÀüÃ¼ µ¥ÀÌÅÍÀÇ 2~4% Á¤µµÀÌ¹Ç·Î ÀÎµ¦½º°¡ ÀÖ¾î¾ß °Ë»öÀ» »¡¸® ÇÒ ¼ö ÀÖÀ¸¹Ç·Î
+--ì¿¼ë¦¬ë¬¸ì˜ ì¡°ê±´ì´
+--1. í…Œì´ë¸” ì „ì²´ í–‰ì˜ ìˆ˜ : 100000ê±´
+--2. ìœ„ ì¿¼ë¦¬ë¬¸ì´ ì „ì²´ ì¿¼ë¦¬ë¬¸ ì¤‘ì—ì„œ 95% ì‚¬ìš©ë¨
+--3. ì¿¼ë¦¬ë¬¸ì˜ ê²°ê³¼ë¡œ êµ¬í•´ì§€ëŠ” í–‰ : 2000ê±´ ì •ë„ë¼ë©´ dno ì»¬ëŸ¼ì€ ì¸ë±ìŠ¤ë¥¼ ì‚¬ìš©í•˜ëŠ” ê²ƒì´ íš¨ìœ¨ì ì´ë‹¤.
+--						  ê²€ìƒ‰ê²°ê³¼ê°€ ì „ì²´ ë°ì´í„°ì˜ 2~4% ì •ë„ì´ë¯€ë¡œ ì¸ë±ìŠ¤ê°€ ìžˆì–´ì•¼ ê²€ìƒ‰ì„ ë¹¨ë¦¬ í•  ìˆ˜ ìžˆìœ¼ë¯€ë¡œ
 
 
---ÀÎµ¦½º°¡ »ý¼ºµÈ ÈÄ¿¡ »õ·Î¿î ÇàÀÌ Ãß°¡, ¼öÁ¤, »èÁ¦ ÀÛ¾÷ÀÌ ÀæÀ¸¸é
---nodeÀÇ °»½ÅÀÌ ÁÖ±âÀûÀ¸·Î ÀÏ¾î³ª '´ÜÆíÈ­' Çö»ó ¹ß»ý
---¡Ø ´ÜÆíÈ­? »èÁ¦µÈ ·¹ÄÚµåÀÇ ÀÎµ¦½º °ª ÀÚ¸®°¡ ºñ°Ô µÇ´Â Çö»ó
--- -> °Ë»ö ¼º´É ÀúÇÏ
---µû¶ó¼­
-ALTER INDEX inx_employee_ename rebuild; --ÀÎµ¦½º ´Ù½Ã »ý¼ºÇÏ¿©
---±âÁ¸ÀÇ ´ÜÆíÈ­°¡ ¸¹Àº ÀÎµ¦½º¸¦ ¹ö¸®´Â ÀÛ¾÷À» ÇØÁÖ¾î¾ß¸¸ ºü¸¥ È¿À²À» ´©¸± ¼ö ÀÖ´Ù.
+--ì¸ë±ìŠ¤ê°€ ìƒì„±ëœ í›„ì— ìƒˆë¡œìš´ í–‰ì´ ì¶”ê°€, ìˆ˜ì •, ì‚­ì œ ìž‘ì—…ì´ ìž¦ìœ¼ë©´
+--nodeì˜ ê°±ì‹ ì´ ì£¼ê¸°ì ìœ¼ë¡œ ì¼ì–´ë‚˜ 'ë‹¨íŽ¸í™”' í˜„ìƒ ë°œìƒ
+--â€» ë‹¨íŽ¸í™”? ì‚­ì œëœ ë ˆì½”ë“œì˜ ì¸ë±ìŠ¤ ê°’ ìžë¦¬ê°€ ë¹„ê²Œ ë˜ëŠ” í˜„ìƒ
+-- -> ê²€ìƒ‰ ì„±ëŠ¥ ì €í•˜
+--ë”°ë¼ì„œ
+ALTER INDEX inx_employee_ename rebuild; --ì¸ë±ìŠ¤ ë‹¤ì‹œ ìƒì„±í•˜ì—¬
+--ê¸°ì¡´ì˜ ë‹¨íŽ¸í™”ê°€ ë§Žì€ ì¸ë±ìŠ¤ë¥¼ ë²„ë¦¬ëŠ” ìž‘ì—…ì„ í•´ì£¼ì–´ì•¼ë§Œ ë¹ ë¥¸ íš¨ìœ¨ì„ ëˆ„ë¦´ ìˆ˜ ìžˆë‹¤.
 
 ----------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------
 
---4. ÀÎµ¦½º Á¾·ù(301p~)
---4.1 °íÀ¯/ºñ°íÀ¯ ÀÎµ¦½º
---°íÀ¯ ÀÎµ¦½º : ±âº»Å°(unique + not null)³ª À¯ÀÏÅ°(unique)Ã³·³ À¯ÀÏÇÑ °ªÀ» °®´Â ÄÃ·³¿¡ »ý¼ºµÈ ÀÎµ¦½º
---			unique ÀÖÀ¸¸é (¿¹)ºÎ¼­Å×ÀÌºíÀÇ ºÎ¼­¹øÈ£
---			¡Ú¡ÚÆ¯Á¤ ÄÃ·³¿¡ °íÀ¯ ÀÎµ¦½º°¡ ÁöÁ¤µÇ·Á¸é Ãß°¡ÇÑ µ¥ÀÌÅÍ¿¡ Áßº¹µÈ °ªÀÌ ÀÖ¾î¼­´Â ¾ÈµÊ
+--4. ì¸ë±ìŠ¤ ì¢…ë¥˜(301p~)
+--4.1 ê³ ìœ /ë¹„ê³ ìœ  ì¸ë±ìŠ¤
+--ê³ ìœ  ì¸ë±ìŠ¤ : ê¸°ë³¸í‚¤(unique + not null)ë‚˜ ìœ ì¼í‚¤(unique)ì²˜ëŸ¼ ìœ ì¼í•œ ê°’ì„ ê°–ëŠ” ì»¬ëŸ¼ì— ìƒì„±ëœ ì¸ë±ìŠ¤
+--			unique ìžˆìœ¼ë©´ (ì˜ˆ)ë¶€ì„œí…Œì´ë¸”ì˜ ë¶€ì„œë²ˆí˜¸
+--			â˜…â˜…íŠ¹ì • ì»¬ëŸ¼ì— ê³ ìœ  ì¸ë±ìŠ¤ê°€ ì§€ì •ë˜ë ¤ë©´ ì¶”ê°€í•œ ë°ì´í„°ì— ì¤‘ë³µëœ ê°’ì´ ìžˆì–´ì„œëŠ” ì•ˆë¨
 
---ºñ°íÀ¯ ÀÎµ¦½º : Áßº¹µÈ µ¥ÀÌÅÍ¸¦ °®´Â ÄÃ·³¿¡ »ý¼ºµÈ ÀÎµ¦½º
---			  unique ¾øÀ¸¸é (¿¹)ºÎ¼­Å×ÀÌºíÀÇ ºÎ¼­¸íÀÌ³ª Áö¿ª¸í
+--ë¹„ê³ ìœ  ì¸ë±ìŠ¤ : ì¤‘ë³µëœ ë°ì´í„°ë¥¼ ê°–ëŠ” ì»¬ëŸ¼ì— ìƒì„±ëœ ì¸ë±ìŠ¤
+--			  unique ì—†ìœ¼ë©´ (ì˜ˆ)ë¶€ì„œí…Œì´ë¸”ì˜ ë¶€ì„œëª…ì´ë‚˜ ì§€ì—­ëª…
 
-create UNIQUE index ÀÎµ¦½º¸í
-ON Å×ÀÌºí¸í(ÄÃ·³¸í);
+create UNIQUE index ì¸ë±ìŠ¤ëª…
+ON í…Œì´ë¸”ëª…(ì»¬ëŸ¼ëª…);
 
---½Ç½ÀÀ§ÇØ 'dept12Å×ÀÌºí' »ç¿ë : Á¦¾àÁ¶°ÇÀº º¹»ç¾ÈµÇ¾î ÀÖÀ½. µû¶ó¼­ PK Á¦¾àÁ¶°Ç ÀÌ¹Ì Ãß°¡ÇÔ
---dno¿¡ °íÀ¯ ÀÎµ¦½º ÁöÁ¤ÇÏ±â
+--ì‹¤ìŠµìœ„í•´ 'dept12í…Œì´ë¸”' ì‚¬ìš© : ì œì•½ì¡°ê±´ì€ ë³µì‚¬ì•ˆë˜ì–´ ìžˆìŒ. ë”°ë¼ì„œ PK ì œì•½ì¡°ê±´ ì´ë¯¸ ì¶”ê°€í•¨
+--dnoì— ê³ ìœ  ì¸ë±ìŠ¤ ì§€ì •í•˜ê¸°
 create UNIQUE index idx_dept12_dno
 ON dept12(dno);
---½ÇÆÐ? ORA-01408: such column list already indexed
---ÀÌÀ¯ : À§¿¡¼­ '±âº»Å° Á¦¾àÁ¶°Ç Ãß°¡' ÇÏ¸é¼­ ÀÚµ¿ index »ý¼ºµÇ¾úÀ¸¹Ç·Î
+--ì‹¤íŒ¨? ORA-01408: such column list already indexed
+--ì´ìœ  : ìœ„ì—ì„œ 'ê¸°ë³¸í‚¤ ì œì•½ì¡°ê±´ ì¶”ê°€' í•˜ë©´ì„œ ìžë™ index ìƒì„±ë˜ì—ˆìœ¼ë¯€ë¡œ
 
---[¹æ¹ý-1] ÀÚµ¿ »ý¼ºµÈ dnoÀÇ index¸¦ Ã£¾Æ¼­ Á¦°Å => ½ÇÆÐ
+--[ë°©ë²•-1] ìžë™ ìƒì„±ëœ dnoì˜ indexë¥¼ ì°¾ì•„ì„œ ì œê±° => ì‹¤íŒ¨
 select index_name, table_name, column_name
 from user_ind_columns
 where table_name IN ('DEPT12');
 
-drop index dept12_dno_pk; --½ÇÆÐ:ORA-02429: cannot drop index used for enforcement of unique/primary key
+drop index dept12_dno_pk; --ì‹¤íŒ¨:ORA-02429: cannot drop index used for enforcement of unique/primary key
 
---[¹æ¹ý-2] dnoÀÇ '±âº»Å° Á¦¾àÁ¶°Ç'À» Ã£¾Æ Á¦°Å ÈÄ -> ´Ù½Ã dno¿¡ °íÀ¯ ÀÎµ¦½º ÁöÁ¤ÇÏ±â => ¼º°ø
+--[ë°©ë²•-2] dnoì˜ 'ê¸°ë³¸í‚¤ ì œì•½ì¡°ê±´'ì„ ì°¾ì•„ ì œê±° í›„ -> ë‹¤ì‹œ dnoì— ê³ ìœ  ì¸ë±ìŠ¤ ì§€ì •í•˜ê¸° => ì„±ê³µ
 select table_name, constraint_name, constraint_type
 from user_constraints
 where table_name IN ('DEPT12');
---index_name°ú constraint_nameÀÌ µ¿ÀÏÇÏ´Ù. (±âº»Å°´Â ÀÚµ¿À¸·Î index°¡ »ý¼ºµÇ±â ¶§¹®)
+--index_nameê³¼ constraint_nameì´ ë™ì¼í•˜ë‹¤. (ê¸°ë³¸í‚¤ëŠ” ìžë™ìœ¼ë¡œ indexê°€ ìƒì„±ë˜ê¸° ë•Œë¬¸)
 ALTER table dept12
 DROP constraint DEPT12_DNO_PK cascade;
 
---´Ù½Ã dno¿¡ °íÀ¯ ÀÎµ¦½º ÁöÁ¤ÇÏ±â => ¼º°ø
+--ë‹¤ì‹œ dnoì— ê³ ìœ  ì¸ë±ìŠ¤ ì§€ì •í•˜ê¸° => ì„±ê³µ
 create UNIQUE index idx_dept12_dno
 ON dept12(dno);
 
---¡Ú¡ÚÆ¯Á¤ ÄÃ·³¿¡ °íÀ¯ ÀÎµ¦½º°¡ ÁöÁ¤µÇ·Á¸é Ãß°¡ÇÑ µ¥ÀÌÅÍ¿¡ Áßº¹µÈ °ªÀÌ ÀÖ¾î¼­´Â ¾ÈµÊ
+--â˜…â˜…íŠ¹ì • ì»¬ëŸ¼ì— ê³ ìœ  ì¸ë±ìŠ¤ê°€ ì§€ì •ë˜ë ¤ë©´ ì¶”ê°€í•œ ë°ì´í„°ì— ì¤‘ë³µëœ ê°’ì´ ìžˆì–´ì„œëŠ” ì•ˆë¨
 
 create UNIQUE index idx_dept12_loc
 ON dept12(loc);
---¸¸¾à ¿À·ù°¡ ¹ß»ýÇÑ´Ù¸é Áßº¹µÈ µ¥ÀÌÅÍ°¡ ÀÖ±â ¶§¹®...
---(¿¹) ½Ç½ÀÀ§ÇØ dept12_2 Å×ÀÌºí º¹»ç
+--ë§Œì•½ ì˜¤ë¥˜ê°€ ë°œìƒí•œë‹¤ë©´ ì¤‘ë³µëœ ë°ì´í„°ê°€ ìžˆê¸° ë•Œë¬¸...
+--(ì˜ˆ) ì‹¤ìŠµìœ„í•´ dept12_2 í…Œì´ë¸” ë³µì‚¬
 --drop table dept12_2;
 create table dept12_2
 AS
 select * from department;
---Å×ÀÌºí ±¸Á¶¿Í µ¥ÀÌÅÍ º¹»ç(´Ü, Á¦¾àÁ¶°Ç º¹»ç¾ÈµÊ-dno´Â PK°¡ ¾Æ´Ô)
+--í…Œì´ë¸” êµ¬ì¡°ì™€ ë°ì´í„° ë³µì‚¬(ë‹¨, ì œì•½ì¡°ê±´ ë³µì‚¬ì•ˆë¨-dnoëŠ” PKê°€ ì•„ë‹˜)
 
 select * from dept12_2;
 insert into dept12_2 values(10, 'ACCOUNTING', 'SEOUL');
---¼º°ø?dno°¡ ±âº»Å°°¡ ¾Æ´Ï¹Ç·Î Áßº¹µÈ 10 ÀÔ·Â°¡´É - dno´Â ÇöÀç 10 Áßº¹, loc´Â Áßº¹µÈ °ªÀÌ ¾øÀ½
+--ì„±ê³µ?dnoê°€ ê¸°ë³¸í‚¤ê°€ ì•„ë‹ˆë¯€ë¡œ ì¤‘ë³µëœ 10 ìž…ë ¥ê°€ëŠ¥ - dnoëŠ” í˜„ìž¬ 10 ì¤‘ë³µ, locëŠ” ì¤‘ë³µëœ ê°’ì´ ì—†ìŒ
 
---dno¿¡ °íÀ¯ ÀÎµ¦½º ÁöÁ¤ÇÏ±â
+--dnoì— ê³ ìœ  ì¸ë±ìŠ¤ ì§€ì •í•˜ê¸°
 create UNIQUE index idx_dept12_2_dno
 ON dept12_2(dno);
---½ÇÆÐ : cannot CREATE UNIQUE INDEX; duplicate keys found
+--ì‹¤íŒ¨ : cannot CREATE UNIQUE INDEX; duplicate keys found
 
---loc¿¡ °íÀ¯ ÀÎµ¦½º ÁöÁ¤ÇÏ±â
+--locì— ê³ ìœ  ì¸ë±ìŠ¤ ì§€ì •í•˜ê¸°
 create UNIQUE index idx_dept12__2_loc
 ON dept12_2(loc);
---¼º°ø : loc´Â Áßº¹µÈ °ªÀÌ ¾øÀ¸¹Ç·Î
+--ì„±ê³µ : locëŠ” ì¤‘ë³µëœ ê°’ì´ ì—†ìœ¼ë¯€ë¡œ
 
-------------------------------Áö±Ý±îÁö »ý¼ºÇÑ ÀÎµ¦½º´Â '´Ü¼ø ÀÎµ¦½º'(ÇÑ °³ÀÇ ÄÃ·³À¸·Î ±¸¼ºÇÑ ÀÎµ¦½º) -------------------
+------------------------------ì§€ê¸ˆê¹Œì§€ ìƒì„±í•œ ì¸ë±ìŠ¤ëŠ” 'ë‹¨ìˆœ ì¸ë±ìŠ¤'(í•œ ê°œì˜ ì»¬ëŸ¼ìœ¼ë¡œ êµ¬ì„±í•œ ì¸ë±ìŠ¤) -------------------
 
---4.2 °áÇÕ ÀÎµ¦½º : µÎ °³ ÀÌ»óÀÇ ÄÃ·³À¸·Î ±¸¼ºÇÑ ÀÎµ¦½º
+--4.2 ê²°í•© ì¸ë±ìŠ¤ : ë‘ ê°œ ì´ìƒì˜ ì»¬ëŸ¼ìœ¼ë¡œ êµ¬ì„±í•œ ì¸ë±ìŠ¤
 create index idx_dept12_2_complex
 ON dept12_2(dname, loc);
 
---idx_dept12_2_complex ÀÎµ¦½º¸¦ ÀÌ¿ëÇÏ¿© °Ë»ö¼Óµµ¸¦ ³ôÀÌ´Âµ¥ »ç¿ëµÇ´Â ¿¹
---Áï, ¾ðÁ¦ idx_dept12_2_complex ÀÎµ¦½º¸¦ ÀÌ¿ëÇÏ¿© °Ë»ö¼Óµµ¸¦ ³ôÀÌ´À³Ä...
+--idx_dept12_2_complex ì¸ë±ìŠ¤ë¥¼ ì´ìš©í•˜ì—¬ ê²€ìƒ‰ì†ë„ë¥¼ ë†’ì´ëŠ”ë° ì‚¬ìš©ë˜ëŠ” ì˜ˆ
+--ì¦‰, ì–¸ì œ idx_dept12_2_complex ì¸ë±ìŠ¤ë¥¼ ì´ìš©í•˜ì—¬ ê²€ìƒ‰ì†ë„ë¥¼ ë†’ì´ëŠëƒ...
 select *
 from dept12_2
 where dname=' ', loc=' ';
---±×·±µ¥ À§ Äõ¸®°¡ °ÅÀÇ »ç¿ëµÇÁö ¾Ê´Â´Ù¸é ¿ÀÈ÷·Á ¼º´É ÀúÇÏ ¹ß»ý
+--ê·¸ëŸ°ë° ìœ„ ì¿¼ë¦¬ê°€ ê±°ì˜ ì‚¬ìš©ë˜ì§€ ì•ŠëŠ”ë‹¤ë©´ ì˜¤ížˆë ¤ ì„±ëŠ¥ ì €í•˜ ë°œìƒ
 
 select *
 from dept12_2
 where dname=' ';
---dname¿¡ index°¡ ¾ø´Ù¸é
---dname, loc¸¦ °áÇÕÇÏ¿© »ý¼ºÇÑ idx_dept12_2_complex ÀÎµ¦½º¸¦ »ç¿ëÇÏ¿© °Ë»ö
---µû¶ó¼­ ÀüÃ¼ Å×ÀÌºí °Ë»öº¸´Ù ´õ È¿À²ÀûÀÓ
+--dnameì— indexê°€ ì—†ë‹¤ë©´
+--dname, locë¥¼ ê²°í•©í•˜ì—¬ ìƒì„±í•œ idx_dept12_2_complex ì¸ë±ìŠ¤ë¥¼ ì‚¬ìš©í•˜ì—¬ ê²€ìƒ‰
+--ë”°ë¼ì„œ ì „ì²´ í…Œì´ë¸” ê²€ìƒ‰ë³´ë‹¤ ë” íš¨ìœ¨ì ìž„
 
---4.3 ÇÔ¼ö ±â¹Ý ÀÎµ¦½º : ¼ö½ÄÀÌ³ª ÇÔ¼ö¸¦ Àû¿ëÇÏ¿© ¸¸µç ÀÎµ¦½º
+--4.3 í•¨ìˆ˜ ê¸°ë°˜ ì¸ë±ìŠ¤ : ìˆ˜ì‹ì´ë‚˜ í•¨ìˆ˜ë¥¼ ì ìš©í•˜ì—¬ ë§Œë“  ì¸ë±ìŠ¤
 create index idx_emp12_salary12
-ON emp12(salary * 12); --'¼ö½Ä'ÀÌ¹Ç·Î ÄÃ·³¸íÀÌ ¾ø¾î¼­ '°¡»óÄÃ·³' »ý¼ºµÊ
+ON emp12(salary * 12); --'ìˆ˜ì‹'ì´ë¯€ë¡œ ì»¬ëŸ¼ëª…ì´ ì—†ì–´ì„œ 'ê°€ìƒì»¬ëŸ¼' ìƒì„±ë¨
 
 select index_name, column_name
 from user_ind_columns
-where table_name in ('EMP12'); --column_nameÀº SYS_NC00009$(°¡»óÄÃ·³)
+where table_name in ('EMP12'); --column_nameì€ SYS_NC00009$(ê°€ìƒì»¬ëŸ¼)
 

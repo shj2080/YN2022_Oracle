@@ -1,68 +1,68 @@
---1Àå.¿À¶óÅ¬°ú µ¥ÀÌÅÍº£ÀÌ½º
+--1ìž¥.ì˜¤ë¼í´ê³¼ ë°ì´í„°ë² ì´ìŠ¤
 /*
 14p~
-01.µ¥ÀÌÅÍº£ÀÌ½º °ü¸® ½Ã½ºÅÛ(=DBMS) : ¿¬°ü¼º ÀÖ´Â µ¥ÀÌÅÍµéÀÇ ÁýÇÕÀ» È¿À²ÀûÀ¸·Î °ü¸®ÇÏ´Â ÇÁ·Î±×·¥
-µ¥ÀÌÅÍº£ÀÌ½º °ü¸® ½Ã½ºÅÛ Á¦Ç° : ¿À¶óÅ¬, MySQL, MS-SQL µî
+01.ë°ì´í„°ë² ì´ìŠ¤ ê´€ë¦¬ ì‹œìŠ¤í…œ(=DBMS) : ì—°ê´€ì„± ìžˆëŠ” ë°ì´í„°ë“¤ì˜ ì§‘í•©ì„ íš¨ìœ¨ì ìœ¼ë¡œ ê´€ë¦¬í•˜ëŠ” í”„ë¡œê·¸ëž¨
+ë°ì´í„°ë² ì´ìŠ¤ ê´€ë¦¬ ì‹œìŠ¤í…œ ì œí’ˆ : ì˜¤ë¼í´, MySQL, MS-SQL ë“±
 
-µ¥ÀÌÅÍ ÀúÀå Àå¼ÒÀÎ µ¥ÀÌÅÍº£ÀÌ½º¿Í °ü¸®ÇÏ°íÀÚ ÇÏ´Â ¸ðµç µ¥ÀÌÅÍ¸¦ ¼­·Î ¿¬°ü°ü°è¸¦ °¡Áø Å×ÀÌºí(=Ç¥) Çü½ÄÀ¸·Î
-ÀúÀåÇÏ´Â '°ü°èÇü µ¥ÀÌÅÍº£ÀÌ½º'¶ó°í ÇÔ
+ë°ì´í„° ì €ìž¥ ìž¥ì†Œì¸ ë°ì´í„°ë² ì´ìŠ¤ì™€ ê´€ë¦¬í•˜ê³ ìž í•˜ëŠ” ëª¨ë“  ë°ì´í„°ë¥¼ ì„œë¡œ ì—°ê´€ê´€ê³„ë¥¼ ê°€ì§„ í…Œì´ë¸”(=í‘œ) í˜•ì‹ìœ¼ë¡œ
+ì €ìž¥í•˜ëŠ” 'ê´€ê³„í˜• ë°ì´í„°ë² ì´ìŠ¤'ë¼ê³  í•¨
 */
 
 /*
 26p~
-03.SQL°ú µ¥ÀÌÅÍ Á¶È¸ÇÏ±â
-3.1 ¿À¶óÅ¬¿¡ Á¢¼ÓÇÏ±â
+03.SQLê³¼ ë°ì´í„° ì¡°íšŒí•˜ê¸°
+3.1 ì˜¤ë¼í´ì— ì ‘ì†í•˜ê¸°
 
-'µ¥ÀÌÅÍº£ÀÌ½º »ç¿ëÀÚ'´Â '¿À¶óÅ¬ °èÁ¤'°ú °°Àº ÀÇ¹Ì
+'ë°ì´í„°ë² ì´ìŠ¤ ì‚¬ìš©ìž'ëŠ” 'ì˜¤ë¼í´ ê³„ì •'ê³¼ ê°™ì€ ì˜ë¯¸
 
-<¿À¶óÅ¬¿¡¼­ Á¦°øÇÏ´Â »ç¿ëÀÚ °èÁ¤>
-1. SYS : ½Ã½ºÅÛ À¯Áö, °ü¸®, »ý¼º '¸ðµç ±ÇÇÑ', ¿À¶óÅ¬½Ã½ºÅÛÀÇ 'ÃÑ°ü¸®ÀÚ', sysdba±ÇÇÑ
-2. SYSTEM : »ý¼ºµÈ DB¿î¿µ, °ü¸®, '°ü¸®ÀÚ'°èÁ¤, sysoper±ÇÇÑ
-3. HR : Ã³À½ ¿À¶óÅ¬ »ç¿ëÇÏ´Â »ç¿ëÀÚ¸¦ À§ÇØ ½Ç½À À§ÇÑ '±³À°¿ë °èÁ¤'
+<ì˜¤ë¼í´ì—ì„œ ì œê³µí•˜ëŠ” ì‚¬ìš©ìž ê³„ì •>
+1. SYS : ì‹œìŠ¤í…œ ìœ ì§€, ê´€ë¦¬, ìƒì„± 'ëª¨ë“  ê¶Œí•œ', ì˜¤ë¼í´ì‹œìŠ¤í…œì˜ 'ì´ê´€ë¦¬ìž', sysdbaê¶Œí•œ
+2. SYSTEM : ìƒì„±ëœ DBìš´ì˜, ê´€ë¦¬, 'ê´€ë¦¬ìž'ê³„ì •, sysoperê¶Œí•œ
+3. HR : ì²˜ìŒ ì˜¤ë¼í´ ì‚¬ìš©í•˜ëŠ” ì‚¬ìš©ìžë¥¼ ìœ„í•´ ì‹¤ìŠµ ìœ„í•œ 'êµìœ¡ìš© ê³„ì •'
 */
 
 
---±³Àç 28~29p ÂüÁ¶
---Å×ÀÌºí »èÁ¦
-DROP TABLE employee;	--»ç¿øÅ×ÀÌºíºÎÅÍ »èÁ¦
-DROP TABLE department;	--ºÎ¼­Å×ÀÌºíÀÇ dno¸¦ »ç¿øÅ×ÀÌºí¿¡¼­ ÂüÁ¶ÇÏ°í ÀÖÀ¸¹Ç·Î...
+--êµìž¬ 28~29p ì°¸ì¡°
+--í…Œì´ë¸” ì‚­ì œ
+DROP TABLE employee;	--ì‚¬ì›í…Œì´ë¸”ë¶€í„° ì‚­ì œ
+DROP TABLE department;	--ë¶€ì„œí…Œì´ë¸”ì˜ dnoë¥¼ ì‚¬ì›í…Œì´ë¸”ì—ì„œ ì°¸ì¡°í•˜ê³  ìžˆìœ¼ë¯€ë¡œ...
 DROP TABLE salgrade;
 
---ºÎ¼­ Á¤º¸---------------------------------------
---¡Ú¡Ú¸ÕÀú, 'ºÎ¼­ Á¤º¸ Å×ÀÌºí'ºÎÅÍ ¸¸µç´Ù.(ÀÌÀ¯?»ç¿øÁ¤º¸ Å×ÀÌºí¿¡¼­ ÂüÁ¶ÇÏ°í ÀÖÀ¸¹Ç·Î)
+--ë¶€ì„œ ì •ë³´---------------------------------------
+--â˜…â˜…ë¨¼ì €, 'ë¶€ì„œ ì •ë³´ í…Œì´ë¸”'ë¶€í„° ë§Œë“ ë‹¤.(ì´ìœ ?ì‚¬ì›ì •ë³´ í…Œì´ë¸”ì—ì„œ ì°¸ì¡°í•˜ê³  ìžˆìœ¼ë¯€ë¡œ)
 CREATE TABLE department(
-	dno number(2) PRIMARY KEY, --'ºÎ¼­¹øÈ£'¸¦ ±âº»Å°(=primary key:Áßº¹X(=uniqueÀ¯ÀÏÇÑ, indexÀÚµ¿»ý¼ºÇÔ)+not null) ¡ØMySQL : int
-	dname varchar2(14), --'ºÎ¼­¸í':°¡º¯Å©±â (¡ØMySQL : varchar)
-	loc varchar2(13) --'Áö¿ª¸í'
+	dno number(2) PRIMARY KEY, --'ë¶€ì„œë²ˆí˜¸'ë¥¼ ê¸°ë³¸í‚¤(=primary key:ì¤‘ë³µX(=uniqueìœ ì¼í•œ, indexìžë™ìƒì„±í•¨)+not null) â€»MySQL : int
+	dname varchar2(14), --'ë¶€ì„œëª…':ê°€ë³€í¬ê¸° (â€»MySQL : varchar)
+	loc varchar2(13) --'ì§€ì—­ëª…'
 );
 
---ºÎ¼­Á¤º¸ Å×ÀÌºí¿¡ µ¥ÀÌÅÍ¸¦ Ãß°¡ÇÑ´Ù.
+--ë¶€ì„œì •ë³´ í…Œì´ë¸”ì— ë°ì´í„°ë¥¼ ì¶”ê°€í•œë‹¤.
 INSERT INTO department VALUES(10, 'ACCOUNTING', 'NEW YORK');
 INSERT INTO department VALUES(20, 'RESEARCH', 'DALLAS');
 INSERT INTO department VALUES(30, 'SALES', 'CHICAGO');
 INSERT INTO department VALUES(40, 'OPERATIONS', 'BOSTON');
 
---ºÎ¼­ Á¤º¸ Å×ÀÌºí Á¶È¸(¸ðµç °Í : *)
+--ë¶€ì„œ ì •ë³´ í…Œì´ë¸” ì¡°íšŒ(ëª¨ë“  ê²ƒ : *)
 SELECT * FROM department;
 
---»ç¿ø Á¤º¸---------------------------------------
---»ç¿ø Á¤º¸ Å×ÀÌºíÀ» ¸¸µç´Ù.
+--ì‚¬ì› ì •ë³´---------------------------------------
+--ì‚¬ì› ì •ë³´ í…Œì´ë¸”ì„ ë§Œë“ ë‹¤.
 CREATE TABLE employee(
-	eno number(4) PRIMARY KEY, -- »ç¿ø¹øÈ£(±âº»Å°=PK:Áßº¹X, À¯ÀÏunique)
-	ename varchar2(10), --»ç¿ø¸í
-	job varchar2(9), --¾÷¹«¸í
-	manager number(4), --ÇØ´ç »ç¿øÀÇ »ó»ç¹øÈ£(=°ü¸®ÀÚ)
-	hiredate date, --ÀÔ»çÀÏ
-	salary number(7,2), --±Þ¿©(½Ç¼ö:¼Ò¼öÁ¡À» Á¦¿ÜÇÑ ÀüÃ¼ ÀÚ¸®¼ö, ¼Ò¼öÁ¡ ÀÌÇÏ 3Â° ÀÚ¸®¿¡¼­ ¹Ý¿Ã¸²ÇÏ¿© 2Â° ÀÚ¸®±îÁö Ç¥Çö)
-	commission number(7,2), --Ä¿¹Ì¼Ç
-	dno number(2) REFERENCES department	--dno(ÂüÁ¶Å°=¿Ü·¡Å°=Foreign Key=FK)
-	--departmentÅ×ÀÌºí¿¡ dno°¡ primary key ¶Ç´Â unique·Î Á¸ÀçÇØ¾ß ÇÔ
+	eno number(4) PRIMARY KEY, -- ì‚¬ì›ë²ˆí˜¸(ê¸°ë³¸í‚¤=PK:ì¤‘ë³µX, ìœ ì¼unique)
+	ename varchar2(10), --ì‚¬ì›ëª…
+	job varchar2(9), --ì—…ë¬´ëª…
+	manager number(4), --í•´ë‹¹ ì‚¬ì›ì˜ ìƒì‚¬ë²ˆí˜¸(=ê´€ë¦¬ìž)
+	hiredate date, --ìž…ì‚¬ì¼
+	salary number(7,2), --ê¸‰ì—¬(ì‹¤ìˆ˜:ì†Œìˆ˜ì ì„ ì œì™¸í•œ ì „ì²´ ìžë¦¬ìˆ˜, ì†Œìˆ˜ì  ì´í•˜ 3ì§¸ ìžë¦¬ì—ì„œ ë°˜ì˜¬ë¦¼í•˜ì—¬ 2ì§¸ ìžë¦¬ê¹Œì§€ í‘œí˜„)
+	commission number(7,2), --ì»¤ë¯¸ì…˜
+	dno number(2) REFERENCES department	--dno(ì°¸ì¡°í‚¤=ì™¸ëž˜í‚¤=Foreign Key=FK)
+	--departmentí…Œì´ë¸”ì— dnoê°€ primary key ë˜ëŠ” uniqueë¡œ ì¡´ìž¬í•´ì•¼ í•¨
 	
-	--¸¸¾à, ±âº»Å°°¡ 2°³ ÀÌ»óÀÌ¸é
+	--ë§Œì•½, ê¸°ë³¸í‚¤ê°€ 2ê°œ ì´ìƒì´ë©´
 	--PRIMARY KEY(eno,ename)
 );
 
---»ç¿øÁ¤º¸ Å×ÀÌºí¿¡ µ¥ÀÌÅÍ¸¦ Ãß°¡ÇÑ´Ù.
+--ì‚¬ì›ì •ë³´ í…Œì´ë¸”ì— ë°ì´í„°ë¥¼ ì¶”ê°€í•œë‹¤.
 INSERT INTO employee VALUES(7369, 'SMITH', 'CLERK', 7902, to_date('17-12-1980','dd-mm-yyyy'), 800, NULL, 20);
 INSERT INTO EMPLOYEE VALUES
 (7499,'ALLEN','SALESMAN', 7698,to_date('20-2-1981', 'dd-mm-yyyy'),1600,300,30);
@@ -91,109 +91,109 @@ INSERT INTO EMPLOYEE VALUES
 INSERT INTO EMPLOYEE VALUES
 (7934,'MILLER','CLERK',  7782,to_date('23-1-1982', 'dd-mm-yyyy'),1300,NULL,10);
 
---»ç¿ø Á¤º¸ Å×ÀÌºí Á¶È¸(¸ðµç °Í : *)
+--ì‚¬ì› ì •ë³´ í…Œì´ë¸” ì¡°íšŒ(ëª¨ë“  ê²ƒ : *)
 SELECT * FROM employee;
 
---±Þ¿© Á¤º¸---------------------------------------
---±Þ¿© Á¤º¸ Å×ÀÌºíÀ» ¸¸µç´Ù.
+--ê¸‰ì—¬ ì •ë³´---------------------------------------
+--ê¸‰ì—¬ ì •ë³´ í…Œì´ë¸”ì„ ë§Œë“ ë‹¤.
 CREATE TABLE salgrade(
-	grade number,	--±Þ¿© µî±Þ
-	losal number,	--±Þ¿© ÇÏÇÑ°ª
-	hisal number	--±Þ¿© »óÇÑ°ª
+	grade number,	--ê¸‰ì—¬ ë“±ê¸‰
+	losal number,	--ê¸‰ì—¬ í•˜í•œê°’
+	hisal number	--ê¸‰ì—¬ ìƒí•œê°’
 );
 
---±Þ¿©Á¤º¸ Å×ÀÌºí¿¡ µ¥ÀÌÅÍ¸¦ Ãß°¡ÇÑ´Ù.
+--ê¸‰ì—¬ì •ë³´ í…Œì´ë¸”ì— ë°ì´í„°ë¥¼ ì¶”ê°€í•œë‹¤.
 INSERT INTO salgrade VALUES(1, 700, 1200);
 INSERT INTO salgrade VALUES(2, 1201, 1400);
 INSERT INTO salgrade VALUES(3, 1401, 2000);
 INSERT INTO salgrade VALUES(4, 2001, 3000);
 INSERT INTO salgrade VALUES(5, 3001, 9999);
 
---±Þ¿© Á¤º¸ Å×ÀÌºí Á¶È¸(¸ðµç °Í : *)
+--ê¸‰ì—¬ ì •ë³´ í…Œì´ë¸” ì¡°íšŒ(ëª¨ë“  ê²ƒ : *)
 SELECT * FROM salgrade;
 
 /*
- * 1Àå-30p
- * desc : describe(¹¦»çÇÏ´Ù)ÀÇ ¾à¾î·Î RUN~¿¡¼­ ½ÇÇàµÇ´Â SQL*Plus¸í·É¾îÀÓ
- * 				Å×ÀÌºíÀÇ ±¸Á¶ È®ÀÎ
+ * 1ìž¥-30p
+ * desc : describe(ë¬˜ì‚¬í•˜ë‹¤)ì˜ ì•½ì–´ë¡œ RUN~ì—ì„œ ì‹¤í–‰ë˜ëŠ” SQL*Plusëª…ë ¹ì–´ìž„
+ * 				í…Œì´ë¸”ì˜ êµ¬ì¡° í™•ì¸
  */
 DESC department;
 DESC employee;
 DESC salgrade;
 
---3.4. Á¶È¸(* ¸ðµç °Í)
---ÀüÃ¼ »ç¿ø Á¶È¸ÇÏ±â(=Ãâ·ÂÇÏ±â)
+--3.4. ì¡°íšŒ(* ëª¨ë“  ê²ƒ)
+--ì „ì²´ ì‚¬ì› ì¡°íšŒí•˜ê¸°(=ì¶œë ¥í•˜ê¸°)
 SELECT * FROM employee;
 
---»ç¿ø¹øÈ£¿Í »ç¿ø¸í¸¸ Á¶È¸ÇÏ±â
+--ì‚¬ì›ë²ˆí˜¸ì™€ ì‚¬ì›ëª…ë§Œ ì¡°íšŒí•˜ê¸°
 SELECT eno, ename FROM employee;
 
---3.5 »ê¼ú ¿¬»êÀÚ
+--3.5 ì‚°ìˆ  ì—°ì‚°ìž
 SELECT ename, salary, salary*12
 FROM employee
-WHERE ename='SMITH';	/*sql¿¡¼­´Â =°°´Ù (¡ØÀÚ¹Ù¿¡¼­´Â =´ëÀÔ¿¬»êÀÚ ==°°´Ù)*/
+WHERE ename='SMITH';	/*sqlì—ì„œëŠ” =ê°™ë‹¤ (â€»ìžë°”ì—ì„œëŠ” =ëŒ€ìž…ì—°ì‚°ìž ==ê°™ë‹¤)*/
 
 SELECT ENAME, SALARY, SALARY*12
 FROM EMPLOYEE
-WHERE ENAME='smith';		-- °á°ú´Â Á¸ÀçÇÏÁö ¾Ê´Â´Ù.(ÀÔ·ÂµÇ´Â °ªÀº ´ë¼Ò¹®ÀÚ ±¸ºÐÇÔ!)
+WHERE ENAME='smith';		-- ê²°ê³¼ëŠ” ì¡´ìž¬í•˜ì§€ ì•ŠëŠ”ë‹¤.(ìž…ë ¥ë˜ëŠ” ê°’ì€ ëŒ€ì†Œë¬¸ìž êµ¬ë¶„í•¨!)
 
 SELECT ENAME, SALARY, SALARY*12
 FROM EMPLOYEE
-WHERE lower(ENAME)='smith';/*lower(¹®ÀÚ)¸¦ ¼Ò¹®ÀÚ·Î º¯È¯*/
+WHERE lower(ENAME)='smith';/*lower(ë¬¸ìž)ë¥¼ ì†Œë¬¸ìžë¡œ ë³€í™˜*/
 
 SELECT ENAME, SALARY, SALARY*12
 FROM EMPLOYEE
-WHERE ENAME=upper('smith');/*upper(¹®ÀÚ)¸¦ ´ë¹®ÀÚ·Î º¯È¯*/
+WHERE ENAME=upper('smith');/*upper(ë¬¸ìž)ë¥¼ ëŒ€ë¬¸ìžë¡œ ë³€í™˜*/
 
 /*
- * »ê¼ú ¿¬»ê¿¡ nullÀ» »ç¿ëÇÏ´Â °æ¿ì¿¡´Â Æ¯º°ÇÑ ÁÖÀÇ°¡ ÇÊ¿äÇÔ
- * nullÀº '¹ÌÈ®Á¤', '¾Ë ¼ö ¾ø´Â °ª'ÀÇ ÀÇ¹ÌÀÌ¹Ç·Î '¿¬»ê, ÇÒ´ç, ºñ±³°¡ ºÒ°¡´É'ÇÔ
+ * ì‚°ìˆ  ì—°ì‚°ì— nullì„ ì‚¬ìš©í•˜ëŠ” ê²½ìš°ì—ëŠ” íŠ¹ë³„í•œ ì£¼ì˜ê°€ í•„ìš”í•¨
+ * nullì€ 'ë¯¸í™•ì •', 'ì•Œ ìˆ˜ ì—†ëŠ” ê°’'ì˜ ì˜ë¯¸ì´ë¯€ë¡œ 'ì—°ì‚°, í• ë‹¹, ë¹„êµê°€ ë¶ˆê°€ëŠ¥'í•¨
  */
 SELECT ename, salary, commission, salary*12+commission
 FROM employee;
---commissionÀÌ nullÀÌ¸é °á°úµµ null(¿¬»êÀÌ ¾ÈµÇ´Â ¹®Á¦ ¹ß»ý)
+--commissionì´ nullì´ë©´ ê²°ê³¼ë„ null(ì—°ì‚°ì´ ì•ˆë˜ëŠ” ë¬¸ì œ ë°œìƒ)
 
---[ÇØ°á¹æ¹ý-1]NVL()ÇÔ¼ö »ç¿ëÇÏ¿© À§ÀÇ ¹®Á¦ ÇØ°áÇÔ
---NVL(°ª, ) 0°ªÀÌ nullÀÌ¸é 0À¸·Î º¯°æ, nullÀÌ ¾Æ´Ï¸é °ªÀ» ±×´ë·Î »ç¿ë
+--[í•´ê²°ë°©ë²•-1]NVL()í•¨ìˆ˜ ì‚¬ìš©í•˜ì—¬ ìœ„ì˜ ë¬¸ì œ í•´ê²°í•¨
+--NVL(ê°’, ) 0ê°’ì´ nullì´ë©´ 0ìœ¼ë¡œ ë³€ê²½, nullì´ ì•„ë‹ˆë©´ ê°’ì„ ê·¸ëŒ€ë¡œ ì‚¬ìš©
 SELECT ename, salary, commission, salary*12 + NVL(commission, 0)
 FROM employee;
 
---[ÇØ°á¹æ¹ý-2]NVL2()ÇÔ¼ö »ç¿ëÇÏ¿© À§ÀÇ ¹®Á¦ ÇØ°áÇÔ
---NVL2(°ª, °ª1, °ª2) °ªÀÌ nullÀÌ ¾Æ´Ï¸é °ª1À» ±×´ë·Î »ç¿ë, °ªÀÌ nullÀÌ¸é °ª2¸¦ »ç¿ë
+--[í•´ê²°ë°©ë²•-2]NVL2()í•¨ìˆ˜ ì‚¬ìš©í•˜ì—¬ ìœ„ì˜ ë¬¸ì œ í•´ê²°í•¨
+--NVL2(ê°’, ê°’1, ê°’2) ê°’ì´ nullì´ ì•„ë‹ˆë©´ ê°’1ì„ ê·¸ëŒ€ë¡œ ì‚¬ìš©, ê°’ì´ nullì´ë©´ ê°’2ë¥¼ ì‚¬ìš©
 SELECT ename, salary, commission, salary*12 + NVL2(commission, commission, 0)
 FROM employee;
 
---¡ØNVL2()ÇÔ¼ö´Â °ªÀÌ nullÀÌ ¾Æ´Ò ¶§ ´ëÃ¼ÇÒ °ªÀ» ÁöÁ¤ÇÒ ¼ö ÀÖ´Ù.
+--â€»NVL2()í•¨ìˆ˜ëŠ” ê°’ì´ nullì´ ì•„ë‹ ë•Œ ëŒ€ì²´í•  ê°’ì„ ì§€ì •í•  ìˆ˜ ìžˆë‹¤.
 SELECT ename, salary, commission, salary*12 + NVL2(commission, 800, 0)
 FROM employee;
 
 /*
- * º°Äª
- * 1. ÄÃ·³¸í º°Äª
- * 2. ÄÃ·³¸í AS º°Äª
- * 3. ÄÃ·³¸í AS "º° Äª"
+ * ë³„ì¹­
+ * 1. ì»¬ëŸ¼ëª… ë³„ì¹­
+ * 2. ì»¬ëŸ¼ëª… AS ë³„ì¹­
+ * 3. ì»¬ëŸ¼ëª… AS "ë³„ ì¹­"
  * 
- * ¹Ýµå½Ã ""ÇØ¾ß µÇ´Â °æ¿ì
- * º°Äª ±ÛÀÚ »çÀÌ¿¡ '°ø¹é,Æ¯¼ö¹®ÀÚ Ãß°¡' ¶Ç´Â '´ë¼Ò¹®ÀÚ ±¸ºÐ'
+ * ë°˜ë“œì‹œ ""í•´ì•¼ ë˜ëŠ” ê²½ìš°
+ * ë³„ì¹­ ê¸€ìž ì‚¬ì´ì— 'ê³µë°±,íŠ¹ìˆ˜ë¬¸ìž ì¶”ê°€' ë˜ëŠ” 'ëŒ€ì†Œë¬¸ìž êµ¬ë¶„'
  */
-SELECT ename »ç¿øÀÌ¸§, salary as "±Þ ¿©", commission AS "Cms",
-salary*12 + NVL(commission, 0) as "¿¬ºÀ+Ä¿¹Ì¼Ç"
+SELECT ename ì‚¬ì›ì´ë¦„, salary as "ê¸‰ ì—¬", commission AS "Cms",
+salary*12 + NVL(commission, 0) as "ì—°ë´‰+ì»¤ë¯¸ì…˜"
 FROM employee;
 
--- distinct : Áßº¹µÈ µ¥ÀÌÅÍ¸¦ ÇÑ¹ø¾¿¸¸ Ç¥½Ã
-SELECT DISTINCT dno	--ºÎ¼­¹øÈ£
+-- distinct : ì¤‘ë³µëœ ë°ì´í„°ë¥¼ í•œë²ˆì”©ë§Œ í‘œì‹œ
+SELECT DISTINCT dno	--ë¶€ì„œë²ˆí˜¸
 FROM employee;
 
 /*
- * dual : °¡»óÅ×ÀÌºí, °á°ú°ªÀ» 1°³¸¸ Ç¥½ÃÇÏ°í ½ÍÀ» ¶§ »ç¿ë
+ * dual : ê°€ìƒí…Œì´ë¸”, ê²°ê³¼ê°’ì„ 1ê°œë§Œ í‘œì‹œí•˜ê³  ì‹¶ì„ ë•Œ ì‚¬ìš©
  */
---sysdate ÇÔ¼ö : ÄÄÇ»ÅÍ ½Ã½ºÅÛÀ¸·ÎºÎÅÍ ¿À´Ã ³¯Â¥(¡ÚÁÖÀÇ : µÚ¿¡ ()¾øÀ½!)
-SELECT * FROM employee;--14Çà
-SELECT sysdate FROM employee; --14Çà °°Àº ³¯Â¥
+--sysdate í•¨ìˆ˜ : ì»´í“¨í„° ì‹œìŠ¤í…œìœ¼ë¡œë¶€í„° ì˜¤ëŠ˜ ë‚ ì§œ(â˜…ì£¼ì˜ : ë’¤ì— ()ì—†ìŒ!)
+SELECT * FROM employee;--14í–‰
+SELECT sysdate FROM employee; --14í–‰ ê°™ì€ ë‚ ì§œ
 SELECT DISTINCT sysdate FROM employee;
 
-SELECT * FROM dual;	--1Çà
-SELECT sysdate FROM dual;	--1Çà ³¯Â¥
+SELECT * FROM dual;	--1í–‰
+SELECT sysdate FROM dual;	--1í–‰ ë‚ ì§œ
 
-COMMIT; -- ¼öÁ¤µÈ µ¥ÀÌÅÍ¸¦ DB¿¡ ¿µ±¸ ÀúÀå
+COMMIT; -- ìˆ˜ì •ëœ ë°ì´í„°ë¥¼ DBì— ì˜êµ¬ ì €ìž¥
 

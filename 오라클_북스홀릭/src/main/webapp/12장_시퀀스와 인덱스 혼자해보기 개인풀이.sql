@@ -1,7 +1,7 @@
---<12Àå ½ÃÄö½º¿Í ÀÎµ¦½º-È¥ÀÚ ÇØº¸±â>---------------------
+--<12ì¥ ì‹œí€€ìŠ¤ì™€ ì¸ë±ìŠ¤-í˜¼ì í•´ë³´ê¸°>---------------------
 
 /*
- * 1.»ç¿ø Å×ÀÌºíÀÇ »ç¿ø¹øÈ£°¡ ÀÚµ¿À¸·Î »ı¼ºµÇµµ·Ï ½ÃÄö½º¸¦ »ı¼ºÇÏ½Ã¿À.
+ * 1.ì‚¬ì› í…Œì´ë¸”ì˜ ì‚¬ì›ë²ˆí˜¸ê°€ ìë™ìœ¼ë¡œ ìƒì„±ë˜ë„ë¡ ì‹œí€€ìŠ¤ë¥¼ ìƒì„±í•˜ì‹œì˜¤.
  */
 create sequence seq_emp01_no
 start with 1000
@@ -9,27 +9,27 @@ increment by 1
 maxvalue 2000;
 
 /*
- * 2.EMP01 Å×ÀÌºíÀ» »ı¼ºÇÏ½Ã¿À.
- * (»ç¿ø¹øÈ£ NUMBER(4) ±âº»Å°, »ç¿øÀÌ¸§ VARCHAR2(10), °¡ÀÔÀÏ)
- * »ç¿ø¹øÈ£¸¦ ½ÃÄö½º·ÎºÎÅÍ ¹ß±Ş¹ŞÀ¸½Ã¿À.
+ * 2.EMP01 í…Œì´ë¸”ì„ ìƒì„±í•˜ì‹œì˜¤.
+ * (ì‚¬ì›ë²ˆí˜¸ NUMBER(4) ê¸°ë³¸í‚¤, ì‚¬ì›ì´ë¦„ VARCHAR2(10), ê°€ì…ì¼)
+ * ì‚¬ì›ë²ˆí˜¸ë¥¼ ì‹œí€€ìŠ¤ë¡œë¶€í„° ë°œê¸‰ë°›ìœ¼ì‹œì˜¤.
  */
 create table emp01 (
-	»ç¿ø¹øÈ£ number(4) primary key,
-	»ç¿øÀÌ¸§ varchar2(10),
-	°¡ÀÔÀÏ date
+	ì‚¬ì›ë²ˆí˜¸ number(4) primary key,
+	ì‚¬ì›ì´ë¦„ varchar2(10),
+	ê°€ì…ì¼ date
 );
 
-insert into emp01 values(seq_emp01_no.nextval, 'È«±æµ¿', '2022/09/01');
-insert into emp01 values(seq_emp01_no.nextval, 'ÀÌ¼ø½Å', '2022/08/01');
-insert into emp01 values(seq_emp01_no.nextval, 'ÀÌÀç¿ë', '2022/07/01');
+insert into emp01 values(seq_emp01_no.nextval, 'í™ê¸¸ë™', '2022/09/01');
+insert into emp01 values(seq_emp01_no.nextval, 'ì´ìˆœì‹ ', '2022/08/01');
+insert into emp01 values(seq_emp01_no.nextval, 'ì´ì¬ìš©', '2022/07/01');
 
 select * from emp01;
 
 /*
- * 3.EMP01 Å×ÀÌºíÀÇ ÀÌ¸§ ÄÃ·³À» ÀÎµ¦½º·Î ¼³Á¤ÇÏµÇ ÀÎµ¦½º ÀÌ¸§À» IDX_EMP01_ENAME·Î ÁöÁ¤ÇÏ½Ã¿À.
+ * 3.EMP01 í…Œì´ë¸”ì˜ ì´ë¦„ ì»¬ëŸ¼ì„ ì¸ë±ìŠ¤ë¡œ ì„¤ì •í•˜ë˜ ì¸ë±ìŠ¤ ì´ë¦„ì„ IDX_EMP01_ENAMEë¡œ ì§€ì •í•˜ì‹œì˜¤.
  */
 create index idx_emp01_ename
-ON emp01(»ç¿øÀÌ¸§);
+ON emp01(ì‚¬ì›ì´ë¦„);
 
 select index_name, column_name
 from user_ind_columns

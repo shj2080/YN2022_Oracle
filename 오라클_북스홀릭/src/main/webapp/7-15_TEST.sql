@@ -1,64 +1,64 @@
---[¹®Á¦] 3°³ÀÇ Å×ÀÌºí Á¶ÀÎÇÏ±â
---'»ç¿øÀÌ¸§, ¼Ò¼ÓµÈ ºÎ¼­¹øÈ£, ¼Ò¼ÓµÈ ºÎ¼­¸í, ±Ş¿©, ±Ş¿©µî±Ş' Á¶È¸
--- 4°¡Áö join ¹æ¹ı È°¿ë
---[join ¹æ¹ı-1] »ç¿øÅ×ÀÌºí°ú ºÎ¼­Å×ÀÌºí
+--[ë¬¸ì œ] 3ê°œì˜ í…Œì´ë¸” ì¡°ì¸í•˜ê¸°
+--'ì‚¬ì›ì´ë¦„, ì†Œì†ëœ ë¶€ì„œë²ˆí˜¸, ì†Œì†ëœ ë¶€ì„œëª…, ê¸‰ì—¬, ê¸‰ì—¬ë“±ê¸‰' ì¡°íšŒ
+-- 4ê°€ì§€ join ë°©ë²• í™œìš©
+--[join ë°©ë²•-1] ì‚¬ì›í…Œì´ë¸”ê³¼ ë¶€ì„œí…Œì´ë¸”
 select ename, e.dno, dname, salary
 from employee e, DEPARTMENT d
 where e.dno = d.dno;
 
---[join ¹æ¹ı-2] »ç¿øÅ×ÀÌºí°ú ºÎ¼­Å×ÀÌºí
-select ename, e.dno, dname, salary	--e.dno ±¸ºĞÇÏ±â À§ÇØ »ı·« ºÒ°¡
+--[join ë°©ë²•-2] ì‚¬ì›í…Œì´ë¸”ê³¼ ë¶€ì„œí…Œì´ë¸”
+select ename, e.dno, dname, salary	--e.dno êµ¬ë¶„í•˜ê¸° ìœ„í•´ ìƒëµ ë¶ˆê°€
 from employee e JOIN DEPARTMENT d
 ON e.dno = d.dno;
 
---[join ¹æ¹ı-3] natural join (ÀÚ¿¬½º·´°Ô µ¿ÀÏÁ¶ÀÎ, Áßº¹µÈ ÄÃ·³ Á¦°Å->º°Äª ÇÊ¿ä¾øÀ½)
+--[join ë°©ë²•-3] natural join (ìì—°ìŠ¤ëŸ½ê²Œ ë™ì¼ì¡°ì¸, ì¤‘ë³µëœ ì»¬ëŸ¼ ì œê±°->ë³„ì¹­ í•„ìš”ì—†ìŒ)
 select ename, dno, dname, salary
 from employee NATURAL JOIN DEPARTMENT;
 --ON e.dno = d.dno;
 
---[join ¹æ¹ı-4] (Áßº¹µÈ ÄÃ·³ Á¦°Å->º°Äª ÇÊ¿ä¾øÀ½)
+--[join ë°©ë²•-4] (ì¤‘ë³µëœ ì»¬ëŸ¼ ì œê±°->ë³„ì¹­ í•„ìš”ì—†ìŒ)
 select ename, dno, dname, salary
 from employee JOIN department
 USING(dno);
 
---[ÃÖÁ¾] "Á¶ÀÎÇÑ °á°ú Å×ÀÌºí"°ú "±Ş¿©Á¤º¸ Å×ÀÌºí" => salary·Î ºñµî°¡Á¶ÀÎ
+--[ìµœì¢…] "ì¡°ì¸í•œ ê²°ê³¼ í…Œì´ë¸”"ê³¼ "ê¸‰ì—¬ì •ë³´ í…Œì´ë¸”" => salaryë¡œ ë¹„ë“±ê°€ì¡°ì¸
 select ename, dno, edname, salary, grade
-from SALGRADE JOIN (select ename, e.dno, dname, salary--e.dno:±¸ºĞÇÏ±â À§ÇØ »ı·«ºÒ°¡
+from SALGRADE JOIN (select ename, e.dno, dname, salary--e.dno:êµ¬ë¶„í•˜ê¸° ìœ„í•´ ìƒëµë¶ˆê°€
 					from EMPLOYEE e JOIN DEPARTMENT d
 					ON e.dno = d.dno 
 					)
-ON salary BETWEEN losal AND hisal;--ºñµî°¡Á¶ÀÎ
+ON salary BETWEEN losal AND hisal;--ë¹„ë“±ê°€ì¡°ì¸
 
---º°Äªµé(ed. s.) »ı·« °¡´ÉÇÔ
+--ë³„ì¹­ë“¤(ed. s.) ìƒëµ ê°€ëŠ¥í•¨
 select ename, dno, edname, salary, s.grade
 from SALGRADE JOIN (select ename, dno, dname, salary
 					  from EMPLOYEE JOIN DEPARTMENT
 					  USING(dno)
 					  )
-ON losal <= salary AND salary <= hisal;--ºñµî°¡Á¶ÀÎ
+ON losal <= salary AND salary <= hisal;--ë¹„ë“±ê°€ì¡°ì¸
 
 
---[¹®Á¦-2] »ç¿øÀÌ¸§(ename)°ú Á÷¼Ó»ó°üÀÌ¸§(ename) Á¶È¸ÇÏ±â => ¼¿ÇÁÁ¶ÀÎ
---(Ãâ·Â¿¹) AÀÇ Á÷¼Ó»ó°üÀº B
-select e.ename || 'ÀÇ Á÷¼Ó»ó°üÀº ' || m.ename
-from employee e JOIN employee m--¹İµå½Ã º°Äª »ç¿ë
-ON e.manager=m.eno--'KING'Àº Á÷¼Ó»ó°üÀÌ NULLÀÌ¹Ç·Î µî°¡Á¶ÀÎ¿¡¼­ Á¦¿ÜµÊ
+--[ë¬¸ì œ-2] ì‚¬ì›ì´ë¦„(ename)ê³¼ ì§ì†ìƒê´€ì´ë¦„(ename) ì¡°íšŒí•˜ê¸° => ì…€í”„ì¡°ì¸
+--(ì¶œë ¥ì˜ˆ) Aì˜ ì§ì†ìƒê´€ì€ B
+select e.ename || 'ì˜ ì§ì†ìƒê´€ì€ ' || m.ename
+from employee e JOIN employee m--ë°˜ë“œì‹œ ë³„ì¹­ ì‚¬ìš©
+ON e.manager=m.eno--'KING'ì€ ì§ì†ìƒê´€ì´ NULLì´ë¯€ë¡œ ë“±ê°€ì¡°ì¸ì—ì„œ ì œì™¸ë¨
 order by 1;
 
 
 
 
 /*
---[ÃÖÁ¾] "Á¶ÀÎÇÑ °á°ú Å×ÀÌºí"°ú "±Ş¿©Á¤º¸ Å×ÀÌºí" join ÇÏ±â
+--[ìµœì¢…] "ì¡°ì¸í•œ ê²°ê³¼ í…Œì´ë¸”"ê³¼ "ê¸‰ì—¬ì •ë³´ í…Œì´ë¸”" join í•˜ê¸°
 select ename, dno, dname, salary, grade
 from SALGRADE JOIN (select ename, dno, dname, salary
 					from employee JOIN department
 					USING(dno))
 ON salary between losal AND hisal;
 
---[¹®Á¦-2] »ç¿øÀÌ¸§°ú Á÷¼Ó»ó°üÀÌ¸§ Á¶È¸ÇÏ±â
---(Ãâ·Â¿¡) AÀÇ Á÷¼Ó»ó°üÀº B
-select e.ename || 'ÀÇ Á÷¼Ó»ó°üÀº ' || m.ename
+--[ë¬¸ì œ-2] ì‚¬ì›ì´ë¦„ê³¼ ì§ì†ìƒê´€ì´ë¦„ ì¡°íšŒí•˜ê¸°
+--(ì¶œë ¥ì—) Aì˜ ì§ì†ìƒê´€ì€ B
+select e.ename || 'ì˜ ì§ì†ìƒê´€ì€ ' || m.ename
 from employee e, employee m
 where e.manager = m.eno;
 */

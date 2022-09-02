@@ -1,15 +1,15 @@
---[SQL È°¿ë] Á¤¸®
+--[SQL í™œìš©] ì •ë¦¬
 
---<DDL:µ¥ÀÌÅÍ Á¤ÀÇ¾î>
---1. Å×ÀÌºí »ı¼º
-[Å×ÀÌºí¸í test]
+--<DDL:ë°ì´í„° ì •ì˜ì–´>
+--1. í…Œì´ë¸” ìƒì„±
+[í…Œì´ë¸”ëª… test]
 ----------------------------------------
-ÇÊµå(=ÄÃ·³¸í) Type           null      key   
+í•„ë“œ(=ì»¬ëŸ¼ëª…) Type           null      key   
 ----------------------------------------
 id         varchar2(20)   no           
 password   varchar2(30)   no            
 name       varchar2(25)   no            
-¼ºº°        char(2)        yes           
+ì„±ë³„        char(2)        yes           
 birth      date           yes          
 age        number(4)      yes       
 ----------------------------------------
@@ -19,290 +19,290 @@ create table test(
 	id varchar2(20) not null,
 	password varchar2(30) not null,
 	name varchar2(25) not null,
-	¼ºº° char(2),
+	ì„±ë³„ char(2),
 	birth date,
 	age number(4)
 );
 
 
---2. ÄÃ·³ ÀÌ¸§(=¿­ ÀÌ¸§) º¯°æ : ¼ºº° -> gender 
+--2. ì»¬ëŸ¼ ì´ë¦„(=ì—´ ì´ë¦„) ë³€ê²½ : ì„±ë³„ -> gender 
 alter table test
-rename column ¼ºº° TO gender;
+rename column ì„±ë³„ TO gender;
 
---3. ÄÃ·³ ÀÌ¸§(=¿­) Ãß°¡:address varchar2(60) Ãß°¡
+--3. ì»¬ëŸ¼ ì´ë¦„(=ì—´) ì¶”ê°€:address varchar2(60) ì¶”ê°€
 alter table test
 add address varchar2(60);
 
---4. birth ¿­ Á¦°Å
+--4. birth ì—´ ì œê±°
 alter table test
 drop column birth;
 
 /*
- * [ÄÃ·³ÀÇ ±æÀÌ º¯°æ(ÁÙÀÏ ¶§) ÁÖÀÇ»çÇ×]
- * ÄÃ·³ÀÇ ±æÀÌ¸¦ ÁÙÀÏ °æ¿ì ÀÌ¹Ì insertµÈ ÇØ´ç ÄÃ·³ÀÇ °ª Áß º¯°æÇÒ ±æÀÌº¸´Ù Å« °ªÀÌ ÀÖÀ¸¸é ¿À·ù°¡ ¹ß»ıÇÑ´Ù.
+ * [ì»¬ëŸ¼ì˜ ê¸¸ì´ ë³€ê²½(ì¤„ì¼ ë•Œ) ì£¼ì˜ì‚¬í•­]
+ * ì»¬ëŸ¼ì˜ ê¸¸ì´ë¥¼ ì¤„ì¼ ê²½ìš° ì´ë¯¸ insertëœ í•´ë‹¹ ì»¬ëŸ¼ì˜ ê°’ ì¤‘ ë³€ê²½í•  ê¸¸ì´ë³´ë‹¤ í° ê°’ì´ ìˆìœ¼ë©´ ì˜¤ë¥˜ê°€ ë°œìƒí•œë‹¤.
  * ORA-01441: cannot decrease column length because some value is too big 
  * 
- * ÀÌ·² ¶§´Â ÇØ´ç ÄÃ·³ÀÇ ±æÀÌ¸¦ Á¶È¸ÇÏ¿© º¯°æÇÒ ±æÀÌº¸´Ù Å« °ªÀÌ ÀÖ´ÂÁö È®ÀÎÇÑ ÈÄ °ªÀ» º¯°æÇØ¾ß ÇÑ´Ù.
+ * ì´ëŸ´ ë•ŒëŠ” í•´ë‹¹ ì»¬ëŸ¼ì˜ ê¸¸ì´ë¥¼ ì¡°íšŒí•˜ì—¬ ë³€ê²½í•  ê¸¸ì´ë³´ë‹¤ í° ê°’ì´ ìˆëŠ”ì§€ í™•ì¸í•œ í›„ ê°’ì„ ë³€ê²½í•´ì•¼ í•œë‹¤.
  * 
  * select id, age -- select *
  * from test
  * where length(age) > 3;
  */
 
---5. ¿­ ¼öÁ¤ : ¾ÆÁ÷ insertÇÑ row(=·¹ÄÚµå)°¡ ¾øÀ¸¹Ç·Î ÄÃ·³ Å©±â¸¦ ÀÚÀ¯·Ó°Ô ÁÙÀÏ ¼ö ÀÖ´Ù.
---(1) age : number(3), null:NO, Default°ª:0
+--5. ì—´ ìˆ˜ì • : ì•„ì§ insertí•œ row(=ë ˆì½”ë“œ)ê°€ ì—†ìœ¼ë¯€ë¡œ ì»¬ëŸ¼ í¬ê¸°ë¥¼ ììœ ë¡­ê²Œ ì¤„ì¼ ìˆ˜ ìˆë‹¤.
+--(1) age : number(3), null:NO, Defaultê°’:0
 alter table test
-modify age number(3) default 0 not null; --¡Ú¡Ú ¼ø¼­ ÁÖÀÇ : not null default 0 (¿À·ù)
+modify age number(3) default 0 not null; --â˜…â˜… ìˆœì„œ ì£¼ì˜ : not null default 0 (ì˜¤ë¥˜)
 
---(2) gender : char(1), Default°ª:'M'
+--(2) gender : char(1), Defaultê°’:'M'
 alter table test
 modify gender char(1) default 'M';
 
---´Ù¼öÀÇ ÄÃ·³ ¼öÁ¤ÇÒ ¶§
+--ë‹¤ìˆ˜ì˜ ì»¬ëŸ¼ ìˆ˜ì •í•  ë•Œ
 alter table test
 modify (age number(3) default 0 not null,
 		gender char(1) default 'M');	
 
---¡Ø 'Å×ÀÌºí Á¦¾àÁ¶°Ç'À» È®ÀÎÇÏ·Á¸é 'USER_CONSTRAINTS'µ¥ÀÌÅÍ »çÀü »ç¿ëÇÔ
+--â€» 'í…Œì´ë¸” ì œì•½ì¡°ê±´'ì„ í™•ì¸í•˜ë ¤ë©´ 'USER_CONSTRAINTS'ë°ì´í„° ì‚¬ì „ ì‚¬ìš©í•¨
 select constraint_name, constraint_type --P, R, C, U
 from user_constraints
 where table_name in ('TEST');
 
---6. id¿¡ '±âº»Å° Á¦¾àÁ¶°Ç' Ãß°¡
---[¹æ¹ı-1]
---ÀÚµ¿À¸·Î »ı¼ºµÈ 'Á¦¾àÁ¶°Ç¸í(=constraint_name)'
+--6. idì— 'ê¸°ë³¸í‚¤ ì œì•½ì¡°ê±´' ì¶”ê°€
+--[ë°©ë²•-1]
+--ìë™ìœ¼ë¡œ ìƒì„±ëœ 'ì œì•½ì¡°ê±´ëª…(=constraint_name)'
 alter table test
 add primary key(id);
 
---»ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ 'Á¦¾àÁ¶°Ç¸í(=constraint_name)'
+--ì‚¬ìš©ìê°€ ì…ë ¥í•œ 'ì œì•½ì¡°ê±´ëª…(=constraint_name)'
 alter table test
 add constraint test_id_pk primary key(id);
 
---[¹æ¹ı-2] ÄÃ·³ id ¼öÁ¤
+--[ë°©ë²•-2] ì»¬ëŸ¼ id ìˆ˜ì •
 alter table test
-MODIFY id varchar2(20) primary key;--primary key = not null + unique(index ÀÚµ¿»ı¼ºµÊ)
+MODIFY id varchar2(20) primary key;--primary key = not null + unique(index ìë™ìƒì„±ë¨)
 
---7. Å×ÀÌºí ±¸Á¶ È®ÀÎ
+--7. í…Œì´ë¸” êµ¬ì¡° í™•ì¸
 desc test;
---SQL PLUS ¸í·É¾î´Â ÀÌÅ¬¸³½º¿¡¼­´Â ½ÇÇà¾ÈµÊ(ORA-00900: invalid SQL statement)
---(RUN SQL~¿¡¼­ ½ÇÇà °¡´É)
+--SQL PLUS ëª…ë ¹ì–´ëŠ” ì´í´ë¦½ìŠ¤ì—ì„œëŠ” ì‹¤í–‰ì•ˆë¨(ORA-00900: invalid SQL statement)
+--(RUN SQL~ì—ì„œ ì‹¤í–‰ ê°€ëŠ¥)
 
---8. TEST Å×ÀÌºíÀÇ Á¦¾àÁ¶°Ç È®ÀÎ(Å×ÀÌºí¸í, Á¦¾àÁ¶°Ç¸í, Á¦¾àÁ¶°ÇÅ¸ÀÔ)
---[1] ÄÃ·³¸íÀ» ¸ğ¸£°ÚÀ¸¸é *·Î Á¶È¸ÇÏ¿© ÀÌ¸§È®ÀÎÇÑ ÈÄ
+--8. TEST í…Œì´ë¸”ì˜ ì œì•½ì¡°ê±´ í™•ì¸(í…Œì´ë¸”ëª…, ì œì•½ì¡°ê±´ëª…, ì œì•½ì¡°ê±´íƒ€ì…)
+--[1] ì»¬ëŸ¼ëª…ì„ ëª¨ë¥´ê² ìœ¼ë©´ *ë¡œ ì¡°íšŒí•˜ì—¬ ì´ë¦„í™•ì¸í•œ í›„
 select *
 from user_constraints
 where table_name in ('TEST');
 
---[2] Å×ÀÌºí¸í, Á¦¾àÁ¶°Ç¸í, Á¦¾àÁ¶°ÇÅ¸ÀÔ Á¶È¸
+--[2] í…Œì´ë¸”ëª…, ì œì•½ì¡°ê±´ëª…, ì œì•½ì¡°ê±´íƒ€ì… ì¡°íšŒ
 select table_name, constraint_name, constraint_type --P(=PK), R(=FK), C(=not null), U(Unique)
 from user_constraints
-where table_name in ('TEST');--¹İµå½Ã ´ë¹®ÀÚ
+where table_name in ('TEST');--ë°˜ë“œì‹œ ëŒ€ë¬¸ì
 
 
 -------------------------------------------------------------------------------------------------------------------
 
---<DML:µ¥ÀÌÅÍ Á¶ÀÛ¾î(insert, update, delete) -> TCL:Æ®·£Àè¼Ç Ã³¸®¾î(commit, rollback, savepoint)
---9. insert : µ¥ÀÌÅÍ ÀÔ·Â
+--<DML:ë°ì´í„° ì¡°ì‘ì–´(insert, update, delete) -> TCL:íŠ¸ëœì­ì…˜ ì²˜ë¦¬ì–´(commit, rollback, savepoint)
+--9. insert : ë°ì´í„° ì…ë ¥
 id     password   name   gender    age    address
 ---------------------------------------------------
-yang1  !1111      ¾ç¿µ¼®     M       27     ±¸¹Ì½Ã
-yoon2  $2222      À±È£¼·     M       19     ´ë±¸±¤¿ª½Ã
-lee3   #3333      ÀÌ¼ö±¤     M       30     ¼­¿ïÆ¯º°½Ã
-an4    &4444      ¾È¿©Áø     F       24     ºÎ»ê±¤¿ª½Ã
+yang1  !1111      ì–‘ì˜ì„     M       27     êµ¬ë¯¸ì‹œ
+yoon2  $2222      ìœ¤í˜¸ì„­     M       19     ëŒ€êµ¬ê´‘ì—­ì‹œ
+lee3   #3333      ì´ìˆ˜ê´‘     M       30     ì„œìš¸íŠ¹ë³„ì‹œ
+an4    &4444      ì•ˆì—¬ì§„     F       24     ë¶€ì‚°ê´‘ì—­ì‹œ
 
-insert into test values('yang1', '!1111', '¾ç¿µ¼®', 'M', 27, '±¸¹Ì½Ã');
-insert into test values('yoon2', '$2222', 'À±È£¼·', 'M', 19, '´ë±¸±¤¿ª½Ã');
-insert into test values('lee3', '#3333', 'ÀÌ¼ö±¤', 'M', 30, '¼­¿ïÆ¯º°½Ã');
-insert into test values('an4', '&4444', '¾È¿©Áø', 'F', 24, 'ºÎ»ê±¤¿ª½Ã');
+insert into test values('yang1', '!1111', 'ì–‘ì˜ì„', 'M', 27, 'êµ¬ë¯¸ì‹œ');
+insert into test values('yoon2', '$2222', 'ìœ¤í˜¸ì„­', 'M', 19, 'ëŒ€êµ¬ê´‘ì—­ì‹œ');
+insert into test values('lee3', '#3333', 'ì´ìˆ˜ê´‘', 'M', 30, 'ì„œìš¸íŠ¹ë³„ì‹œ');
+insert into test values('an4', '&4444', 'ì•ˆì—¬ì§„', 'F', 24, 'ë¶€ì‚°ê´‘ì—­ì‹œ');
 
 select * from test;
-/** °úÁ¦ - ¿ù¿äÀÏ±îÁö Ç®¾î¿À±â **/
---10°ú 10¹ø º¯Çü¹®Á¦ => °úÁ¦ ------------------------------
---10. update : '±¤¿ª½Ã' -> '½Ã'·Î µ¥ÀÌÅÍ º¯°æ
---(´Ü, ÇÔ¼ö »ç¿ëÇÏ¿© ÇØ°áÇÏ±â)
+/** ê³¼ì œ - ì›”ìš”ì¼ê¹Œì§€ í’€ì–´ì˜¤ê¸° **/
+--10ê³¼ 10ë²ˆ ë³€í˜•ë¬¸ì œ => ê³¼ì œ ------------------------------
+--10. update : 'ê´‘ì—­ì‹œ' -> 'ì‹œ'ë¡œ ë°ì´í„° ë³€ê²½
+--(ë‹¨, í•¨ìˆ˜ ì‚¬ìš©í•˜ì—¬ í•´ê²°í•˜ê¸°)
 
---[¹æ¹ı-1]°ú [¹æ¹ı-2] : '±¤¿ª½Ã' ¾ÕÀÇ ¹®ÀÚ°¡ 2°³¾¿ ÀÖÀ½À» ¾Ë ¶§
---[¹æ¹ı-1]
---substr(±âÁ¸¹®ÀÚ¿­, ½ÃÀÛindex, ÃßÃâÇÒ °³¼ö) : ¹®ÀÚ¿­ÀÇ ÀÏºÎ¸¸ ÃßÃâÇÏ¿© ºÎºĞ¹®ÀÚ¿­ »ı¼º
---½ÃÀÛindex : À½¼öÀÌ¸é ¹®ÀÚ¿­ÀÇ ¸¶Áö¸·À» ±âÁØÀ¸·Î °Å½½·¯ ¿Ã¶ó°¨
---ÀÎµ¦½º(index) : 1 2 3...(¡ØÀÚ¹Ù index : 0 1 2...)
+--[ë°©ë²•-1]ê³¼ [ë°©ë²•-2] : 'ê´‘ì—­ì‹œ' ì•ì˜ ë¬¸ìê°€ 2ê°œì”© ìˆìŒì„ ì•Œ ë•Œ
+--[ë°©ë²•-1]
+--substr(ê¸°ì¡´ë¬¸ìì—´, ì‹œì‘index, ì¶”ì¶œí•  ê°œìˆ˜) : ë¬¸ìì—´ì˜ ì¼ë¶€ë§Œ ì¶”ì¶œí•˜ì—¬ ë¶€ë¶„ë¬¸ìì—´ ìƒì„±
+--ì‹œì‘index : ìŒìˆ˜ì´ë©´ ë¬¸ìì—´ì˜ ë§ˆì§€ë§‰ì„ ê¸°ì¤€ìœ¼ë¡œ ê±°ìŠ¬ëŸ¬ ì˜¬ë¼ê°
+--ì¸ë±ìŠ¤(index) : 1 2 3...(â€»ìë°” index : 0 1 2...)
 update test
-set address = substr(address, 1, 2) || '½Ã' --'ºÎ»ê' || '½Ã' => 'ºÎ»ê½Ã'
-where address like '%±¤¿ª½Ã';
+set address = substr(address, 1, 2) || 'ì‹œ' --'ë¶€ì‚°' || 'ì‹œ' => 'ë¶€ì‚°ì‹œ'
+where address like '%ê´‘ì—­ì‹œ';
 
---[¹æ¹ı-2]
---concat('¹®ÀÚ¿­1', '¹®ÀÚ¿­2') : 'µÎ ¹®ÀÚ¿­'À» ÇÏ³ªÀÇ ¹®ÀÚ¿­·Î ¿¬°á(=°áÇÕ)
---		¡Ú¹İµå½Ã 2 ¹®ÀÚ¿­¸¸ ¿¬°á °¡´É = ¸Å°³º¯¼ö 2°³¸¸
---¸Å°³º¯¼ö=ÀÎ¼ö=ÀÎÀÚ=argument
---±×·¯³ª, '¹®ÀÚ¿­1' || '¹®ÀÚ¿­2' || '¹®ÀÚ¿­3' || ... ||´Â ¿©·¯ ¹®ÀÚ¿­ ¿¬°á°¡´É
+--[ë°©ë²•-2]
+--concat('ë¬¸ìì—´1', 'ë¬¸ìì—´2') : 'ë‘ ë¬¸ìì—´'ì„ í•˜ë‚˜ì˜ ë¬¸ìì—´ë¡œ ì—°ê²°(=ê²°í•©)
+--		â˜…ë°˜ë“œì‹œ 2 ë¬¸ìì—´ë§Œ ì—°ê²° ê°€ëŠ¥ = ë§¤ê°œë³€ìˆ˜ 2ê°œë§Œ
+--ë§¤ê°œë³€ìˆ˜=ì¸ìˆ˜=ì¸ì=argument
+--ê·¸ëŸ¬ë‚˜, 'ë¬¸ìì—´1' || 'ë¬¸ìì—´2' || 'ë¬¸ìì—´3' || ... ||ëŠ” ì—¬ëŸ¬ ë¬¸ìì—´ ì—°ê²°ê°€ëŠ¥
 update test
-set address = concat(substr(address, 1, 2), '½Ã')--CONCAT('´ë±¸', '½Ã')
-where address like '%±¤¿ª½Ã';
+set address = concat(substr(address, 1, 2), 'ì‹œ')--CONCAT('ëŒ€êµ¬', 'ì‹œ')
+where address like '%ê´‘ì—­ì‹œ';
 -----------------------------------------------------------------------------------------------------------
---[¹æ¹ı-3]°ú [¹æ¹ı-4] : '±¤¿ª½Ã' ¾ÕÀÇ ¹®ÀÚ°¡ ¸î ±ÛÀÚÀÎÁö ¸ğ¸¦ ¶§ => Á¤È®ÇÑ Ç®ÀÌ
---[¹æ¹ı-3]
---replace(ÄÃ·³¸í, 'Ã£À»¹®ÀÚ', 'º¯È¯¹®ÀÚ') : Ã£À» ¹®ÀÚ¸¦ º¯°æÇÏ°Å³ª Á¦°Å
---(¿¹)Ã£À» ¹®ÀÚ¸¦ º¯°æ
+--[ë°©ë²•-3]ê³¼ [ë°©ë²•-4] : 'ê´‘ì—­ì‹œ' ì•ì˜ ë¬¸ìê°€ ëª‡ ê¸€ìì¸ì§€ ëª¨ë¥¼ ë•Œ => ì •í™•í•œ í’€ì´
+--[ë°©ë²•-3]
+--replace(ì»¬ëŸ¼ëª…, 'ì°¾ì„ë¬¸ì', 'ë³€í™˜ë¬¸ì') : ì°¾ì„ ë¬¸ìë¥¼ ë³€ê²½í•˜ê±°ë‚˜ ì œê±°
+--(ì˜ˆ)ì°¾ì„ ë¬¸ìë¥¼ ë³€ê²½
 update test
-set address = REPLACE(address, '±¤¿ª½Ã', '½Ã')
-where address like '%±¤¿ª½Ã';
+set address = REPLACE(address, 'ê´‘ì—­ì‹œ', 'ì‹œ')
+where address like '%ê´‘ì—­ì‹œ';
 
---(¿¹)Ã£À» ¹®ÀÚ¸¦ Á¦°Å
+--(ì˜ˆ)ì°¾ì„ ë¬¸ìë¥¼ ì œê±°
 update test
-set address = REPLACE(address, '±¤¿ª', '')
-where address like '%±¤¿ª½Ã';
+set address = REPLACE(address, 'ê´‘ì—­', '')
+where address like '%ê´‘ì—­ì‹œ';
 
---[¹æ¹ı-4] : INSTR() + [¹æ¹ı-1] SUBSTR() => '±¤¿ª½Ã' ¾ÕÀÇ ¹®ÀÚ°¡ ¸î ±ÛÀÚÀÎÁö ¸ğ¸¦ ¶§ »ç¿ë
---instr(´ë»ó¹®ÀÚ¿­, Ã£À» ¹®ÀÚ¿­, ½ÃÀÛ index, ¸î ¹øÂ° ¹ß°ß) : '´ë»ó¹®ÀÚ¿­' ³»¿¡¼­ '½ÃÀÛindex'ºÎÅÍ ½ÃÀÛÇØ¼­ '¸î ¹øÂ° ¹ß°ß'ÇÏ´Â 'ÇØ´ç ¹®ÀÚ¿­'À» Ã£¾Æ index¹øÈ£ ¸®ÅÏ
---Áï, Ã£À» ¹®ÀÚ¿­ÀÌ ¾î´À 'À§Ä¡(=index¹øÈ£)'¿¡ ÀÖ´ÂÁö¿Í ´ë»ó¹®ÀÚ¿­¿¡ Á¸ÀçÇÏ´ÂÁöÀÇ ¿©ºÎ¸¦ ¾Ë ¼ö ÀÖ´Ù.
---'½ÃÀÛ index, ¸î ¹øÂ° ¹ß°ß' »ı·«ÇÏ¸é ¸ğµÎ 1·Î °£ÁÖ
---(¿¹)instr('´ë»ó¹®ÀÚ¿­', 'Ã£À»¹®ÀÚ') == instr('´ë»ó¹®ÀÚ¿­', 'Ã£À»¹®ÀÚ', 1, 1)
---Ã£´Â ¹®ÀÚ°¡ ¾øÀ¸¸é 0À» °á°ú·Î µ¹·ÁÁÜ(¡ØÀÚ¹Ù¿¡¼­´Â -1À» µ¹·ÁÁÜ)
---ÀÚ¹Ù¿¡¼­´Â "Çàº¹,»ç¶û".indexOf("»ç¶û") == 3(¡ØÀÚ¹ÙÀÇ index´Â 0ºÎÅÍ ½ÃÀÛ)
+--[ë°©ë²•-4] : INSTR() + [ë°©ë²•-1] SUBSTR() => 'ê´‘ì—­ì‹œ' ì•ì˜ ë¬¸ìê°€ ëª‡ ê¸€ìì¸ì§€ ëª¨ë¥¼ ë•Œ ì‚¬ìš©
+--instr(ëŒ€ìƒë¬¸ìì—´, ì°¾ì„ ë¬¸ìì—´, ì‹œì‘ index, ëª‡ ë²ˆì§¸ ë°œê²¬) : 'ëŒ€ìƒë¬¸ìì—´' ë‚´ì—ì„œ 'ì‹œì‘index'ë¶€í„° ì‹œì‘í•´ì„œ 'ëª‡ ë²ˆì§¸ ë°œê²¬'í•˜ëŠ” 'í•´ë‹¹ ë¬¸ìì—´'ì„ ì°¾ì•„ indexë²ˆí˜¸ ë¦¬í„´
+--ì¦‰, ì°¾ì„ ë¬¸ìì—´ì´ ì–´ëŠ 'ìœ„ì¹˜(=indexë²ˆí˜¸)'ì— ìˆëŠ”ì§€ì™€ ëŒ€ìƒë¬¸ìì—´ì— ì¡´ì¬í•˜ëŠ”ì§€ì˜ ì—¬ë¶€ë¥¼ ì•Œ ìˆ˜ ìˆë‹¤.
+--'ì‹œì‘ index, ëª‡ ë²ˆì§¸ ë°œê²¬' ìƒëµí•˜ë©´ ëª¨ë‘ 1ë¡œ ê°„ì£¼
+--(ì˜ˆ)instr('ëŒ€ìƒë¬¸ìì—´', 'ì°¾ì„ë¬¸ì') == instr('ëŒ€ìƒë¬¸ìì—´', 'ì°¾ì„ë¬¸ì', 1, 1)
+--ì°¾ëŠ” ë¬¸ìê°€ ì—†ìœ¼ë©´ 0ì„ ê²°ê³¼ë¡œ ëŒë ¤ì¤Œ(â€»ìë°”ì—ì„œëŠ” -1ì„ ëŒë ¤ì¤Œ)
+--ìë°”ì—ì„œëŠ” "í–‰ë³µ,ì‚¬ë‘".indexOf("ì‚¬ë‘") == 3(â€»ìë°”ì˜ indexëŠ” 0ë¶€í„° ì‹œì‘)
 
---INSTR() : '±¤¿ª½Ã' ¾ÕÀÇ ¹®ÀÚ°¡ ¸î ±ÛÀÚÀÎÁö ¸ğ¸¦ ¶§ »ç¿ë
+--INSTR() : 'ê´‘ì—­ì‹œ' ì•ì˜ ë¬¸ìê°€ ëª‡ ê¸€ìì¸ì§€ ëª¨ë¥¼ ë•Œ ì‚¬ìš©
 update test
-set address = substr(address, 1, instr(address, '±¤¿ª½Ã',1, 1) - 1) || '½Ã'
-where address like '%±¤¿ª½Ã';
+set address = substr(address, 1, instr(address, 'ê´‘ì—­ì‹œ',1, 1) - 1) || 'ì‹œ'
+where address like '%ê´‘ì—­ì‹œ';
 
---10¹ø º¯Çü¹®Á¦. update : '±¤¿ª½Ã' -> '½Ã'·Î µ¥ÀÌÅÍ º¯°æ
---(´Ü, ¼­ºêÄõ¸® »ç¿ëÇÏ¿© ÇØ°áÇÏ±â)
+--10ë²ˆ ë³€í˜•ë¬¸ì œ. update : 'ê´‘ì—­ì‹œ' -> 'ì‹œ'ë¡œ ë°ì´í„° ë³€ê²½
+--(ë‹¨, ì„œë¸Œì¿¼ë¦¬ ì‚¬ìš©í•˜ì—¬ í•´ê²°í•˜ê¸°)
 
---[¹æ¹ı-1] REPLACE() »ç¿ë
+--[ë°©ë²•-1] REPLACE() ì‚¬ìš©
 --[1]
-select replace(address, '±¤¿ª½Ã', '½Ã')
+select replace(address, 'ê´‘ì—­ì‹œ', 'ì‹œ')
 from test
-where address like '%±¤¿ª½Ã';
+where address like '%ê´‘ì—­ì‹œ';
 
 --[2]
 update test
 set address = (
-				select replace(address, '±¤¿ª½Ã', '½Ã')
+				select replace(address, 'ê´‘ì—­ì‹œ', 'ì‹œ')
 				from test
-				where address like '%±¤¿ª½Ã')
-where address like '%±¤¿ª½Ã';
+				where address like '%ê´‘ì—­ì‹œ')
+where address like '%ê´‘ì—­ì‹œ';
 
---[¹æ¹ı-2] substr() »ç¿ë
---[1] '±¤¿ª½Ã'ÀÇ index-1 = ±¤¿ª½Ã Àü ±îÁöÀÇ ´Ü¾î ±æÀÌ
-select instr(address, '±¤¿ª½Ã', 1, 1) - 1
+--[ë°©ë²•-2] substr() ì‚¬ìš©
+--[1] 'ê´‘ì—­ì‹œ'ì˜ index-1 = ê´‘ì—­ì‹œ ì „ ê¹Œì§€ì˜ ë‹¨ì–´ ê¸¸ì´
+select instr(address, 'ê´‘ì—­ì‹œ', 1, 1) - 1
 from test
-where address like '%±¤¿ª½Ã';
+where address like '%ê´‘ì—­ì‹œ';
 
 --[2] 
-select substr(address, 1, (select instr(address, '±¤¿ª½Ã', 1, 1) - 1
+select substr(address, 1, (select instr(address, 'ê´‘ì—­ì‹œ', 1, 1) - 1
 							from test
-							where address like '%±¤¿ª½Ã')) || '½Ã'
+							where address like '%ê´‘ì—­ì‹œ')) || 'ì‹œ'
 from test
-where address like '%±¤¿ª½Ã';
+where address like '%ê´‘ì—­ì‹œ';
 
 --[3]
 update test
-set address = (select substr(address, 1, (select instr(address, '±¤¿ª½Ã', 1, 1) - 1
+set address = (select substr(address, 1, (select instr(address, 'ê´‘ì—­ì‹œ', 1, 1) - 1
 							from test
-							where address like '%±¤¿ª½Ã')) || '½Ã'
+							where address like '%ê´‘ì—­ì‹œ')) || 'ì‹œ'
 				from test
-				where address like '%±¤¿ª½Ã')
-where address like '%±¤¿ª½Ã';
+				where address like '%ê´‘ì—­ì‹œ')
+where address like '%ê´‘ì—­ì‹œ';
 
 /*
 update test
-set address = replace(address, '±¤¿ª½Ã', '½Ã')
+set address = replace(address, 'ê´‘ì—­ì‹œ', 'ì‹œ')
 where id in (select id
                 from test
-                where instr(address, '±¤¿ª½Ã') != 0);
+                where instr(address, 'ê´‘ì—­ì‹œ') != 0);
                 
 update test
-set address = substr(address, 1, instr(address, '±¤¿ª½Ã',1, 1) - 1) || '½Ã'
+set address = substr(address, 1, instr(address, 'ê´‘ì—­ì‹œ',1, 1) - 1) || 'ì‹œ'
 where id in (select id
                 from test
-                where instr(address, '±¤¿ª½Ã') != 0);
+                where instr(address, 'ê´‘ì—­ì‹œ') != 0);
 */
 ---------------------------------------------------------
---11. delete : ³ªÀÌ°¡ 20¹Ì¸¸ÀÎ µ¥ÀÌÅÍ »èÁ¦
---¹Ì¸¸ <20, ÀÌÇÏ <=20, ÃÊ°ú >20, ÀÌ»ó>=20
+--11. delete : ë‚˜ì´ê°€ 20ë¯¸ë§Œì¸ ë°ì´í„° ì‚­ì œ
+--ë¯¸ë§Œ <20, ì´í•˜ <=20, ì´ˆê³¼ >20, ì´ìƒ>=20
 delete test--from test
 where age < 20;
 
---12. µ¥ÀÌÅÍ ÀÔ·ÂÇÑ ÈÄ ¿µ±¸ÀúÀå(Æ®·£Àè¼Ç ¿Ï·á) : RUN SQL~¿¡¼­ ½ÇÇà
------>°á°ú È®ÀÎ : ÀÌÅ¬¸³½º¿¡¼­ °á°ú È®ÀÎ
---»ğÀÔÇÒ µ¥ÀÌÅÍ : jun5 *5555 Àü»óÈ£  M 28 NULL
+--12. ë°ì´í„° ì…ë ¥í•œ í›„ ì˜êµ¬ì €ì¥(íŠ¸ëœì­ì…˜ ì™„ë£Œ) : RUN SQL~ì—ì„œ ì‹¤í–‰
+----->ê²°ê³¼ í™•ì¸ : ì´í´ë¦½ìŠ¤ì—ì„œ ê²°ê³¼ í™•ì¸
+--ì‚½ì…í•  ë°ì´í„° : jun5 *5555 ì „ìƒí˜¸  M 28 NULL
 
---[1] RUN SQL~¿¡¼­ ½ÇÇà
-insert into test values('jun5', '*5555', 'Àü»óÈ£', 'M', 28, null);
+--[1] RUN SQL~ì—ì„œ ì‹¤í–‰
+insert into test values('jun5', '*5555', 'ì „ìƒí˜¸', 'M', 28, null);
 commit;
 
---[2] ÀÌÅ¬¸³½º¿¡¼­ °á°ú È®ÀÎ
+--[2] ì´í´ë¦½ìŠ¤ì—ì„œ ê²°ê³¼ í™•ì¸
 select * from test;
 
---13. µ¥ÀÌÅÍ »èÁ¦ÇÑ ÈÄ ÀÌÀü »óÅÂ·Î º¹±Í(Æ®·£Àè¼Ç Ãë¼Ò) : RUN SQL~¿¡¼­ ½ÇÇà
------>°á°ú È®ÀÎ : ÀÌÅ¬¸³½º¿¡¼­ °á°ú È®ÀÎ
---[¹®Á¦] ÁÖ¼Ò°¡ '±¸¹Ì½Ã'ÀÎ row »èÁ¦ ÈÄ Æ®·£Àè¼Ç Ãë¼Ò -> È®ÀÎ
---[1] RUN SQL~¿¡¼­ ½ÇÇà
+--13. ë°ì´í„° ì‚­ì œí•œ í›„ ì´ì „ ìƒíƒœë¡œ ë³µê·€(íŠ¸ëœì­ì…˜ ì·¨ì†Œ) : RUN SQL~ì—ì„œ ì‹¤í–‰
+----->ê²°ê³¼ í™•ì¸ : ì´í´ë¦½ìŠ¤ì—ì„œ ê²°ê³¼ í™•ì¸
+--[ë¬¸ì œ] ì£¼ì†Œê°€ 'êµ¬ë¯¸ì‹œ'ì¸ row ì‚­ì œ í›„ íŠ¸ëœì­ì…˜ ì·¨ì†Œ -> í™•ì¸
+--[1] RUN SQL~ì—ì„œ ì‹¤í–‰
 delete test
-where address = '±¸¹Ì½Ã';
+where address = 'êµ¬ë¯¸ì‹œ';
 
---[2] Æ®·£Àè¼Ç Ãë¼Ò(ÀÌÀü »óÅÂ·Î º¹±Í)
+--[2] íŠ¸ëœì­ì…˜ ì·¨ì†Œ(ì´ì „ ìƒíƒœë¡œ ë³µê·€)
 rollback;
 
---[3] ÀÌÅ¬¸³½º¿¡¼­ °á°ú È®ÀÎ
+--[3] ì´í´ë¦½ìŠ¤ì—ì„œ ê²°ê³¼ í™•ì¸
 select * from test;
 
---µ¥ÀÌÅÍ »çÀü(8Àå-6. µ¥ÀÌÅÍ »çÀü ÂüÁ¶)
---14. »ç¿ëÀÚ°¡ ¼ÒÀ¯ÇÑ Å×ÀÌºí ÀÌ¸§ Á¶È¸ => USER_µ¥ÀÌÅÍ »çÀü
+--ë°ì´í„° ì‚¬ì „(8ì¥-6. ë°ì´í„° ì‚¬ì „ ì°¸ì¡°)
+--14. ì‚¬ìš©ìê°€ ì†Œìœ í•œ í…Œì´ë¸” ì´ë¦„ ì¡°íšŒ => USER_ë°ì´í„° ì‚¬ì „
 select table_name
 from USER_TABLES;
 
---15. Å×ÀÌºí ±¸Á¶ È®ÀÎ
-desc test;----SQL PLUS¸í·É¾î´Â ÀÌÅ¬¸³½º¿¡¼­ ½ÇÇà¾ÈµÊ(RUN SQL~¿¡¼­ ½ÇÇà)
+--15. í…Œì´ë¸” êµ¬ì¡° í™•ì¸
+desc test;----SQL PLUSëª…ë ¹ì–´ëŠ” ì´í´ë¦½ìŠ¤ì—ì„œ ì‹¤í–‰ì•ˆë¨(RUN SQL~ì—ì„œ ì‹¤í–‰)
 
---16. index »ı¼º(index ¸í : name_idx)
---ÀÎµ¦½º : °Ë»ö ¼Óµµ¸¦ Çâ»ó½ÃÅ°±â À§ÇØ »ç¿ë
---     	»ç¿ëÀÚÀÇ ÇÊ¿ä¿¡ ÀÇÇØ¼­ Á÷Á¢ »ı¼ºÇÒ ¼öµµ ÀÖÁö¸¸
---     	µ¥ÀÌÅÍ ¹«°á¼ºÀ» È®ÀÎÇÏ±â À§ÇØ¼­ ¼ö½Ã·Î µ¥ÀÌÅÍ¸¦ °Ë»öÇÏ´Â ¿ëµµ·Î »ç¿ëµÇ´Â 
---     	'±âº»Å°³ª À¯ÀÏÅ°´Â ÀÎµ¦½º ÀÚµ¿ »ı¼º'
+--16. index ìƒì„±(index ëª… : name_idx)
+--ì¸ë±ìŠ¤ : ê²€ìƒ‰ ì†ë„ë¥¼ í–¥ìƒì‹œí‚¤ê¸° ìœ„í•´ ì‚¬ìš©
+--     	ì‚¬ìš©ìì˜ í•„ìš”ì— ì˜í•´ì„œ ì§ì ‘ ìƒì„±í•  ìˆ˜ë„ ìˆì§€ë§Œ
+--     	ë°ì´í„° ë¬´ê²°ì„±ì„ í™•ì¸í•˜ê¸° ìœ„í•´ì„œ ìˆ˜ì‹œë¡œ ë°ì´í„°ë¥¼ ê²€ìƒ‰í•˜ëŠ” ìš©ë„ë¡œ ì‚¬ìš©ë˜ëŠ” 
+--     	'ê¸°ë³¸í‚¤ë‚˜ ìœ ì¼í‚¤ëŠ” ì¸ë±ìŠ¤ ìë™ ìƒì„±'
 create index name_idx
 ON test(name);
 
---¡Ú¡Úindex »ı¼º È®ÀÎ ¹æ¹ı-1
+--â˜…â˜…index ìƒì„± í™•ì¸ ë°©ë²•-1
 select index_name
 from USER_indexes
-where table_name = 'TEST'; --¹İµå½Ã Å×ÀÌºí¸íÀº ´ë¹®ÀÚ·Î
+where table_name = 'TEST'; --ë°˜ë“œì‹œ í…Œì´ë¸”ëª…ì€ ëŒ€ë¬¸ìë¡œ
 --where table_name IN ('TEST');
 
 select *
 from user_indexes;
 
---¡Ø index »ı¼º È®ÀÎ ¹æ¹ı-2
+--â€» index ìƒì„± í™•ì¸ ë°©ë²•-2
 select index_name, column_name
-from USER_ind_columns--column_name ¾Ë·Á¸é 
-where table_name = 'TEST'; --¹İµå½Ã Å×ÀÌºí¸íÀº ´ë¹®ÀÚ·Î
+from USER_ind_columns--column_name ì•Œë ¤ë©´ 
+where table_name = 'TEST'; --ë°˜ë“œì‹œ í…Œì´ë¸”ëª…ì€ ëŒ€ë¬¸ìë¡œ
 
---17. view »ı¼º(ºä ÀÌ¸§ : viewTest)
---ºä? ÇÏ³ª ÀÌ»óÀÇ Å×ÀÌºíÀÌ³ª ´Ù¸¥ ºä¸¦ ÀÌ¿ëÇÏ¿© »ı¼ºµÇ´Â °¡»óÅ×ÀÌºí
---ºä´Â º¹ÀâÇÑ Äõ¸®¸¦ ´Ü¼øÈ­ ½ÃÅ³¼ö ÀÖ´Ù.
---ºä´Â »ç¿ëÀÚ¿¡°Ô ÇÊ¿äÇÑ Á¤º¸¸¸ Á¢±ÙÇÏµµ·Ï Á¢±ÙÀ» Á¦ÇÑÇÒ ¼ö ÀÖ´Ù.
+--17. view ìƒì„±(ë·° ì´ë¦„ : viewTest)
+--ë·°? í•˜ë‚˜ ì´ìƒì˜ í…Œì´ë¸”ì´ë‚˜ ë‹¤ë¥¸ ë·°ë¥¼ ì´ìš©í•˜ì—¬ ìƒì„±ë˜ëŠ” ê°€ìƒí…Œì´ë¸”
+--ë·°ëŠ” ë³µì¡í•œ ì¿¼ë¦¬ë¥¼ ë‹¨ìˆœí™” ì‹œí‚¬ìˆ˜ ìˆë‹¤.
+--ë·°ëŠ” ì‚¬ìš©ìì—ê²Œ í•„ìš”í•œ ì •ë³´ë§Œ ì ‘ê·¼í•˜ë„ë¡ ì ‘ê·¼ì„ ì œí•œí•  ìˆ˜ ìˆë‹¤.
 create view viewTest
 AS
 select id, name, gender
 from test;
 
---ºä »ı¼º È®ÀÎ ¹æ¹ı-1
+--ë·° ìƒì„± í™•ì¸ ë°©ë²•-1
 select * from viewTest;
 
--- ºä »ı¼º È®ÀÎ ¹æ¹ı-2
+-- ë·° ìƒì„± í™•ì¸ ë°©ë²•-2
 select view_name
 from USER_views
 where view_name = 'VIEWTEST';
 
---»ç¿ëÀÚ°¡ ¼ÒÀ¯ÇÑ ºä ÀÌ¸§ Á¶È¸
+--ì‚¬ìš©ìê°€ ì†Œìœ í•œ ë·° ì´ë¦„ ì¡°íšŒ
 select view_name
 from USER_views;
 
 --------------------------------------------------------------------------------------------
---18. test2 Å×ÀÌºí »ı¼º
-[Å×ÀÌºí¸í test2]
+--18. test2 í…Œì´ë¸” ìƒì„±
+[í…Œì´ë¸”ëª… test2]
 -------------------------------------
-ÇÊµå       Type           null   key 
+í•„ë“œ       Type           null   key 
 -------------------------------------
 id        varchar2(20)   no     PK  
 major     varchar2(20)   yes  
@@ -313,70 +313,70 @@ create table test2(
 	major varchar2(20)
 );
 
-insert into test2 values('yang1', 'ÄÄÇ»ÅÍ °øÇĞ');
-insert into test2 values('lee3', '°ÇÃà °øÇĞ');
-insert into test2 values('an4', 'È¯°æ °øÇĞ');
-insert into test2 values('jun5', 'È­ÇĞ °øÇĞ');
+insert into test2 values('yang1', 'ì»´í“¨í„° ê³µí•™');
+insert into test2 values('lee3', 'ê±´ì¶• ê³µí•™');
+insert into test2 values('an4', 'í™˜ê²½ ê³µí•™');
+insert into test2 values('jun5', 'í™”í•™ ê³µí•™');
 
 select * from test2;
 
---test, test2 EQUI Á¶ÀÎ(=µîµîÁ¶ÀÎ=µ¿ÀÏÁ¶ÀÎ) : µ¥ÀÌÅÍ Å¸ÀÔÀÌ °°¾Æ¾ß ÇÔ
---[¹æ¹ı-1] : Áßº¹ÄÃ·³ Á¦°ÅÇÏÁö ¾ÊÀ¸¹Ç·Î ±¸ºĞÇÏ±â À§ÇØ 'º°Äª ÇÊ¿ä'
---			ÄÃ·³¸íÀÌ ´Ş¶óµµ Á¶ÀÎ°¡´É
+--test, test2 EQUI ì¡°ì¸(=ë“±ë“±ì¡°ì¸=ë™ì¼ì¡°ì¸) : ë°ì´í„° íƒ€ì…ì´ ê°™ì•„ì•¼ í•¨
+--[ë°©ë²•-1] : ì¤‘ë³µì»¬ëŸ¼ ì œê±°í•˜ì§€ ì•Šìœ¼ë¯€ë¡œ êµ¬ë¶„í•˜ê¸° ìœ„í•´ 'ë³„ì¹­ í•„ìš”'
+--			ì»¬ëŸ¼ëª…ì´ ë‹¬ë¼ë„ ì¡°ì¸ê°€ëŠ¥
 
---[¹æ¹ı-1] : , where - (+)ºÙ¿©¼­ ¿ÜºÎÁ¶ÀÎ(¿ŞÂÊ°ú ¿À¸¥ÂÊ¸¸ °¡´É, ¿ÏÀü(Full)¿ÜºÎÁ¶ÀÎ ¸øÇÔ)
+--[ë°©ë²•-1] : , where - (+)ë¶™ì—¬ì„œ ì™¸ë¶€ì¡°ì¸(ì™¼ìª½ê³¼ ì˜¤ë¥¸ìª½ë§Œ ê°€ëŠ¥, ì™„ì „(Full)ì™¸ë¶€ì¡°ì¸ ëª»í•¨)
 select *
 from test t1, test2 t2
-where t1.id = t2.id;--Á¶ÀÎÁ¶°Ç
---AND (°Ë»öÁ¶°Ç)
+where t1.id = t2.id;--ì¡°ì¸ì¡°ê±´
+--AND (ê²€ìƒ‰ì¡°ê±´)
 
---[¹æ¹ı-2] : JOIN ~ ON => ±ÇÀåO - Left Outer Join, Right Outer Join, Full Outer Join
+--[ë°©ë²•-2] : JOIN ~ ON => ê¶Œì¥O - Left Outer Join, Right Outer Join, Full Outer Join
 select *
 from test t1 JOIN test2 t2
-ON t1.id = t2.id;--Á¶ÀÎÁ¶°Ç
---WHERE °Ë»öÁ¶°Ç
+ON t1.id = t2.id;--ì¡°ì¸ì¡°ê±´
+--WHERE ê²€ìƒ‰ì¡°ê±´
 
---[¹æ¹ı-3][¹æ¹ı-4] : ¡Ø¿À¶óÅ¬¿¡¼­¸¸ »ç¿ë°¡´É
---				   Áßº¹ÄÃ·³ Á¦°ÅÇÏ¹Ç·Î 'º°Äª ÇÊ¿äX'
---				   ÄÃ·³¸íÀÌ ¹İµå½Ã °°¾Æ¾ß Á¶ÀÎÇÒ ¼ö ÀÖ´Ù.
+--[ë°©ë²•-3][ë°©ë²•-4] : â€»ì˜¤ë¼í´ì—ì„œë§Œ ì‚¬ìš©ê°€ëŠ¥
+--				   ì¤‘ë³µì»¬ëŸ¼ ì œê±°í•˜ë¯€ë¡œ 'ë³„ì¹­ í•„ìš”X'
+--				   ì»¬ëŸ¼ëª…ì´ ë°˜ë“œì‹œ ê°™ì•„ì•¼ ì¡°ì¸í•  ìˆ˜ ìˆë‹¤.
 
---[¹æ¹ı-3] : natural join - °°Àº ÀÌ¸§, Å¸ÀÔ, "ÀÇ¹Ì"¸¦ °¡Áø ÄÃ·³ÀÌ "ÇÏ³ª"ÀÏ ¶§ »ç¿ë ±ÇÀå
+--[ë°©ë²•-3] : natural join - ê°™ì€ ì´ë¦„, íƒ€ì…, "ì˜ë¯¸"ë¥¼ ê°€ì§„ ì»¬ëŸ¼ì´ "í•˜ë‚˜"ì¼ ë•Œ ì‚¬ìš© ê¶Œì¥
 select *
 from test natural join test2;
---Á¶ÀÎÁ¶°Ç ÇÊ¿ä¾øÀ½
+--ì¡°ì¸ì¡°ê±´ í•„ìš”ì—†ìŒ
 
---[¹æ¹ı-4] : JOIN ~ USING - °°Àº ÀÌ¸§, Å¸ÀÔ, "ÀÇ¹Ì"¸¦ °¡Áø ÄÃ·³ÀÌ "2°³ ÀÌ»ó"ÀÏ ¶§ »ç¿ë ±ÇÀå
+--[ë°©ë²•-4] : JOIN ~ USING - ê°™ì€ ì´ë¦„, íƒ€ì…, "ì˜ë¯¸"ë¥¼ ê°€ì§„ ì»¬ëŸ¼ì´ "2ê°œ ì´ìƒ"ì¼ ë•Œ ì‚¬ìš© ê¶Œì¥
 select *
 from test JOIN test2
 USING(id);
 
 /*
- * ¢º NATURAL Á¶ÀÎ°ú USING ÀıÀ» ÀÌ¿ëÇÑ Á¶ÀÎÀÇ Â÷ÀÌÁ¡
- * Á¶ÀÎµÇ´Â Å×ÀÌºí°£ °øÅëµÈ ÄÃ·³ÀÌ 2°³ ÀÌ»óÀÌ¶ó¸é µÑÀÇ °á°ú´Â ¿ÏÀüÈ÷ ´Ù¸¦ ¼ö ÀÖ´Ù.
+ * â–¶ NATURAL ì¡°ì¸ê³¼ USING ì ˆì„ ì´ìš©í•œ ì¡°ì¸ì˜ ì°¨ì´ì 
+ * ì¡°ì¸ë˜ëŠ” í…Œì´ë¸”ê°„ ê³µí†µëœ ì»¬ëŸ¼ì´ 2ê°œ ì´ìƒì´ë¼ë©´ ë‘˜ì˜ ê²°ê³¼ëŠ” ì™„ì „íˆ ë‹¤ë¥¼ ìˆ˜ ìˆë‹¤.
  * 
  * select *
  * from employee 
- * join department USING(dno)--Á¶ÀÎÇÑ °á°ú¿Í
- * join test3 USING(manager_id);--Á¶ÀÎ.(manager_idÀÇ ÀÌ¸§, Å¸ÀÔ, ÀÇ¹Ì´Â °°´Ù.)
+ * join department USING(dno)--ì¡°ì¸í•œ ê²°ê³¼ì™€
+ * join test3 USING(manager_id);--ì¡°ì¸.(manager_idì˜ ì´ë¦„, íƒ€ì…, ì˜ë¯¸ëŠ” ê°™ë‹¤.)
  * 
  * select *
  * from employee 
- * NATURAL join department;--ÀÚµ¿À¸·Î dno·Î Á¶ÀÎÇÑ °á°ú¿Í
- * NATURAL join test3;--Á¶ÀÎ.
- * --(manager_id»Ó¸¸ ¾Æ´Ï¶ó '°°Àº ÀÌ¸§°ú °°Àº Å¸ÀÔÀÌ ÇÏ³ª ´õ Á¸Àç'ÇÑ´Ù¸é 2°³ÀÇ °øÅëµÈ ÄÃ·³À¸·Î Á¶ÀÎÀÌ µÇ¾î)
- * -->µÑÀÇ °á°ú´Â ¿ÏÀüÈ÷ ´Ù¸¦ ¼ö ÀÖ´Ù.
+ * NATURAL join department;--ìë™ìœ¼ë¡œ dnoë¡œ ì¡°ì¸í•œ ê²°ê³¼ì™€
+ * NATURAL join test3;--ì¡°ì¸.
+ * --(manager_idë¿ë§Œ ì•„ë‹ˆë¼ 'ê°™ì€ ì´ë¦„ê³¼ ê°™ì€ íƒ€ì…ì´ í•˜ë‚˜ ë” ì¡´ì¬'í•œë‹¤ë©´ 2ê°œì˜ ê³µí†µëœ ì»¬ëŸ¼ìœ¼ë¡œ ì¡°ì¸ì´ ë˜ì–´)
+ * -->ë‘˜ì˜ ê²°ê³¼ëŠ” ì™„ì „íˆ ë‹¤ë¥¼ ìˆ˜ ìˆë‹¤.
  * 
- * ¡Ø µû¶ó¼­, °°Àº ÀÌ¸§, Å¸ÀÔ, ÀÇ¹ÌÀÇ ÄÃ·³ÀÌ ÇÏ³ªÀÌ¸é  NATURAL Á¶ÀÎÀ» »ç¿ëÇÏ°í
- * 2°³ ÀÌ»óÀÌ¸é'°¡µ¶¼ºÀÌ ÁÁÀº USING Àı'À» ÀÌ¿ëÇÑ ¹æ¹ıÀ» ±ÇÇÑ´Ù.
+ * â€» ë”°ë¼ì„œ, ê°™ì€ ì´ë¦„, íƒ€ì…, ì˜ë¯¸ì˜ ì»¬ëŸ¼ì´ í•˜ë‚˜ì´ë©´  NATURAL ì¡°ì¸ì„ ì‚¬ìš©í•˜ê³ 
+ * 2ê°œ ì´ìƒì´ë©´'ê°€ë…ì„±ì´ ì¢‹ì€ USING ì ˆ'ì„ ì´ìš©í•œ ë°©ë²•ì„ ê¶Œí•œë‹¤.
  */
 
---------------------------------------[18. join °£´Ü Á¤¸® ³¡]--------------------------------------
+--------------------------------------[18. join ê°„ë‹¨ ì •ë¦¬ ë]--------------------------------------
 
---19. ¼­ºêÄõ¸®¸¦ ÀÌ¿ëÇÏ¿© major°¡ 'ÄÄÇ»ÅÍ °øÇĞ'ÀÎ »ç¶÷ÀÇ ÀÌ¸§ Á¶È¸(test¿Í test2 Å×ÀÌºí »ç¿ë°¡´É)
---[1] test2 Å×ÀÌºí¿¡¼­ major°¡ 'ÄÄÇ»ÅÍ °øÇĞ'ÀÎ »ç¶÷ÀÇ id °Ë»ö(¿©·¯ ¸í °Ë»ö °¡´É¼ºÀÌ ÀÖÀ½)
+--19. ì„œë¸Œì¿¼ë¦¬ë¥¼ ì´ìš©í•˜ì—¬ majorê°€ 'ì»´í“¨í„° ê³µí•™'ì¸ ì‚¬ëŒì˜ ì´ë¦„ ì¡°íšŒ(testì™€ test2 í…Œì´ë¸” ì‚¬ìš©ê°€ëŠ¥)
+--[1] test2 í…Œì´ë¸”ì—ì„œ majorê°€ 'ì»´í“¨í„° ê³µí•™'ì¸ ì‚¬ëŒì˜ id ê²€ìƒ‰(ì—¬ëŸ¬ ëª… ê²€ìƒ‰ ê°€ëŠ¥ì„±ì´ ìˆìŒ)
 select id
 from test2
-where major = 'ÄÄÇ»ÅÍ °øÇĞ';
+where major = 'ì»´í“¨í„° ê³µí•™';
 
 --[2]
 select name
@@ -384,25 +384,25 @@ from test
 where id in (
 	select id
 	from test2
-	where major = 'ÄÄÇ»ÅÍ °øÇĞ');
+	where major = 'ì»´í“¨í„° ê³µí•™');
 
---20. ÁıÇÕ¿¬»êÀÚ : °¢ Äõ¸®ÀÇ 'ÄÃ·³ °³¼ö'¿Í 'µ¥ÀÌÅÍ Å¸ÀÔ'ÀÌ ÀÏÄ¡
---20.1 UNION : °¢ Äõ¸®ÀÇ °á°úÀÇ ÇÕÀ» ¹İÈ¯ÇÏ´Â 'ÇÕÁıÇÕ'(Áßº¹Á¦°Å)
---             Äõ¸®ÀÇ °á°ú¸¦ ÇÕÄ£ ÈÄ 'Áßº¹À» Á¦°Å'ÇÏ´Â ÀÛ¾÷ÀÌ Ãß°¡·Î Àû¿ëµÇ¹Ç·Î Äõ¸®ÀÇ ¼Óµµ ¹× ºÎÇÏ°¡ ¹ß»ıÇÑ´Ù.
---             Áßº¹À» Á¦°ÅÇÒ ÇÊ¿ä°¡ ¾øÀ¸¸é UNION ALLÀ» »ç¿ëÇÏ´Â °ÍÀÌ ÇÕ¸®ÀûÀÌ´Ù.
+--20. ì§‘í•©ì—°ì‚°ì : ê° ì¿¼ë¦¬ì˜ 'ì»¬ëŸ¼ ê°œìˆ˜'ì™€ 'ë°ì´í„° íƒ€ì…'ì´ ì¼ì¹˜
+--20.1 UNION : ê° ì¿¼ë¦¬ì˜ ê²°ê³¼ì˜ í•©ì„ ë°˜í™˜í•˜ëŠ” 'í•©ì§‘í•©'(ì¤‘ë³µì œê±°)
+--             ì¿¼ë¦¬ì˜ ê²°ê³¼ë¥¼ í•©ì¹œ í›„ 'ì¤‘ë³µì„ ì œê±°'í•˜ëŠ” ì‘ì—…ì´ ì¶”ê°€ë¡œ ì ìš©ë˜ë¯€ë¡œ ì¿¼ë¦¬ì˜ ì†ë„ ë° ë¶€í•˜ê°€ ë°œìƒí•œë‹¤.
+--             ì¤‘ë³µì„ ì œê±°í•  í•„ìš”ê°€ ì—†ìœ¼ë©´ UNION ALLì„ ì‚¬ìš©í•˜ëŠ” ê²ƒì´ í•©ë¦¬ì ì´ë‹¤.
 
---(¿¹) employee Å×ÀÌºí ´ë»ó
---[1] »ç¿øÅ×ÀÌºí¿¡¼­ ±Ş¿©°¡ 3000ÀÌ»óÀÎ »ç¿øÀÇ Á÷¾÷°ú ºÎ¼­¹øÈ£ Á¶È¸
+--(ì˜ˆ) employee í…Œì´ë¸” ëŒ€ìƒ
+--[1] ì‚¬ì›í…Œì´ë¸”ì—ì„œ ê¸‰ì—¬ê°€ 3000ì´ìƒì¸ ì‚¬ì›ì˜ ì§ì—…ê³¼ ë¶€ì„œë²ˆí˜¸ ì¡°íšŒ
 select job, dno
 from employee
-where salary >= 3000;--°á°ú : Áßº¹ Æ÷ÇÔÇÏ¿© 3°³ ROW
+where salary >= 3000;--ê²°ê³¼ : ì¤‘ë³µ í¬í•¨í•˜ì—¬ 3ê°œ ROW
 
---[2] »ç¿øÅ×ÀÌºí¿¡¼­ ºÎ¼­¹øÈ£°¡ 10ÀÎ »ç¿øÀÇ Á÷¾÷°ú ºÎ¼­¹øÈ£ Á¶È¸             
+--[2] ì‚¬ì›í…Œì´ë¸”ì—ì„œ ë¶€ì„œë²ˆí˜¸ê°€ 10ì¸ ì‚¬ì›ì˜ ì§ì—…ê³¼ ë¶€ì„œë²ˆí˜¸ ì¡°íšŒ             
 select job, dno
 from employee
-where dno = 10;--°á°ú : 3°³ ROW
+where dno = 10;--ê²°ê³¼ : 3ê°œ ROW
 
---[3-1] À§ 2°³ Äõ¸®ÀÇ °á°ú¸¦ ÇÏ³ª·Î ÇÕ(Áßº¹ Á¦°Å)
+--[3-1] ìœ„ 2ê°œ ì¿¼ë¦¬ì˜ ê²°ê³¼ë¥¼ í•˜ë‚˜ë¡œ í•©(ì¤‘ë³µ ì œê±°)
 select job, dno
 from employee
 where salary >= 3000
@@ -411,9 +411,9 @@ UNION
 
 select job, dno
 from employee
-where dno = 10;--°á°ú : Áßº¹ Á¦°ÅµÇ¾î 4°³ ROW
+where dno = 10;--ê²°ê³¼ : ì¤‘ë³µ ì œê±°ë˜ì–´ 4ê°œ ROW
 
---[3-2] À§ 2°³ Äõ¸®ÀÇ °á°ú¸¦ ÇÏ³ª·Î ÇÕ(Áßº¹ Á¦°ÅX)
+--[3-2] ìœ„ 2ê°œ ì¿¼ë¦¬ì˜ ê²°ê³¼ë¥¼ í•˜ë‚˜ë¡œ í•©(ì¤‘ë³µ ì œê±°X)
 select job, dno
 from employee
 where salary >= 3000
@@ -422,9 +422,9 @@ UNION ALL
 
 select job, dno
 from employee
-where dno = 10;--°á°ú : Áßº¹ Á¦°ÅXµÇ¾î 6°³ ROW
+where dno = 10;--ê²°ê³¼ : ì¤‘ë³µ ì œê±°Xë˜ì–´ 6ê°œ ROW
 
---20.2 INTERSECT : °¢ Äõ¸®ÀÇ °á°ú Áß '°°Àº °á°ú¸¸ ¹İÈ¯'ÇÏ´Â '±³ÁıÇÕ'(INTERSECTION)
+--20.2 INTERSECT : ê° ì¿¼ë¦¬ì˜ ê²°ê³¼ ì¤‘ 'ê°™ì€ ê²°ê³¼ë§Œ ë°˜í™˜'í•˜ëŠ” 'êµì§‘í•©'(INTERSECTION)
 select job, dno
 from employee
 where salary >= 3000
@@ -435,9 +435,9 @@ select job, dno
 from employee
 where dno = 10;
 
---20.3 MINUS : ¾Õ Äõ¸®ÀÇ °á°ú - µÚ Äõ¸®ÀÇ °á°ú  ('Â÷ÁıÇÕ')(Áßº¹Á¦°Å)
---             ¾Õ Äõ¸®ÀÇ °á°ú - ¾ÕµÚ ±³ÁıÇÕÀÇ °á°ú
---¡Ø EXCEPT : ÀÏºÎDBMS¿¡¼­´Â MINUS ´ë½Å »ç¿ë
+--20.3 MINUS : ì• ì¿¼ë¦¬ì˜ ê²°ê³¼ - ë’¤ ì¿¼ë¦¬ì˜ ê²°ê³¼  ('ì°¨ì§‘í•©')(ì¤‘ë³µì œê±°)
+--             ì• ì¿¼ë¦¬ì˜ ê²°ê³¼ - ì•ë’¤ êµì§‘í•©ì˜ ê²°ê³¼
+--â€» EXCEPT : ì¼ë¶€DBMSì—ì„œëŠ” MINUS ëŒ€ì‹  ì‚¬ìš©
 select job, dno
 from employee
 where salary >= 3000
@@ -450,18 +450,18 @@ where dno = 10;
 
 ----------------------------------------------------------------------------------------------------
 
---UNION : Æ¯Â¡µéÀ» ¿¹·Î ¼³¸í
---(¿¹1) jobº°·Î ±Ş¿©ÀÇ ÃÑÇÕ°ú Ä¿¹Ì¼ÇÀÇ ÃÑÇÕ ±¸ÇÏ±â
-select job as "Á÷¾÷", SUM(salary) as total_sum, SUM(NVL(commission,0)) as total_sum2
+--UNION : íŠ¹ì§•ë“¤ì„ ì˜ˆë¡œ ì„¤ëª…
+--(ì˜ˆ1) jobë³„ë¡œ ê¸‰ì—¬ì˜ ì´í•©ê³¼ ì»¤ë¯¸ì…˜ì˜ ì´í•© êµ¬í•˜ê¸°
+select job as "ì§ì—…", SUM(salary) as total_sum, SUM(NVL(commission,0)) as total_sum2
 from employee
 group by job
---order by job asc;--"ÄÃ·³¸í"À¸·Î Á¤·Ä °¡´É 
---order by "Á÷¾÷" asc;--"ÄÃ·³º°Äª"À¸·Î Á¤·Ä °¡´É
-order by 1 asc;--"ÄÃ·³¼ø¹ø"À¸·Î Á¤·Ä °¡´É
+--order by job asc;--"ì»¬ëŸ¼ëª…"ìœ¼ë¡œ ì •ë ¬ ê°€ëŠ¥ 
+--order by "ì§ì—…" asc;--"ì»¬ëŸ¼ë³„ì¹­"ìœ¼ë¡œ ì •ë ¬ ê°€ëŠ¥
+order by 1 asc;--"ì»¬ëŸ¼ìˆœë²ˆ"ìœ¼ë¡œ ì •ë ¬ ê°€ëŠ¥
 
---UNIONÀ» »ç¿ëÇÑ ¹æ¹ı--"ÄÃ·³¸í"À¸·Î Á¤·Ä ºÒ°¡´É
---(¿¹1 º¯°æ-1)
---[1] °¢ Å×ÀÌºí¿¡ º°Äª »ç¿ë
+--UNIONì„ ì‚¬ìš©í•œ ë°©ë²•--"ì»¬ëŸ¼ëª…"ìœ¼ë¡œ ì •ë ¬ ë¶ˆê°€ëŠ¥
+--(ì˜ˆ1 ë³€ê²½-1)
+--[1] ê° í…Œì´ë¸”ì— ë³„ì¹­ ì‚¬ìš©
 select 'salary' as kind1, e1.job as job1, SUM(e1.salary) as total_sum
 from employee e1
 group by e1.job
@@ -472,25 +472,25 @@ select 'commission' as kind2, e2.job as job2, SUM(NVL(e2.commission,0)) as total
 from employee e2
 group by e2.job;
 
---[2] Å×ÀÌºí º°Äª »ı·« °¡´É
-select 'salary' as kind, job as "Á÷¾÷1", SUM(salary) as total_sum
+--[2] í…Œì´ë¸” ë³„ì¹­ ìƒëµ ê°€ëŠ¥
+select 'salary' as kind, job as "ì§ì—…1", SUM(salary) as total_sum
 from employee
 group by job
 
 UNION
 
-select 'commission' as kind, e2.job as "Á÷¾÷2", SUM(NVL(e2.commission,0)) as total_sum
+select 'commission' as kind, e2.job as "ì§ì—…2", SUM(NVL(e2.commission,0)) as total_sum
 from employee e2
 group by e2.job
 
-ORDER BY kind desc, "Á÷¾÷1" asc;--"À§ Å×ÀÌºí ÄÃ·³º°Äª"À¸·Î Á¤·Ä °¡´É
---ORDER BY kind desc, "Á÷¾÷2" asc;--"¾Æ·¡ Å×ÀÌºí ÄÃ·³º°Äª"À¸·Î Á¤·Ä "ºÒ°¡´É"
---ORDER BY 1 desc, 2 asc;--"ÄÃ·³¼ø¹ø"À¸·Î Á¤·Ä °¡´É
+ORDER BY kind desc, "ì§ì—…1" asc;--"ìœ„ í…Œì´ë¸” ì»¬ëŸ¼ë³„ì¹­"ìœ¼ë¡œ ì •ë ¬ ê°€ëŠ¥
+--ORDER BY kind desc, "ì§ì—…2" asc;--"ì•„ë˜ í…Œì´ë¸” ì»¬ëŸ¼ë³„ì¹­"ìœ¼ë¡œ ì •ë ¬ "ë¶ˆê°€ëŠ¥"
+--ORDER BY 1 desc, 2 asc;--"ì»¬ëŸ¼ìˆœë²ˆ"ìœ¼ë¡œ ì •ë ¬ ê°€ëŠ¥
 
---¡Ú¡Ú ORDER BY´Â Äõ¸®¹®ÀÇ ¸¶Áö¸·¿¡ ´Ü 1¹ø¸¸ »ç¿ë°¡´É
---¡Ú¡Ú ORDER BYÀı + "À§ Å×ÀÌºíÀÇ ÄÃ·³ º°Äª" ¶Ç´Â "ÄÃ·³ ¼ø¹ø"¸¸ »ç¿ë°¡´É(¡Ú¡Ú "ÄÃ·³¸í"Àº Á¤·Ä ºÒ°¡´É)
+--â˜…â˜… ORDER BYëŠ” ì¿¼ë¦¬ë¬¸ì˜ ë§ˆì§€ë§‰ì— ë‹¨ 1ë²ˆë§Œ ì‚¬ìš©ê°€ëŠ¥
+--â˜…â˜… ORDER BYì ˆ + "ìœ„ í…Œì´ë¸”ì˜ ì»¬ëŸ¼ ë³„ì¹­" ë˜ëŠ” "ì»¬ëŸ¼ ìˆœë²ˆ"ë§Œ ì‚¬ìš©ê°€ëŠ¥(â˜…â˜… "ì»¬ëŸ¼ëª…"ì€ ì •ë ¬ ë¶ˆê°€ëŠ¥)
 
---(¿¹1 º¯°æ-2) ¸ğµç ÄÃ·³°ú Å×ÀÌºí º°Äª »ı·«ÇÏ¸é '1¹øÂ° ÄÃ·³ ÀÚÃ¼'°¡ 'ÄÃ·³¸í'À¸·Î Ç¥½ÃµÊ
+--(ì˜ˆ1 ë³€ê²½-2) ëª¨ë“  ì»¬ëŸ¼ê³¼ í…Œì´ë¸” ë³„ì¹­ ìƒëµí•˜ë©´ '1ë²ˆì§¸ ì»¬ëŸ¼ ìì²´'ê°€ 'ì»¬ëŸ¼ëª…'ìœ¼ë¡œ í‘œì‹œë¨
 select 'salary', job, SUM(salary)
 from employee
 group by job
@@ -501,17 +501,17 @@ select 'commission', job, SUM(NVL(commission,0))
 from employee
 group by job
 
-ORDER BY 1 desc, 2 asc;--"ÄÃ·³¼ø¹ø"À¸·Î¸¸ Á¤·Ä °¡´É(ÀÌÀ¯?ÄÃ·³º°Äª ¾øÀ¸¹Ç·Î)
+ORDER BY 1 desc, 2 asc;--"ì»¬ëŸ¼ìˆœë²ˆ"ìœ¼ë¡œë§Œ ì •ë ¬ ê°€ëŠ¥(ì´ìœ ?ì»¬ëŸ¼ë³„ì¹­ ì—†ìœ¼ë¯€ë¡œ)
 
---(¿¹2) »ç¿ø Å×ÀÌºí°ú ºÎ¼­ Å×ÀÌºíÀ» °áÇÕÇÏ¿© ºÎ¼­¹øÈ£¿Í ºÎ¼­ÀÌ¸§À» Á¶È¸(Áßº¹ Á¦°Å)
+--(ì˜ˆ2) ì‚¬ì› í…Œì´ë¸”ê³¼ ë¶€ì„œ í…Œì´ë¸”ì„ ê²°í•©í•˜ì—¬ ë¶€ì„œë²ˆí˜¸ì™€ ë¶€ì„œì´ë¦„ì„ ì¡°íšŒ(ì¤‘ë³µ ì œê±°)
 select DISTINCT dno, dname--10 20 30
-from employee NATURAL JOIN department;--°°Àº dno·Î ÀÚ¿¬½º·´°Ô Á¶ÀÎ
+from employee NATURAL JOIN department;--ê°™ì€ dnoë¡œ ìì—°ìŠ¤ëŸ½ê²Œ ì¡°ì¸
 
---[¹®Á¦] »ç¿ø Å×ÀÌºí°ú ºÎ¼­ Å×ÀÌºí¿¡ 'µ¿½Ã¿¡ ¾ø´Â ºÎ¼­¹øÈ£, ºÎ¼­ÀÌ¸§' Á¶È¸
---(employeeÀÇ dno°¡ departmentÀÇ dno¸¦ references¸¦ ¾Æ´Â ÀüÁ¦ ÇÏ¿¡¼­
---Áï,'employeeÀÇ dno°¡ ÂüÁ¶ÇÏ´Â dno´Â ¹İµå½Ã departmentÀÇ dno·Î Á¸ÀçÇÑ´Ù'´Â »ç½ÇÀ» ¾Æ´Â ÀüÁ¦ ÇÏ¿¡¼­ ¹®Á¦ ÇØ°áÇÔ) 
+--[ë¬¸ì œ] ì‚¬ì› í…Œì´ë¸”ê³¼ ë¶€ì„œ í…Œì´ë¸”ì— 'ë™ì‹œì— ì—†ëŠ” ë¶€ì„œë²ˆí˜¸, ë¶€ì„œì´ë¦„' ì¡°íšŒ
+--(employeeì˜ dnoê°€ departmentì˜ dnoë¥¼ referencesë¥¼ ì•„ëŠ” ì „ì œ í•˜ì—ì„œ
+--ì¦‰,'employeeì˜ dnoê°€ ì°¸ì¡°í•˜ëŠ” dnoëŠ” ë°˜ë“œì‹œ departmentì˜ dnoë¡œ ì¡´ì¬í•œë‹¤'ëŠ” ì‚¬ì‹¤ì„ ì•„ëŠ” ì „ì œ í•˜ì—ì„œ ë¬¸ì œ í•´ê²°í•¨) 
 
---[¹æ¹ı-1] IN ¿¬»êÀÚ ÀÌ¿ë
+--[ë°©ë²•-1] IN ì—°ì‚°ì ì´ìš©
 --[1]
 select e.dno--10 20 30
 from EMPLOYEE e JOIN DEPARTMENT d
@@ -523,72 +523,72 @@ where dno NOT IN (select e.dno--10 20 30
 			      from EMPLOYEE e JOIN DEPARTMENT d
 			      ON e.dno = d.dno);
 			      
---[¹æ¹ı-2] join¹æ¹ı-1 ÀÌ¿ë   
---[1] °¢ Å×ÀÌºí¿¡ Á¸ÀçÇÏ´Â ºÎ¼­ ¹øÈ£ È®ÀÎ  
+--[ë°©ë²•-2] joinë°©ë²•-1 ì´ìš©   
+--[1] ê° í…Œì´ë¸”ì— ì¡´ì¬í•˜ëŠ” ë¶€ì„œ ë²ˆí˜¸ í™•ì¸  
 select distinct dno-- 10 20 30
 from employee; 
 
 select distinct dno-- 10 20 30 40
 from department; 
 
---[2] e.dno¿Í d.dno´Â °°´Ù.
-select DISTINCT e.dno, dname--10 20 30(µ¿½Ã¿¡)
+--[2] e.dnoì™€ d.dnoëŠ” ê°™ë‹¤.
+select DISTINCT e.dno, dname--10 20 30(ë™ì‹œì—)
 from employee e, department d
 where e.dno = d.dno; 
 
---[3] ¡Úe.dno¿Í d.dno´Â ´Ù¸£´Ù.
-select * --Å×ÀÌºíÀÇ ¸ğµç ³»¿ëÀ» º» ÈÄ °Ë»öÁ¶°ÇÀ» »ı°¢ÇÏ±â
+--[3] â˜…e.dnoì™€ d.dnoëŠ” ë‹¤ë¥´ë‹¤.
+select * --í…Œì´ë¸”ì˜ ëª¨ë“  ë‚´ìš©ì„ ë³¸ í›„ ê²€ìƒ‰ì¡°ê±´ì„ ìƒê°í•˜ê¸°
 from employee e, department d
 where e.dno(+) = d.dno;
 
---[4] ¡Úe.dno¿Í d.dno´Â ´Ù¸£´Ù.
+--[4] â˜…e.dnoì™€ d.dnoëŠ” ë‹¤ë¥´ë‹¤.
 select *  --DISTINCT d.dno, dname 
 from employee e, department d
-WHERE e.dno(+) = d.dno--Á¶ÀÎÁ¶°Ç
-AND e.dno IS NULL;    --°Ë»öÁ¶°Ç-¹æ¹ı-1
---AND eno IS NULL;  --°Ë»öÁ¶°Ç-¹æ¹ı-2 µîµî
---outer join½Ã ³ª¿À´Â nullÀ» »ç¿ëÇÏ¿© employee Å×ÀÌºí¿¡ Á¸ÀçÇÏÁö ¾Ê´Â ºÎ¼­¹øÈ£ Ãâ·Â		
+WHERE e.dno(+) = d.dno--ì¡°ì¸ì¡°ê±´
+AND e.dno IS NULL;    --ê²€ìƒ‰ì¡°ê±´-ë°©ë²•-1
+--AND eno IS NULL;  --ê²€ìƒ‰ì¡°ê±´-ë°©ë²•-2 ë“±ë“±
+--outer joinì‹œ ë‚˜ì˜¤ëŠ” nullì„ ì‚¬ìš©í•˜ì—¬ employee í…Œì´ë¸”ì— ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ë¶€ì„œë²ˆí˜¸ ì¶œë ¥		
 
 --[5]
 select DISTINCT d.dno, dname 
 from employee e, department d
-WHERE e.dno(+) = d.dno--Á¶ÀÎÁ¶°Ç
+WHERE e.dno(+) = d.dno--ì¡°ì¸ì¡°ê±´
 AND ename IS NULL; 
 
---[¹æ¹ı-3] join¹æ¹ı-1 ÀÌ¿ë
+--[ë°©ë²•-3] joinë°©ë²•-1 ì´ìš©
 select DISTINCT d.dno, dname 
 from employee e, department d
-WHERE e.dno(+) = d.dno--Á¶ÀÎÁ¶°Ç
---(10 20 30 40) NOT IN (10 20 30)  => 40¸¸ true
+WHERE e.dno(+) = d.dno--ì¡°ì¸ì¡°ê±´
+--(10 20 30 40) NOT IN (10 20 30)  => 40ë§Œ true
 AND d.dno NOT IN(select distinct dno
 				 from employee); 
---°Ë»öÁ¶°Ç(ºÎ¼­Å×ÀÌºíÀÇ ºÎ¼­¹øÈ£°¡ »ç¿øÅ×ÀÌºíÀÇ ºÎ¼­¹øÈ£ Áß ¼ÓÇÏÁö ¾ÊÀº °ÍÀÌ TRUE)
+--ê²€ìƒ‰ì¡°ê±´(ë¶€ì„œí…Œì´ë¸”ì˜ ë¶€ì„œë²ˆí˜¸ê°€ ì‚¬ì›í…Œì´ë¸”ì˜ ë¶€ì„œë²ˆí˜¸ ì¤‘ ì†í•˜ì§€ ì•Šì€ ê²ƒì´ TRUE)
 
---[¹æ¹ı-4] join¹æ¹ı-1 ÀÌ¿ë
+--[ë°©ë²•-4] joinë°©ë²•-1 ì´ìš©
 select DISTINCT d.dno, dname 
 from employee e, department d
-WHERE e.dno(+) = d.dno--Á¶ÀÎÁ¶°Ç
---(10 20 30 40) != ALL(10 20 30)  => 40¸¸ true
+WHERE e.dno(+) = d.dno--ì¡°ì¸ì¡°ê±´
+--(10 20 30 40) != ALL(10 20 30)  => 40ë§Œ true
 AND d.dno != ALL(select distinct dno
 			     from employee); 				
                  
---[¹æ¹ı-4] join¹æ¹ı-2 ÀÌ¿ë 
+--[ë°©ë²•-4] joinë°©ë²•-2 ì´ìš© 
 select DISTINCT d.dno, dname 
 from employee e RIGHT OUTER JOIN department d
-ON e.dno = d.dno--Á¶ÀÎÁ¶°Ç
+ON e.dno = d.dno--ì¡°ì¸ì¡°ê±´
 WHERE e.dno IS NULL;  
 
---< ÂüÁ¶ : ¿À¶óÅ¬ ½ÇÇà ¼ø¼­ >
---from -> where -> group by -> having -> select ÄÃ·³¸íÀÇ º°Äª -> order by
---[¹æ¹ı-5] EXISTS ÀÌ¿ë
+--< ì°¸ì¡° : ì˜¤ë¼í´ ì‹¤í–‰ ìˆœì„œ >
+--from -> where -> group by -> having -> select ì»¬ëŸ¼ëª…ì˜ ë³„ì¹­ -> order by
+--[ë°©ë²•-5] EXISTS ì´ìš©
 select dno, dname
 from department d
 where NOT EXISTS (select dno -- 40=>true
-                  from employee --º°Äª »ç¿ë¾ÈÇØµµ µÊ
+                  from employee --ë³„ì¹­ ì‚¬ìš©ì•ˆí•´ë„ ë¨
                   where d.dno = dno);                  
                 
                   
---[¹æ¹ı-6] : MINUS + JOIN ÀÌ¿ë {10, 20, 30, 40} - {10, 20, 30} = {40}
+--[ë°©ë²•-6] : MINUS + JOIN ì´ìš© {10, 20, 30, 40} - {10, 20, 30} = {40}
 select dno, dname
 from department
 
@@ -598,7 +598,7 @@ select dno, dname
 from employee JOIN department
 USING(dno);
 
---[¹æ¹ı-7] : INTERSECT ÀÌ¿ë {10, 20, 30, 40} - {10, 20, 30} = {40}
+--[ë°©ë²•-7] : INTERSECT ì´ìš© {10, 20, 30, 40} - {10, 20, 30} = {40}
 --[1] 
 select dno from employee
 INTERSECT
@@ -612,38 +612,38 @@ WHERE dno NOT IN (select dno from employee
 				  select dno from department);
 ---------------------------------------------------------------------------------------------------                                         
 
--- UNION »ç¿ë : ¼­·Î ´Ù¸¥ Å×ÀÌºíÀ» »ç¿ëÇÑ Äõ¸®ÀÇ °á°ú°¡ ÇÕÃÄ¼­ Á¶È¸
---             select¹®ÀÇ ÄÃ·³ÀÇ °³¼ö¿Í °¢ ÄÃ·³ÀÇ µ¥ÀÌÅÍ Å¸ÀÔ¸¸ ÀÏÄ¡ÇÏ¸é µÈ´Ù.   
+-- UNION ì‚¬ìš© : ì„œë¡œ ë‹¤ë¥¸ í…Œì´ë¸”ì„ ì‚¬ìš©í•œ ì¿¼ë¦¬ì˜ ê²°ê³¼ê°€ í•©ì³ì„œ ì¡°íšŒ
+--             selectë¬¸ì˜ ì»¬ëŸ¼ì˜ ê°œìˆ˜ì™€ ê° ì»¬ëŸ¼ì˜ ë°ì´í„° íƒ€ì…ë§Œ ì¼ì¹˜í•˜ë©´ ëœë‹¤.   
 
---(¿¹) ÇÕ°è¸¦ µû·Î ¿¬»êÇÏ¿© Á¶È¸ °á°ú¿¡ ÇÕÄ¡´Â ¿ëµµ·Î UNION ALL »ç¿ë
---[1] °¢ Á÷¾÷ º° ±Ş¿© ÇÕÀ» Á¶È¸
+--(ì˜ˆ) í•©ê³„ë¥¼ ë”°ë¡œ ì—°ì‚°í•˜ì—¬ ì¡°íšŒ ê²°ê³¼ì— í•©ì¹˜ëŠ” ìš©ë„ë¡œ UNION ALL ì‚¬ìš©
+--[1] ê° ì§ì—… ë³„ ê¸‰ì—¬ í•©ì„ ì¡°íšŒ
 select job, SUM(salary)
 from employee
 group by job;
 
---[2] ÀüÃ¼ »ç¿øÀÇ ±Ş¿© ÃÑÇÕ Á¶È¸
+--[2] ì „ì²´ ì‚¬ì›ì˜ ê¸‰ì—¬ ì´í•© ì¡°íšŒ
 select SUM(salary)
 from employee;
 
 --[1]+[2]		
-select job, SUM(salary) as "±Ş¿©"
+select job, SUM(salary) as "ê¸‰ì—¬"
 from employee
 group by job		  
 
 UNION ALL
 
-select 'ÇÕ°è', SUM(salary)
+select 'í•©ê³„', SUM(salary)
 from employee;
 
---(¿¹)¡Ú¡Ú »ç¿øÅ×ÀÌºí¿¡¼­ '¿¬ºÀ »óÀ§ 3¸í'ÀÇ ÀÌ¸§, ±Ş¿© Á¶È¸(´Ü, ±Ş¿©°¡ °°À¸¸é »ç¿øÀÌ¸§À¸·Î ¿À¸§Â÷¼ø Á¤·Ä)
---(ÇØ°á ½Ã) UNION ALL ÀÌ¿ë
---delete employee where ename='È«±æµ¿';
+--(ì˜ˆ)â˜…â˜… ì‚¬ì›í…Œì´ë¸”ì—ì„œ 'ì—°ë´‰ ìƒìœ„ 3ëª…'ì˜ ì´ë¦„, ê¸‰ì—¬ ì¡°íšŒ(ë‹¨, ê¸‰ì—¬ê°€ ê°™ìœ¼ë©´ ì‚¬ì›ì´ë¦„ìœ¼ë¡œ ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬)
+--(í•´ê²° ì‹œ) UNION ALL ì´ìš©
+--delete employee where ename='í™ê¸¸ë™';
 select ename, salary
 from employee
 where rownum <= 3
-order by salary desc;--¿øÇÏ´Â °á°ú°¡ ¾È³ª¿È(ÀÌÀ¯:rownum¹øÈ£´Â insertÇÑ ¼ø¼­·Î ¸Å°ÜÁü)
+order by salary desc;--ì›í•˜ëŠ” ê²°ê³¼ê°€ ì•ˆë‚˜ì˜´(ì´ìœ :rownumë²ˆí˜¸ëŠ” insertí•œ ìˆœì„œë¡œ ë§¤ê²¨ì§)
 
---[¹æ¹ı-1] : 5000 3000 3000
+--[ë°©ë²•-1] : 5000 3000 3000
 --[1]
 select ename, salary from employee where dno=10
 UNION ALL
@@ -652,7 +652,7 @@ UNION ALL
 select ename, salary from employee where dno=30
 UNION ALL
 select ename, salary from employee where dno=40
-ORDER BY 2 desc, 1 asc;--"ÄÃ·³¼ø¹ø"À¸·Î¸¸ Á¤·Ä °¡´É
+ORDER BY 2 desc, 1 asc;--"ì»¬ëŸ¼ìˆœë²ˆ"ìœ¼ë¡œë§Œ ì •ë ¬ ê°€ëŠ¥
 
 --[2]
 select *
@@ -692,7 +692,7 @@ from (  select ename, salary from employee where dno=10
 		ORDER BY 2 desc, 1 asc)
 where rownum IN (1,2,3);	
 
---[3-3] *¸¦ »ç¿ëÇÏ·Á¸é 
+--[3-3] *ë¥¼ ì‚¬ìš©í•˜ë ¤ë©´ 
 select rownum, e.*
 from (  select ename, salary from employee where dno=10
 		UNION ALL
@@ -701,64 +701,64 @@ from (  select ename, salary from employee where dno=10
 		select ename, salary from employee where dno=30
 		UNION ALL
 		select ename, salary from employee where dno=40
-		ORDER BY 2 desc, 1 asc) e--¹İµå½Ã Å×ÀÌºí º°Äª »ç¿ë
+		ORDER BY 2 desc, 1 asc) e--ë°˜ë“œì‹œ í…Œì´ë¸” ë³„ì¹­ ì‚¬ìš©
 where rownum IN (1,2,3);	
 
---[¹æ¹ı-2] rank() ÇÔ¼ö + UNION ALL ÀÌ¿ë
+--[ë°©ë²•-2] rank() í•¨ìˆ˜ + UNION ALL ì´ìš©
 --[1]
-select ename, salary, RANK() OVER(order by salary desc, ename asc) AS "µî¼ö"
+select ename, salary, RANK() OVER(order by salary desc, ename asc) AS "ë“±ìˆ˜"
 from employee;
 
 --[2]
 select *
-from (select ename, salary, RANK() OVER(order by salary desc, ename asc) AS "µî¼ö"
+from (select ename, salary, RANK() OVER(order by salary desc, ename asc) AS "ë“±ìˆ˜"
       from employee)
-where "µî¼ö"=1
+where "ë“±ìˆ˜"=1
 
 UNION ALL
 
 select *
-from (select ename, salary, RANK() OVER(order by salary desc, ename asc) AS "µî¼ö"
+from (select ename, salary, RANK() OVER(order by salary desc, ename asc) AS "ë“±ìˆ˜"
       from employee)
-where "µî¼ö"=2
+where "ë“±ìˆ˜"=2
 
 UNION ALL
 
 select *
-from (select ename, salary, RANK() OVER(order by salary desc, ename asc) AS "µî¼ö"
+from (select ename, salary, RANK() OVER(order by salary desc, ename asc) AS "ë“±ìˆ˜"
       from employee)
-where "µî¼ö"=3;
+where "ë“±ìˆ˜"=3;
 ---------------------------------------------------------------------------------
---[ÇØ°á ½Ã] UNION ALL ÀÌ¿ëX, ROWNUMÀÌ³ª RANK()¸¸ »ç¿ë
---[¹æ¹ı-1] RANK()¸¸ »ç¿ë
+--[í•´ê²° ì‹œ] UNION ALL ì´ìš©X, ROWNUMì´ë‚˜ RANK()ë§Œ ì‚¬ìš©
+--[ë°©ë²•-1] RANK()ë§Œ ì‚¬ìš©
 select *
-from (select ename, salary, RANK() OVER(order by salary desc, ename asc) AS "µî¼ö"
+from (select ename, salary, RANK() OVER(order by salary desc, ename asc) AS "ë“±ìˆ˜"
       from employee)
-where "µî¼ö" <= 3;
+where "ë“±ìˆ˜" <= 3;
 
---[¹æ¹ı-2] ROWNUM¸¸ »ç¿ë
+--[ë°©ë²•-2] ROWNUMë§Œ ì‚¬ìš©
 select *
-from (select ename, salary, RANK() OVER(order by salary desc, ename asc) AS "µî¼ö"
+from (select ename, salary, RANK() OVER(order by salary desc, ename asc) AS "ë“±ìˆ˜"
       from employee)
 where ROWNUM <= 3;
 
---ROWNUM±îÁö Ãâ·ÂÇÏ·Á¸é(*µµ »ç¿ë)
+--ROWNUMê¹Œì§€ ì¶œë ¥í•˜ë ¤ë©´(*ë„ ì‚¬ìš©)
 select ROWNUM, e.*
-from (select ename, salary, RANK() OVER(order by salary desc, ename asc) AS "µî¼ö"
-      from employee) e--¹İµå½Ã Å×ÀÌºí º°Äª »ç¿ë
+from (select ename, salary, RANK() OVER(order by salary desc, ename asc) AS "ë“±ìˆ˜"
+      from employee) e--ë°˜ë“œì‹œ í…Œì´ë¸” ë³„ì¹­ ì‚¬ìš©
 where ROWNUM <= 3;
 
---[¹æ¹ı-2-1] ROW_NUMBER()¸¦ ÀÌ¿ëÇÏ¿© rownum Á÷Á¢ ¸¸µé±â
---(=>Áï, insertµÈ ¼ø¼­°¡ ¾Æ´Ï¶ó ³»°¡ Á¤ÇÑ ¼ø¼­·Î rownum ¹øÈ£ ¸¸µé±â)
+--[ë°©ë²•-2-1] ROW_NUMBER()ë¥¼ ì´ìš©í•˜ì—¬ rownum ì§ì ‘ ë§Œë“¤ê¸°
+--(=>ì¦‰, insertëœ ìˆœì„œê°€ ì•„ë‹ˆë¼ ë‚´ê°€ ì •í•œ ìˆœì„œë¡œ rownum ë²ˆí˜¸ ë§Œë“¤ê¸°)
 --[1]
 select ROW_NUMBER() OVER(order by salary desc, ename asc) as ROW_NUM, ename, salary
 from employee;
 
---[2] ¿À·ù
+--[2] ì˜¤ë¥˜
 select ROW_NUMBER() OVER(order by salary desc, ename asc) as ROW_NUM, ename, salary
 from employee
-where ROW_NUM <= 3;--¿À·ù ORA-00904: "ROW_NUM": invalid identifier (ROW_NUM º°Äª »ç¿ëºÒ°¡)
---¡Ú¡Ú º°Äª »ç¿ëºÒ°¡ ÀÌÀ¯? '¿À¶óÅ¬ ½ÇÇà¼ø¼­' ¶§¹®¿¡
+where ROW_NUM <= 3;--ì˜¤ë¥˜ ORA-00904: "ROW_NUM": invalid identifier (ROW_NUM ë³„ì¹­ ì‚¬ìš©ë¶ˆê°€)
+--â˜…â˜… ë³„ì¹­ ì‚¬ìš©ë¶ˆê°€ ì´ìœ ? 'ì˜¤ë¼í´ ì‹¤í–‰ìˆœì„œ' ë•Œë¬¸ì—
 --(from -> where -> group by -> having -> select -> order by)
 
 --[2]
@@ -767,23 +767,23 @@ from (select ROW_NUMBER() OVER(order by salary desc, ename asc) as ROW_NUM, enam
       from employee)
 where ROW_NUM <= 3;
 
---[¹æ¹ı-3] : ROWNUM°ú RANK() ÇÔ²² »ç¿ë
---[1] ROWNUM : indertÇÑ ¼ø¼­, RANK:salary Å« ¼ø¼­->ename ¾ËÆÄºª ¼ø
-select ROWNUM, ename, salary, RANK() OVER(order by salary desc, ename asc) as "µî¼ö"
+--[ë°©ë²•-3] : ROWNUMê³¼ RANK() í•¨ê»˜ ì‚¬ìš©
+--[1] ROWNUM : indertí•œ ìˆœì„œ, RANK:salary í° ìˆœì„œ->ename ì•ŒíŒŒë²³ ìˆœ
+select ROWNUM, ename, salary, RANK() OVER(order by salary desc, ename asc) as "ë“±ìˆ˜"
 from employee
-where ROWNUM <= 3;--¿øÇÏ´Â °á°ú°¡ ¾Æ´Ô
---³ª¿Â °á°ú ÇØ¼® : ROWNUM 1,2,3¸¸ °Ë»öÇÑ Å×ÀÌºí¿¡¼­ rank() ÇÔ¼ö Àû¿ëÇÑ °á°ú°¡ ³ª¿È
+where ROWNUM <= 3;--ì›í•˜ëŠ” ê²°ê³¼ê°€ ì•„ë‹˜
+--ë‚˜ì˜¨ ê²°ê³¼ í•´ì„ : ROWNUM 1,2,3ë§Œ ê²€ìƒ‰í•œ í…Œì´ë¸”ì—ì„œ rank() í•¨ìˆ˜ ì ìš©í•œ ê²°ê³¼ê°€ ë‚˜ì˜´
 
---[2] ROWNUM°ú RANK() ¼ø¼­¸¦ °°°Ô ¸¸µç´Ù.
+--[2] ROWNUMê³¼ RANK() ìˆœì„œë¥¼ ê°™ê²Œ ë§Œë“ ë‹¤.
 --[2-1] 
-select ROWNUM, ename, salary, "µî¼ö"
-from (select ename, salary, RANK() OVER(order by salary desc, ename asc) as "µî¼ö"
+select ROWNUM, ename, salary, "ë“±ìˆ˜"
+from (select ename, salary, RANK() OVER(order by salary desc, ename asc) as "ë“±ìˆ˜"
       from employee)
-WHERE "µî¼ö" <= 3;
+WHERE "ë“±ìˆ˜" <= 3;
 
 --[2-2] 
 select ROWNUM, e.*
-from (select ename, salary, RANK() OVER(order by salary desc, ename asc) as "µî¼ö"
+from (select ename, salary, RANK() OVER(order by salary desc, ename asc) as "ë“±ìˆ˜"
       from employee) e
 WHERE ROWNUM <= 3;
 

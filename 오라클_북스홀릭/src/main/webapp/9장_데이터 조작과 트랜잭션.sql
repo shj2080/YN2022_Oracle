@@ -1,110 +1,110 @@
---<ºÏ½º 9Àå. µ¥ÀÌÅÍ Á¶ÀÛ°ú Æ®·£Àè¼Ç>
---µ¥ÀÌÅÍ Á¶ÀÛ¾î(DML : Data Manipulation Language)
---1. INSERT : µ¥ÀÌÅÍ ÀÔ·Â
---2. UPDATE : µ¥ÀÌÅÍ ¼öÁ¤
---3. DELETE : µ¥ÀÌÅÍ »èÁ¦
---À§ ÀÛ¾÷ ÈÄ ¹Ýµå½Ã commit;(¿µ±¸ÀûÀ¸·Î µ¥ÀÌÅÍ ÀúÀå)
+--<ë¶ìŠ¤ 9ìž¥. ë°ì´í„° ì¡°ìž‘ê³¼ íŠ¸ëžœìž­ì…˜>
+--ë°ì´í„° ì¡°ìž‘ì–´(DML : Data Manipulation Language)
+--1. INSERT : ë°ì´í„° ìž…ë ¥
+--2. UPDATE : ë°ì´í„° ìˆ˜ì •
+--3. DELETE : ë°ì´í„° ì‚­ì œ
+--ìœ„ ìž‘ì—… í›„ ë°˜ë“œì‹œ commit;(ì˜êµ¬ì ìœ¼ë¡œ ë°ì´í„° ì €ìž¥)
 
---TCL(Transaction Control Language):Æ®·£Àè¼Ç Ã³¸®¾î(commit, rollback, savepoint)
+--TCL(Transaction Control Language):íŠ¸ëžœìž­ì…˜ ì²˜ë¦¬ì–´(commit, rollback, savepoint)
 
 ----------------------------------------------------------------------------
---1. INSERT : µ¥ÀÌÅÍ ÀÔ·ÂÇÏ¿© Å×ÀÌºí¿¡ ³»¿ë Ãß°¡
---¹®ÀÚ(char, varchar2)¿Í ³¯Â¥(date)´Â ''¸¦ »ç¿ë
+--1. INSERT : ë°ì´í„° ìž…ë ¥í•˜ì—¬ í…Œì´ë¸”ì— ë‚´ìš© ì¶”ê°€
+--ë¬¸ìž(char, varchar2)ì™€ ë‚ ì§œ(date)ëŠ” ''ë¥¼ ì‚¬ìš©
 
---¡ÚÅ×ÀÌºí º¹»ç ½Ã Á¦¾àÁ¶°ÇÀº º¹»çµÇÁö ¾ÊÀ½!
---[½Ç½ÀÀ§ÇØ ±âÁ¸ÀÇ 'ºÎ¼­Å×ÀÌºíÀÇ ±¸Á¶¸¸ º¹»ç'ÇÏ¿© dept_copy Å×ÀÌºí »ý¼º] ÀÌ ¶§, Á¦¾àÁ¶°ÇÀº º¹»ç¾ÈµÊ. not nullÁ¦¾àÁ¶°Ç¸¸ º¹»ç
-create table dept_copy	--º¹»çµÈ dno(PK¾Æ´Ï¹Ç·Î °°Àº dno°ªÀ» ¿©·¯ °³ Ãß°¡ ÇÒ ¼ö ÀÖ´Ù.(¿¹)10À» ¿©·¯¹ø Ãß°¡ °¡´É)
+--â˜…í…Œì´ë¸” ë³µì‚¬ ì‹œ ì œì•½ì¡°ê±´ì€ ë³µì‚¬ë˜ì§€ ì•ŠìŒ!
+--[ì‹¤ìŠµìœ„í•´ ê¸°ì¡´ì˜ 'ë¶€ì„œí…Œì´ë¸”ì˜ êµ¬ì¡°ë§Œ ë³µì‚¬'í•˜ì—¬ dept_copy í…Œì´ë¸” ìƒì„±] ì´ ë•Œ, ì œì•½ì¡°ê±´ì€ ë³µì‚¬ì•ˆë¨. not nullì œì•½ì¡°ê±´ë§Œ ë³µì‚¬
+create table dept_copy	--ë³µì‚¬ëœ dno(PKì•„ë‹ˆë¯€ë¡œ ê°™ì€ dnoê°’ì„ ì—¬ëŸ¬ ê°œ ì¶”ê°€ í•  ìˆ˜ ìžˆë‹¤.(ì˜ˆ)10ì„ ì—¬ëŸ¬ë²ˆ ì¶”ê°€ ê°€ëŠ¥)
 as
 select * from department --dno(PK-not null+unique)
-where 0=1; --Á¶°ÇÀÌ ¹«Á¶°Ç °ÅÁþ=>µ¥ÀÌÅÍ º¹»ç¾ÈÇÔ
+where 0=1; --ì¡°ê±´ì´ ë¬´ì¡°ê±´ ê±°ì§“=>ë°ì´í„° ë³µì‚¬ì•ˆí•¨
 
 select * from dept_copy;
 
---RUN~ Ã¢ ¿­¾î
-desc dept_copy;--Å×ÀÌºí ±¸Á¶ º¸°í µ¥ÀÌÅÍ Å¸ÀÔ È®ÀÎ ÈÄ INSERTÇÔ
+--RUN~ ì°½ ì—´ì–´
+desc dept_copy;--í…Œì´ë¸” êµ¬ì¡° ë³´ê³  ë°ì´í„° íƒ€ìž… í™•ì¸ í›„ INSERTí•¨
 
-insert into dept_copy values(10, 'accounting', '´º¿å');
+insert into dept_copy values(10, 'accounting', 'ë‰´ìš•');
 insert into dept_copy(dno, loc, dname) --3
-				values(20, '´Þ¶ó½º', 'research'); --3
-commit; --ÀÌÅ¬¸³½º¿¡¼­´Â ÀÚµ¿ commitµÇ¾î ¸í·É¾î°¡ ½ÇÇà¾ÈµÊ.
-------->RUN SQL... ¶Ç´Â SQL Developer¸¦ »ç¿ëÇÒ ¶§´Â ¹Ýµå½Ã commit;ÇØÁà¾ß ÇÔ 
+				values(20, 'ë‹¬ë¼ìŠ¤', 'research'); --3
+commit; --ì´í´ë¦½ìŠ¤ì—ì„œëŠ” ìžë™ commitë˜ì–´ ëª…ë ¹ì–´ê°€ ì‹¤í–‰ì•ˆë¨.
+------->RUN SQL... ë˜ëŠ” SQL Developerë¥¼ ì‚¬ìš©í•  ë•ŒëŠ” ë°˜ë“œì‹œ commit;í•´ì¤˜ì•¼ í•¨ 
 
---1.1 NULL°ªÀ» °®´Â ROW »ðÀÔ
---¹®ÀÚ³ª ³¯Â¥ Å¸ÀÔÀº null ´ë½Å '' »ç¿ë°¡´É
---dept_copyÅ×ÀÌºíÀº Á¦¾àÁ¶°ÇÀÌ º¹»çµÇÁö ¾ÊÀ½.
---¾Æ·¡ 3°³ ´Ù °°Àº Çü½ÄÀÓ
-insert into dept_copy(dno, dname) values(30, 'sales');--null°ªÀ» Çã¿ëÇÏ¿© loc¿¡ nullÀÌ ÀúÀåµÊ
---¸¸¾à, default·Î '´ë±¸' ÁöÁ¤µÇ¾î ÀÖÀ¸¸é loc¿¡ '´ë±¸' ÀÔ·ÂµÊ(µ¥ÀÌÅÍ »ðÀÔ Àü¿¡ ¹Ì¸® default ÁöÁ¤ÇØ¾ß ÇÔ)
---ALTER TABLE dept_copy MODIFY loc varchar2(13) default '´ë±¸';
+--1.1 NULLê°’ì„ ê°–ëŠ” ROW ì‚½ìž…
+--ë¬¸ìžë‚˜ ë‚ ì§œ íƒ€ìž…ì€ null ëŒ€ì‹  '' ì‚¬ìš©ê°€ëŠ¥
+--dept_copyí…Œì´ë¸”ì€ ì œì•½ì¡°ê±´ì´ ë³µì‚¬ë˜ì§€ ì•ŠìŒ.
+--ì•„ëž˜ 3ê°œ ë‹¤ ê°™ì€ í˜•ì‹ìž„
+insert into dept_copy(dno, dname) values(30, 'sales');--nullê°’ì„ í—ˆìš©í•˜ì—¬ locì— nullì´ ì €ìž¥ë¨
+--ë§Œì•½, defaultë¡œ 'ëŒ€êµ¬' ì§€ì •ë˜ì–´ ìžˆìœ¼ë©´ locì— 'ëŒ€êµ¬' ìž…ë ¥ë¨(ë°ì´í„° ì‚½ìž… ì „ì— ë¯¸ë¦¬ default ì§€ì •í•´ì•¼ í•¨)
+--ALTER TABLE dept_copy MODIFY loc varchar2(13) default 'ëŒ€êµ¬';
 
 insert into dept_copy values(40, 'operations', null);
 insert into dept_copy values(50, 'compution', '');
 
-commit; --¿µ±¸ÀûÀ¸·Î µ¥ÀÌÅÍ ÀúÀå
+commit; --ì˜êµ¬ì ìœ¼ë¡œ ë°ì´í„° ì €ìž¥
 
 select * from dept_copy;
 
---[½Ç½ÀÀ§ÇØ ±âÁ¸ÀÇ '»ç¿øÅ×ÀÌºíÀÇ ±¸Á¶¸¸ º¹»ç'ÇÏ¿© emp_copy Å×ÀÌºí »ý¼º] ÀÌ ¶§, Á¦¾àÁ¶°ÇÀº º¹»ç¾ÈµÊ. not nullÁ¦¾àÁ¶°Ç¸¸ º¹»ç
+--[ì‹¤ìŠµìœ„í•´ ê¸°ì¡´ì˜ 'ì‚¬ì›í…Œì´ë¸”ì˜ êµ¬ì¡°ë§Œ ë³µì‚¬'í•˜ì—¬ emp_copy í…Œì´ë¸” ìƒì„±] ì´ ë•Œ, ì œì•½ì¡°ê±´ì€ ë³µì‚¬ì•ˆë¨. not nullì œì•½ì¡°ê±´ë§Œ ë³µì‚¬
 drop table emp_copy;
 
 create table emp_copy
 as
 select eno, ename, job, hiredate, dno
 from employee
-where 0=1; --Á¶°ÇÀÌ ¹«Á¶°Ç °ÅÁþ=>µ¥ÀÌÅÍ º¹»ç¾ÈÇÔ
+where 0=1; --ì¡°ê±´ì´ ë¬´ì¡°ê±´ ê±°ì§“=>ë°ì´í„° ë³µì‚¬ì•ˆí•¨
 
 select * from emp_copy;
 
-insert into emp_copy values(7000, 'Äµµð', 'manager', '2021/12/20', 10);
---³¯Â¥ ±âº» Çü½Ä : 'YY/MM/DD'
-insert into emp_copy values(7010, 'Åè', 'manager', to_date('2021,06,01','yyyy,mm,dd'), 20);
---sysdate : ½Ã½ºÅÛÀ¸·ÎºÎÅÍ ÇöÀç ³¯Â¥ µ¥ÀÌÅÍ¸¦ ¹ÝÈ¯ÇÏ´Â ÇÔ¼ö(ÁÖÀÇ : ()¾øÀ½, = MySQL ¿¡¼­´Â now())
-insert into emp_copy values(7020, 'Á¦¸®', 'salesman', sysdate, 30);
+insert into emp_copy values(7000, 'ìº”ë””', 'manager', '2021/12/20', 10);
+--ë‚ ì§œ ê¸°ë³¸ í˜•ì‹ : 'YY/MM/DD'
+insert into emp_copy values(7010, 'í†°', 'manager', to_date('2021,06,01','yyyy,mm,dd'), 20);
+--sysdate : ì‹œìŠ¤í…œìœ¼ë¡œë¶€í„° í˜„ìž¬ ë‚ ì§œ ë°ì´í„°ë¥¼ ë°˜í™˜í•˜ëŠ” í•¨ìˆ˜(ì£¼ì˜ : ()ì—†ìŒ, = MySQL ì—ì„œëŠ” now())
+insert into emp_copy values(7020, 'ì œë¦¬', 'salesman', sysdate, 30);
 
 select * from emp_copy;
 
---1.2 ´Ù¸¥ Å×ÀÌºí¿¡¼­ µ¥ÀÌÅÍ º¹»çÇÏ±â
---INSERT INTO + ´Ù¸¥ Å×ÀÌºíÀÇ ¼­ºêÄõ¸® °á°ú µ¥ÀÌÅÍ º¹»ç
---´Ü, ÄÃ·³¼ö = ¼­ºêÄõ¸®°á°úÀÇ ÄÃ·³¼ö
+--1.2 ë‹¤ë¥¸ í…Œì´ë¸”ì—ì„œ ë°ì´í„° ë³µì‚¬í•˜ê¸°
+--INSERT INTO + ë‹¤ë¥¸ í…Œì´ë¸”ì˜ ì„œë¸Œì¿¼ë¦¬ ê²°ê³¼ ë°ì´í„° ë³µì‚¬
+--ë‹¨, ì»¬ëŸ¼ìˆ˜ = ì„œë¸Œì¿¼ë¦¬ê²°ê³¼ì˜ ì»¬ëŸ¼ìˆ˜
 
---[½Ç½ÀÀ§ÇØ ±âÁ¸ÀÇ 'ºÎ¼­Å×ÀÌºíÀÇ ±¸Á¶¸¸ º¹»ç'ÇÏ¿© dept_copy Å×ÀÌºí »ý¼º] ÀÌ ¶§, Á¦¾àÁ¶°ÇÀº º¹»ç¾ÈµÊ. not nullÁ¦¾àÁ¶°Ç¸¸ º¹»ç
+--[ì‹¤ìŠµìœ„í•´ ê¸°ì¡´ì˜ 'ë¶€ì„œí…Œì´ë¸”ì˜ êµ¬ì¡°ë§Œ ë³µì‚¬'í•˜ì—¬ dept_copy í…Œì´ë¸” ìƒì„±] ì´ ë•Œ, ì œì•½ì¡°ê±´ì€ ë³µì‚¬ì•ˆë¨. not nullì œì•½ì¡°ê±´ë§Œ ë³µì‚¬
 drop table dept_copy;
 
-create table dept_copy	--º¹»çµÈ dno(PK¾Æ´Ï¹Ç·Î °°Àº dno°ªÀ» ¿©·¯ °³ Ãß°¡ ÇÒ ¼ö ÀÖ´Ù.(¿¹)10À» ¿©·¯¹ø Ãß°¡ °¡´É)
+create table dept_copy	--ë³µì‚¬ëœ dno(PKì•„ë‹ˆë¯€ë¡œ ê°™ì€ dnoê°’ì„ ì—¬ëŸ¬ ê°œ ì¶”ê°€ í•  ìˆ˜ ìžˆë‹¤.(ì˜ˆ)10ì„ ì—¬ëŸ¬ë²ˆ ì¶”ê°€ ê°€ëŠ¥)
 as
 select *
 from department --dno(PK-not null+unique)
-where 0=1; --Á¶°ÇÀÌ ¹«Á¶°Ç °ÅÁþ=>µ¥ÀÌÅÍ º¹»ç¾ÈÇÔ
+where 0=1; --ì¡°ê±´ì´ ë¬´ì¡°ê±´ ê±°ì§“=>ë°ì´í„° ë³µì‚¬ì•ˆí•¨
 
 select * from dept_copy;
 
---(¿¹) ¼­ºêÄõ¸®·Î ´ÙÁß Çà ÀÔ·ÂÇÏ±â
-insert into dept_copy-- dept_copyÀÇ ÄÃ·³¼ö¿Í µ¥ÀÌÅÍÅ¸ÀÔÀÌ departmentÀÇ ÄÃ·³¼ö¿Í µ¥ÀÌÅÍÅ¸ÀÔ°ú 1:1·Î °°¾Æ¾ß ÇÔ(ÄÃ·³¼ö, µ¥ÀÌÅÍÅ¸ÀÔ 1:1·Î ¸ÅÄªµÇ¾ßÇÔ)
+--(ì˜ˆ) ì„œë¸Œì¿¼ë¦¬ë¡œ ë‹¤ì¤‘ í–‰ ìž…ë ¥í•˜ê¸°
+insert into dept_copy-- dept_copyì˜ ì»¬ëŸ¼ìˆ˜ì™€ ë°ì´í„°íƒ€ìž…ì´ departmentì˜ ì»¬ëŸ¼ìˆ˜ì™€ ë°ì´í„°íƒ€ìž…ê³¼ 1:1ë¡œ ê°™ì•„ì•¼ í•¨(ì»¬ëŸ¼ìˆ˜, ë°ì´í„°íƒ€ìž… 1:1ë¡œ ë§¤ì¹­ë˜ì•¼í•¨)
 select * from department;
 
-select * from dept_copy; --È®ÀÎÇØº¸¸é dno°¡ pk°¡ ¾Æ´Ï¹Ç·Î °°Àº dnoµéÀÌ ¿©·¯ °³ Á¸ÀçÇÒ ¼ö ÀÖÀ½.
+select * from dept_copy; --í™•ì¸í•´ë³´ë©´ dnoê°€ pkê°€ ì•„ë‹ˆë¯€ë¡œ ê°™ì€ dnoë“¤ì´ ì—¬ëŸ¬ ê°œ ì¡´ìž¬í•  ìˆ˜ ìžˆìŒ.
 -----------------------------------------------------------------------------------------
 
---2. UPDATE : Å×ÀÌºíÀÇ µ¥ÀÌÅÍ ¼öÁ¤
--- WHEREÀý »ý·« : Å×ÀÌºíÀÇ ¸ðµç Çà ¼öÁ¤µÊ!
+--2. UPDATE : í…Œì´ë¸”ì˜ ë°ì´í„° ìˆ˜ì •
+-- WHEREì ˆ ìƒëžµ : í…Œì´ë¸”ì˜ ëª¨ë“  í–‰ ìˆ˜ì •ë¨!
 update dept_copy
 set dname = 'programming'
 where dno = 10;
 
 select * from dept_copy;
 
---ÄÃ·³ °ª ¿©·¯ °³¸¦ ÇÑ ¹ø¿¡ ¼öÁ¤ÇÏ±â
+--ì»¬ëŸ¼ ê°’ ì—¬ëŸ¬ ê°œë¥¼ í•œ ë²ˆì— ìˆ˜ì •í•˜ê¸°
 update dept_copy
-set dname = 'accounting', loc='¼­¿ï'
+set dname = 'accounting', loc='ì„œìš¸'
 where dno = 10;
 
 select * from dept_copy;
 
---update¹®ÀÇ setÀý¿¡¼­ ¼­ºêÄõ¸®¸¦ ±â¼úÇÏ¸é ¼­ºêÄõ¸®¸¦ ¼öÇàÇÑ °á°ú·Î ³»¿ëÀÌ º¯°æµÊ
---Áï, ´Ù¸¥ Å×ÀÌºí¿¡ ÀúÀåµÈ µ¥ÀÌÅÍ·Î ÇØ´ç ÄÃ·³ °ª º¯°æ °¡´É
+--updateë¬¸ì˜ setì ˆì—ì„œ ì„œë¸Œì¿¼ë¦¬ë¥¼ ê¸°ìˆ í•˜ë©´ ì„œë¸Œì¿¼ë¦¬ë¥¼ ìˆ˜í–‰í•œ ê²°ê³¼ë¡œ ë‚´ìš©ì´ ë³€ê²½ë¨
+--ì¦‰, ë‹¤ë¥¸ í…Œì´ë¸”ì— ì €ìž¥ëœ ë°ì´í„°ë¡œ í•´ë‹¹ ì»¬ëŸ¼ ê°’ ë³€ê²½ ê°€ëŠ¥
 
---¿¹ : 10¹ø ºÎ¼­ÀÇ Áö¿ª¸íÀ» 20¹ø ºÎ¼­ÀÇ Áö¿ªÀ¸·Î º¯°æ
---[1] 20¹ø ºÎ¼­ÀÇ Áö¿ª¸í ±¸ÇÏ±â
+--ì˜ˆ : 10ë²ˆ ë¶€ì„œì˜ ì§€ì—­ëª…ì„ 20ë²ˆ ë¶€ì„œì˜ ì§€ì—­ìœ¼ë¡œ ë³€ê²½
+--[1] 20ë²ˆ ë¶€ì„œì˜ ì§€ì—­ëª… êµ¬í•˜ê¸°
 select loc
 from dept_copy
 where dno = 20; --'DALLAS'
@@ -113,14 +113,14 @@ where dno = 20; --'DALLAS'
 UPDATE dept_copy
 set loc = (select loc
 			from dept_copy
-			where dno = 20) --¼­ºêÄõ¸®ÀÇ °á°ú ´Ü 1°³¸¸
+			where dno = 20) --ì„œë¸Œì¿¼ë¦¬ì˜ ê²°ê³¼ ë‹¨ 1ê°œë§Œ
 where dno = 10;
 
 select dno, loc
 from dept_copy
 where dno = 10 or dno = 20;
 
---¿¹ : 10¹ø ºÎ¼­ÀÇ 'ºÎ¼­¸í°ú Áö¿ª¸í'À» 30¹ø ºÎ¼­ÀÇ 'ºÎ¼­¸í°ú Áö¿ª¸í'À¸·Î º¯°æ
+--ì˜ˆ : 10ë²ˆ ë¶€ì„œì˜ 'ë¶€ì„œëª…ê³¼ ì§€ì—­ëª…'ì„ 30ë²ˆ ë¶€ì„œì˜ 'ë¶€ì„œëª…ê³¼ ì§€ì—­ëª…'ìœ¼ë¡œ ë³€ê²½
 --[1]
 select dname
 from dept_copy
@@ -134,7 +134,7 @@ where dno = 30;
 update dept_copy
 set dname = (select dname
 			from dept_copy
-			where dno = 30), --¼­ºêÄõ¸®ÀÇ °á°ú ´Ü 1°³¸¸
+			where dno = 30), --ì„œë¸Œì¿¼ë¦¬ì˜ ê²°ê³¼ ë‹¨ 1ê°œë§Œ
 loc = (select loc
 		from dept_copy
 		where dno = 30)
@@ -146,110 +146,110 @@ from dept_copy
 where dno = 10 or dno = 30;
 
 ------------------------------------------------------------------------------------------
---3. DELETE¹® : Å×ÀÌºíÀÇ µ¥ÀÌÅÍ »èÁ¦
---WHEREÀý »ý·« : ¸ðµç µ¥ÀÌÅÍ »èÁ¦!
+--3. DELETEë¬¸ : í…Œì´ë¸”ì˜ ë°ì´í„° ì‚­ì œ
+--WHEREì ˆ ìƒëžµ : ëª¨ë“  ë°ì´í„° ì‚­ì œ!
 
 DELETE
-from dept_copy --¿À¶óÅ¬¿¡¼­´Â 'from' »ý·« °¡´É
+from dept_copy --ì˜¤ë¼í´ì—ì„œëŠ” 'from' ìƒëžµ ê°€ëŠ¥
 where dno = 10;
 
 select * from dept_copy;
 
---¸ðµç µ¥ÀÌÅÍ »èÁ¦
+--ëª¨ë“  ë°ì´í„° ì‚­ì œ
 DELETE from dept_copy;
 
 select * from dept_copy;
 
---½Ç½ÀÀ§ÇØ »èÁ¦ÇÑ µ¥ÀÌÅÍ ´Ù½Ã Ãß°¡ÇÏ±â
+--ì‹¤ìŠµìœ„í•´ ì‚­ì œí•œ ë°ì´í„° ë‹¤ì‹œ ì¶”ê°€í•˜ê¸°
 insert into dept_copy select * from department;
 
---[¹®Á¦]
---¿¹ : emp_copy Å×ÀÌºí¿¡¼­ '¿µ¾÷ºÎ(SALES)'¿¡ ±Ù¹«ÇÏ´Â »ç¿ø ¸ðµÎ »èÁ¦
---[1] ºÎ¼­Å×ÀÌºí¿¡¼­ '¿µ¾÷ºÎ(SALES)'ÀÇ ºÎ¼­¹øÈ£ ±¸ÇÏ±â
+--[ë¬¸ì œ]
+--ì˜ˆ : emp_copy í…Œì´ë¸”ì—ì„œ 'ì˜ì—…ë¶€(SALES)'ì— ê·¼ë¬´í•˜ëŠ” ì‚¬ì› ëª¨ë‘ ì‚­ì œ
+--[1] ë¶€ì„œí…Œì´ë¸”ì—ì„œ 'ì˜ì—…ë¶€(SALES)'ì˜ ë¶€ì„œë²ˆí˜¸ êµ¬í•˜ê¸°
 select dno
 from dept_copy--from department
 where dname = 'SALES';--30
 
---[2] emp_copy Å×ÀÌºí¿¡¼­ '±¸ÇÑ ºÎ¼­¹øÈ£¿Í °°Àº' ºÎ¼­¹øÈ£¸¦ °¡Áø »ç¿øÀ» ¸ðµÎ »èÁ¦
+--[2] emp_copy í…Œì´ë¸”ì—ì„œ 'êµ¬í•œ ë¶€ì„œë²ˆí˜¸ì™€ ê°™ì€' ë¶€ì„œë²ˆí˜¸ë¥¼ ê°€ì§„ ì‚¬ì›ì„ ëª¨ë‘ ì‚­ì œ
 delete
 from emp_copy
 where dno = (select dno
 			from dept_copy--from department
 			where dname = 'SALES');
---[3] È®ÀÎ
+--[3] í™•ì¸
 select * from emp_copy;
 
 
 ---------------------------------------------------------------------
---¡Ú¡Ú ÀÌÅ¬¸³½º´Â ÀÚµ¿ commitµÇ¾î ÀÖÀ¸¹Ç·Î ¼öµ¿À¸·Î commitµÇµµ·Ï È¯°æ¼³Á¤ ÈÄ Å×½ºÆ®ÇÏ±â
+--â˜…â˜… ì´í´ë¦½ìŠ¤ëŠ” ìžë™ commitë˜ì–´ ìžˆìœ¼ë¯€ë¡œ ìˆ˜ë™ìœ¼ë¡œ commitë˜ë„ë¡ í™˜ê²½ì„¤ì • í›„ í…ŒìŠ¤íŠ¸í•˜ê¸°
 
---4. Æ®·£Àè¼Ç °ü¸®
---¿À¶óÅ¬Àº Æ®·£Àè¼Ç ±â¹ÝÀ¸·Î 'µ¥ÀÌÅÍÀÇ ÀÏ°ü¼ºÀ» º¸ÀåÇÔ'
---(¿¹) µÎ °èÁÂ
---'Ãâ±Ý°èÁÂÀÇ Ãâ±Ý±Ý¾×'°ú 'ÀÔ±Ý°èÁÂÀÇ ÀÔ±Ý±Ý¾×'ÀÌ µ¿ÀÏÇØ¾ß ÇÔ
+--4. íŠ¸ëžœìž­ì…˜ ê´€ë¦¬
+--ì˜¤ë¼í´ì€ íŠ¸ëžœìž­ì…˜ ê¸°ë°˜ìœ¼ë¡œ 'ë°ì´í„°ì˜ ì¼ê´€ì„±ì„ ë³´ìž¥í•¨'
+--(ì˜ˆ) ë‘ ê³„ì¢Œ
+--'ì¶œê¸ˆê³„ì¢Œì˜ ì¶œê¸ˆê¸ˆì•¡'ê³¼ 'ìž…ê¸ˆê³„ì¢Œì˜ ìž…ê¸ˆê¸ˆì•¡'ì´ ë™ì¼í•´ì•¼ í•¨
 -- update				insert
--- ¹Ýµå½Ã µÎ ÀÛ¾÷Àº ÇÔ²² Ã³¸®µÇ°Å³ª ÇÔ²² Ãë¼Ò
---Ãâ±ÝÃ³¸®´Â µÇ¾úÀ¸³ª ÀÔ±ÝÃ³¸®°¡ µÇÁö ¾Ê¾Ò´Ù¸é 'µ¥ÀÌÅÍ ÀÏ°ü¼º'À» À¯Áö¸øÇÔ
+-- ë°˜ë“œì‹œ ë‘ ìž‘ì—…ì€ í•¨ê»˜ ì²˜ë¦¬ë˜ê±°ë‚˜ í•¨ê»˜ ì·¨ì†Œ
+--ì¶œê¸ˆì²˜ë¦¬ëŠ” ë˜ì—ˆìœ¼ë‚˜ ìž…ê¸ˆì²˜ë¦¬ê°€ ë˜ì§€ ì•Šì•˜ë‹¤ë©´ 'ë°ì´í„° ì¼ê´€ì„±'ì„ ìœ ì§€ëª»í•¨
 
---[Æ®·£Àè¼Ç Ã³¸®¿ä°Ç] : ALL-OR-Nothing ¹Ýµå½Ã Ã³¸®µÇ°Å³ª ¾ÈµÇ°Å³ª
---				  µ¥ÀÌÅÍÀÇ ÀÏ°ü¼ºÀ» À¯Áö, ¾ÈÁ¤ÀûÀ¸·Î µ¥ÀÌÅÍ º¹±¸
+--[íŠ¸ëžœìž­ì…˜ ì²˜ë¦¬ìš”ê±´] : ALL-OR-Nothing ë°˜ë“œì‹œ ì²˜ë¦¬ë˜ê±°ë‚˜ ì•ˆë˜ê±°ë‚˜
+--				  ë°ì´í„°ì˜ ì¼ê´€ì„±ì„ ìœ ì§€, ì•ˆì •ì ìœ¼ë¡œ ë°ì´í„° ë³µêµ¬
 
---commit : '(DML)µ¥ÀÌÅÍ Ãß°¡, ¼öÁ¤, »èÁ¦' µî ½ÇÇàµÊ°ú µ¿½Ã¿¡ Æ®·£Àè¼ÇÀÌ ÁøÇàµÊ
---			¼º°øÀûÀ¸·Î º¯°æµÈ ³»¿ëÀ» ¿µ±¸ ÀúÀå ÇÏ±âÀ§ÇØ ¹Ýµå½Ã commit
-			/* ¸Þ¸ð¸®ÀÇ ³»¿ëÀ» ÇÏµåµð½ºÅ©¿¡ ÀúÀåÇÔ(¿µ±¸È÷ ÀúÀå) */
+--commit : '(DML)ë°ì´í„° ì¶”ê°€, ìˆ˜ì •, ì‚­ì œ' ë“± ì‹¤í–‰ë¨ê³¼ ë™ì‹œì— íŠ¸ëžœìž­ì…˜ì´ ì§„í–‰ë¨
+--			ì„±ê³µì ìœ¼ë¡œ ë³€ê²½ëœ ë‚´ìš©ì„ ì˜êµ¬ ì €ìž¥ í•˜ê¸°ìœ„í•´ ë°˜ë“œì‹œ commit
+			/* ë©”ëª¨ë¦¬ì˜ ë‚´ìš©ì„ í•˜ë“œë””ìŠ¤í¬ì— ì €ìž¥í•¨(ì˜êµ¬ížˆ ì €ìž¥) */
 
---rollback : ÀÛ¾÷À» Ãë¼Ò
---			 Æ®·£Àè¼ÇÀ¸·Î ÀÎÇÑ ÇÏ³ªÀÇ ¹­Àº Ã³¸®°¡ ½ÃÀÛµÇ±â ÀÌÀü »óÅÂ·Î µÇµ¹¸² (ÁøÇàÁßÀÎ Æ®·£Àè¼Ç°ú µ¥ÀÌÅÍ º¯°æ»çÇ×À» ¸ðµÎ Ãë¼Ò ÈÄ °¡Àå ÃÖ±Ù¿¡ commitµÈ Á÷ÈÄ·Î µ¹¾Æ°¨.)
-			/* ¸Þ¸ð¸®ÀÇ ³»¿ëÀ» ÇÏµåµð½ºÅ©¿¡ ÀúÀåÇÏÁö ¾Ê°í ¹ö¸² (¸Þ¸ð¸® ³»¿ë ¹«È¿È­) */
+--rollback : ìž‘ì—…ì„ ì·¨ì†Œ
+--			 íŠ¸ëžœìž­ì…˜ìœ¼ë¡œ ì¸í•œ í•˜ë‚˜ì˜ ë¬¶ì€ ì²˜ë¦¬ê°€ ì‹œìž‘ë˜ê¸° ì´ì „ ìƒíƒœë¡œ ë˜ëŒë¦¼ (ì§„í–‰ì¤‘ì¸ íŠ¸ëžœìž­ì…˜ê³¼ ë°ì´í„° ë³€ê²½ì‚¬í•­ì„ ëª¨ë‘ ì·¨ì†Œ í›„ ê°€ìž¥ ìµœê·¼ì— commitëœ ì§í›„ë¡œ ëŒì•„ê°.)
+			/* ë©”ëª¨ë¦¬ì˜ ë‚´ìš©ì„ í•˜ë“œë””ìŠ¤í¬ì— ì €ìž¥í•˜ì§€ ì•Šê³  ë²„ë¦¼ (ë©”ëª¨ë¦¬ ë‚´ìš© ë¬´íš¨í™”) */
 
---¡Ú¡Ú ¿©±â¼­ºÎÅÍ RUN SQL~¿¡¼­ Å×½ºÆ®ÇÏ±â
-delete from dept_copy; --¸ðµç µ¥ÀÌÅÍ(row) ´Ù »èÁ¦
+--â˜…â˜… ì—¬ê¸°ì„œë¶€í„° RUN SQL~ì—ì„œ í…ŒìŠ¤íŠ¸í•˜ê¸°
+delete from dept_copy; --ëª¨ë“  ë°ì´í„°(row) ë‹¤ ì‚­ì œ
 --4 rows deleted.
 
-select * from dept_copy; --È®ÀÎ
+select * from dept_copy; --í™•ì¸
 --no rows selected
 
-rollback;	--delete ÀÌÀüÀ¸·Î µÇµ¹¸²(commitÇÏ±â Àü¿¡)
+rollback;	--delete ì´ì „ìœ¼ë¡œ ë˜ëŒë¦¼(commití•˜ê¸° ì „ì—)
 
-select * from dept_copy; --È®ÀÎ:¸ðµç ROW ´Ù º¹±¸µÊ
+select * from dept_copy; --í™•ì¸:ëª¨ë“  ROW ë‹¤ ë³µêµ¬ë¨
 
---[½Ç½ÀÀ§ÇØ ±âÁ¸ÀÇ 'ºÎ¼­Å×ÀÌºíÀÇ ±¸Á¶¸¸ º¹»ç'ÇÏ¿© dept_copy Å×ÀÌºí »ý¼º] ÀÌ ¶§, Á¦¾àÁ¶°ÇÀº º¹»ç¾ÈµÊ. not nullÁ¦¾àÁ¶°Ç¸¸ º¹»ç
+--[ì‹¤ìŠµìœ„í•´ ê¸°ì¡´ì˜ 'ë¶€ì„œí…Œì´ë¸”ì˜ êµ¬ì¡°ë§Œ ë³µì‚¬'í•˜ì—¬ dept_copy í…Œì´ë¸” ìƒì„±] ì´ ë•Œ, ì œì•½ì¡°ê±´ì€ ë³µì‚¬ì•ˆë¨. not nullì œì•½ì¡°ê±´ë§Œ ë³µì‚¬
 drop table dept_copy;
 
-create table dept_copy	--º¹»çµÈ dno(PK¾Æ´Ï¹Ç·Î °°Àº dno°ªÀ» ¿©·¯ °³ Ãß°¡ ÇÒ ¼ö ÀÖ´Ù.(¿¹)10À» ¿©·¯¹ø Ãß°¡ °¡´É)
+create table dept_copy	--ë³µì‚¬ëœ dno(PKì•„ë‹ˆë¯€ë¡œ ê°™ì€ dnoê°’ì„ ì—¬ëŸ¬ ê°œ ì¶”ê°€ í•  ìˆ˜ ìžˆë‹¤.(ì˜ˆ)10ì„ ì—¬ëŸ¬ë²ˆ ì¶”ê°€ ê°€ëŠ¥)
 as
 select * from department --dno(PK-not null+unique)
-where 0=1; --Á¶°ÇÀÌ ¹«Á¶°Ç °ÅÁþ=>µ¥ÀÌÅÍ º¹»ç¾ÈÇÔ
+where 0=1; --ì¡°ê±´ì´ ë¬´ì¡°ê±´ ê±°ì§“=>ë°ì´í„° ë³µì‚¬ì•ˆí•¨
 
 select * from dept_copy;
 
---ÀÚµ¿ commitµÇ¹Ç·Î RUN SQL~¿¡¼­ Ãß°¡ÇÏ±â------------------------------------
-insert into dept_copy values(10, 'accounting', '´º¿å');
-insert into dept_copy(dno, loc, dname) values(20, '´Þ¶ó½º', 'research');
+--ìžë™ commitë˜ë¯€ë¡œ RUN SQL~ì—ì„œ ì¶”ê°€í•˜ê¸°------------------------------------
+insert into dept_copy values(10, 'accounting', 'ë‰´ìš•');
+insert into dept_copy(dno, loc, dname) values(20, 'ë‹¬ë¼ìŠ¤', 'research');
 rollback;
 ----------------------------------------------------------------------
 select * from dept_copy;
 
---¡Ø Á¤¸® : insert, update, delete ÈÄ commitÇÏ±â Àü rollbackÇÏ¸é ¸ðµÎ Ãë¼ÒµÊ(commit)
---(¿¹-1)
+--â€» ì •ë¦¬ : insert, update, delete í›„ commití•˜ê¸° ì „ rollbackí•˜ë©´ ëª¨ë‘ ì·¨ì†Œë¨(commit)
+--(ì˜ˆ-1)
 insert..;
 insert..;
 
 update..;
 delete..;
-rollback;ÇÏ¸é insert, update, delete ´Ù Ãë¼ÒµÊ
+rollback;í•˜ë©´ insert, update, delete ë‹¤ ì·¨ì†Œë¨
 
---(¿¹-2)
+--(ì˜ˆ-2)
 insert..;
 insert..;
 
 update..;
-commit; --µ¥ÀÌÅÍº£ÀÌ½º ¹Ý¿µ(¿µ±¸ÀúÀå)
+commit; --ë°ì´í„°ë² ì´ìŠ¤ ë°˜ì˜(ì˜êµ¬ì €ìž¥)
 
 delete..;
-rollback;ÇÏ¸é delete¸¸ Ãë¼ÒµÊ(¸¶Áö¸· commit Á÷ÈÄ·Î µÇµ¹¸²)
+rollback;í•˜ë©´ deleteë§Œ ì·¨ì†Œë¨(ë§ˆì§€ë§‰ commit ì§í›„ë¡œ ë˜ëŒë¦¼)
 
---(¿¹-3)
+--(ì˜ˆ-3)
 insert..;
 insert..;
 savepoint i;
@@ -260,20 +260,20 @@ savepoint u;
 delete..;
 savepoint d;
 
-rollback to i;ÇÏ¸é update¿Í delete Ãë¼ÒµÊ(savepoint iÁöÁ¡À¸·Î µÇµ¹¸²)
+rollback to i;í•˜ë©´ updateì™€ delete ì·¨ì†Œë¨(savepoint iì§€ì ìœ¼ë¡œ ë˜ëŒë¦¼)
 
---(3). SAVEPOINT : ROLLBACK ¹üÀ§ ¼³Á¤À» À§ÇØ ¸Þ¸ð¸®»ó °æ°è¸¦ ¼³Á¤ÇÔ (»óÅÂ ±â¾ï)							
---					rollback ÇÒ À§Ä¡¸¦ ÁöÁ¤ÇÔ
+--(3). SAVEPOINT : ROLLBACK ë²”ìœ„ ì„¤ì •ì„ ìœ„í•´ ë©”ëª¨ë¦¬ìƒ ê²½ê³„ë¥¼ ì„¤ì •í•¨ (ìƒíƒœ ê¸°ì–µ)							
+--					rollback í•  ìœ„ì¹˜ë¥¼ ì§€ì •í•¨
 
---[½Ç½ÀÀ§ÇØ ±âÁ¸ÀÇ 'ºÎ¼­Å×ÀÌºíÀÇ ±¸Á¶¿Í µ¥ÀÌÅÍ º¹»ç'ÇÏ¿© dept_copy Å×ÀÌºí »ý¼º] ÀÌ ¶§, Á¦¾àÁ¶°ÇÀº º¹»ç¾ÈµÊ. not nullÁ¦¾àÁ¶°Ç¸¸ º¹»ç
+--[ì‹¤ìŠµìœ„í•´ ê¸°ì¡´ì˜ 'ë¶€ì„œí…Œì´ë¸”ì˜ êµ¬ì¡°ì™€ ë°ì´í„° ë³µì‚¬'í•˜ì—¬ dept_copy í…Œì´ë¸” ìƒì„±] ì´ ë•Œ, ì œì•½ì¡°ê±´ì€ ë³µì‚¬ì•ˆë¨. not nullì œì•½ì¡°ê±´ë§Œ ë³µì‚¬
 drop table dept_copy;
 
-create table dept_copy	--º¹»çµÈ dno(PK¾Æ´Ï¹Ç·Î °°Àº dno°ªÀ» ¿©·¯ °³ Ãß°¡ ÇÒ ¼ö ÀÖ´Ù.(¿¹)10À» ¿©·¯¹ø Ãß°¡ °¡´É)
+create table dept_copy	--ë³µì‚¬ëœ dno(PKì•„ë‹ˆë¯€ë¡œ ê°™ì€ dnoê°’ì„ ì—¬ëŸ¬ ê°œ ì¶”ê°€ í•  ìˆ˜ ìžˆë‹¤.(ì˜ˆ)10ì„ ì—¬ëŸ¬ë²ˆ ì¶”ê°€ ê°€ëŠ¥)
 as
 select * from department; --dno(PK-not null+unique)
 
---Run SQL~ ¿¡¼­ ½ÇÇàÇÏ±â ¡é
---(¿¹) 10¹ø ºÎ¼­¸¸ »èÁ¦ -> 20¹ø ºÎ¼­ »èÁ¦ -> savepoint·Î ÀÌ ÁöÁ¡À» d20ÀÌ¸§À¸·Î ÀúÀå
+--Run SQL~ ì—ì„œ ì‹¤í–‰í•˜ê¸° â†“
+--(ì˜ˆ) 10ë²ˆ ë¶€ì„œë§Œ ì‚­ì œ -> 20ë²ˆ ë¶€ì„œ ì‚­ì œ -> savepointë¡œ ì´ ì§€ì ì„ d20ì´ë¦„ìœ¼ë¡œ ì €ìž¥
 delete from dept_copy where dno = 10;
 --1 row deleted.
 
@@ -285,56 +285,56 @@ savepoint d20; --
 delete from dept_copy where dno = 30;
 --1 row deleted.
 
-rollback to d20; --d20ÁöÁ¡À¸·Î µÇµ¹¸²
+rollback to d20; --d20ì§€ì ìœ¼ë¡œ ë˜ëŒë¦¼
 
-select * from dept_copy; --10°ú 20¹ø¸¸ »èÁ¦
+select * from dept_copy; --10ê³¼ 20ë²ˆë§Œ ì‚­ì œ
 
-commit; --¿µ±¸ ÀúÀåµÊ
-rollback; --¿µ±¸ ÀúÀå ÈÄ DML½ÇÇàÇÑ °ÍÀÌ ¾ø¾î µÇµ¹¸± °ÍÀÌ ¾øÀ½
+commit; --ì˜êµ¬ ì €ìž¥ë¨
+rollback; --ì˜êµ¬ ì €ìž¥ í›„ DMLì‹¤í–‰í•œ ê²ƒì´ ì—†ì–´ ë˜ëŒë¦´ ê²ƒì´ ì—†ìŒ
 
---´Ù½Ã 30¹ø ºÎ¼­¸¸ »èÁ¦
+--ë‹¤ì‹œ 30ë²ˆ ë¶€ì„œë§Œ ì‚­ì œ
 delete from dept_copy where dno=30;
-commit; --¿µ±¸ ÀúÀåµÊ
+commit; --ì˜êµ¬ ì €ìž¥ë¨
 
 delete from dept_copy where dno=40;
-rollback; --»èÁ¦µÈ 40¹ø ºÎ¼­ÀÇ ³»¿ëÀ» µÇµ¹¸²
+rollback; --ì‚­ì œëœ 40ë²ˆ ë¶€ì„œì˜ ë‚´ìš©ì„ ë˜ëŒë¦¼
 
-select * from dept_copy; --»èÁ¦µÈ 40¹ø ³»¿ë ´Ù½Ã ³ªÅ¸³²
+select * from dept_copy; --ì‚­ì œëœ 40ë²ˆ ë‚´ìš© ë‹¤ì‹œ ë‚˜íƒ€ë‚¨
 
-/* SAVEPOINT Á¤¸®
-<Æ®·£Àè¼Ç ½Ã³ª¸®¿À>
+/* SAVEPOINT ì •ë¦¬
+<íŠ¸ëžœìž­ì…˜ ì‹œë‚˜ë¦¬ì˜¤>
 ------------------------------------------------------------
-¼ø¼­ | ¸í·É¹®					  |		ºñ°í
+ìˆœì„œ | ëª…ë ¹ë¬¸					  |		ë¹„ê³ 
 ------------------------------------------------------------
-1   Æ®·£Àè¼Ç ½ÃÀÛ 
+1   íŠ¸ëžœìž­ì…˜ ì‹œìž‘ 
 2   INSERT 
-3   SAVEPOINT 					P1 P1ÀÌ¶ó´Â ÀÌ¸§À¸·Î º¹±¸ ÁöÁ¡ ¼³Á¤ 
+3   SAVEPOINT 					P1 P1ì´ë¼ëŠ” ì´ë¦„ìœ¼ë¡œ ë³µêµ¬ ì§€ì  ì„¤ì • 
 4   UPDATE
-5   SAVEPOINT 					P2 P2¶ó´Â ÀÌ¸§À¸·Î º¹±¸ ÁöÁ¡ ¼³Á¤ 
+5   SAVEPOINT 					P2 P2ë¼ëŠ” ì´ë¦„ìœ¼ë¡œ ë³µêµ¬ ì§€ì  ì„¤ì • 
 6   DELETE
-7   (ÇöÀç À§Ä¡¿¡¼­ ROLLBACK ¿¹Á¤) 	º¹±¸ ÁöÁ¡ »ç¿ë¿¡ µû¶ó °á°ú ´Þ¶ó
+7   (í˜„ìž¬ ìœ„ì¹˜ì—ì„œ ROLLBACK ì˜ˆì •) 	ë³µêµ¬ ì§€ì  ì‚¬ìš©ì— ë”°ë¼ ê²°ê³¼ ë‹¬ë¼
 ------------------------------------------------------------
 
-<Æ®·£Àè¼Ç ROLLBACK °æ¿ì>
+<íŠ¸ëžœìž­ì…˜ ROLLBACK ê²½ìš°>
 ------------------------------------------------------------
-7¹øÂ° ¸í·É¹®				|	°á°ú
+7ë²ˆì§¸ ëª…ë ¹ë¬¸				|	ê²°ê³¼
 ------------------------------------------------------------
-ROLLBACK 					1¹øÂ° ¸í·É±îÁö Ãë¼ÒµÊ
-							Áï, ÇöÀç À§Ä¡ ÀÌÀü Æ®·£Àè¼Ç Ã³¸® ³»¿ëÀÌ ¸ðµÎ Ãë¼ÒµÊ
-ROLLBACK TO P1 				1~3±îÁöÀÇ ¸í·ÉÀº À¯È¿ÇÏ°Ô ³²°í, 4~6±îÁöÀÇ ³»¿ëÀÌ Ãë¼ÒµÊ
-ROLLBACK TO P2 				1~5±îÁöÀÇ ¸í·ÉÀº À¯È¿ÇÏ°Ô ³²°í, 6 ³»¿ëÀÌ Ãë¼ÒµÊ
+ROLLBACK 					1ë²ˆì§¸ ëª…ë ¹ê¹Œì§€ ì·¨ì†Œë¨
+							ì¦‰, í˜„ìž¬ ìœ„ì¹˜ ì´ì „ íŠ¸ëžœìž­ì…˜ ì²˜ë¦¬ ë‚´ìš©ì´ ëª¨ë‘ ì·¨ì†Œë¨
+ROLLBACK TO P1 				1~3ê¹Œì§€ì˜ ëª…ë ¹ì€ ìœ íš¨í•˜ê²Œ ë‚¨ê³ , 4~6ê¹Œì§€ì˜ ë‚´ìš©ì´ ì·¨ì†Œë¨
+ROLLBACK TO P2 				1~5ê¹Œì§€ì˜ ëª…ë ¹ì€ ìœ íš¨í•˜ê²Œ ë‚¨ê³ , 6 ë‚´ìš©ì´ ì·¨ì†Œë¨
 
  */
 
---autocommit »óÅÂ È®ÀÎ ¹æ¹ý
+--autocommit ìƒíƒœ í™•ì¸ ë°©ë²•
 show autocommit;
 autocommit OFF
---Autocommit ÄÑ±â
+--Autocommit ì¼œê¸°
 SET autocommit ON;
---Autocommit ²ô±â
+--Autocommit ë„ê¸°
 SET autocommit OFF;
 
---Run SQL~ ¿¡¼­ ½ÇÇàÇÏ±â ¡è
+--Run SQL~ ì—ì„œ ì‹¤í–‰í•˜ê¸° â†‘
 
 
 
