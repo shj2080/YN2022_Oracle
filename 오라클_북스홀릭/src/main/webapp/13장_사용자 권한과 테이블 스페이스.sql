@@ -98,7 +98,7 @@ default storage(initial 2M --최초 extent 크기
 				
 --default storage 생략하면 '기본값으로 지정된 값'으로 설정됨
 				
---(2) tablespace 조회
+--(2) tablespace 조회 ★★★
 select * -- tablespace_name, status, segment_space_management
 from dba_tablespaceS; -- 모든 테이블스페이스의 저장정보 및 상태 정보를 갖고 있는 데이터사전
 
@@ -234,22 +234,25 @@ create table samplebl(no number)
 ERROR at line 1:
 ORA-01950: no privileges on tablespace 'SYSTEM'
 
+--1. 실패 해결방법-1
 grant unlimited tablespace to user01;
---SYSTEM테이블스페이스 영역을 무제한 사용
---그러나, 권한 부여하면 문제 발생할 수 있다. (SYSTEM테이블스페이스의 중요한 데이터 보안상★)
+--default tablespace인 'SYSTEM' 테이블스페이스 영역을 무제한 사용
+--그러나, 권한 부여하면 문제 발생할 수 있다.
+--(SYSTEM테이블스페이스의 중요한 데이터 보안상★)
 
 -------------------------------
 --user01의 default_tablespace 확인
-select username, default_tablespace --USER01, SYSTEM
+select username, default_tablespace
 from dba_userS
-where username in ('USER01');
+where username in ('USER01'); --default_tablespace : SYSTEM
 
-select username, tablespace_name, max_bytes --USER01, SYSTEM
-from dba_ts_quotaS
+select username, tablespace_name, max_bytes
+from dba_ts_quotaS --quota가 설정된 user만 표시
 where username in ('USER01');
 --결과가 없음:user01은 quota가 설정안됨
 --그래서 'default_tablespace를 test_data(또는 userS)로 변경' 후 'quota를 설정'
 
+--2. ★★실패 해결방법-2 : SYSTEM 테이블스페이스의 중요한 데이터의 보안상 문제 발생할 수 있으므로 default_tablespace를 변경함
 ------★기본 테이블스페이스 변경 및 quota(제한용량) 설정(Run SQL~ 에서 실행) ----------
 ALTER user user01
 default tablespace users --users : 사용자 데이터가 들어갈 테이블스페이스
@@ -263,7 +266,9 @@ select username, tablespace_name, max_bytes --USER01, SYSTEM
 from dba_ts_quotaS	--quota가 설정된 user만 표시
 where username in ('USER01');
 
--------------quota unlimited-------------
+--------------------------
+--quota unlimited (영역 무제한 사용)
+
 ALTER user user01
 default tablespace users --users : 사용자 데이터가 들어갈 테이블스페이스
 quota unlimited ON users; --무제한 : -1로 표시됨
@@ -272,3 +277,316 @@ ALTER user user01
 default tablespace test_data --test_data: 위에서 직접 생성한 테이블스페이스
 quota unlimited ON test_data; --무제한 : -1로 표시됨
 ----------------------------------------------
+--<안전한 user 생성 방법> -- DBA권한 필요함
+--보통 user를 생성하고
+--grant connect, resource to 사용자명;
+--를 습관적으로 권한을 주는데
+--resource 롤을 주면 'unlimited tablespace'까지 주기에
+--'SYSTEM' 테이블스페이스를 무제한으로 사용가능하게 되어
+--'보안' 혹은 관리상에 문제가 될 소지를 가지고 있다.
+
+--[1] USER 생성
+CREATE USER user02 identified by 1234;
+
+--[2] 권한 부여
+GRANT connect, resource to user02;
+
+--[3] 'unlimited tablespace' 권한 회수 : 반드시 권한을 준 DBA가 권한 회수할 수 있다.
+REVOKE unlimited tablespace FROM user02;
+
+--[4] user02의 default tablespace를 변경하고 quota절로 영역 할당해줌
+ALTER USER user02
+default tablespace users--users : 사용자 데이터가 들어갈 테이블스페이스
+quota 10M ON users;--quota unlimited ON users;
+
+--[with ADMIN option]--------------(Run SQL Command Line 에서 실행)
+/*
+ * [with ADMIN option] 옵션
+ * 1. 권한을 받은 자(=GRANTEE)가 시스템권한 또는 롤을 다른 사용자 또는 롤에게 부여할 수 있도록 해준다.
+ * 2. with ADMIN option으로 주어진 권한은 계층적이지 않다.(=평등하다.)
+ *    즉, b_user가 a_user의 권한을 REVOKE 할 수 있다.
+ * 3. REVOKE 시에는 with ADMIN option 옵션을 명시할 필요가 없다.
+ * 4. ★   with ADMIN option으로 grant한 권한은 revoke 시 cascade되지 않는다.
+ */
+
+SQL> conn system/1234
+SQL> CREATE USER a_user identified by 1234;
+SQL> GRANT create session TO a_user with ADMIN option;
+
+--b_user 생성
+SQL> CREATE USER b_user identified by 1234;
+
+--a_user로 접속하여 b_user에게 DB접속 권한(with ADMIN option) 부여
+SQL> conn a_user/1234
+SQL> GRANT create session TO b_user with ADMIN option;
+
+--b_user로 접속하여 a_user의 DB접속 권한 회수
+SQL> conn b_user/1234
+SQL> REVOKE create session FROM a_user;
+
+--a_user로 접속하려면
+SQL> conn a_user/1234 -- 실패
+
+--<시스템 권한 회수>
+--Revoke '시스템 권한|role' FROM 사용자|롤(role)|public(=모든 사용자)
+
+---------------------------------------------------------------------
+--2. 롤(role) 321p : 다양한 권한을 효과적으로 관리할 수 있도록 관련된 권한까지 묶어 놓은 것
+--여러 사용자에게 보다 간편하게 권한을 부여할 수 있도록 함
+--GRANT connect, resource, dba TO system;
+--※ DBA 롤 : 시스템 자원을 무제한적으로 사용, 시스템 관리에 필요한 모든 권한
+--※ CONNECT 롤 : Oracle 9i까지-8가지(321p 표참조), Oracle 10g부터는 'create session'만 가지고 있다.
+--※ RESOURCE 롤 : 객체(테이블, 뷰 등)를 생성할 수 있도록 하기 위해서 '시스템 권한'을 그룹화
+---------------------------------------------------------------------
+
+--[객체 권한]
+--소유한 '객체'의 사용권한 관리를 위한 명령어 : DCL(grant, revoke)
+--1.1 객체 권한 부여(교재 312p 표 참조) : 'DB관리자나 객체소유자'가 다른 사용자에게 권한을 부여할 수 있다.
+
+--GRANT 'select|insert|update|delete.. ON 객체' TO 사용자|role|public [with GRANT option]
+-- (ex) GRANT 'ALL(모든객체권한) ON 객체' TO 사용자;
+
+--1. select ON 테이블명
+SQL> conn system/1234
+SQL> CREATE USER user01 identified by 1234;
+SQL> grant create session, create table to user01; --DB 접속 권한
+
+SQL> conn user01/1234--접속 성공
+SQL> select * from employees; --실패 : user01은 employees 테이블이 없어서 오류
+SQL> select * from hr.employees; --실패 : user01은 hr소유의 employees 테이블 조회 권한 없어서
+
+SQL> conn hr/1234 --접속해보니 lock되어 있으면
+
+SQL> conn system/1234 --wjqthrgkdu
+SQL> ALTER USER hr account unlock; --잠김 해제하고
+SQL> ALTER USER hr identified by 1234; --비밀번호도 다시 1234로 변경
+
+SQL> conn hr/1234 --접속 성공
+--★★user01에게 employees 테이블 조회 권한 부여★★
+SQL> grant select ON employees TO user01;
+
+SQL> conn user01/1234--접속
+SQL> select * from hr.employees; --조회 성공
+
+--2. insert ON 테이블명
+SQL> conn hr/1234 --접속
+--user01에게 'employees 테이블 삽입 권한' 부여
+SQL> grant insert ON employees TO user01;
+
+SQL> conn user01/1234--접속
+SQL> desc hr.employees;--테이블 구조:'not null인 컬럼'에 대해서만 값을 부여(나머지는 null값 자동 삽입됨)
+SQL> insert into hr.employees(EMPLOYEE_ID, FIRST_NAME, LAST_NAME,EMAIL,HIRE_DATE,JOB_ID)
+     values(8010, '길동', '홍', 'a@naver.com', '2022/09/22', 'AC_ACCOUNT');
+     
+--3. update(특정컬럼) ON 테이블명
+SQL > conn hr/1234--접속
+--user01에게 'employees 테이블의 특정컬럼 수정 권한' 부여
+SQL> grant update(salary) ON employees TO user01;
+
+SQL> conn user01/1234--접속
+SQL> update hr.employees SET salary=1000 where EMPLOYEE_ID = 8010;--성공
+SQL> update hr.employees SET commission_pct=500 where EMPLOYEE_ID = 8010; --실패?commission_pct 컬럼수정에 대한 권한 없어서
+
+--1.2 객체 권한 회수=제거 : DB 관리자나 권한을 부여한 사용자가 다른 사용자에게 부여한 객체 권한을 박탈------------------------
+--REVOKE 객체 권한 FROM 사용자
+--※ PUBLIC으로 권한을 부여하면 회수할 때도 PUBLIC으로 해야 한다.
+
+--1. revoke select ON 객체
+SQL> conn hr/1234; --권한을 부여한 사용자로 접속
+SQL> revoke select ON employees from user01;
+
+SQL> conn user01/1234--접속
+SQL> select * from hr.employees;--실패 (테이블 조회 권한 없음)
+SQL> update hr.employees SET salary=2000 where EMPLOYEE_ID = 8010;--성공
+
+--2. revoke ALL on 객체 : 객체에 대한 모든 권한 회수
+SQL> conn hr/1234; --권한을 부여한 사용자로 접속
+SQL> revoke ALL ON employees from user01;
+SQL> revoke ALL ON employees from PUBLIC; --모든 사용자의 employees 테이블 객체에 대한 모든 권한 회수
+
+SQL> conn user01/1234--접속
+SQL> update hr.employees SET salary=3000 where EMPLOYEE_ID = 8010;--성공
+--실패 메시지 : ORA-00942: table or view does not exist
+
+--[with GRANT option]--------------(Run SQL Command Line 에서 실행)
+/*
+ * [with GRANT option] 옵션
+ * 1. 권한을 받은 자(=GRANTEE)가 '객체권한'을 '다른 사용자'에게 부여할 수 있도록 해준다.
+ * 2. with GRANT option으로 주어진 권한은 계층적이다.(=평등하지 않다.)
+ *    즉, b_user가 a_user의 권한을 REVOKE 할 수 없다.
+ * 3. REVOKE 시에는 with GRANT option 옵션을 명시할 필요가 없다.
+ * 4. ★   with GRANT option으로 grant한 권한은 revoke 시 cascade된다.
+ * 	  즉, 부여자의 권한이 회수될 때 권한을 받은자의 권한이 같이 회수된다.
+ * 
+ * ※ with GRANT option 옵션은 role에 권한을 부여할 때는 사용할 수 없다.
+ */
+
+SQL> conn system/1234--접속
+SQL> create user usertest01 identified by 1234;
+SQL> create user usertest02 identified by 1234;
+
+--위에서 생성한 사용자들에게 DB접속권한, 테이블생성권한, 뷰생성권한
+SQL> grant create session, create table, create view TO usertest01;
+SQL> grant create session, create table, create view TO usertest02;
+
+SQL> conn hr/1234--hr(객체 소유자)접속, conn system/1234 (DB관리자)
+--usertest01에게 employees 테이블 조회권한 부여 + with GRANT option 옵션
+--usertest01은 소유자 hr로부터 다른 사용자에게 해당 권한(=employees 테이블 조회권한)을 부여할 수 있는 권한 부여받음
+SQL> grant select ON employees TO usertest01 WITH GRANT OPTION;
+
+SQL> conn usertest01/1234 --접속
+SQL> grant select ON hr.employees TO usertest02;
+
+SQL> conn usertest02/1234 --접속
+SQL> select * from hr.employees;--성공
+
+--권한 회수 : 객체의 소유자 계정
+SQL> conn hr/1234
+SQL> revoke select on employees FROM usertest01;--권한 회수하면 cascade로 권한이 다 회수됨
+
+SQL> conn usertest02/1234 --접속
+SQL> select * from hr.employees; --실패
+
+--------------------------------------------------------------------------------------------------
+--1.4 public : 모든 사용자에게 해당 권한 부여
+--권한 부여 : 객체의 소유자 계정
+SQL> conn hr/1234
+SQL> grant select ON employees TO public;
+
+SQL> conn usertest02/1234 --접속하여
+SQL> select * from hr.employees;--성공
+--------------------------------------------------------------------------------------------------
+
+--2. 롤을 사용한 권한 부여 (321p~)
+--2. 롤(role) 321p : 다양한 권한을 효과적으로 관리할 수 있도록 관련된 권한까지 묶어 놓은 것
+--여러 사용자에게 보다 간편하게 권한을 부여할 수 있도록 함
+--GRANT connect, resource, dba TO system;
+--※ DBA 롤 : 시스템 자원을 무제한적으로 사용, 시스템 관리에 필요한 모든 권한
+--※ CONNECT 롤 : Oracle 9i까지-8가지(321p 표참조), Oracle 10g부터는 'create session'만 가지고 있다.
+--※ RESOURCE 롤 : 객체(테이블, 뷰 등)를 생성할 수 있도록 하기 위해서 '시스템 권한'을 그룹화
+
+--<사용자가 직접 정의해서 사용하는 롤 생성>
+--롤에 암호 부여 가능
+--롤 이름은 사용자나 다른 롤과 중복될 수 없음
+
+
+--<롤 부여 순서>
+--[1] role 생성 : 반드시 DBA권한을 가진 사용자만 롤 생성
+--[2] role에 권한 부여
+--[3] role을 사용자 또는 다른 role에게 부여
+
+SQL> conn system/1234
+SQL> create user usertest03 identified by 1234;
+
+--[1] role 생성
+SQL> create role role_test01;
+--[2] role에 권한 부여
+SQL> GRANT create session, create table, create view TO role_test01;
+--[3] role을 사용자 또는 다른 role에게 부여
+SQL> GRANT role_test01 TO usertest01;
+SQL> conn usertest01/1234 --접속 성공
+
+SQL> conn system/1234 --DBA권한을 가진 사용자로 접속
+--[3] with ADMIN option : 다른 사용자나 롤에게 해당 롤을 재부여할 수 있는 옵션('평등'한 관계)
+SQL> GRANT role_test01 TO usertest02 with ADMIN option;
+
+SQL> conn usertest02/1234
+SQL> GRANT role_test01 TO usertest03 with ADMIN option;
+
+SQL> conn usertest03/1234
+SQL> REVOKE role_test01 from usertest02; --성공
+
+SQL> conn usertest02/1234--접속 실패
+--------------------------------------------------------------------------------------------------
+--데이터 사전을 통해 '롤에 부여된 권한 정보'를 확인가능
+select *
+from role_sys_privs--'롤에 부여된 시스템 권한(privilege) 정보'
+where role like '%TEST%';
+
+SQL> conn usertest01/1234
+SQL> select *
+     from user_role_privs; --현재 사용자가 접근가능한 롤 권한 정보
+     
+SQL> select *
+	 from dba_role_privs
+	 where grantee='USERTEST03'; --사용자에게 부여한 role
+
+--<'객체 권한'을 role에 부여하는 방법>
+--[1] role 생성 : 반드시 DBA 권한이 있는 사용자만 롤 생성
+SQL> conn system/1234
+SQL> CREATE ROLE role_test02;
+
+--[2] role에 권한부여 : ★객체의 소유자(hr)로 접속하여
+
+SQL> conn hr/1234
+SQL> GRANT select, insert, update(salary) ON employees TO role_test02;
+
+--[3] role을 사용자 또는 다른 role에게 부여 : 반드시 DBA 권한이 있는 사용자만 롤 권한 부여
+SQL> conn system/1234
+SQL> GRANT role_test02 TO usertest01;
+
+SQL> conn usertest01/1234
+SQL> select * from hr.employees; --조회 가능
+SQL> select * from user_role_privs; --현재 사용자가 접근가능한 롤 권한 정보
+SQL> select * from role_tab_privs; --롤에 부여된 테이블 권한 정보
+
+--<ROLE 권한 제거>
+--DBA 권한이 있는 사용자만 롤 권한 제거 가능
+SQL> conn system/1234
+SQL> DROP ROLE role_test01;
+
+--------------------------------------------------------------------------------------------------
+--3. 동의어(Synonym)
+--오라클 '객체(테이블, 뷰, 시퀀스, 프로시저)에 대한 별칭'을 말하며
+--실질적으로 그 자체가 객체가 아니라 객체에 대한 직접적인 참조이다.
+
+SQL> conn system/1234
+
+create table sampletbl(
+	memno varchar2(50)
+);
+
+insert into sampletbl values('9월은 시원하구나!');
+insert into sampletbl values('최선을 다합시다.');
+--생성한 테이블을 hr사용자에게 조회권한 부여
+GRANT select ON sampletbl TO hr;
+
+SQL> conn hr/1234
+SQL> select * from system.sampletbl; --'사용자명.객체명'
+
+--<동의어 사용 이유>
+--1. 다른 사용자가 소유한 객체에 접근하기 위해서는 소유자로부터 접근 권한을 부여받아야 하고
+--	 다른 사용자가 소유한 객체에 접근하기 위해서는 '사용자명.객체명'(=>긴 이름)
+--	 동의어를 사용하면 '사용자명.객체명' (=>긴 이름) 대신 간단하게 '별칭을 부여한 짧은 이름'으로 SQL코딩을 단순화시킬 수 있다.
+
+--2. 또한 객체를 참조하는 사용자의 객체를 감출 수 있어서 이에 대한 보안을 유지할 수 있다.
+--	 동의어를 사용하는 사용자는 참조하는 객체에 대한 소유자, 객체이름을 모르고 동의어 이름만 알아도 사용할 수 있다.
+
+--3. 만약에 실무에서 다른 사용자의 객체를 참조할 때, 동의어를 생성해서 사용하면 추후에 참조하는 객체명을 바꾸거나 이동할 경우
+--	 그 객체를 사용하는 SQL문을 모두 고치는 것이 아니라 동의어만 다시 정의하면 되기 때문에 매우 편리하다.
+
+--<동의어 종류>
+--1. 전용 동의어 : '객체에 대한 접근권한을 부여받은 사용자'가 생성. 해당 사용자만 사용가능
+SQL> conn hr/1234 --'객체에 대한 접근권한을 부여받은 사용자'로 접속
+create synonym priv_sampletbl FOR system.sampletbl; --동의어 생성
+select * from priv_sampletbl; --hr만 사용가능
+
+--2. 공용 동의어 : 'DBA 권한을 가진 사용자만' 생성. 누구나 사용가능
+SQL> conn system/1234
+create PUBLIC synonym pub_sampletbl FOR system.sampletbl;
+
+GRANT select on sampletbl TO usertest01;
+
+SQL> conn usertest01/1234
+SQL> select * from pub_sampletbl; --누구나 공용동의어 사용가능
+
+SQL> conn hr/1234
+SQL> select * from pub_sampletbl; --누구나 공용동의어 사용가능
+
+--3. 동의어 제거 : 반드시 동의어를 정의한 사용자로 접속
+SQL> conn hr/1234
+SQL> drop synonym priv_sampletbl;--전용 동의어 삭제
+select * from priv_sampletbl; --실패
+select * from pub_sampletbl;
+
+
